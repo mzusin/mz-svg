@@ -1,7 +1,7 @@
 {
   "version": 3,
-  "sources": ["../src/vector.ts"],
-  "sourcesContent": ["export const vSum = () => {\n\n    console.log('here')\n};"],
-  "mappings": ";;;;;;;;AAAO,IAAMA,EAAO,IAAM,CAEtB,QAAQ,IAAI,MAAM,CACtB",
-  "names": ["vSum"]
+  "sources": ["../src/core.ts"],
+  "sourcesContent": ["/**\n * SVG namespace that is defined in SVG v1.0 Specification\n * and subsequently added to by SVG 1.1, SVG 1.2 and SVG 2\n */\nexport const SVG_NAMESPACE= 'http://www.w3.org/2000/svg';\nexport const XMLNS_NAMESPACE = 'http://www.w3.org/2000/xmlns/';\n\n/**\n * Create new SVG element in browser or Node.js environment.\n * In case of Node.js, JSDom document can be provided.\n */\nexport const createSVG = (props: {\n    width: number;\n    height: number;\n    document?: Document;\n}) : SVGSVGElement => {\n\n    const {\n        width: _width,\n        height: _height,\n        document: _document,\n    } = props;\n\n    const doc = _document || window.document;\n    const $svg= doc.createElementNS(SVG_NAMESPACE, 'svg');\n\n    const width = Math.max(0, Number(_width) || 0);\n    const height = Math.max(0, Number(_height) || 0);\n\n    $svg.setAttributeNS(XMLNS_NAMESPACE, 'xmlns', SVG_NAMESPACE);\n    $svg.setAttribute('width', width.toString());\n    $svg.setAttribute('height', height.toString());\n    $svg.setAttribute('viewBox', `0 0 ${ width } ${ height }`);\n\n    return $svg;\n};"],
+  "mappings": ";;;;;;;;AAIO,IAAMA,EAAe,6BACfC,EAAkB,gCAMlBC,EAAaC,GAIJ,CAElB,GAAM,CACF,MAAOC,EACP,OAAQC,EACR,SAAUC,CACd,EAAIH,EAGEI,GADMD,GAAa,OAAO,UAChB,gBAAgBN,EAAe,KAAK,EAE9CQ,EAAQ,KAAK,IAAI,EAAG,OAAOJ,CAAM,GAAK,CAAC,EACvCK,EAAS,KAAK,IAAI,EAAG,OAAOJ,CAAO,GAAK,CAAC,EAE/C,OAAAE,EAAK,eAAeN,EAAiB,QAASD,CAAa,EAC3DO,EAAK,aAAa,QAASC,EAAM,SAAS,CAAC,EAC3CD,EAAK,aAAa,SAAUE,EAAO,SAAS,CAAC,EAC7CF,EAAK,aAAa,UAAW,OAAQC,KAAWC,GAAS,EAElDF,CACX",
+  "names": ["SVG_NAMESPACE", "XMLNS_NAMESPACE", "createSVG", "props", "_width", "_height", "_document", "$svg", "width", "height"]
 }

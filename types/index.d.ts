@@ -1,10 +1,11 @@
 declare const api: {
     SVG_NAMESPACE: "http://www.w3.org/2000/svg";
     XMLNS_NAMESPACE: "http://www.w3.org/2000/xmlns/";
-    initSVG: (width: number, height: number) => {
-        document: Document;
-        $svg: SVGSVGElement;
-    };
+    createSVG: (props: {
+        width: number;
+        height: number;
+        document?: Document | undefined;
+    }) => SVGSVGElement;
 };
 declare global {
     interface Window {

@@ -5,5 +5,9 @@ declare module 'mz-svg' {
 
     // export type Vector2 = [number, number];
 
-    export const createSVG: (width: number, height: number) => SVGSVGElement;
+    export const createSVG: (props: {
+        width: number;
+        height: number;
+        document?: Document;
+    }) => SVGSVGElement;
 }

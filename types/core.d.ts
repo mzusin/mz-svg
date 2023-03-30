@@ -5,10 +5,11 @@
 export declare const SVG_NAMESPACE = "http://www.w3.org/2000/svg";
 export declare const XMLNS_NAMESPACE = "http://www.w3.org/2000/xmlns/";
 /**
- * init SVG in browser environment ---> return svg element and document element
- * @return { document: Document, $svg: SVGSVGElement }
+ * Create new SVG element in browser or Node.js environment.
+ * In case of Node.js, JSDom document can be provided.
  */
-export declare const initSVG: (width: number, height: number) => {
-    document: Document;
-    $svg: SVGSVGElement;
-};
+export declare const createSVG: (props: {
+    width: number;
+    height: number;
+    document?: Document;
+}) => SVGSVGElement;

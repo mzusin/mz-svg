@@ -17,8 +17,8 @@
     "build:esm": "node run/esm.js",
     "watch:esm": "node run/esm.js -- watch",
     "test": "jest",
-    "test:browser": "./node_modules/karma/bin/karma start ./karma.conf.cjs",
     "test:watch": "jest --watch",
+    "test:browser": "./node_modules/karma/bin/karma start ./karma.conf.cjs",
     "eslint": "eslint ./src/**",
     "typescript-declarations": "tsc --emitDeclarationOnly"
   },
@@ -39,11 +39,13 @@
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
     "@types/jest": "^29.5.0",
+    "@types/jsdom": "^21.1.1",
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
     "esbuild": "^0.17.14",
     "eslint": "^8.37.0",
     "jest": "^29.5.0",
+    "jsdom": "^21.1.1",
     "karma": "^6.4.1",
     "karma-chrome-launcher": "^3.1.1",
     "karma-firefox-launcher": "^2.1.2",

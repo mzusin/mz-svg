@@ -6,10 +6,26 @@ export const SVG_NAMESPACE= 'http://www.w3.org/2000/svg';
 export const XMLNS_NAMESPACE = 'http://www.w3.org/2000/xmlns/';
 
 /**
- * Create new SVG in browser environment ---> return svg element.
+ * Create new SVG element in browser or Node.js environment.
+ * In case of Node.js, JSDom document can be provided.
  */
-export const createSVG = (width: number, height: number) : SVGSVGElement => {
-    const $svg= document.createElementNS(SVG_NAMESPACE, 'svg');
+export const createSVG = (props: {
+    width: number;
+    height: number;
+    document?: Document;
+}) : SVGSVGElement => {
+
+    const {
+        width: _width,
+        height: _height,
+        document: _document,
+    } = props;
+
+    const doc = _document || window.document;
+    const $svg= doc.createElementNS(SVG_NAMESPACE, 'svg');
+
+    const width = Math.max(0, Number(_width) || 0);
+    const height = Math.max(0, Number(_height) || 0);
 
     $svg.setAttributeNS(XMLNS_NAMESPACE, 'xmlns', SVG_NAMESPACE);
     $svg.setAttribute('width', width.toString());
