@@ -22,7 +22,6 @@ npm install mz-svg
 The import any function like **createSVG**:
 ```js
 import { createSVG } from 'mz-svg';
-
 const $svg = createSVG(100, 200); // creates SVG element 100x200
 ```
 
@@ -30,7 +29,7 @@ const $svg = createSVG(100, 200); // creates SVG element 100x200
 
 ## Browser Usage
 
-Any function can also be used in the browser using the **mz-svg.min.js** file. All functions are located in the **mzSVG** namespace:
+Any function can also be used in the browser using the [mz-svg.min.js file](https://github.com/mzusin/mz-svg/blob/main/dist/mz-svg.min.js). All functions are located in the **mzSVG** namespace:
 
 ```html
 <script src="mz-svg.min.js"></script>
