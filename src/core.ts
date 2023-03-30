@@ -34,3 +34,19 @@ export const createSVG = (props: {
 
     return $svg;
 };
+
+export const setAttributes = ($svgElement: SVGElement, attr: [string, string|number|undefined][]) => {
+    if(!$svgElement || !attr) return;
+
+    for(const pair of attr){
+        if(pair.length !== 2) continue;
+
+        const prop = pair[0];
+        if(prop === null || prop === undefined) continue;
+
+        const value = pair[1];
+        if(value === null || value === undefined) continue;
+
+        $svgElement.setAttribute(prop, value.toString());
+    }
+};

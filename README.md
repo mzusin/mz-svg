@@ -11,5 +11,5 @@ The TypeScript-based library for manipulating SVG in browser and Node.js. It all
 ## Features 🚀
 - Works in browser and Node.js
 - Based on TypeScript
-- Allows to create SVG documents and different SVG shapes
+- Allows to create SVG documents and primitive SVG shapes: path, rectangle, circle, ellipse, line.
 - Extensive Unit Testing

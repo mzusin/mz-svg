@@ -4,11 +4,12 @@ The **createPath()** function is used to create an SVG path element. The functio
 
 > All parameters are optional.
 
- 
 ```js
 import { createPath } from 'mz-svg';
 
 const $path = createPath({
+    
+    id: 'my-path-id',
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
     d: 'M150 0 L75 200 L225 200 Z',
@@ -30,6 +31,9 @@ const $path = createPath({
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/vector-effect
     vectorEffect: 'non-scaling-stroke',
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
+    pathLength: '10',
 });
 ```
 
