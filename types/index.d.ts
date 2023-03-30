@@ -1,9 +1,14 @@
 declare const api: {
-    vSum: () => void;
+    SVG_NAMESPACE: "http://www.w3.org/2000/svg";
+    XMLNS_NAMESPACE: "http://www.w3.org/2000/xmlns/";
+    initSVG: (width: number, height: number) => {
+        document: Document;
+        $svg: SVGSVGElement;
+    };
 };
 declare global {
     interface Window {
         mzSVG: typeof api;
     }
 }
-export * from './vector';
+export * from './core';

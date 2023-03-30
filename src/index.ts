@@ -1,7 +1,7 @@
-import * as vector from './vector';
+import * as core from './core';
 
 const api = {
-    ...vector,
+    ...core,
 };
 
 declare global {
@@ -12,4 +12,4 @@ declare global {
 
 window.mzSVG = window.mzSVG || api;
 
-export * from './vector';
+export * from './core';

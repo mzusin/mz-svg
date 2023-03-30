@@ -17,6 +17,7 @@
     "build:esm": "node run/esm.js",
     "watch:esm": "node run/esm.js -- watch",
     "test": "jest",
+    "test:browser": "./node_modules/karma/bin/karma start ./karma.conf.cjs",
     "test:watch": "jest --watch",
     "eslint": "eslint ./src/**",
     "typescript-declarations": "tsc --emitDeclarationOnly"
@@ -43,6 +44,12 @@
     "esbuild": "^0.17.14",
     "eslint": "^8.37.0",
     "jest": "^29.5.0",
+    "karma": "^6.4.1",
+    "karma-chrome-launcher": "^3.1.1",
+    "karma-firefox-launcher": "^2.1.2",
+    "karma-mocha": "^2.0.1",
+    "karma-qunit": "^4.1.2",
+    "karma-spec-reporter": "^0.0.36",
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1"
   }

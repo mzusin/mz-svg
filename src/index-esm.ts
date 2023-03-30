@@ -1,1 +1,1 @@
-export * from './vector';
+export * from './core';
