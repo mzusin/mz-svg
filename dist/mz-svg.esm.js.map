@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/vector.ts"],
+  "sourcesContent": ["export const vSum = () => {\n\n    console.log('here')\n};"],
+  "mappings": ";;;;;;;;AAAO,IAAMA,EAAO,IAAM,CAEtB,QAAQ,IAAI,MAAM,CACtB",
+  "names": ["vSum"]
+}

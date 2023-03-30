@@ -3,9 +3,23 @@
   "version": "1.0.0",
   "description": "The TypeScript-based library for manipulating and animating SVG.",
   "type": "module",
-  "main": "index.js",
+  "main": "./dist/mz-svg.min.js",
+  "module": "./dist/mz-svg.esm.js",
+  "types": "./dist/index.d.ts",
+  "exports": "./dist/mz-svg.esm.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:all": "npm run build:es6 & npm run build:node & npm run build:esm",
+    "watch:all": "npm run watch:es6 & npm run watch:node & npm run watch:esm",
+    "build:es6": "node run/es6.js",
+    "watch:es6": "node run/es6.js -- watch",
+    "build:node": "node run/node.js",
+    "watch:node": "node run/node.js -- watch",
+    "build:esm": "node run/esm.js",
+    "watch:esm": "node run/esm.js -- watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "eslint": "eslint ./src/**",
+    "typescript-declarations": "tsc --emitDeclarationOnly"
   },
   "keywords": [
     "svg"
@@ -15,5 +29,21 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/mzusin/mz-svg.git"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "@types/jest": "^29.5.0",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
+    "esbuild": "^0.17.14",
+    "eslint": "^8.37.0",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1"
   }
 }

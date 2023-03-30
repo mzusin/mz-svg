@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/index-esm.ts", "../src/vector.ts"],
+  "sourcesContent": ["export * from './vector';", "export const vSum = () => {\n\n    console.log('here')\n};"],
+  "mappings": ";;;;;;;;4ZAAA,IAAAA,EAAA,GAAAC,EAAAD,EAAA,UAAAE,IAAA,eAAAC,EAAAH,GCAO,IAAMI,EAAO,IAAM,CAEtB,QAAQ,IAAI,MAAM,CACtB",
+  "names": ["index_esm_exports", "__export", "vSum", "__toCommonJS", "vSum"]
+}
