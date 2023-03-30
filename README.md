@@ -8,6 +8,7 @@ The TypeScript-based library for manipulating SVG in browser and Node.js. It all
 - [TypeScript Usage](#typescript-usage)
 - [Browser Usage](#browser-usage)
 - [Node.js Usage](#nodejs-usage)
+- [Create Shapes](#create-shapes)
 - [Constants](#constants)
 - [Unit Tests](#unit-tests)
 
@@ -71,6 +72,10 @@ const doc = dom.window.document;
 const $svg = createSVG(300, 400, doc);
 console.log($svg);
 ```
+
+-----------------------------------------------
+
+## Create Shapes
 
 -----------------------------------------------
 

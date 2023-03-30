@@ -5,7 +5,7 @@ import { SVG_NAMESPACE } from './core';
  */
 export const createPath = (props: {
     document?: Document;
-    d: string;
+    d?: string;
     stroke?: string;
     strokeWidth?: number;
     fill?: string;
@@ -29,12 +29,17 @@ export const createPath = (props: {
 
     const $path = doc.createElementNS(SVG_NAMESPACE, 'path');
 
-    // remove newlines and double spaces
-    const d = _d.replace(/\s\s+/g, ' ');
+    if(_d){
+        // remove newlines and double spaces
+        const d = _d.replace(/\s\s+/g, ' ');
 
-    $path.setAttribute('d', d);
+        $path.setAttribute('d', d);
 
-    $path.setAttribute('fill', fill ? fill : 'none');
+    }
+
+    if(fill){
+        $path.setAttribute('fill', fill);
+    }
 
     if(stroke){
         $path.setAttribute('stroke', stroke);

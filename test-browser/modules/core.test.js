@@ -4,6 +4,12 @@ const htmlElementFromString = (html) => {
   return $div.querySelector('svg');
 };
 
+const htmlSVGElementFromString = (html) => {
+  const $svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  $svg.innerHTML = html;
+  return $svg.children[0];
+};
+
 QUnit.module('Core', (hooks) => {
 
   QUnit.test('createSVG 100x100', (assert) => {
