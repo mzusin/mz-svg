@@ -1,0 +1,19 @@
+{
+  "name": "mz-svg",
+  "version": "1.0.0",
+  "description": "The TypeScript-based library for manipulating and animating SVG.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "svg"
+  ],
+  "author": "Miriam Zusin <miriam.zusin@gmail.com>",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mzusin/mz-svg.git"
+  }
+}
