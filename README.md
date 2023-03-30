@@ -2,7 +2,7 @@
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/mzusin/mz-svg)
 
-The TypeScript-based library for manipulating and animating SVG. 
+The TypeScript-based library for manipulating SVG in browser and Node.js. It allows to create SVG documents and shapes.
 
 ## Table of contents
 - [TypeScript Usage](#typescript-usage)
