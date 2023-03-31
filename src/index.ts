@@ -1,9 +1,9 @@
 import * as core from './core';
-import * as shapes from './shapes';
+import * as primitiveShapes from './primitive-shapes';
 
 const api = {
     ...core,
-    ...shapes,
+    ...primitiveShapes,
 };
 
 declare global {
@@ -15,4 +15,4 @@ declare global {
 window.mzSVG = window.mzSVG || api;
 
 export * from './core';
-export * from './shapes';
+export * from './primitive-shapes';
