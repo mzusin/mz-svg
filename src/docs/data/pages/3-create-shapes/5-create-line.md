@@ -1,75 +1,54 @@
-## How to create SVG Rectangle
+## How to create SVG Line
 
-The **createRect()** function is used to create an SVG rectangle element.
-
-```js
-import { createRect } from 'mz-svg';
-
-const $rect = createRect({
-    x: 0,
-    y: 0,
-    width: 100,
-    height: 200,
-});
-```
-
-To create a rounded rectangle, use the **rx** and **ry** properties:
+The **createLine()** function is used to create an SVG line element.
 
 ```js
-import { createRect } from 'mz-svg';
+import { createLine } from 'mz-svg';
 
-const $rect = createRect({
-    x: 0,
-    y: 0,
-    width: 100,
-    height: 200,
-    rx: 10,
-    ry: 10,
+const $line = createLine({
+    x1: 0,
+    y1: 0,
+    x2: 100,
+    y2: 200,
 });
 ```
 
 In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
 
 ```js
-import { createRect } from 'mz-svg';
+import { createLine } from 'mz-svg/dist/mz-svg.node.cjs';
 
-const $rect = createRect({
+const $line = createLine({
     document: doc,
-    x: 0,
-    y: 0,
-    width: 100,
-    height: 200,
+    x1: 0,
+    y1: 0,
+    x2: 100,
+    y2: 200,
 });
 ```
 
 The function can accept the following parameters. Note that **all parameters are optional**:
 
 ```js
-import { createRect } from 'mz-svg';
+import { createLine } from 'mz-svg';
 
-const $rect = createRect({
+const $line = createLine({
     
-    id: 'my-rect-id',
+    id: 'my-line-id',
     classes: 'css-class1 css-class2',
     style: 'stroke: blue',
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x
-    x: 0,
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1
+    x1: 0,
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y
-    y: 0,
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y1
+    y1: 0,
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/rx
-    rx: 0,
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x2
+    x2: 0,
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/ry
-    ry: 0,
-
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/width
-    width: 0,
-
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/height
-    height: 0,
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y2
+    y2: 0,
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
     pathLength: '10',

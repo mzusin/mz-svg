@@ -1,54 +1,39 @@
-## How to create SVG Line
+## How to create SVG Path
 
-The **createLine()** function is used to create an SVG line element.
+The **createPath()** function is used to create an SVG path element.
 
 ```js
-import { createLine } from 'mz-svg';
+import { createPath } from 'mz-svg';
 
-const $line = createLine({
-    x1: 0,
-    y1: 0,
-    x2: 100,
-    y2: 200,
+const $path = createPath({
+    d: 'M150 0 L75 200 L225 200 Z'
 });
 ```
 
 In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
 
 ```js
-import { createLine } from 'mz-svg';
+import { createPath } from 'mz-svg/dist/mz-svg.node.cjs';
 
-const $line = createLine({
+const $path = createPath({
+    d: 'M150 0 L75 200 L225 200 Z',
     document: doc,
-    x1: 0,
-    y1: 0,
-    x2: 100,
-    y2: 200,
 });
 ```
 
 The function can accept the following parameters. Note that **all parameters are optional**:
 
 ```js
-import { createLine } from 'mz-svg';
+import { createPath } from 'mz-svg';
 
-const $line = createLine({
+const $path = createPath({
     
-    id: 'my-line-id',
+    id: 'my-path-id',
     classes: 'css-class1 css-class2',
     style: 'stroke: blue',
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1
-    x1: 0,
-
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y1
-    y1: 0,
-
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x2
-    x2: 0,
-
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y2
-    y2: 0,
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
+    d: 'M150 0 L75 200 L225 200 Z',
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
     pathLength: '10',

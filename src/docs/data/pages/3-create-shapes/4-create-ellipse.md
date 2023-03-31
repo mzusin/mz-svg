@@ -16,7 +16,7 @@ const $ellipse = createEllipse({
 In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
 
 ```js
-import { createEllipse } from 'mz-svg';
+import { createEllipse } from 'mz-svg/dist/mz-svg.node.cjs';
 
 const $ellipse = createEllipse({
     document: doc,

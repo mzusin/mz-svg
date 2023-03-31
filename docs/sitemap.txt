@@ -2,6 +2,7 @@ https://range-slider.toolcool.org
 https://range-slider.toolcool.org/pages/typescript-usage.html
 https://range-slider.toolcool.org/pages/browser-usage.html
 https://range-slider.toolcool.org/pages/nodejs-usage.html
+https://range-slider.toolcool.org/pages/create-svg-element.html
 https://range-slider.toolcool.org/pages/create-path.html
 https://range-slider.toolcool.org/pages/create-rect.html
 https://range-slider.toolcool.org/pages/create-circle.html

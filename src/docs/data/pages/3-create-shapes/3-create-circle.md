@@ -1,38 +1,49 @@
-## How to create SVG Path
+## How to create SVG Circle
 
-The **createPath()** function is used to create an SVG path element.
+The **createCircle()** function is used to create an SVG circle element.
 
 ```js
-import { createPath } from 'mz-svg';
+import { createCircle } from 'mz-svg';
 
-const $path = createPath({
-    d: 'M150 0 L75 200 L225 200 Z'
+const $circle = createCircle({
+    cx: 100,
+    cy: 100,
+    r: 50,
 });
 ```
+
 In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
 
 ```js
-import { createPath } from 'mz-svg';
+import { createCircle } from 'mz-svg/dist/mz-svg.node.cjs';
 
-const $path = createPath({
-    d: 'M150 0 L75 200 L225 200 Z',
+const $circle = createCircle({
     document: doc,
+    cx: 100,
+    cy: 100,
+    r: 50,
 });
 ```
 
 The function can accept the following parameters. Note that **all parameters are optional**:
 
 ```js
-import { createPath } from 'mz-svg';
+import { createCircle } from 'mz-svg';
 
-const $path = createPath({
+const $circle = createCircle({
     
-    id: 'my-path-id',
+    id: 'my-circle-id',
     classes: 'css-class1 css-class2',
     style: 'stroke: blue',
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
-    d: 'M150 0 L75 200 L225 200 Z',
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/cx
+    cx: 0,
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/cy
+    cy: 0,
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/r
+    r: 0,
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
     pathLength: '10',

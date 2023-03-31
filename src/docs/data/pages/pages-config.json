@@ -4,5 +4,8 @@
   },
   "3-nodejs-usage.md": {
     "title": "Node.js Usage"
+  },
+  "2-create-svg": {
+    "title": "Create SVG"
   }
 }
