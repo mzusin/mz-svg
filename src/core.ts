@@ -35,6 +35,25 @@ export const createSVG = (props: {
     return $svg;
 };
 
+/**
+ * Create SVG document from string
+ */
+export const createSVGFromString = (props: {
+    document?: Document;
+    svg: string;
+}) : SVGSVGElement => {
+    const {
+        document: _document,
+        svg,
+    } = props;
+
+    const doc = _document || window.document;
+
+    const $box = doc.createElement('div');
+    $box.innerHTML = svg;
+    return $box.firstElementChild as SVGSVGElement;
+};
+
 export const setAttributes = ($svgElement: SVGElement, attr: [string, string|number|undefined][]) => {
     if(!$svgElement || !attr) return;
 

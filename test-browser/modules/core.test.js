@@ -10,7 +10,7 @@ const htmlSVGElementFromString = (html) => {
   return $svg.children[0];
 };
 
-QUnit.module('Core', (hooks) => {
+QUnit.module('Core: createSVG', (hooks) => {
 
   QUnit.test('createSVG 100x100', (assert) => {
     const $svg1 = mzSVG.createSVG({
@@ -65,4 +65,28 @@ QUnit.module('Core', (hooks) => {
     const $svg2 = htmlElementFromString('<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 0 0"></svg>');
     assert.strictEqual($svg1.isEqualNode($svg2), true);
   });
+});
+
+QUnit.module('Core: createSVGFromString', (hooks) => {
+
+  QUnit.test('createSVGFromString', (assert) => {
+    const svg = `
+<svg viewBox="0 0 100 300" xmlns="http://www.w3.org/2000/svg">
+  <radialGradient cy="25%" id="myGradient">
+    <stop offset="0" stop-color="white" />
+    <stop offset="100%" stop-color="black" />
+  </radialGradient>
+
+  <circle cy="50" cx="50" r="45" />
+  <ellipse cy="150" cx="50" rx="45" ry="25" />
+  <rect x="5" y="205" width="90" height="90" fill="url(#myGradient)" />
+</svg>`;
+
+    const $svg = mzSVG.createSVGFromString({
+      svg,
+    });
+
+    assert.true(!!$svg);
+  });
+
 });
