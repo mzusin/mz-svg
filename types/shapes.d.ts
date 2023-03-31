@@ -3,71 +3,83 @@
  */
 export declare const createPath: (props: {
     document?: Document;
+    id?: string;
+    classes?: string;
+    style?: string;
     d?: string;
+    pathLength?: string | number;
     stroke?: string;
-    strokeWidth?: number;
-    fill?: string;
+    strokeWidth?: number | string;
+    strokeOpacity?: number | string;
     strokeLinecap?: string;
     strokeLinejoin?: string;
+    strokeDasharray?: string;
+    strokeDashoffset?: number | string;
+    strokeMiterlimit?: number | string;
+    fill?: string;
+    fillOpacity?: number | string;
+    fillRule?: string;
+    filter?: string;
+    mask?: string;
+    transform?: string;
     vectorEffect?: string;
+    shapeRendering?: string;
+    clipPath?: string;
+    clipRule?: string;
+    opacity?: string | number;
+    visibility?: string;
 }) => SVGPathElement;
 /**
  * Create SVG rectangle.
-
-export const createRect = (props: {
+ */
+export declare const createRect: (props: {
     document?: Document;
-}) => {
-    const {
-        document: _document,
-    } = props;
-
-    const doc = _document || window.document;
-}; */
+    x?: number | string;
+    y?: number | string;
+    width?: number | string;
+    height: number | string;
+    stroke?: string;
+    strokeWidth?: number | string;
+    fill?: string;
+    rx?: number | string;
+    ry?: number | string;
+}) => SVGRectElement;
 /**
  * Create SVG circle.
-
-export const createCircle = (props: {
+ */
+export declare const createCircle: (props: {
     document?: Document;
-}) => {
-    const {
-        document: _document,
-    } = props;
-
-    const doc = _document || window.document;
-}; */
+    cx?: string | number;
+    cy?: string | number;
+    r?: string | number;
+    stroke?: string;
+    strokeWidth?: string | number;
+    fill?: string;
+}) => SVGCircleElement;
 /**
  * Create SVG ellipse.
-
-export const createEllipse = (props: {
+ */
+export declare const createEllipse: (props: {
     document?: Document;
-}) => {
-    const {
-        document: _document,
-    } = props;
-
-    const doc = _document || window.document;
-}; */
+    cx?: string | number;
+    cy?: string | number;
+    rx?: string | number;
+    ry?: string | number;
+    stroke?: string;
+    strokeWidth?: string | number;
+    fill?: string;
+}) => SVGEllipseElement;
 /**
  * Create SVG line.
-
-export const createLine = (props: {
+ */
+export declare const createLine: (props: {
     document?: Document;
-}) => {
-    const {
-        document: _document,
-    } = props;
-
-    const doc = _document || window.document;
-}; */
-/**
- * Create SVG parabola.
-
-export const createParabola = (props: {
-    document?: Document;
-}) => {
-    const {
-        document: _document,
-    } = props;
-
-    const doc = _document || window.document;
-}; */ 
+    x1?: string | number;
+    y1?: string | number;
+    x2?: string | number;
+    y2?: string | number;
+    stroke?: string;
+    strokeWidth?: string | number;
+    strokeLinecap?: string;
+    strokeLinejoin?: string;
+}) => SVGLineElement;

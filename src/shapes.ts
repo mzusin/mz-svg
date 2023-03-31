@@ -5,28 +5,45 @@ import { setAttributes, SVG_NAMESPACE } from './core';
  */
 export const createPath = (props: {
     document?: Document;
+
     id?: string;
+    classes?: string;
+    style?: string;
+
     d?: string;
+    pathLength?: string|number;
+
     stroke?: string;
     strokeWidth?: number|string;
-    fill?: string;
+    strokeOpacity?: number|string;
     strokeLinecap?: string; // 'round'
     strokeLinejoin?: string;
+    strokeDasharray?: string;
+    strokeDashoffset?: number|string;
+    strokeMiterlimit?: number|string;
+
+    fill?: string;
+    fillOpacity?: number|string;
+    fillRule?: string;
+
+    filter?: string;
+    mask?: string;
+    transform?: string;
+
     vectorEffect?: string; // 'non-scaling-stroke' - used to disable line scale
-    pathLength?: string|number;
+    shapeRendering?: string;
+
+    clipPath?: string;
+    clipRule?: string;
+
+    opacity?: string|number;
+    visibility?: string;
+
 }) : SVGPathElement => {
 
     const {
         document: _document,
-        id,
         d: _d,
-        stroke,
-        strokeWidth,
-        fill,
-        strokeLinecap,
-        strokeLinejoin,
-        vectorEffect,
-        pathLength
     } = props;
 
     const doc = _document || window.document;
@@ -41,15 +58,38 @@ export const createPath = (props: {
     }
 
     setAttributes($path, [
-        ['id', id],
+        ['id', props.id],
+        ['class', props.classes],
+        ['style', props.style],
+
         ['d', _d],
-        ['fill', fill],
-        ['stroke', stroke],
-        ['stroke-width', strokeWidth],
-        ['stroke-linecap', strokeLinecap],
-        ['stroke-linejoin', strokeLinejoin],
-        ['vector-effect', vectorEffect],
-        ['pathLength', pathLength]
+        ['pathLength', props.pathLength],
+
+        ['stroke', props.stroke],
+        ['stroke-width', props.strokeWidth],
+        ['stroke-opacity', props.strokeOpacity],
+        ['stroke-linecap', props.strokeLinecap],
+        ['stroke-linejoin', props.strokeLinejoin],
+        ['stroke-dasharray', props.strokeDasharray],
+        ['stroke-dashoffset', props.strokeDashoffset],
+        ['stroke-miterlimit', props.strokeMiterlimit],
+
+        ['fill', props.fill],
+        ['fill-opacity', props.fillOpacity],
+        ['fill-rule', props.fillRule],
+
+        ['filter', props.filter],
+        ['mask', props.mask],
+        ['transform', props.transform],
+
+        ['vector-effect', props.vectorEffect],
+        ['shape-rendering', props.shapeRendering],
+
+        ['clip-path', props.clipPath],
+        ['clip-rule', props.clipRule],
+
+        ['opacity', props.opacity],
+        ['visibility', props.visibility],
     ]);
 
     return $path;

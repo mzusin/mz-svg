@@ -17,8 +17,8 @@
     <link id="favicon-16" rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16.png" />
 
     <link rel="stylesheet" href="/highlight.js/styles/tokyo-night-dark.css" />
-    <link rel="stylesheet" href="/css/styles.1680211632380.css" />
-    <!--<link rel="stylesheet" href="/js/index.1680211632380.css" />-->
+    <link rel="stylesheet" href="/css/styles.1680253927938.css" />
+    <!--<link rel="stylesheet" href="/js/index.1680253927938.css" />-->
 
   </head>
   <body class="h-screen flex flex-col font-roboto">
@@ -87,39 +87,11 @@
 
         <div class="p-4 overflow-y-auto h-full md:w-100-350">
           <div class="w-800 max-w-full mx-auto my-10 leading-7 text-lg text-slate-800"><h2 class="text-3xl mb-8">How to create SVG Path</h2>
-<p class="mb-4">The <strong class="font-bold">createPath()</strong> function is used to create an SVG path element. The function can accept the following parameters.</p>
-<blockquote class="bg-gray-100 pt-4 px-4 flex my-10 border-l-4 border-blue-300 rounded">
-<p class="mb-4">All parameters are optional.</p>
-</blockquote>
+<p class="mb-4">The <strong class="font-bold">createPath()</strong> function is used to create an SVG path element.</p>
 <pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createPath } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
 
 <span class="hljs-keyword">const</span> $path = <span class="hljs-title function_">createPath</span>({
-    
-    <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;my-path-id&#x27;</span>,
-
-    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d</span>
-    <span class="hljs-attr">d</span>: <span class="hljs-string">&#x27;M150 0 L75 200 L225 200 Z&#x27;</span>,
-
-    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke</span>
-    <span class="hljs-attr">stroke</span>: <span class="hljs-string">&#x27;#00ffff&#x27;</span>,
-
-    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-width</span>
-    <span class="hljs-attr">strokeWidth</span>: <span class="hljs-number">1</span>,
-
-    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill</span>
-    <span class="hljs-attr">fill</span>: <span class="hljs-string">&#x27;#ffffff&#x27;</span>,
-
-    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linecap</span>
-    <span class="hljs-attr">strokeLinecap</span>: <span class="hljs-string">&#x27;round&#x27;</span>,
-
-    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linejoin</span>
-    <span class="hljs-attr">strokeLinejoin</span>: <span class="hljs-string">&#x27;round&#x27;</span>,
-
-    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/vector-effect</span>
-    <span class="hljs-attr">vectorEffect</span>: <span class="hljs-string">&#x27;non-scaling-stroke&#x27;</span>,
-
-    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength</span>
-    <span class="hljs-attr">pathLength</span>: <span class="hljs-string">&#x27;10&#x27;</span>,
+    <span class="hljs-attr">d</span>: <span class="hljs-string">&#x27;M150 0 L75 200 L225 200 Z&#x27;</span>
 });</code></pre>
 <p class="mb-4">In Node.js, you need to first create a <a href="https://github.com/jsdom/jsdom" class="text-blue-500">JSDom</a> document, as described <a href="/pages/nodejs-usage.html" class="text-blue-500">here</a>, and then pass this document as additional parameter:</p>
 <pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createPath } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
@@ -127,6 +99,81 @@
 <span class="hljs-keyword">const</span> $path = <span class="hljs-title function_">createPath</span>({
     <span class="hljs-attr">d</span>: <span class="hljs-string">&#x27;M150 0 L75 200 L225 200 Z&#x27;</span>,
     <span class="hljs-attr">document</span>: doc,
+});</code></pre>
+<p class="mb-4">The function can accept the following parameters. Note that <strong class="font-bold">all parameters are optional</strong>:</p>
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createPath } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
+
+<span class="hljs-keyword">const</span> $path = <span class="hljs-title function_">createPath</span>({
+    
+    <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;my-path-id&#x27;</span>,
+    <span class="hljs-attr">classes</span>: <span class="hljs-string">&#x27;css-class1 css-class2&#x27;</span>,
+    <span class="hljs-attr">style</span>: <span class="hljs-string">&#x27;stroke: blue&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d</span>
+    <span class="hljs-attr">d</span>: <span class="hljs-string">&#x27;M150 0 L75 200 L225 200 Z&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength</span>
+    <span class="hljs-attr">pathLength</span>: <span class="hljs-string">&#x27;10&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke</span>
+    <span class="hljs-attr">stroke</span>: <span class="hljs-string">&#x27;#00ffff&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-width</span>
+    <span class="hljs-attr">strokeWidth</span>: <span class="hljs-number">1</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-opacity</span>
+    <span class="hljs-attr">strokeOpacity</span>: <span class="hljs-number">0.3</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linecap</span>
+    <span class="hljs-attr">strokeLinecap</span>: <span class="hljs-string">&#x27;round&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linejoin</span>
+    <span class="hljs-attr">strokeLinejoin</span>: <span class="hljs-string">&#x27;round&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dasharray</span>
+    <span class="hljs-attr">strokeDasharray</span>: <span class="hljs-string">&#x27;0 4 0&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dashoffset</span>
+    <span class="hljs-attr">strokeDashoffset</span>: <span class="hljs-string">&#x27;3&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit</span>
+    <span class="hljs-attr">strokeMiterlimit</span>: <span class="hljs-string">&#x27;8&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill</span>
+    <span class="hljs-attr">fill</span>: <span class="hljs-string">&#x27;#ffffff&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-opacity</span>
+    <span class="hljs-attr">fillOpacity</span>: <span class="hljs-number">0.7</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule</span>
+    <span class="hljs-attr">fillRule</span>: <span class="hljs-string">&#x27;evenodd&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/filter</span>
+    <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;url(#my-filter)&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/mask</span>
+    <span class="hljs-attr">mask</span>: <span class="hljs-string">&#x27;url(#my-mask)&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform</span>
+    <span class="hljs-attr">transform</span>: <span class="hljs-string">&#x27;scale(1 0.5)&#x27;</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/vector-effect</span>
+    <span class="hljs-attr">vectorEffect</span>: <span class="hljs-string">&#x27;non-scaling-stroke&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/shape-rendering</span>
+    <span class="hljs-attr">shapeRendering</span>: <span class="hljs-string">&#x27;geometricPrecision&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Element/clipPath</span>
+    <span class="hljs-attr">clipPath</span>: <span class="hljs-string">&#x27;url(#my-clip)&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip-rule</span>
+    <span class="hljs-attr">clipRule</span>: <span class="hljs-string">&#x27;evenodd&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/opacity</span>
+    <span class="hljs-attr">opacity</span>: <span class="hljs-number">0.3</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/visibility</span>
+    <span class="hljs-attr">visibility</span>: <span class="hljs-string">&#x27;hidden&#x27;</span>,
 });</code></pre>
 </div>
 
@@ -170,6 +217,6 @@
       </div>
     </footer>-->
 
-    <script src="/js/index.1680211632380.js"></script>
+    <script src="/js/index.1680253927938.js"></script>
   </body>
 </html>

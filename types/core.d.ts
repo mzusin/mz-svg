@@ -13,3 +13,4 @@ export declare const createSVG: (props: {
     height: number;
     document?: Document;
 }) => SVGSVGElement;
+export declare const setAttributes: ($svgElement: SVGElement, attr: [string, string | number | undefined][]) => void;

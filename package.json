@@ -23,8 +23,7 @@
     "typescript-declarations": "tsc --emitDeclarationOnly",
     "docs:website": "http-server ./docs",
     "docs:build": "node ./src/docs/generator/index.js",
-    "docs:watch": "nodemon ./src/docs/generator/index.js",
-    "docs:install": "node node_modules/markdown-documentation-maker/run/install.js"
+    "docs:watch": "nodemon ./src/docs/generator/index.js"
   },
   "keywords": [
     "svg",
