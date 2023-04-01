@@ -33,6 +33,7 @@ export const download = (props: {
         const svgString = `<?xml version="1.0" encoding="UTF-8"?>${ _svgString }`;
 
         const formattedExt = formatExt(props.ext);
+        const formattedFileName = `${ props.outfileName || 'out'}.${ formattedExt }`;
 
         if(formattedExt === 'svg'){
 
@@ -42,7 +43,7 @@ export const download = (props: {
             const link = document.createElement('a');
             link.href = url;
             link.title = '';
-            link.download = props.outfileName || 'out.svg';
+            link.download = formattedFileName;
             link.click();
 
             URL.revokeObjectURL(url);
@@ -91,7 +92,7 @@ export const download = (props: {
                     const link = document.createElement('a');
                     link.href = cUrl;
                     link.title = '';
-                    link.download = props.outfileName || 'out.svg';
+                    link.download = formattedFileName;
                     link.click();
 
                     URL.revokeObjectURL(cUrl);
