@@ -1,4 +1,13 @@
 declare const api: {
+    download: (props: {
+        $svg?: SVGSVGElement | undefined;
+        svgString?: string | undefined;
+        outfileName?: string | undefined;
+        ext?: string | undefined;
+    }) => Promise<{
+        isError: boolean;
+        msg?: string | undefined;
+    }>;
     createPath: (props: {
         document?: Document | undefined;
         id?: string | undefined;
@@ -173,3 +182,4 @@ declare global {
 }
 export * from './core';
 export * from './primitive-shapes';
+export * from './io-browser';

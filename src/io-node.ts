@@ -1,6 +1,8 @@
 import { getSVGAsString } from './core';
 import fs from 'fs';
 
+const MISSING_SVG_ERR = 'Either an SVG element or an SVG string must be provided.';
+
 /**
  * Saves SVG to file system in Node.js only.
  */
@@ -11,7 +13,7 @@ export const saveSVG = (props: {
 }) => {
 
     if(!props.$svg && !props.svgString){
-        throw new Error('Either an SVG element or an SVG string must be provided.')
+        throw new Error(MISSING_SVG_ERR);
     }
 
     const _svgString = props.$svg ? getSVGAsString(props.$svg) : props.svgString;

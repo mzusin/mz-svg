@@ -1,3 +1,3 @@
 export * from './core';
 export * from './primitive-shapes';
-export * from './io';
+export * from './io-node';

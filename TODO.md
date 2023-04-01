@@ -65,7 +65,6 @@
 - view
 
 ## IO
-- Save file as SVG
 - Download file as SVG (browser)
 - Save file as PNG / JPG
 - Other file formats

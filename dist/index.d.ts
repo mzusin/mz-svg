@@ -19,6 +19,16 @@ declare module 'mz-svg' {
         svgString?: string;
     }) => void;
 
+    export const download: (props: {
+        $svg?: SVGSVGElement;
+        svgString?: string;
+        outfileName?: string;
+        ext?: string;
+    }) => Promise<{
+        isError: boolean;
+        msg?: string | undefined;
+    }>;
+
     export const createPath: (props: {
         document?: Document;
         id?: string;
