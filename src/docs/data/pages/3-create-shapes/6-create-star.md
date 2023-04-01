@@ -1,6 +1,6 @@
 ## How to create star shape
 
-<div data-examples="star-examples"]></div>
+<div data-examples="star-examples"></div>
 
 The **createStar()** function is used to create an SVG star shape.
 
@@ -8,7 +8,7 @@ The **createStar()** function is used to create an SVG star shape.
 import { createStar } from 'mz-svg';
 
 const $star = createStar({
-    raysNumber: 5,
+    raysNumber: 5, // min value is 4
     centerX: 100,
     centerY: 100,
     outerRadius: 100,
@@ -70,7 +70,7 @@ import { createStar } from 'mz-svg';
 
 const $star = createStar({
 
-    // the number of star rays
+    // the number of star rays; min number is 4
     raysNumber: 5, 
     
     // the star center X position

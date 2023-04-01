@@ -188,6 +188,9 @@ export default {
   //   "/node_modules/",
   //   "\\.pnp\\.[^\\/]+$"
   // ],
+  transformIgnorePatterns: [
+    `/node_modules/(?!(mz-math)|react-dnd|core-dnd|@react-dnd)`,
+  ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,

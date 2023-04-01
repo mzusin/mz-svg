@@ -1,4 +1,6 @@
 import { createPath } from './primitive-shapes';
+import { DEFAULT_DECIMAL_PLACES } from '../core';
+import { setDecimalPlaces } from 'mz-math';
 
 export const createStar = (props: {
     document?: Document;
@@ -7,6 +9,8 @@ export const createStar = (props: {
     centerY: number;
     outerRadius: number;
     innerRadius: number;
+
+    decimalPlaces?: number;
 
     // --------------------
 
@@ -45,12 +49,15 @@ export const createStar = (props: {
 }) : SVGPathElement => {
 
     const {
-        raysNumber,
         centerX, centerY,
         outerRadius, innerRadius,
     } = props;
 
+    const MIN_RAY_NUMBERS = 4;
     const dots: [number, number][] = [];
+
+    const raysNumber = Math.max(MIN_RAY_NUMBERS, Number(props.raysNumber) || MIN_RAY_NUMBERS);
+    const decimalPlaces = (props.decimalPlaces === null || props.decimalPlaces === undefined) ? DEFAULT_DECIMAL_PLACES : props.decimalPlaces;
 
     const angleDiff = 2 * Math.PI / raysNumber;
     const halfAngle = angleDiff / 2;
@@ -58,14 +65,14 @@ export const createStar = (props: {
     for(let i= 0, angle= 1.5 * Math.PI; i<raysNumber; i++, angle += angleDiff){
         // outer circle
         dots.push([
-            centerX + Math.cos(angle) * outerRadius,
-            centerY + Math.sin(angle) * outerRadius
+            setDecimalPlaces(centerX + Math.cos(angle) * outerRadius, decimalPlaces),
+            setDecimalPlaces(centerY + Math.sin(angle) * outerRadius, decimalPlaces),
         ]);
 
         // inner circle
         dots.push([
-            centerX + Math.cos(angle + halfAngle) * innerRadius,
-            centerY + Math.sin(angle + halfAngle) * innerRadius,
+            setDecimalPlaces(centerX + Math.cos(angle + halfAngle) * innerRadius, decimalPlaces),
+            setDecimalPlaces(centerY + Math.sin(angle + halfAngle) * innerRadius, decimalPlaces),
         ]);
     }
 

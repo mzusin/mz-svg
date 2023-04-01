@@ -17,8 +17,8 @@
     <link id="favicon-16" rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16.png" />
 
     <link rel="stylesheet" href="/highlight.js/styles/tokyo-night-dark.css" />
-    <link rel="stylesheet" href="/css/styles.1680369999327.css" />
-    <!--<link rel="stylesheet" href="/js/index.1680369999327.css" />-->
+    <link rel="stylesheet" href="/css/styles.1680372559810.css" />
+    <!--<link rel="stylesheet" href="/js/index.1680372559810.css" />-->
 
   </head>
   <body class="h-screen flex flex-col font-roboto">
@@ -87,12 +87,12 @@
 
         <div class="p-4 overflow-y-auto h-full md:w-100-350">
           <div class="w-800 max-w-full mx-auto my-10 leading-7 text-lg text-slate-800"><h2 class="text-3xl mb-8">How to create star shape</h2>
-<div data-examples="star-examples"]></div>
+<div data-examples="star-examples"></div>
 <p class="mb-4">The <strong class="font-bold">createStar()</strong> function is used to create an SVG star shape.</p>
 <pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createStar } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
 
 <span class="hljs-keyword">const</span> $star = <span class="hljs-title function_">createStar</span>({
-    <span class="hljs-attr">raysNumber</span>: <span class="hljs-number">5</span>,
+    <span class="hljs-attr">raysNumber</span>: <span class="hljs-number">5</span>, <span class="hljs-comment">// min value is 4</span>
     <span class="hljs-attr">centerX</span>: <span class="hljs-number">100</span>,
     <span class="hljs-attr">centerY</span>: <span class="hljs-number">100</span>,
     <span class="hljs-attr">outerRadius</span>: <span class="hljs-number">100</span>,
@@ -141,7 +141,7 @@ $svg.<span class="hljs-title function_">append</span>($star);
 
 <span class="hljs-keyword">const</span> $star = <span class="hljs-title function_">createStar</span>({
 
-    <span class="hljs-comment">// the number of star rays</span>
+    <span class="hljs-comment">// the number of star rays; min number is 4</span>
     <span class="hljs-attr">raysNumber</span>: <span class="hljs-number">5</span>, 
     
     <span class="hljs-comment">// the star center X position</span>
@@ -267,6 +267,6 @@ $svg.<span class="hljs-title function_">append</span>($star);
       </div>
     </footer>-->
 
-    <script src="/js/index.1680369999327.js"></script>
+    <script src="/js/index.1680372559810.js"></script>
   </body>
 </html>
