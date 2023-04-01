@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mzSVG</title>
+</head>
+<body>
+    <script src="../../dist/mz-svg.min.js"></script>
+    <script>
+
+        const $svg = mzSVG.createSVG({
+            width: 200,
+            height: 200
+        });
+
+        const $star = mzSVG.createStar({
+            raysNumber: 5,
+            centerX: 100,
+            centerY: 100,
+            outerRadius: 100,
+            innerRadius: 50,
+        });
+
+        $svg.append($star);
+
+        document.body.append($svg);
+    </script>
+</body>
+</html>

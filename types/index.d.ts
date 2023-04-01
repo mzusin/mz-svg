@@ -1,4 +1,37 @@
 declare const api: {
+    createStar: (props: {
+        document?: Document | undefined;
+        raysNumber: number;
+        centerX: number;
+        centerY: number;
+        outerRadius: number;
+        innerRadius: number;
+        id?: string | undefined;
+        classes?: string | undefined;
+        style?: string | undefined;
+        d?: string | undefined;
+        pathLength?: string | number | undefined;
+        stroke?: string | undefined;
+        strokeWidth?: string | number | undefined;
+        strokeOpacity?: string | number | undefined;
+        strokeLinecap?: string | undefined;
+        strokeLinejoin?: string | undefined;
+        strokeDasharray?: string | undefined;
+        strokeDashoffset?: string | number | undefined;
+        strokeMiterlimit?: string | number | undefined;
+        fill?: string | undefined;
+        fillOpacity?: string | number | undefined;
+        fillRule?: string | undefined;
+        filter?: string | undefined;
+        mask?: string | undefined;
+        transform?: string | undefined;
+        vectorEffect?: string | undefined;
+        shapeRendering?: string | undefined;
+        clipPath?: string | undefined;
+        clipRule?: string | undefined;
+        opacity?: string | number | undefined;
+        visibility?: string | undefined;
+    }) => SVGPathElement;
     download: (props: {
         $svg?: SVGSVGElement | undefined;
         svgString?: string | undefined;
@@ -181,5 +214,6 @@ declare global {
     }
 }
 export * from './core';
-export * from './primitive-shapes';
+export * from './shapes/primitive-shapes';
 export * from './io-browser';
+export * from './shapes/star-shapes';

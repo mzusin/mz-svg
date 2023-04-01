@@ -1,3 +1,4 @@
 export * from './core';
-export * from './primitive-shapes';
+export * from './shapes/primitive-shapes';
+export * from './shapes/star-shapes';
 export * from './io-node';

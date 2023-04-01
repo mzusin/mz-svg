@@ -65,9 +65,8 @@
 - view
 
 ## IO
-- Download file as SVG (browser)
-- Save file as PNG / JPG
-- Other file formats
+- Save file as PNG / JPG in Node.js
+- Other image formats?
 
 ## More shapes
 - Stars shapes

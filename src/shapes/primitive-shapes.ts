@@ -1,4 +1,4 @@
-import { setAttributes, SVG_NAMESPACE } from './core';
+import { setAttributes, SVG_NAMESPACE } from '../core';
 
 /**
  * Create SVG path.
