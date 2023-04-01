@@ -20,4 +20,5 @@ export declare const createSVGFromString: (props: {
     document?: Document;
     svg: string;
 }) => SVGSVGElement;
+export declare const getSVGAsString: ($svg: SVGSVGElement) => string;
 export declare const setAttributes: ($svgElement: SVGElement, attr: [string, string | number | undefined][]) => void;

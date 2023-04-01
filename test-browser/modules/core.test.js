@@ -90,3 +90,27 @@ QUnit.module('Core: createSVGFromString', (hooks) => {
   });
 
 });
+
+QUnit.module('Core: getSVGAsString', (hooks) => {
+
+  QUnit.test('getSVGAsString', (assert) => {
+    const svg = `
+<svg viewBox="0 0 100 300" xmlns="http://www.w3.org/2000/svg">
+<radialGradient cy="25%" id="myGradient">
+<stop offset="0" stop-color="white"></stop>
+<stop offset="100%" stop-color="black"></stop>
+</radialGradient>·
+<circle cx="50" cy="50" r="45"></circle>
+<ellipse cx="50" cy="150" rx="45" ry="25"></ellipse>
+<rect fill="url(#myGradient)" height="90" width="90" x="5" y="205"></rect>
+</svg>`;
+
+    const $svg = mzSVG.createSVGFromString({
+      svg,
+    });
+    const resultSVG = mzSVG.getSVGAsString($svg);
+
+    assert.strictEqual(svg.trim(), resultSVG.trim());
+  });
+
+});

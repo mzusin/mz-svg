@@ -163,6 +163,7 @@ declare const api: {
         document?: Document | undefined;
         svg: string;
     }) => SVGSVGElement;
+    getSVGAsString: ($svg: SVGSVGElement) => string;
     setAttributes: ($svgElement: SVGElement, attr: [string, string | number | undefined][]) => void;
 };
 declare global {

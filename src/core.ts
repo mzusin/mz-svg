@@ -54,6 +54,10 @@ export const createSVGFromString = (props: {
     return $box.firstElementChild as SVGSVGElement;
 };
 
+export const getSVGAsString = ($svg: SVGSVGElement) => {
+    return $svg.outerHTML;
+};
+
 export const setAttributes = ($svgElement: SVGElement, attr: [string, string|number|undefined][]) => {
     if(!$svgElement || !attr) return;
 
