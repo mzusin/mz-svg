@@ -13,6 +13,12 @@ declare module 'mz-svg' {
 
     export const getSVGAsString: ($svg: SVGSVGElement) => string;
 
+    export const saveSVG: (props: {
+        absOutFilePath: string;
+        $svg?: SVGSVGElement;
+        svgString?: string;
+    }) => void;
+
     export const createPath: (props: {
         document?: Document;
         id?: string;

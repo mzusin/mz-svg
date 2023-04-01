@@ -10,5 +10,6 @@ https://range-slider.toolcool.org/pages/create-rect.html
 https://range-slider.toolcool.org/pages/create-circle.html
 https://range-slider.toolcool.org/pages/create-ellipse.html
 https://range-slider.toolcool.org/pages/create-line.html
+https://range-slider.toolcool.org/pages/save-svg.html
 https://range-slider.toolcool.org/pages/constants.html
 https://range-slider.toolcool.org/pages/unit-tests.html

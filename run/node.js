@@ -6,7 +6,7 @@ const args = process.argv.slice(2);
 const watch = args.length > 1 && args[1].trim().toLowerCase() === 'watch';
 
 settings.platform = 'node';
-settings.entryPoints = ['./src/index-esm.ts'];
+settings.entryPoints = ['./src/index-node.ts'];
 settings.outfile = './dist/mz-svg.node.cjs';
 
 if(watch){

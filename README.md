@@ -12,4 +12,5 @@ TypeScript-based library for managing SVG in the browser and Node.js. The modula
 - Works in browser and Node.js
 - Based on TypeScript
 - Allows you to create SVG documents and primitive SVG shapes like path, rectangle, circle, ellipse, etc.
+- Save SVG to file system (Node.js)
 - Extensive Unit Testing

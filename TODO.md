@@ -63,3 +63,28 @@
 - title — the SVG accessible name element
 - use
 - view
+
+## IO
+- Save file as SVG
+- Download file as SVG (browser)
+- Save file as PNG / JPG
+- Other file formats
+
+## More shapes
+- Stars shapes
+- Heart shapes
+- Flower shape
+- Flag shape
+- Polygons like triangle, romb, шестиугольник
+- Rect around dots
+- Arrow shapes
+- Functions like parabola or wave
+- Animate
+- Defs
+- Mask
+
+## Other features
+- If 2 shapes intersect
+- If shape inside viewport
+- Union, intersection, etc.
+- Shape transformations
