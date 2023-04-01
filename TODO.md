@@ -69,7 +69,6 @@
 - Other image formats?
 
 ## More shapes
-- Stars shapes
 - Heart shapes
 - Flower shape
 - Flag shape
