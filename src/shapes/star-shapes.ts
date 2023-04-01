@@ -52,10 +52,10 @@ export const createStar = (props: {
 
     const dots: [number, number][] = [];
 
-    const angleDiff = 2 * Math.PI / 5;
+    const angleDiff = 2 * Math.PI / raysNumber;
     const halfAngle = angleDiff / 2;
 
-    for(let i= 0, angle= 1.5 * Math.PI; i<raysNumber; i++, angle+=angleDiff){
+    for(let i= 0, angle= 1.5 * Math.PI; i<raysNumber; i++, angle += angleDiff){
         // outer circle
         dots.push([
             centerX + Math.cos(angle) * outerRadius,

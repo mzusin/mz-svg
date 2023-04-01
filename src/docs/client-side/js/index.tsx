@@ -1,3 +1,7 @@
+import {
+  starExamples,
+} from './examples';
+
 const initMobileMenu = () => {
   const $btn = document.getElementById('mobile-menu-btn');
   if(!$btn) return;
@@ -46,6 +50,7 @@ const init = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   init();
+  starExamples();
 });
 
 export {};
