@@ -29,7 +29,8 @@
     "svg",
     "svg shapes",
     "svg path",
-    "vector-graphics"
+    "vector-graphics",
+    "star-shape"
   ],
   "author": "Miriam Zusin <miriam.zusin@gmail.com>",
   "license": "SEE LICENSE IN LICENSE.md",

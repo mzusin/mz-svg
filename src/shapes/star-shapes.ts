@@ -76,9 +76,9 @@ export const createStar = (props: {
         ]);
     }
 
-    let d = `M ${dots[0][0]},${dots[0][1]} `;
-    d += dots.map(dot => ` L ${dot[0]},${dot[1]} `);
-    d += 'Z';
+    let d = `M ${dots[0][0]} ${dots[0][1]} `;
+    d += dots.map(dot => `L ${dot[0]} ${dot[1]}`).join(' ');
+    d += ' Z';
 
     const pathProps = {
         ...props,
