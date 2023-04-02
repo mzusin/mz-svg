@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mzSVG</title>
+</head>
+<body>
+    <script src="../../dist/mz-svg.min.js"></script>
+    <script>
+
+        const $svg = mzSVG.createSVG({
+            width: 200,
+            height: 450
+        });
+
+        const $rect = mzSVG.createRect({
+            x: 0,
+            y: 0,
+            fill: 'red',
+            width: 100,
+            height: 100,
+            rx: 10,
+            ry: 10,
+        });
+
+        const $rect1 = mzSVG.createRectPath({
+            x: 10,
+            y: 105,
+            width: 100,
+            height: 100,
+            rx: 10,
+            ry: 10,
+            fill: 'blue',
+        });
+
+        $svg.append($rect);
+        $svg.append($rect1);
+
+        document.body.append($svg);
+    </script>
+</body>
+</html>

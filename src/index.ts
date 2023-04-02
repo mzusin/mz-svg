@@ -1,13 +1,15 @@
-import * as core from './core';
-import * as primitiveShapes from './shapes/primitive-shapes';
-import * as stars from './shapes/star-shapes';
-import * as ioBrowser from './io-browser';
+import * as core from './main/core';
+import * as primitiveShapes from './main/shapes/primitive-shapes';
+import * as stars from './main/shapes/star-shapes';
+import * as shapePaths from './main/shapes/shape-paths';
+import * as ioBrowser from './main/io-browser';
 
 const api = {
     ...core,
     ...primitiveShapes,
     ...ioBrowser,
     ...stars,
+    ...shapePaths,
 };
 
 declare global {
@@ -18,7 +20,8 @@ declare global {
 
 window.mzSVG = window.mzSVG || api;
 
-export * from './core';
-export * from './shapes/primitive-shapes';
-export * from './io-browser';
-export * from './shapes/star-shapes';
+export * from './main/core';
+export * from './main/shapes/primitive-shapes';
+export * from './main/io-browser';
+export * from './main/shapes/star-shapes';
+export * from './main/shapes/shape-paths';

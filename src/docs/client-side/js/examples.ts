@@ -1,5 +1,5 @@
-import { createStar } from '../../../shapes/star-shapes';
-import { createSVG } from '../../../core';
+import { createStar } from '../../../main/shapes/star-shapes';
+import { createSVG } from '../../../main/core';
 import { getRandomHSLColorWithinRanges, hslToHex, getRandomInt } from 'mz-math';
 
 export const starExamples = () => {

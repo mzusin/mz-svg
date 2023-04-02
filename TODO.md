@@ -69,6 +69,7 @@
 - Other image formats?
 
 ## More shapes
+- Primitives as paths (triangle, rect, etc.)
 - Heart shapes
 - Flower shape
 - Flag shape
@@ -85,3 +86,4 @@
 - If shape inside viewport
 - Union, intersection, etc.
 - Shape transformations
+- Convert simple shape to path
