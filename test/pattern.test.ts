@@ -3,7 +3,7 @@ import {
 } from '../src/index-esm';
 import { createNodeDoc } from './core.test';
 
-describe('Pattern:  createPattern', () => {
+describe('Pattern: createPattern', () => {
 
     test('createPattern with provided x', () => {
         const x = 10;
