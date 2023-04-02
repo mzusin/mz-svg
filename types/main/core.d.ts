@@ -4,6 +4,7 @@
  */
 export declare const SVG_NAMESPACE = "http://www.w3.org/2000/svg";
 export declare const XMLNS_NAMESPACE = "http://www.w3.org/2000/xmlns/";
+export declare const DEFAULT_DECIMAL_PLACES = 2;
 /**
  * Create new SVG element in browser or Node.js environment.
  * In case of Node.js, JSDom document can be provided.

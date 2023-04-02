@@ -92,6 +92,40 @@ declare module 'mz-svg' {
         visibility?: string;
     }) => SVGRectElement;
 
+    export const createRectPath: (props: {
+        document?: Document;
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+        rx?: number;
+        ry?: number;
+        id?: string;
+        classes?: string;
+        style?: string;
+        pathLength?: string | number;
+        stroke?: string;
+        strokeWidth?: number | string;
+        strokeOpacity?: number | string;
+        strokeLinecap?: string;
+        strokeLinejoin?: string;
+        strokeDasharray?: string;
+        strokeDashoffset?: number | string;
+        strokeMiterlimit?: number | string;
+        fill?: string;
+        fillOpacity?: number | string;
+        fillRule?: string;
+        filter?: string;
+        mask?: string;
+        transform?: string;
+        vectorEffect?: string;
+        shapeRendering?: string;
+        clipPath?: string;
+        clipRule?: string;
+        opacity?: string | number;
+        visibility?: string;
+    }) => SVGPathElement;
+
     export const createCircle: (props: {
         document?: Document;
         cx?: string | number;

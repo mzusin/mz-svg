@@ -1,14 +1,22 @@
-export declare const createStar: (props: {
+export declare const getRectPathD: (props: {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+    rx?: number;
+    ry?: number;
+}) => string;
+export declare const createRectPath: (props: {
     document?: Document;
-    raysNumber: number;
-    centerX: number;
-    centerY: number;
-    outerRadius: number;
-    innerRadius: number;
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+    rx?: number;
+    ry?: number;
     id?: string;
     classes?: string;
     style?: string;
-    d?: string;
     pathLength?: string | number;
     stroke?: string;
     strokeWidth?: number | string;

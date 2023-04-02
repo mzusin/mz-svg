@@ -1,4 +1,45 @@
 declare const api: {
+    getRectPathD: (props: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+        rx?: number | undefined;
+        ry?: number | undefined;
+    }) => string;
+    createRectPath: (props: {
+        document?: Document | undefined;
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+        rx?: number | undefined;
+        ry?: number | undefined;
+        id?: string | undefined;
+        classes?: string | undefined;
+        style?: string | undefined;
+        pathLength?: string | number | undefined;
+        stroke?: string | undefined;
+        strokeWidth?: string | number | undefined;
+        strokeOpacity?: string | number | undefined;
+        strokeLinecap?: string | undefined;
+        strokeLinejoin?: string | undefined;
+        strokeDasharray?: string | undefined;
+        strokeDashoffset?: string | number | undefined;
+        strokeMiterlimit?: string | number | undefined;
+        fill?: string | undefined;
+        fillOpacity?: string | number | undefined;
+        fillRule?: string | undefined;
+        filter?: string | undefined;
+        mask?: string | undefined;
+        transform?: string | undefined;
+        vectorEffect?: string | undefined;
+        shapeRendering?: string | undefined;
+        clipPath?: string | undefined;
+        clipRule?: string | undefined;
+        opacity?: string | number | undefined;
+        visibility?: string | undefined;
+    }) => SVGPathElement;
     createStar: (props: {
         document?: Document | undefined;
         raysNumber: number;
@@ -6,6 +47,7 @@ declare const api: {
         centerY: number;
         outerRadius: number;
         innerRadius: number;
+        decimalPlaces?: number | undefined;
         id?: string | undefined;
         classes?: string | undefined;
         style?: string | undefined;
@@ -196,6 +238,7 @@ declare const api: {
     }) => SVGLineElement;
     SVG_NAMESPACE: "http://www.w3.org/2000/svg";
     XMLNS_NAMESPACE: "http://www.w3.org/2000/xmlns/";
+    DEFAULT_DECIMAL_PLACES: 2;
     createSVG: (props: {
         width: number;
         height: number;
@@ -213,7 +256,8 @@ declare global {
         mzSVG: typeof api;
     }
 }
-export * from './core';
-export * from './shapes/primitive-shapes';
-export * from './io-browser';
-export * from './shapes/star-shapes';
+export * from './main/core';
+export * from './main/shapes/primitive-shapes';
+export * from './main/io-browser';
+export * from './main/shapes/star-shapes';
+export * from './main/shapes/shape-paths';
