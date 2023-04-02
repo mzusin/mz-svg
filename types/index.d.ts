@@ -1,4 +1,40 @@
 declare const api: {
+    createPattern: (props: {
+        document?: Document | undefined;
+        x?: string | number | undefined;
+        y?: string | number | undefined;
+        width?: string | number | undefined;
+        height?: string | number | undefined;
+        href?: string | undefined;
+        patternContentUnits?: string | number | undefined;
+        patternTransform?: string | undefined;
+        patternUnits?: string | undefined;
+        preserveAspectRatio?: string | undefined;
+        viewBox?: string | undefined;
+        id?: string | undefined;
+        classes?: string | undefined;
+        style?: string | undefined;
+        clipPath?: string | undefined;
+        clipRule?: string | undefined;
+        fill?: string | undefined;
+        fillOpacity?: string | number | undefined;
+        fillRule?: string | undefined;
+        filter?: string | undefined;
+        mask?: string | undefined;
+        transform?: string | undefined;
+        vectorEffect?: string | undefined;
+        shapeRendering?: string | undefined;
+        opacity?: string | number | undefined;
+        visibility?: string | undefined;
+        stroke?: string | undefined;
+        strokeWidth?: string | number | undefined;
+        strokeOpacity?: string | number | undefined;
+        strokeLinecap?: string | undefined;
+        strokeLinejoin?: string | undefined;
+        strokeDasharray?: string | undefined;
+        strokeDashoffset?: string | number | undefined;
+        strokeMiterlimit?: string | number | undefined;
+    }) => SVGPatternElement;
     getRectPathD: (props: {
         x: number;
         y: number;
@@ -261,3 +297,4 @@ export * from './main/shapes/primitive-shapes';
 export * from './main/io-browser';
 export * from './main/shapes/star-shapes';
 export * from './main/shapes/shape-paths';
+export * from './main/containers';

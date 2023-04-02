@@ -255,6 +255,42 @@ declare module 'mz-svg' {
         visibility?: string;
     }) => SVGPathElement;
 
+    export const createPattern: (props: {
+        document?: Document;
+        x?: string | number;
+        y?: string | number;
+        width?: string | number;
+        height?: string | number;
+        href?: string;
+        patternContentUnits?: string | number;
+        patternTransform?: string;
+        patternUnits?: string;
+        preserveAspectRatio?: string;
+        viewBox?: string;
+        id?: string;
+        classes?: string;
+        style?: string;
+        clipPath?: string;
+        clipRule?: string;
+        fill?: string;
+        fillOpacity?: number | string;
+        fillRule?: string;
+        filter?: string;
+        mask?: string;
+        transform?: string;
+        vectorEffect?: string;
+        shapeRendering?: string;
+        opacity?: string | number;
+        visibility?: string;
+        stroke?: string;
+        strokeWidth?: number | string;
+        strokeOpacity?: number | string;
+        strokeLinecap?: string;
+        strokeLinejoin?: string;
+        strokeDasharray?: string;
+        strokeDashoffset?: number | string;
+        strokeMiterlimit?: number | string;
+    }) => SVGPatternElement;
 
     export const SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
     export const XMLNS_NAMESPACE = 'http://www.w3.org/2000/xmlns/';
