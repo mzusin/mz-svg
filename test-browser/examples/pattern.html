@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mzSVG</title>
+</head>
+<body>
+    <script src="../../dist/mz-svg.min.js"></script>
+    <script>
+
+        const $svg = mzSVG.createSVG({
+            width: 200,
+            height: 200
+        });
+
+        const $rect1 = mzSVG.createRect({
+            x: 0,
+            y: 0,
+            fill: '#4a9da8',
+            width: 100,
+            height: 10,
+        });
+
+        const $rect2 = mzSVG.createRect({
+            x: 0,
+            y: 10,
+            fill: '#0d4249',
+            width: 100,
+            height: 10,
+        });
+
+        const $pattern = mzSVG.createPattern({
+            id: 'my-pattern',
+            x: 0,
+            y: 0,
+            width: 100,
+            height: 20,
+            viewBox: '0, 0, 100, 20',
+            patternUnits: 'userSpaceOnUse',
+        });
+
+        $pattern.append($rect1);
+        $pattern.append($rect2);
+        $svg.append($pattern);
+
+        // ---------
+
+        const $box = mzSVG.createRect({
+            x: 0,
+            y: 0,
+            width: 200,
+            height: 200,
+            fill: 'url(#my-pattern)',
+        });
+        $svg.append($box);
+
+        document.body.append($svg);
+    </script>
+</body>
+</html>

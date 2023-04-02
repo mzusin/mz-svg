@@ -10,6 +10,68 @@ const $pattern = createPattern({
 });
 ```
 
+Below is a more complete example that describes how to add a striped pattern to a rectangle.
+
+<div class="flex flex-col justify-center items-center my-6">
+    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><pattern x="0" y="0" width="100" height="20" patternUnits="userSpaceOnUse" viewBox="0, 0, 100, 20" id="my-pattern"><rect x="0" y="0" width="100" height="10" fill="#4a9da8"></rect><rect x="0" y="10" width="100" height="10" fill="#0d4249"></rect></pattern><rect x="0" y="0" width="200" height="200" fill="url(#my-pattern)"></rect></svg>
+</div>
+
+```js
+const $svg = mzSVG.createSVG({
+    width: 200,
+    height: 200
+});
+
+// create first pattern line
+const $rect1 = mzSVG.createRect({
+    x: 0,
+    y: 0,
+    fill: '#4a9da8',
+    width: 100,
+    height: 10,
+});
+
+// create second pattern line
+const $rect2 = mzSVG.createRect({
+    x: 0,
+    y: 10,
+    fill: '#0d4249',
+    width: 100,
+    height: 10,
+});
+
+// create pattern element with id 'my-pattern'
+const $pattern = mzSVG.createPattern({
+    id: 'my-pattern',
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 20,
+    viewBox: '0, 0, 100, 20',
+    patternUnits: 'userSpaceOnUse',
+});
+
+// add lines to the pattern element
+$pattern.append($rect1);
+$pattern.append($rect2);
+
+// add pattern to SVG
+$svg.append($pattern);
+
+// create placeholder for the pattern, use pattern id in the 'fill' attribute
+const $box = mzSVG.createRect({
+    x: 0,
+    y: 0,
+    width: 200,
+    height: 200,
+    fill: 'url(#my-pattern)',
+});
+$svg.append($box);
+
+// add the result svg to the document
+document.body.append($svg);
+```
+
 The function can accept the following parameters. Note that **all parameters are optional**:
 
 ```js
