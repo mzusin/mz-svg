@@ -7,6 +7,7 @@ https://range-slider.toolcool.org/pages/create-svg-from-string.html
 https://range-slider.toolcool.org/pages/get-svg-as-string.html
 https://range-slider.toolcool.org/pages/create-path.html
 https://range-slider.toolcool.org/pages/create-rect.html
+https://range-slider.toolcool.org/pages/create-rect-path.html
 https://range-slider.toolcool.org/pages/create-circle.html
 https://range-slider.toolcool.org/pages/create-ellipse.html
 https://range-slider.toolcool.org/pages/create-line.html
