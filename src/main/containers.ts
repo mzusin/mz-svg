@@ -1,5 +1,27 @@
 import { setAttributes, SVG_NAMESPACE } from './core';
 
+export const createDefs = (props: {
+    document?: Document;
+    id?: string;
+    classes?: string;
+}) : SVGDefsElement => {
+
+    const {
+        document: _document,
+    } = props;
+
+    const doc = _document || window.document;
+
+    const $defs = doc.createElementNS(SVG_NAMESPACE, 'defs');
+
+    setAttributes($defs, [
+        ['id', props.id],
+        ['class', props.classes],
+    ]);
+
+    return $defs;
+};
+
 export const createPattern = (props: {
     document?: Document;
 
