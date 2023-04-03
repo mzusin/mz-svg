@@ -1,3 +1,8 @@
+export declare const createDefs: (props: {
+    document?: Document;
+    id?: string;
+    classes?: string;
+}) => SVGDefsElement;
 export declare const createPattern: (props: {
     document?: Document;
     x?: string | number;

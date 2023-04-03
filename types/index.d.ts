@@ -1,4 +1,9 @@
 declare const api: {
+    createDefs: (props: {
+        document?: Document | undefined;
+        id?: string | undefined;
+        classes?: string | undefined;
+    }) => SVGDefsElement;
     createPattern: (props: {
         document?: Document | undefined;
         x?: string | number | undefined;
