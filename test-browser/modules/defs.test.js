@@ -1,5 +1,13 @@
 QUnit.module('Defs: createDefs', (hooks) => {
 
+  QUnit.test('createDefs without parameters', (assert) => {
+    const id = 'my-path';
+
+    const $defs = mzSVG.createDefs();
+
+    assert.strictEqual(!!$defs, true);
+  });
+
   QUnit.test('createDefs with provided id', (assert) => {
     const id = 'my-path';
 

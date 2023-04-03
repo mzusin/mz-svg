@@ -6,7 +6,13 @@ The **createPattern()** function is used to create an SVG pattern element.
 import { createPattern } from 'mz-svg';
 
 const $pattern = createPattern({
-    
+    id: 'my-pattern',
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 20,
+    viewBox: '0, 0, 100, 20',
+    patternUnits: 'userSpaceOnUse',
 });
 ```
 
@@ -70,6 +76,23 @@ $svg.append($box);
 
 // add the result svg to the document
 document.body.append($svg);
+```
+
+In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
+
+```js
+import { createPattern } from 'mz-svg/dist/mz-svg.node.cjs';
+
+const $pattern = createPattern({
+    document: doc,
+    id: 'my-pattern',
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 20,
+    viewBox: '0, 0, 100, 20',
+    patternUnits: 'userSpaceOnUse',
+});
 ```
 
 The function can accept the following parameters. Note that **all parameters are optional**:
