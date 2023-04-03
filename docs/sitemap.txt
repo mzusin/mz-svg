@@ -16,5 +16,7 @@ https://range-slider.toolcool.org/pages/create-defs.html
 https://range-slider.toolcool.org/pages/create-pattern.html
 https://range-slider.toolcool.org/pages/save-svg.html
 https://range-slider.toolcool.org/pages/download-svg.html
+https://range-slider.toolcool.org/pages/append-once.html
+https://range-slider.toolcool.org/pages/prepend-once.html
 https://range-slider.toolcool.org/pages/constants.html
 https://range-slider.toolcool.org/pages/unit-tests.html
