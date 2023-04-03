@@ -4,7 +4,7 @@ import * as stars from './main/shapes/star-shapes';
 import * as shapePaths from './main/shapes/shape-paths';
 import * as containers from './main/containers';
 import * as ioBrowser from './main/io-browser';
-
+import * as helpers from './main/helpers';
 const api = {
     ...core,
     ...primitiveShapes,
@@ -12,6 +12,7 @@ const api = {
     ...stars,
     ...shapePaths,
     ...containers,
+    ...helpers,
 };
 
 declare global {
@@ -28,3 +29,4 @@ export * from './main/io-browser';
 export * from './main/shapes/star-shapes';
 export * from './main/shapes/shape-paths';
 export * from './main/containers';
+export * from './main/helpers';
