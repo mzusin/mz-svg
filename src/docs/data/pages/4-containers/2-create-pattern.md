@@ -23,27 +23,10 @@ Below is a more complete example that describes how to add a striped pattern to 
 </div>
 
 ```js
+// create SVG element
 const $svg = mzSVG.createSVG({
     width: 200,
     height: 200
-});
-
-// create first pattern line
-const $rect1 = mzSVG.createRect({
-    x: 0,
-    y: 0,
-    fill: '#4a9da8',
-    width: 100,
-    height: 10,
-});
-
-// create second pattern line
-const $rect2 = mzSVG.createRect({
-    x: 0,
-    y: 10,
-    fill: '#0d4249',
-    width: 100,
-    height: 10,
 });
 
 // create pattern element with id 'my-pattern'
@@ -57,12 +40,34 @@ const $pattern = mzSVG.createPattern({
     patternUnits: 'userSpaceOnUse',
 });
 
-// add lines to the pattern element
-$pattern.append($rect1);
-$pattern.append($rect2);
+// add first line to the pattern
+$pattern.append(mzSVG.createRect({
+    x: 0,
+    y: 0,
+    fill: '#4a9da8',
+    width: 100,
+    height: 10,
+}));
 
-// add pattern to SVG
-$svg.append($pattern);
+// add second line to the pattern
+$pattern.append(mzSVG.createRect({
+    x: 0,
+    y: 10,
+    fill: '#0d4249',
+    width: 100,
+    height: 10,
+}));
+
+// create defs section
+const $defs = mzSVG.createDefs();
+
+// add pattern to the defs section
+$defs.append($pattern);
+
+// add defs to SVG
+mzSVG.prependOnce($svg, $defs);
+
+// -----------------------------------
 
 // create placeholder for the pattern, use pattern id in the 'fill' attribute
 const $box = mzSVG.createRect({

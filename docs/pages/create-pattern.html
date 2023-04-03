@@ -17,8 +17,8 @@
     <link id="favicon-16" rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16.png" />
 
     <link rel="stylesheet" href="/highlight.js/styles/tokyo-night-dark.css" />
-    <link rel="stylesheet" href="/css/styles.1680514331892.css" />
-    <!--<link rel="stylesheet" href="/js/index.1680514331892.css" />-->
+    <link rel="stylesheet" href="/css/styles.1680514840622.css" />
+    <!--<link rel="stylesheet" href="/js/index.1680514840622.css" />-->
 
   </head>
   <body class="h-screen flex flex-col font-roboto">
@@ -103,27 +103,10 @@
 <div class="flex flex-col justify-center items-center my-6">
     <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><pattern x="0" y="0" width="100" height="20" patternUnits="userSpaceOnUse" viewBox="0, 0, 100, 20" id="my-pattern"><rect x="0" y="0" width="100" height="10" fill="#4a9da8"></rect><rect x="0" y="10" width="100" height="10" fill="#0d4249"></rect></pattern><rect x="0" y="0" width="200" height="200" fill="url(#my-pattern)"></rect></svg>
 </div>
-<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">const</span> $svg = mzSVG.<span class="hljs-title function_">createSVG</span>({
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-comment">// create SVG element</span>
+<span class="hljs-keyword">const</span> $svg = mzSVG.<span class="hljs-title function_">createSVG</span>({
     <span class="hljs-attr">width</span>: <span class="hljs-number">200</span>,
     <span class="hljs-attr">height</span>: <span class="hljs-number">200</span>
-});
-
-<span class="hljs-comment">// create first pattern line</span>
-<span class="hljs-keyword">const</span> $rect1 = mzSVG.<span class="hljs-title function_">createRect</span>({
-    <span class="hljs-attr">x</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-attr">y</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-attr">fill</span>: <span class="hljs-string">&#x27;#4a9da8&#x27;</span>,
-    <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>,
-    <span class="hljs-attr">height</span>: <span class="hljs-number">10</span>,
-});
-
-<span class="hljs-comment">// create second pattern line</span>
-<span class="hljs-keyword">const</span> $rect2 = mzSVG.<span class="hljs-title function_">createRect</span>({
-    <span class="hljs-attr">x</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-attr">y</span>: <span class="hljs-number">10</span>,
-    <span class="hljs-attr">fill</span>: <span class="hljs-string">&#x27;#0d4249&#x27;</span>,
-    <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>,
-    <span class="hljs-attr">height</span>: <span class="hljs-number">10</span>,
 });
 
 <span class="hljs-comment">// create pattern element with id &#x27;my-pattern&#x27;</span>
@@ -137,12 +120,34 @@
     <span class="hljs-attr">patternUnits</span>: <span class="hljs-string">&#x27;userSpaceOnUse&#x27;</span>,
 });
 
-<span class="hljs-comment">// add lines to the pattern element</span>
-$pattern.<span class="hljs-title function_">append</span>($rect1);
-$pattern.<span class="hljs-title function_">append</span>($rect2);
+<span class="hljs-comment">// add first line to the pattern</span>
+$pattern.<span class="hljs-title function_">append</span>(mzSVG.<span class="hljs-title function_">createRect</span>({
+    <span class="hljs-attr">x</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">y</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">fill</span>: <span class="hljs-string">&#x27;#4a9da8&#x27;</span>,
+    <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>,
+    <span class="hljs-attr">height</span>: <span class="hljs-number">10</span>,
+}));
 
-<span class="hljs-comment">// add pattern to SVG</span>
-$svg.<span class="hljs-title function_">append</span>($pattern);
+<span class="hljs-comment">// add second line to the pattern</span>
+$pattern.<span class="hljs-title function_">append</span>(mzSVG.<span class="hljs-title function_">createRect</span>({
+    <span class="hljs-attr">x</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">y</span>: <span class="hljs-number">10</span>,
+    <span class="hljs-attr">fill</span>: <span class="hljs-string">&#x27;#0d4249&#x27;</span>,
+    <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>,
+    <span class="hljs-attr">height</span>: <span class="hljs-number">10</span>,
+}));
+
+<span class="hljs-comment">// create defs section</span>
+<span class="hljs-keyword">const</span> $defs = mzSVG.<span class="hljs-title function_">createDefs</span>();
+
+<span class="hljs-comment">// add pattern to the defs section</span>
+$defs.<span class="hljs-title function_">append</span>($pattern);
+
+<span class="hljs-comment">// add defs to SVG</span>
+mzSVG.<span class="hljs-title function_">prependOnce</span>($svg, $defs);
+
+<span class="hljs-comment">// -----------------------------------</span>
 
 <span class="hljs-comment">// create placeholder for the pattern, use pattern id in the &#x27;fill&#x27; attribute</span>
 <span class="hljs-keyword">const</span> $box = mzSVG.<span class="hljs-title function_">createRect</span>({
@@ -310,6 +315,6 @@ $svg.<span class="hljs-title function_">append</span>($box);
       </div>
     </footer>-->
 
-    <script src="/js/index.1680514331892.js"></script>
+    <script src="/js/index.1680514840622.js"></script>
   </body>
 </html>
