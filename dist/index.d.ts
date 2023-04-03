@@ -298,6 +298,9 @@ declare module 'mz-svg' {
         classes?: string;
     }) => SVGDefsElement;
 
+    export const appendOnce: ($parent: SVGSVGElement | SVGElement, $el: SVGElement) => void;
+    export const prependOnce: ($parent: SVGSVGElement | SVGElement, $el: SVGElement) => void;
+
     export const SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
     export const XMLNS_NAMESPACE = 'http://www.w3.org/2000/xmlns/';
 }

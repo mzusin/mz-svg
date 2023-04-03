@@ -1,4 +1,4 @@
-export declare const createDefs: (props: {
+export declare const createDefs: (props?: {
     document?: Document;
     id?: string;
     classes?: string;

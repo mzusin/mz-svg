@@ -1,9 +1,11 @@
 declare const api: {
-    createDefs: (props: {
+    appendOnce: ($parent: SVGElement | SVGSVGElement, $el: SVGElement) => void;
+    prependOnce: ($parent: SVGElement | SVGSVGElement, $el: SVGElement) => void;
+    createDefs: (props?: {
         document?: Document | undefined;
         id?: string | undefined;
         classes?: string | undefined;
-    }) => SVGDefsElement;
+    } | undefined) => SVGDefsElement;
     createPattern: (props: {
         document?: Document | undefined;
         x?: string | number | undefined;
@@ -303,3 +305,4 @@ export * from './main/io-browser';
 export * from './main/shapes/star-shapes';
 export * from './main/shapes/shape-paths';
 export * from './main/containers';
+export * from './main/helpers';
