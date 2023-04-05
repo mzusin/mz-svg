@@ -16,6 +16,6 @@ TypeScript-based library for managing SVG in the browser and Node.js. The modula
 - Create a rectangle path element.
 - Create star SVG shape.
 - SVG patterns.
-- Container objects like <group> or <defs>.
+- Container objects like &lt;group> or &lt;defs>.
 - Save the SVG to the file system in Node.js, or download it as SVG, PNG, JPG, etc. in a browser environment.
 - Extensive Unit Testing
