@@ -67,6 +67,7 @@ declare const api: {
     createEllipse: (props: primitiveShapes.ICreateEllipseProps) => SVGEllipseElement;
     createLine: (props: primitiveShapes.ICreateLineProps) => SVGLineElement;
     createPolygon: (props: primitiveShapes.ICreatePolygonProps) => SVGPolygonElement;
+    createPolyline: (props: primitiveShapes.ICreatePolygonProps) => SVGPolylineElement;
     SVG_NAMESPACE: "http://www.w3.org/2000/svg";
     XMLNS_NAMESPACE: "http://www.w3.org/2000/xmlns/";
     DEFAULT_DECIMAL_PLACES: 2;

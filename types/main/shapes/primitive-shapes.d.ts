@@ -42,3 +42,8 @@ export interface ICreatePolygonProps extends IPrimitiveShapeProps {
     pathLength?: string | number;
 }
 export declare const createPolygon: (props: ICreatePolygonProps) => SVGPolygonElement;
+export interface ICreatePolylineProps extends IPrimitiveShapeProps {
+    points?: string;
+    pathLength?: string | number;
+}
+export declare const createPolyline: (props: ICreatePolygonProps) => SVGPolylineElement;

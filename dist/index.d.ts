@@ -84,6 +84,13 @@ declare module 'mz-svg' {
         decimalPlaces?: number;
         pathLength?: string | number;
     }
+
+    export interface ICreatePolylineProps extends IPrimitiveShapeProps {
+        points?: string;
+        pathLength?: string | number;
+    }
+    export const createPolyline: (props: ICreatePolygonProps) => SVGPolylineElement;
+
     export const createStar: (props: ICreateStarProps) => SVGPathElement;
 
     export interface ICreatePatternProps extends IPrimitiveShapeProps {

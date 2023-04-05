@@ -177,3 +177,30 @@ export const createPolygon = (props: ICreatePolygonProps) : SVGPolygonElement =>
 
     return $polygon;
 };
+
+export interface ICreatePolylineProps extends IPrimitiveShapeProps{
+    points?: string;
+    pathLength?: string|number;
+}
+
+export const createPolyline = (props: ICreatePolygonProps) : SVGPolylineElement => {
+
+    const {
+        document: _document
+    } = props;
+
+    const doc = _document || window.document;
+
+    const $polyline = doc.createElementNS(SVG_NAMESPACE, 'polyline');
+
+    setAttributes($polyline, [
+        ['id', props.id],
+        ['class', props.classes],
+        ['style', props.style],
+        ['points', props.points],
+        ['pathLength', props.pathLength],
+        ...getCommonAttributes(props),
+    ]);
+
+    return $polyline;
+};
