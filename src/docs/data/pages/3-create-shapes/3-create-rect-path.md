@@ -49,7 +49,7 @@ import { createRectPath } from 'mz-svg';
 
 const $rect = createRectPath({
     
-    id: 'my-rect-id',
+    id: 'my-rect-path-id',
     classes: 'css-class1 css-class2',
     style: 'stroke: blue',
 

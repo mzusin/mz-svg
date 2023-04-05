@@ -1,42 +1,36 @@
-## How to create SVG Polygon
+## How to create &lt;clipPath>
 
-The **createPolygon()** function is used to create an SVG polygon element.
+The **createClipPath()** function is used to create &lt;clipPath> element.
 
 ```js
-import { createPolygon } from 'mz-svg';
+import { createClipPath } from 'mz-svg';
 
-const $polygon = createPolygon({
-    points: '0,100 50,25 50,75 100,0'
-});
+const $clipPath = createClipPath();
 ```
 
 In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
 
 ```js
-import { createPolygon } from 'mz-svg/dist/mz-svg.node.cjs';
+import { createClipPath } from 'mz-svg/dist/mz-svg.node.cjs';
 
-const $polygon = createPolygon({
-    points: '0,100 50,25 50,75 100,0',
-    document: doc,
+const $clipPath = createClipPath({
+    document: doc
 });
 ```
 
 The function can accept the following parameters. Note that **all parameters are optional**:
 
 ```js
-import { createPolygon } from 'mz-svg';
+import { createClipPath } from 'mz-svg';
 
-const $polygon = createPolygon({
+const $clipPath = createClipPath({
     
-    id: 'my-polygon-id',
+    id: 'my-clip-path-id',
     classes: 'css-class1 css-class2',
     style: 'stroke: blue',
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/points
-    points: '0,100 50,25 50,75 100,0',
-
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
-    pathLength: '10',
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clipPathUnits
+    clipPathUnits: 'userSpaceOnUse',
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke
     stroke: '#00ffff',
@@ -79,7 +73,7 @@ const $polygon = createPolygon({
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform
     transform: 'scale(1 0.5)',
-    
+
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/vector-effect
     vectorEffect: 'non-scaling-stroke',
 

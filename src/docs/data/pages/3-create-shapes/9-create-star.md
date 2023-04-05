@@ -87,7 +87,7 @@ const $star = createStar({
     
     // -------------------------------------
     
-    id: 'my-path-id',
+    id: 'my-star-id',
     classes: 'css-class1 css-class2',
     style: 'stroke: blue',
     

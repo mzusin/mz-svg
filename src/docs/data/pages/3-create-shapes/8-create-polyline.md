@@ -28,7 +28,7 @@ import { createPolyline } from 'mz-svg';
 
 const $polyline = createPolyline({
     
-    id: 'my-path-id',
+    id: 'my-polyline-id',
     classes: 'css-class1 css-class2',
     style: 'stroke: blue',
 
