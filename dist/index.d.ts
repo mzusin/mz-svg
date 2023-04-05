@@ -221,6 +221,35 @@ declare module 'mz-svg' {
         visibility?: string;
     }) => SVGLineElement;
 
+    export const createPolygon: (props: {
+        document?: Document;
+        id?: string;
+        classes?: string;
+        style?: string;
+        points?: string;
+        pathLength?: string | number;
+        stroke?: string;
+        strokeWidth?: number | string;
+        strokeOpacity?: number | string;
+        strokeLinecap?: string;
+        strokeLinejoin?: string;
+        strokeDasharray?: string;
+        strokeDashoffset?: number | string;
+        strokeMiterlimit?: number | string;
+        fill?: string;
+        fillOpacity?: number | string;
+        fillRule?: string;
+        filter?: string;
+        mask?: string;
+        transform?: string;
+        vectorEffect?: string;
+        shapeRendering?: string;
+        clipPath?: string;
+        clipRule?: string;
+        opacity?: string | number;
+        visibility?: string;
+    }) => SVGPolygonElement;
+
     export const createStar: (props: {
         document?: Document;
         raysNumber: number;

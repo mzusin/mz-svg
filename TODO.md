@@ -1,8 +1,6 @@
 # TODO
 
 ## Add more shapes elements / primitives:
-- altGlyph
-- polygon
 - polyline
 - text
 - textPath
@@ -15,7 +13,6 @@
 - animateTransform
 - clipPath
 - cursor
-- 
 - desc
 - discard
 - feBlend
@@ -72,7 +69,7 @@
 - Heart shapes
 - Flower shape
 - Flag shape
-- Polygons like triangle, romb, шестиугольник
+- Simple helper for polygons like triangle, romb, шестиугольник
 - Rect around dots
 - Arrow shapes
 - Functions like parabola or wave

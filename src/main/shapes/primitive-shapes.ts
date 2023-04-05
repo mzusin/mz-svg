@@ -476,3 +476,90 @@ export const createLine = (props: {
 
     return $line;
 };
+
+/**
+ * Create SVG polygon.
+ */
+export const createPolygon = (props: {
+    document?: Document;
+
+    id?: string;
+    classes?: string;
+    style?: string;
+
+    points?: string;
+    pathLength?: string|number;
+
+    stroke?: string;
+    strokeWidth?: number|string;
+    strokeOpacity?: number|string;
+    strokeLinecap?: string; // 'round'
+    strokeLinejoin?: string;
+    strokeDasharray?: string;
+    strokeDashoffset?: number|string;
+    strokeMiterlimit?: number|string;
+
+    fill?: string;
+    fillOpacity?: number|string;
+    fillRule?: string;
+
+    filter?: string;
+    mask?: string;
+    transform?: string;
+
+    vectorEffect?: string; // 'non-scaling-stroke' - used to disable line scale
+    shapeRendering?: string;
+
+    clipPath?: string;
+    clipRule?: string;
+
+    opacity?: string|number;
+    visibility?: string;
+
+}) : SVGPolygonElement => {
+
+    const {
+        document: _document
+    } = props;
+
+    const doc = _document || window.document;
+
+    const $polygon = doc.createElementNS(SVG_NAMESPACE, 'polygon');
+
+    setAttributes($polygon, [
+        ['id', props.id],
+        ['class', props.classes],
+        ['style', props.style],
+
+        ['points', props.points],
+        ['pathLength', props.pathLength],
+
+        ['stroke', props.stroke],
+        ['stroke-width', props.strokeWidth],
+        ['stroke-opacity', props.strokeOpacity],
+        ['stroke-linecap', props.strokeLinecap],
+        ['stroke-linejoin', props.strokeLinejoin],
+        ['stroke-dasharray', props.strokeDasharray],
+        ['stroke-dashoffset', props.strokeDashoffset],
+        ['stroke-miterlimit', props.strokeMiterlimit],
+
+        ['fill', props.fill],
+        ['fill-opacity', props.fillOpacity],
+        ['fill-rule', props.fillRule],
+
+        ['filter', props.filter],
+        ['mask', props.mask],
+        ['transform', props.transform],
+
+        ['vector-effect', props.vectorEffect],
+        ['shape-rendering', props.shapeRendering],
+
+        ['clip-path', props.clipPath],
+        ['clip-rule', props.clipRule],
+
+        ['opacity', props.opacity],
+        ['visibility', props.visibility],
+    ]);
+
+    return $polygon;
+};
