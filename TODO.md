@@ -15,7 +15,7 @@
 - animateTransform
 - clipPath
 - cursor
-- defs
+- 
 - desc
 - discard
 - feBlend
@@ -52,7 +52,6 @@
 - mask
 - metadata
 - mpath
-- pattern
 - radialGradient
 - script
 - set
@@ -78,7 +77,6 @@
 - Arrow shapes
 - Functions like parabola or wave
 - Animate
-- Defs
 - Mask
 
 ## Other features
