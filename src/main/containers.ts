@@ -1,6 +1,22 @@
 import { getCommonAttributes, setAttributes, SVG_NAMESPACE } from './core';
 import { IPrimitiveShapeProps } from '../interfaces';
 
+export const createGroup = (props: IPrimitiveShapeProps) : SVGGElement => {
+
+    const {
+        document: _document,
+    } = props;
+
+    const doc = _document || window.document;
+    const $g = doc.createElementNS(SVG_NAMESPACE, 'g');
+
+    setAttributes($g, [
+        ...getCommonAttributes(props),
+    ]);
+
+    return $g;
+};
+
 export const createDefs = (props?: {
     document?: Document;
     id?: string;

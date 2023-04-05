@@ -93,6 +93,8 @@ declare module 'mz-svg' {
 
     export const createStar: (props: ICreateStarProps) => SVGPathElement;
 
+    export const createGroup: (props: IPrimitiveShapeProps) => SVGGElement;
+
     export interface ICreatePatternProps extends IPrimitiveShapeProps {
         x?: string | number;
         y?: string | number;

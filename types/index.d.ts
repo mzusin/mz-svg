@@ -4,6 +4,7 @@ import * as containers from './main/containers';
 declare const api: {
     appendOnce: ($parent: SVGElement | SVGSVGElement, $el: SVGElement) => void;
     prependOnce: ($parent: SVGElement | SVGSVGElement, $el: SVGElement) => void;
+    createGroup: (props: import("./interfaces").IPrimitiveShapeProps) => SVGGElement;
     createDefs: (props?: {
         document?: Document | undefined;
         id?: string | undefined;

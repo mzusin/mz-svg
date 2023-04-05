@@ -1,19 +1,11 @@
 # TODO
 
 ## Add more shapes elements / primitives:
-- a
 - clipPath
-- desc
-- foreignObject
-- g
 - image
 - marker
 - mask
-- metadata
-- script
-- style
 - symbol
-- title — the SVG accessible name element
 - use
 - view
 
@@ -28,6 +20,17 @@
 - animateTransform
 - mpath
 - set
+
+## HTML
+- a
+- foreignObject
+- style
+- script
+
+## Metadata
+- desc
+- title — the SVG accessible name element
+- metadata
 
 ## Filters
 - filter
