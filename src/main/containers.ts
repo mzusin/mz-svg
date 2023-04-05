@@ -101,3 +101,20 @@ export const createPattern = (props: ICreatePatternProps) : SVGPatternElement =>
 
     return $pattern;
 };
+
+export interface ICreateClipPathProps extends IPrimitiveShapeProps{
+    clipPathUnits?: string;
+}
+
+export const createClipPath = (props: ICreateClipPathProps) : SVGClipPathElement => {
+
+    const doc = props?.document || window.document;
+    const $clipPath = doc.createElementNS(SVG_NAMESPACE, 'clipPath');
+
+    setAttributes($clipPath, [
+        ['clipPathUnits', props?.clipPathUnits],
+        ...getCommonAttributes(props),
+    ]);
+
+    return $clipPath;
+};
