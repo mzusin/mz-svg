@@ -1,72 +1,4 @@
-import { setAttributes, SVG_NAMESPACE } from '../core';
-
-const getCommonAttributes = (props: {
-    id?: string;
-    classes?: string;
-    style?: string;
-
-    pathLength?: string|number;
-
-    stroke?: string;
-    strokeWidth?: number|string;
-    strokeOpacity?: number|string;
-    strokeLinecap?: string; // 'round'
-    strokeLinejoin?: string;
-    strokeDasharray?: string;
-    strokeDashoffset?: number|string;
-    strokeMiterlimit?: number|string;
-
-    fill?: string;
-    fillOpacity?: number|string;
-    fillRule?: string;
-
-    filter?: string;
-    mask?: string;
-    transform?: string;
-
-    vectorEffect?: string; // 'non-scaling-stroke' - used to disable line scale
-    shapeRendering?: string;
-
-    clipPath?: string;
-    clipRule?: string;
-
-    opacity?: string|number;
-    visibility?: string;
-}) : [string, string|number|undefined][] => {
-    return [
-        ['id', props.id],
-        ['class', props.classes],
-        ['style', props.style],
-
-        ['pathLength', props.pathLength],
-
-        ['stroke', props.stroke],
-        ['stroke-width', props.strokeWidth],
-        ['stroke-opacity', props.strokeOpacity],
-        ['stroke-linecap', props.strokeLinecap],
-        ['stroke-linejoin', props.strokeLinejoin],
-        ['stroke-dasharray', props.strokeDasharray],
-        ['stroke-dashoffset', props.strokeDashoffset],
-        ['stroke-miterlimit', props.strokeMiterlimit],
-
-        ['fill', props.fill],
-        ['fill-opacity', props.fillOpacity],
-        ['fill-rule', props.fillRule],
-
-        ['filter', props.filter],
-        ['mask', props.mask],
-        ['transform', props.transform],
-
-        ['vector-effect', props.vectorEffect],
-        ['shape-rendering', props.shapeRendering],
-
-        ['clip-path', props.clipPath],
-        ['clip-rule', props.clipRule],
-
-        ['opacity', props.opacity],
-        ['visibility', props.visibility],
-    ];
-};
+import { getCommonAttributes, setAttributes, SVG_NAMESPACE } from '../core';
 
 /**
  * Create SVG path.
@@ -127,6 +59,7 @@ export const createPath = (props: {
 
     setAttributes($path, [
         ['d', _d],
+        ['pathLength', props.pathLength],
         ...getCommonAttributes(props),
     ]);
 
@@ -193,6 +126,7 @@ export const createRect = (props: {
         ['ry', props.ry],
         ['width', props.width],
         ['height', props.height],
+        ['pathLength', props.pathLength],
         ...getCommonAttributes(props),
     ]);
 
@@ -253,6 +187,7 @@ export const createCircle = (props: {
         ['cx', props.cx],
         ['cy', props.cy],
         ['r', props.r],
+        ['pathLength', props.pathLength],
         ...getCommonAttributes(props),
     ]);
 
@@ -315,6 +250,7 @@ export const createEllipse = (props: {
         ['cy', props.cy],
         ['rx', props.rx],
         ['ry', props.ry],
+        ['pathLength', props.pathLength],
         ...getCommonAttributes(props),
     ]);
 
@@ -377,6 +313,7 @@ export const createLine = (props: {
         ['x2', props.x2],
         ['y1', props.y1],
         ['y2', props.y2],
+        ['pathLength', props.pathLength],
         ...getCommonAttributes(props),
     ]);
 
@@ -437,6 +374,7 @@ export const createPolygon = (props: {
         ['class', props.classes],
         ['style', props.style],
         ['points', props.points],
+        ['pathLength', props.pathLength],
         ...getCommonAttributes(props),
     ]);
 

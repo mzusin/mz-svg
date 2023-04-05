@@ -74,3 +74,67 @@ export const setAttributes = ($svgElement: SVGElement, attr: [string, string|num
         $svgElement.setAttribute(prop, value.toString());
     }
 };
+
+export const getCommonAttributes = (props: {
+    id?: string;
+    classes?: string;
+    style?: string;
+
+    stroke?: string;
+    strokeWidth?: number|string;
+    strokeOpacity?: number|string;
+    strokeLinecap?: string; // 'round'
+    strokeLinejoin?: string;
+    strokeDasharray?: string;
+    strokeDashoffset?: number|string;
+    strokeMiterlimit?: number|string;
+
+    fill?: string;
+    fillOpacity?: number|string;
+    fillRule?: string;
+
+    filter?: string;
+    mask?: string;
+    transform?: string;
+
+    vectorEffect?: string; // 'non-scaling-stroke' - used to disable line scale
+    shapeRendering?: string;
+
+    clipPath?: string;
+    clipRule?: string;
+
+    opacity?: string|number;
+    visibility?: string;
+}) : [string, string|number|undefined][] => {
+    return [
+        ['id', props.id],
+        ['class', props.classes],
+        ['style', props.style],
+
+        ['stroke', props.stroke],
+        ['stroke-width', props.strokeWidth],
+        ['stroke-opacity', props.strokeOpacity],
+        ['stroke-linecap', props.strokeLinecap],
+        ['stroke-linejoin', props.strokeLinejoin],
+        ['stroke-dasharray', props.strokeDasharray],
+        ['stroke-dashoffset', props.strokeDashoffset],
+        ['stroke-miterlimit', props.strokeMiterlimit],
+
+        ['fill', props.fill],
+        ['fill-opacity', props.fillOpacity],
+        ['fill-rule', props.fillRule],
+
+        ['filter', props.filter],
+        ['mask', props.mask],
+        ['transform', props.transform],
+
+        ['vector-effect', props.vectorEffect],
+        ['shape-rendering', props.shapeRendering],
+
+        ['clip-path', props.clipPath],
+        ['clip-rule', props.clipRule],
+
+        ['opacity', props.opacity],
+        ['visibility', props.visibility],
+    ];
+};

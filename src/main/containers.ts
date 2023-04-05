@@ -1,4 +1,4 @@
-import { setAttributes, SVG_NAMESPACE } from './core';
+import { getCommonAttributes, setAttributes, SVG_NAMESPACE } from './core';
 
 export const createDefs = (props?: {
     document?: Document;
@@ -87,35 +87,7 @@ export const createPattern = (props: {
         ['preserveAspectRatio', props.preserveAspectRatio],
         ['viewBox', props.viewBox],
 
-        ['id', props.id],
-        ['class', props.classes],
-        ['style', props.style],
-
-        ['stroke', props.stroke],
-        ['stroke-width', props.strokeWidth],
-        ['stroke-opacity', props.strokeOpacity],
-        ['stroke-linecap', props.strokeLinecap],
-        ['stroke-linejoin', props.strokeLinejoin],
-        ['stroke-dasharray', props.strokeDasharray],
-        ['stroke-dashoffset', props.strokeDashoffset],
-        ['stroke-miterlimit', props.strokeMiterlimit],
-
-        ['fill', props.fill],
-        ['fill-opacity', props.fillOpacity],
-        ['fill-rule', props.fillRule],
-
-        ['filter', props.filter],
-        ['mask', props.mask],
-        ['transform', props.transform],
-
-        ['vector-effect', props.vectorEffect],
-        ['shape-rendering', props.shapeRendering],
-
-        ['clip-path', props.clipPath],
-        ['clip-rule', props.clipRule],
-
-        ['opacity', props.opacity],
-        ['visibility', props.visibility],
+        ...getCommonAttributes(props),
     ]);
 
     return $pattern;
