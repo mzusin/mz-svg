@@ -17,7 +17,7 @@ QUnit.module('Core: createSVG', (hooks) => {
       width: 100,
       height: 100,
     });
-    const $svg2 = htmlElementFromString('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"></svg>');
+    const $svg2 = htmlElementFromString('<svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="100" height="100" viewBox="0 0 100 100"></svg>');
     assert.strictEqual($svg1.isEqualNode($svg2), true);
   });
 
@@ -26,7 +26,7 @@ QUnit.module('Core: createSVG', (hooks) => {
       width: 100,
       height: 200,
     });
-    const $svg2 = htmlElementFromString('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="200" viewBox="0 0 100 200"></svg>');
+    const $svg2 = htmlElementFromString('<svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="100" height="200" viewBox="0 0 100 200"></svg>');
     assert.strictEqual($svg1.isEqualNode($svg2), true);
   });
 
@@ -35,7 +35,7 @@ QUnit.module('Core: createSVG', (hooks) => {
       width: 200,
       height: 100,
     });
-    const $svg2 = htmlElementFromString('<svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" viewBox="0 0 200 100"></svg>');
+    const $svg2 = htmlElementFromString('<svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="200" height="100" viewBox="0 0 200 100"></svg>');
     assert.strictEqual($svg1.isEqualNode($svg2), true);
   });
 
@@ -44,7 +44,7 @@ QUnit.module('Core: createSVG', (hooks) => {
       width: 0,
       height: 0,
     });
-    const $svg2 = htmlElementFromString('<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 0 0"></svg>');
+    const $svg2 = htmlElementFromString('<svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="0" height="0" viewBox="0 0 0 0"></svg>');
     assert.strictEqual($svg1.isEqualNode($svg2), true);
   });
 
@@ -53,7 +53,7 @@ QUnit.module('Core: createSVG', (hooks) => {
       width: -10,
       height: -10,
     });
-    const $svg2 = htmlElementFromString('<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 0 0"></svg>');
+    const $svg2 = htmlElementFromString('<svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="0" height="0" viewBox="0 0 0 0"></svg>');
     assert.strictEqual($svg1.isEqualNode($svg2), true);
   });
 
@@ -62,7 +62,18 @@ QUnit.module('Core: createSVG', (hooks) => {
       width: 'aaa',
       height: 'aaa',
     });
-    const $svg2 = htmlElementFromString('<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 0 0"></svg>');
+    const $svg2 = htmlElementFromString('<svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="0" height="0" viewBox="0 0 0 0"></svg>');
+    assert.strictEqual($svg1.isEqualNode($svg2), true);
+  });
+
+  QUnit.test('createSVG x = -10, y = -10', (assert) => {
+    const $svg1 = mzSVG.createSVG({
+      x: -10,
+      y: -10,
+      width: 100,
+      height: 100,
+    });
+    const $svg2 = htmlElementFromString('<svg xmlns="http://www.w3.org/2000/svg" x="-10" y="-10" width="100" height="100" viewBox="-10 -10 100 100"></svg>');
     assert.strictEqual($svg1.isEqualNode($svg2), true);
   });
 });

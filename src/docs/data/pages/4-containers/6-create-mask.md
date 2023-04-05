@@ -1,92 +1,97 @@
-## How to create &lt;clipPath>
+## How to create &lt;mask>
 
-The **createClipPath()** function is used to create &lt;clipPath> element.
+The **createMask()** function is used to create &lt;mask> element.
 
 ```js
-import { createClipPath } from 'mz-svg';
+import { createMask } from 'mz-svg';
 
-const $clipPath = createClipPath();
+const $mask = createMask();
 ```
 
-Below is a complete example that uses a clip path:
+Below is a complete example that uses a mask:
 
 <div class="flex justify-center my-4">
-    <svg viewBox="0 0 100 100" width="100" height="100">
-      <clipPath id="myClip">
-        <circle cx="40" cy="35" r="35" />
-      </clipPath>
-      <path id="heart" d="M10,30 A20,20,0,0,1,50,30 A20,20,0,0,1,90,30 Q90,60,50,90 Q10,60,10,30 Z" />
-      <use clip-path="url(#myClip)" href="#heart" fill="red" />
+    <svg viewBox="-10 -10 120 120" width="120" height="120">
+        <mask id="myMask">
+            <rect x="0" y="0" width="100" height="100" fill="white" />
+            <path
+                    d="M10,35 A20,20,0,0,1,50,35 A20,20,0,0,1,90,35 Q90,65,50,95 Q10,65,10,35 Z"
+                    fill="black" />
+        </mask>
+        <circle cx="50" cy="50" r="50" mask="url(#myMask)" />
     </svg>
 </div>
 
 ```js
 const $svg = mzSVG.createSVG({
+    x: -10,
+    y: -10,
+    width: 120,
+    height: 120
+});
+
+const $mask = mzSVG.createMask({
+    id: 'my-mask',
+});
+
+// Everything under a white pixel will be visible
+$mask.append(mzSVG.createRect({
+    x: 0,
+    y: 0,
     width: 100,
-    height: 100
-});
+    height: 100,
+    fill: '#ffffff',
+}));
 
-// Create clip path element with a circle;
-// Everything outside the circle will be
-// clipped and therefore invisible.
-const $clipPath = mzSVG.createClipPath({
-    id: 'my-clip'
-});
+// Everything under a black pixel will be invisible
+$mask.append(mzSVG.createPath({
+    d: 'M10,35 A20,20,0,0,1,50,35 A20,20,0,0,1,90,35 Q90,65,50,95 Q10,65,10,35 Z',
+    fill: 'black',
+}));
+
+$svg.append($mask);
+
+// with this mask applied, we "punch" a heart shape hole into the circle
 const $circle = mzSVG.createCircle({
-    cx: 40,
-    cy: 35,
-    r: 35,
+    cx: 50,
+    cy: 50,
+    r: 50,
+    mask: 'url(#my-mask)',
 });
-$clipPath.append($circle);
-$svg.append($clipPath);
 
-// The original black heart, for reference
-const $heart = mzSVG.createPath({
-    d: 'M10,30 A20,20,0,0,1,50,30 A20,20,0,0,1,90,30 Q90,60,50,90 Q10,60,10,30 Z',
-    id: 'heart',
-});
-$svg.append($heart);
-
-// Only the portion of the red heart
-// inside the clip circle is visible.
-// <use clip-path="url(#my-clip)" href="#heart" fill="red" />
-const $use = mzSVG.createUse({
-    // The URL to an element/fragment that needs to be duplicated.
-    href: '#heart',
-
-    // The same id is used in the <clipPath> element
-    clipPath: 'url(#my-clip)',
-
-    fill: 'red',
-});
-$svg.append($use);
+$svg.append($circle);
 
 document.body.append($svg);
-```
-
-In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
-
-```js
-import { createClipPath } from 'mz-svg/dist/mz-svg.node.cjs';
-
-const $clipPath = createClipPath({
-    document: doc
-});
 ```
 
 The function can accept the following parameters. Note that **all parameters are optional**:
 
 ```js
-import { createClipPath } from 'mz-svg';
+import { createMask } from 'mz-svg';
 
-const $clipPath = createClipPath({
+const $mask = createMask({
     
     id: 'my-clip-path-id',
     classes: 'css-class1 css-class2',
     style: 'stroke: blue',
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clipPathUnits
-    clipPathUnits: 'userSpaceOnUse',
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x
+    x: 0,
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y
+    y: 0,
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/width
+    width: 100,
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/height
+    height: 200,
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/maskContentUnits
+    maskContentUnits: 'userSpaceOnUse',
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/maskUnits
+    maskUnits: 'userSpaceOnUse',
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke
     stroke: '#00ffff',

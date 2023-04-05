@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mzSVG</title>
+</head>
+<body>
+    <script src="../../dist/mz-svg.min.js"></script>
+    <script>
+
+        const $svg = mzSVG.createSVG({
+            x: -10,
+            y: -10,
+            width: 120,
+            height: 120
+        });
+
+        const $mask = mzSVG.createMask({
+            id: 'my-mask',
+        });
+
+        // Everything under a white pixel will be visible
+        $mask.append(mzSVG.createRect({
+            x: 0,
+            y: 0,
+            width: 100,
+            height: 100,
+            fill: '#ffffff',
+        }));
+
+        // Everything under a black pixel will be invisible
+        $mask.append(mzSVG.createPath({
+            d: 'M10,35 A20,20,0,0,1,50,35 A20,20,0,0,1,90,35 Q90,65,50,95 Q10,65,10,35 Z',
+            fill: 'black',
+        }));
+
+        $svg.append($mask);
+
+        // with this mask applied, we "punch" a heart shape hole into the circle
+        const $circle = mzSVG.createCircle({
+            cx: 50,
+            cy: 50,
+            r: 50,
+            mask: 'url(#my-mask)',
+        });
+
+        $svg.append($circle);
+
+        document.body.append($svg);
+    </script>
+</body>
+</html>

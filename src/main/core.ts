@@ -10,28 +10,39 @@ export const DEFAULT_DECIMAL_PLACES = 2;
  * Create new SVG element in browser or Node.js environment.
  * In case of Node.js, JSDom document can be provided.
  */
-export const createSVG = (props: {
-    width: number;
-    height: number;
+export const createSVG = (props?: {
     document?: Document;
+    x?: string|number;
+    y?: string|number;
+    width?: number;
+    height?: number;
+    preserveAspectRatio?: string;
+    viewBox?: string;
+    id?: string;
+    classes?: string;
 }) : SVGSVGElement => {
 
-    const {
-        width: _width,
-        height: _height,
-        document: _document,
-    } = props;
-
-    const doc = _document || window.document;
+    const doc = props?.document || window.document;
     const $svg= doc.createElementNS(SVG_NAMESPACE, 'svg');
 
-    const width = Math.max(0, Number(_width) || 0);
-    const height = Math.max(0, Number(_height) || 0);
+    const x = Number(props?.x) || 0;
+    const y = Number(props?.y) || 0;
+    const width = Math.max(0, Number(props?.width) || 0);
+    const height = Math.max(0, Number(props?.height) || 0);
 
     $svg.setAttributeNS(XMLNS_NAMESPACE, 'xmlns', SVG_NAMESPACE);
-    $svg.setAttribute('width', width.toString());
-    $svg.setAttribute('height', height.toString());
-    $svg.setAttribute('viewBox', `0 0 ${ width } ${ height }`);
+
+    setAttributes($svg, [
+        ['x', x],
+        ['y', y],
+        ['width', width],
+        ['height', height],
+        ['viewBox', props?.viewBox ? props?.viewBox : `${ x } ${ y } ${ width } ${ height }`],
+
+        ['id', props?.id],
+        ['class', props?.classes],
+        ['preserveAspectRatio', props?.preserveAspectRatio],
+    ]);
 
     return $svg;
 };

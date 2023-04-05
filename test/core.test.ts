@@ -167,6 +167,32 @@ describe('Core: createSVG', () => {
 
         expect($svg.getAttribute('viewBox')).toStrictEqual('0 0 0 0');
     });
+
+    test('createSVG -x = -10', () => {
+
+        const $svg = createSVG({
+            x: -10,
+            y: -10,
+            width: 10,
+            height: 10,
+            document: createNodeDoc(),
+        });
+
+        expect($svg.getAttribute('x')).toStrictEqual('-10');
+    });
+
+    test('createSVG y = -10', () => {
+
+        const $svg = createSVG({
+            x: -10,
+            y: -10,
+            width: 10,
+            height: 10,
+            document: createNodeDoc(),
+        });
+
+        expect($svg.getAttribute('y')).toStrictEqual('-10');
+    });
 });
 
 describe('Core: createSVGFromString', () => {
