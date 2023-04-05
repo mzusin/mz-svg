@@ -17,8 +17,8 @@
     <link id="favicon-16" rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16.png" />
 
     <link rel="stylesheet" href="/highlight.js/styles/tokyo-night-dark.css" />
-    <link rel="stylesheet" href="/css/styles.1680704412485.css" />
-    <!--<link rel="stylesheet" href="/js/index.1680704412485.css" />-->
+    <link rel="stylesheet" href="/css/styles.1680705899302.css" />
+    <!--<link rel="stylesheet" href="/js/index.1680705899302.css" />-->
 
   </head>
   <body class="h-screen flex flex-col font-roboto">
@@ -91,6 +91,57 @@
 <pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createClipPath } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
 
 <span class="hljs-keyword">const</span> $clipPath = <span class="hljs-title function_">createClipPath</span>();</code></pre>
+<p class="mb-4">Below is a more complete example that describes how to add a striped pattern to a rectangle.</p>
+<div class="flex justify-center my-4">
+    <svg viewBox="0 0 100 100" width="100" height="100">
+      <clipPath id="myClip">
+        <circle cx="40" cy="35" r="35" />
+      </clipPath>
+      <path id="heart" d="M10,30 A20,20,0,0,1,50,30 A20,20,0,0,1,90,30 Q90,60,50,90 Q10,60,10,30 Z" />
+      <use clip-path="url(#myClip)" href="#heart" fill="red" />
+    </svg>
+</div>
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">const</span> $svg = mzSVG.<span class="hljs-title function_">createSVG</span>({
+    <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>,
+    <span class="hljs-attr">height</span>: <span class="hljs-number">100</span>
+});
+
+<span class="hljs-comment">// Create clip path element with a circle;</span>
+<span class="hljs-comment">// Everything outside the circle will be</span>
+<span class="hljs-comment">// clipped and therefore invisible.</span>
+<span class="hljs-keyword">const</span> $clipPath = mzSVG.<span class="hljs-title function_">createClipPath</span>({
+    <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;my-clip&#x27;</span>
+});
+<span class="hljs-keyword">const</span> $circle = mzSVG.<span class="hljs-title function_">createCircle</span>({
+    <span class="hljs-attr">cx</span>: <span class="hljs-number">40</span>,
+    <span class="hljs-attr">cy</span>: <span class="hljs-number">35</span>,
+    <span class="hljs-attr">r</span>: <span class="hljs-number">35</span>,
+});
+$clipPath.<span class="hljs-title function_">append</span>($circle);
+$svg.<span class="hljs-title function_">append</span>($clipPath);
+
+<span class="hljs-comment">// The original black heart, for reference</span>
+<span class="hljs-keyword">const</span> $heart = mzSVG.<span class="hljs-title function_">createPath</span>({
+    <span class="hljs-attr">d</span>: <span class="hljs-string">&#x27;M10,30 A20,20,0,0,1,50,30 A20,20,0,0,1,90,30 Q90,60,50,90 Q10,60,10,30 Z&#x27;</span>,
+    <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;heart&#x27;</span>,
+});
+$svg.<span class="hljs-title function_">append</span>($heart);
+
+<span class="hljs-comment">// Only the portion of the red heart</span>
+<span class="hljs-comment">// inside the clip circle is visible.</span>
+<span class="hljs-comment">// &lt;use clip-path=&quot;url(#my-clip)&quot; href=&quot;#heart&quot; fill=&quot;red&quot; /&gt;</span>
+<span class="hljs-keyword">const</span> $use = mzSVG.<span class="hljs-title function_">createUse</span>({
+    <span class="hljs-comment">// The URL to an element/fragment that needs to be duplicated.</span>
+    <span class="hljs-attr">href</span>: <span class="hljs-string">&#x27;#heart&#x27;</span>,
+
+    <span class="hljs-comment">// The same id is used in the &lt;clipPath&gt; element</span>
+    <span class="hljs-attr">clipPath</span>: <span class="hljs-string">&#x27;url(#my-clip)&#x27;</span>,
+
+    <span class="hljs-attr">fill</span>: <span class="hljs-string">&#x27;red&#x27;</span>,
+});
+$svg.<span class="hljs-title function_">append</span>($use);
+
+<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">append</span>($svg);</code></pre>
 <p class="mb-4">In Node.js, you need to first create a <a href="https://github.com/jsdom/jsdom" class="text-blue-500">JSDom</a> document, as described <a href="/pages/nodejs-usage.html" class="text-blue-500">here</a>, and then pass this document as additional parameter:</p>
 <pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createClipPath } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg/dist/mz-svg.node.cjs&#x27;</span>;
 
@@ -211,6 +262,6 @@
       </div>
     </footer>-->
 
-    <script src="/js/index.1680704412485.js"></script>
+    <script src="/js/index.1680705899302.js"></script>
   </body>
 </html>

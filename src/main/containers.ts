@@ -30,30 +30,26 @@ export const createDefs = (props?: {
     return $defs;
 };
 
-export const createUse = (props?: {
-    document?: Document;
-
+export interface ICreateUseProps extends IPrimitiveShapeProps{
     href?: string;
     x?: number|string;
     y?: number|string;
     width?: number|string;
     height?: number|string;
+}
 
-    id?: string;
-    classes?: string;
-}) : SVGUseElement => {
+export const createUse = (props?: ICreateUseProps) : SVGUseElement => {
 
     const doc = props?.document || window.document;
     const $use = doc.createElementNS(SVG_NAMESPACE, 'use');
 
     setAttributes($use, [
-        ['id', props?.id],
-        ['class', props?.classes],
         ['href', props?.href],
         ['x', props?.x],
         ['y', props?.y],
         ['width', props?.width],
         ['height', props?.height],
+        ...getCommonAttributes(props),
     ]);
 
     return $use;
@@ -106,7 +102,7 @@ export interface ICreateClipPathProps extends IPrimitiveShapeProps{
     clipPathUnits?: string;
 }
 
-export const createClipPath = (props: ICreateClipPathProps) : SVGClipPathElement => {
+export const createClipPath = (props?: ICreateClipPathProps) : SVGClipPathElement => {
 
     const doc = props?.document || window.document;
     const $clipPath = doc.createElementNS(SVG_NAMESPACE, 'clipPath');

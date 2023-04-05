@@ -1,7 +1,6 @@
 # TODO
 
 ## Add more shapes elements / primitives:
-- clipPath
 - image
 - marker
 - mask

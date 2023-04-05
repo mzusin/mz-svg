@@ -10,17 +10,9 @@ declare const api: {
         id?: string | undefined;
         classes?: string | undefined;
     } | undefined) => SVGDefsElement;
-    createUse: (props?: {
-        document?: Document | undefined;
-        href?: string | undefined;
-        x?: string | number | undefined;
-        y?: string | number | undefined;
-        width?: string | number | undefined;
-        height?: string | number | undefined;
-        id?: string | undefined;
-        classes?: string | undefined;
-    } | undefined) => SVGUseElement;
+    createUse: (props?: containers.ICreateUseProps | undefined) => SVGUseElement;
     createPattern: (props: containers.ICreatePatternProps) => SVGPatternElement;
+    createClipPath: (props?: containers.ICreateClipPathProps | undefined) => SVGClipPathElement;
     getRectPathD: (props: {
         x: number;
         y: number;

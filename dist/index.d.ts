@@ -1,6 +1,31 @@
-import { IPrimitiveShapeProps } from '../types/interfaces';
-
 declare module 'mz-svg' {
+
+    export interface IPrimitiveShapeProps {
+        document?: Document;
+        id?: string;
+        classes?: string;
+        style?: string;
+        stroke?: string;
+        strokeWidth?: number | string;
+        strokeOpacity?: number | string;
+        strokeLinecap?: string;
+        strokeLinejoin?: string;
+        strokeDasharray?: string;
+        strokeDashoffset?: number | string;
+        strokeMiterlimit?: number | string;
+        fill?: string;
+        fillOpacity?: number | string;
+        fillRule?: string;
+        filter?: string;
+        mask?: string;
+        transform?: string;
+        vectorEffect?: string;
+        shapeRendering?: string;
+        clipPath?: string;
+        clipRule?: string;
+        opacity?: string | number;
+        visibility?: string;
+    }
 
     export const createSVG: (props: {
         width: number;
@@ -109,22 +134,26 @@ declare module 'mz-svg' {
     }
     export const createPattern: (props: ICreatePatternProps) => SVGPatternElement;
 
+    export interface ICreateClipPathProps extends IPrimitiveShapeProps {
+        clipPathUnits?: string;
+    }
+
+    export const createClipPath: (props?: ICreateClipPathProps) => SVGClipPathElement;
+
     export const createDefs: (props: {
         document?: Document;
         id?: string;
         classes?: string;
     }) => SVGDefsElement;
 
-    export const createUse: (props?: {
-        document?: Document;
+    export interface ICreateUseProps extends IPrimitiveShapeProps {
         href?: string;
         x?: number | string;
         y?: number | string;
         width?: number | string;
         height?: number | string;
-        id?: string;
-        classes?: string;
-    }) => SVGUseElement;
+    }
+    export const createUse: (props?: ICreateUseProps) => SVGUseElement;
 
     export const appendOnce: ($parent: SVGSVGElement | SVGElement, $el: SVGElement) => void;
     export const prependOnce: ($parent: SVGSVGElement | SVGElement, $el: SVGElement) => void;

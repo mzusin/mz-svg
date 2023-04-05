@@ -5,16 +5,14 @@ export declare const createDefs: (props?: {
     id?: string;
     classes?: string;
 }) => SVGDefsElement;
-export declare const createUse: (props?: {
-    document?: Document;
+export interface ICreateUseProps extends IPrimitiveShapeProps {
     href?: string;
     x?: number | string;
     y?: number | string;
     width?: number | string;
     height?: number | string;
-    id?: string;
-    classes?: string;
-}) => SVGUseElement;
+}
+export declare const createUse: (props?: ICreateUseProps) => SVGUseElement;
 export interface ICreatePatternProps extends IPrimitiveShapeProps {
     x?: string | number;
     y?: string | number;
@@ -28,3 +26,7 @@ export interface ICreatePatternProps extends IPrimitiveShapeProps {
     viewBox?: string;
 }
 export declare const createPattern: (props: ICreatePatternProps) => SVGPatternElement;
+export interface ICreateClipPathProps extends IPrimitiveShapeProps {
+    clipPathUnits?: string;
+}
+export declare const createClipPath: (props?: ICreateClipPathProps) => SVGClipPathElement;

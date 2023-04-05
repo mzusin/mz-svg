@@ -8,6 +8,62 @@ import { createClipPath } from 'mz-svg';
 const $clipPath = createClipPath();
 ```
 
+Below is a more complete example that describes how to add a striped pattern to a rectangle.
+
+<div class="flex justify-center my-4">
+    <svg viewBox="0 0 100 100" width="100" height="100">
+      <clipPath id="myClip">
+        <circle cx="40" cy="35" r="35" />
+      </clipPath>
+      <path id="heart" d="M10,30 A20,20,0,0,1,50,30 A20,20,0,0,1,90,30 Q90,60,50,90 Q10,60,10,30 Z" />
+      <use clip-path="url(#myClip)" href="#heart" fill="red" />
+    </svg>
+</div>
+
+```js
+const $svg = mzSVG.createSVG({
+    width: 100,
+    height: 100
+});
+
+// Create clip path element with a circle;
+// Everything outside the circle will be
+// clipped and therefore invisible.
+const $clipPath = mzSVG.createClipPath({
+    id: 'my-clip'
+});
+const $circle = mzSVG.createCircle({
+    cx: 40,
+    cy: 35,
+    r: 35,
+});
+$clipPath.append($circle);
+$svg.append($clipPath);
+
+// The original black heart, for reference
+const $heart = mzSVG.createPath({
+    d: 'M10,30 A20,20,0,0,1,50,30 A20,20,0,0,1,90,30 Q90,60,50,90 Q10,60,10,30 Z',
+    id: 'heart',
+});
+$svg.append($heart);
+
+// Only the portion of the red heart
+// inside the clip circle is visible.
+// <use clip-path="url(#my-clip)" href="#heart" fill="red" />
+const $use = mzSVG.createUse({
+    // The URL to an element/fragment that needs to be duplicated.
+    href: '#heart',
+
+    // The same id is used in the <clipPath> element
+    clipPath: 'url(#my-clip)',
+
+    fill: 'red',
+});
+$svg.append($use);
+
+document.body.append($svg);
+```
+
 In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
 
 ```js
