@@ -11,6 +11,7 @@ https://range-slider.toolcool.org/pages/create-rect-path.html
 https://range-slider.toolcool.org/pages/create-circle.html
 https://range-slider.toolcool.org/pages/create-ellipse.html
 https://range-slider.toolcool.org/pages/create-line.html
+https://range-slider.toolcool.org/pages/create-polygon.html
 https://range-slider.toolcool.org/pages/create-star.html
 https://range-slider.toolcool.org/pages/create-defs.html
 https://range-slider.toolcool.org/pages/create-pattern.html
