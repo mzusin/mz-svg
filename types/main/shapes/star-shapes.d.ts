@@ -1,34 +1,11 @@
-export declare const createStar: (props: {
-    document?: Document;
+import { IPrimitiveShapeProps } from '../../interfaces';
+export interface ICreateStarProps extends IPrimitiveShapeProps {
     raysNumber: number;
     centerX: number;
     centerY: number;
     outerRadius: number;
     innerRadius: number;
     decimalPlaces?: number;
-    id?: string;
-    classes?: string;
-    style?: string;
-    d?: string;
     pathLength?: string | number;
-    stroke?: string;
-    strokeWidth?: number | string;
-    strokeOpacity?: number | string;
-    strokeLinecap?: string;
-    strokeLinejoin?: string;
-    strokeDasharray?: string;
-    strokeDashoffset?: number | string;
-    strokeMiterlimit?: number | string;
-    fill?: string;
-    fillOpacity?: number | string;
-    fillRule?: string;
-    filter?: string;
-    mask?: string;
-    transform?: string;
-    vectorEffect?: string;
-    shapeRendering?: string;
-    clipPath?: string;
-    clipRule?: string;
-    opacity?: string | number;
-    visibility?: string;
-}) => SVGPathElement;
+}
+export declare const createStar: (props: ICreateStarProps) => SVGPathElement;

@@ -1,4 +1,5 @@
 import { getCommonAttributes, setAttributes, SVG_NAMESPACE } from './core';
+import { IPrimitiveShapeProps } from '../interfaces';
 
 export const createDefs = (props?: {
     document?: Document;
@@ -18,9 +19,7 @@ export const createDefs = (props?: {
     return $defs;
 };
 
-export const createPattern = (props: {
-    document?: Document;
-
+export interface ICreatePatternProps extends IPrimitiveShapeProps{
     x?: string|number;
     y?: string|number;
     width?: string|number;
@@ -32,39 +31,9 @@ export const createPattern = (props: {
     patternUnits?: string;
     preserveAspectRatio?: string;
     viewBox?: string;
+}
 
-    // ------------------
-
-    id?: string;
-    classes?: string;
-    style?: string;
-
-    clipPath?: string;
-    clipRule?: string;
-
-    fill?: string;
-    fillOpacity?: number|string;
-    fillRule?: string;
-
-    filter?: string;
-    mask?: string;
-    transform?: string;
-
-    vectorEffect?: string; // 'non-scaling-stroke' - used to disable line scale
-    shapeRendering?: string;
-
-    opacity?: string|number;
-    visibility?: string;
-
-    stroke?: string;
-    strokeWidth?: number|string;
-    strokeOpacity?: number|string;
-    strokeLinecap?: string; // 'round'
-    strokeLinejoin?: string;
-    strokeDasharray?: string;
-    strokeDashoffset?: number|string;
-    strokeMiterlimit?: number|string;
-}) : SVGPatternElement => {
+export const createPattern = (props: ICreatePatternProps) : SVGPatternElement => {
 
     const {
         document: _document,

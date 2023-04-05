@@ -1,52 +1,19 @@
 import { createPath } from './primitive-shapes';
 import { DEFAULT_DECIMAL_PLACES } from '../core';
 import { setDecimalPlaces } from 'mz-math';
+import { IPrimitiveShapeProps } from '../../interfaces';
 
-export const createStar = (props: {
-    document?: Document;
+export interface ICreateStarProps extends IPrimitiveShapeProps{
     raysNumber: number;
     centerX: number;
     centerY: number;
     outerRadius: number;
     innerRadius: number;
-
     decimalPlaces?: number;
-
-    // --------------------
-
-    id?: string;
-    classes?: string;
-    style?: string;
-
-    d?: string;
     pathLength?: string|number;
+}
 
-    stroke?: string;
-    strokeWidth?: number|string;
-    strokeOpacity?: number|string;
-    strokeLinecap?: string; // 'round'
-    strokeLinejoin?: string;
-    strokeDasharray?: string;
-    strokeDashoffset?: number|string;
-    strokeMiterlimit?: number|string;
-
-    fill?: string;
-    fillOpacity?: number|string;
-    fillRule?: string;
-
-    filter?: string;
-    mask?: string;
-    transform?: string;
-
-    vectorEffect?: string; // 'non-scaling-stroke' - used to disable line scale
-    shapeRendering?: string;
-
-    clipPath?: string;
-    clipRule?: string;
-
-    opacity?: string|number;
-    visibility?: string;
-}) : SVGPathElement => {
+export const createStar = (props: ICreateStarProps) : SVGPathElement => {
 
     const {
         centerX, centerY,

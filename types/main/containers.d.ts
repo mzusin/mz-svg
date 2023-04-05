@@ -1,10 +1,10 @@
+import { IPrimitiveShapeProps } from '../interfaces';
 export declare const createDefs: (props?: {
     document?: Document;
     id?: string;
     classes?: string;
 }) => SVGDefsElement;
-export declare const createPattern: (props: {
-    document?: Document;
+export interface ICreatePatternProps extends IPrimitiveShapeProps {
     x?: string | number;
     y?: string | number;
     width?: string | number;
@@ -15,27 +15,5 @@ export declare const createPattern: (props: {
     patternUnits?: string;
     preserveAspectRatio?: string;
     viewBox?: string;
-    id?: string;
-    classes?: string;
-    style?: string;
-    clipPath?: string;
-    clipRule?: string;
-    fill?: string;
-    fillOpacity?: number | string;
-    fillRule?: string;
-    filter?: string;
-    mask?: string;
-    transform?: string;
-    vectorEffect?: string;
-    shapeRendering?: string;
-    opacity?: string | number;
-    visibility?: string;
-    stroke?: string;
-    strokeWidth?: number | string;
-    strokeOpacity?: number | string;
-    strokeLinecap?: string;
-    strokeLinejoin?: string;
-    strokeDasharray?: string;
-    strokeDashoffset?: number | string;
-    strokeMiterlimit?: number | string;
-}) => SVGPatternElement;
+}
+export declare const createPattern: (props: ICreatePatternProps) => SVGPatternElement;

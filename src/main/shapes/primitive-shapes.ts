@@ -1,45 +1,12 @@
 import { getCommonAttributes, setAttributes, SVG_NAMESPACE } from '../core';
+import { IPrimitiveShapeProps } from '../../interfaces';
 
-/**
- * Create SVG path.
- */
-export const createPath = (props: {
-    document?: Document;
-
-    id?: string;
-    classes?: string;
-    style?: string;
-
+export interface ICreatePathProps extends IPrimitiveShapeProps{
     d?: string;
     pathLength?: string|number;
+}
 
-    stroke?: string;
-    strokeWidth?: number|string;
-    strokeOpacity?: number|string;
-    strokeLinecap?: string; // 'round'
-    strokeLinejoin?: string;
-    strokeDasharray?: string;
-    strokeDashoffset?: number|string;
-    strokeMiterlimit?: number|string;
-
-    fill?: string;
-    fillOpacity?: number|string;
-    fillRule?: string;
-
-    filter?: string;
-    mask?: string;
-    transform?: string;
-
-    vectorEffect?: string; // 'non-scaling-stroke' - used to disable line scale
-    shapeRendering?: string;
-
-    clipPath?: string;
-    clipRule?: string;
-
-    opacity?: string|number;
-    visibility?: string;
-
-}) : SVGPathElement => {
+export const createPath = (props: ICreatePathProps) : SVGPathElement => {
 
     const {
         document: _document,
@@ -66,51 +33,17 @@ export const createPath = (props: {
     return $path;
 };
 
-/**
- * Create SVG rectangle.
- */
-export const createRect = (props: {
-    document?: Document;
+export interface ICreateRectProps extends IPrimitiveShapeProps{
     x?: number|string;
     y?: number|string;
     width?: number|string;
     height?: number|string;
     rx?: number|string;
     ry?: number|string;
-
-    // -------------------------
-    id?: string;
-    classes?: string;
-    style?: string;
-
     pathLength?: string|number;
+}
 
-    stroke?: string;
-    strokeWidth?: number|string;
-    strokeOpacity?: number|string;
-    strokeLinecap?: string; // 'round'
-    strokeLinejoin?: string;
-    strokeDasharray?: string;
-    strokeDashoffset?: number|string;
-    strokeMiterlimit?: number|string;
-
-    fill?: string;
-    fillOpacity?: number|string;
-    fillRule?: string;
-
-    filter?: string;
-    mask?: string;
-    transform?: string;
-
-    vectorEffect?: string; // 'non-scaling-stroke' - used to disable line scale
-    shapeRendering?: string;
-
-    clipPath?: string;
-    clipRule?: string;
-
-    opacity?: string|number;
-    visibility?: string;
-}) : SVGRectElement => {
+export const createRect = (props: ICreateRectProps) : SVGRectElement => {
     const {
         document: _document
     } = props;
@@ -133,48 +66,14 @@ export const createRect = (props: {
     return $rect;
 };
 
-/**
- * Create SVG circle.
- */
-export const createCircle = (props: {
-    document?: Document;
+export interface ICreateCircleProps extends IPrimitiveShapeProps{
     cx?: string|number;
     cy?: string|number;
     r?: string|number;
-
-    // -------------------------
-    id?: string;
-    classes?: string;
-    style?: string;
-
     pathLength?: string|number;
+}
 
-    stroke?: string;
-    strokeWidth?: number|string;
-    strokeOpacity?: number|string;
-    strokeLinecap?: string; // 'round'
-    strokeLinejoin?: string;
-    strokeDasharray?: string;
-    strokeDashoffset?: number|string;
-    strokeMiterlimit?: number|string;
-
-    fill?: string;
-    fillOpacity?: number|string;
-    fillRule?: string;
-
-    filter?: string;
-    mask?: string;
-    transform?: string;
-
-    vectorEffect?: string; // 'non-scaling-stroke' - used to disable line scale
-    shapeRendering?: string;
-
-    clipPath?: string;
-    clipRule?: string;
-
-    opacity?: string|number;
-    visibility?: string;
-}) : SVGCircleElement => {
+export const createCircle = (props: ICreateCircleProps) : SVGCircleElement => {
     const {
         document: _document,
     } = props;
@@ -194,49 +93,15 @@ export const createCircle = (props: {
     return $circle;
 };
 
-/**
- * Create SVG ellipse.
- */
-export const createEllipse = (props: {
-    document?: Document;
+export interface ICreateEllipseProps extends IPrimitiveShapeProps{
     cx?: string|number;
     cy?: string|number;
     rx?: string|number;
     ry?: string|number;
-
-    // -------------------------
-    id?: string;
-    classes?: string;
-    style?: string;
-
     pathLength?: string|number;
+}
 
-    stroke?: string;
-    strokeWidth?: number|string;
-    strokeOpacity?: number|string;
-    strokeLinecap?: string; // 'round'
-    strokeLinejoin?: string;
-    strokeDasharray?: string;
-    strokeDashoffset?: number|string;
-    strokeMiterlimit?: number|string;
-
-    fill?: string;
-    fillOpacity?: number|string;
-    fillRule?: string;
-
-    filter?: string;
-    mask?: string;
-    transform?: string;
-
-    vectorEffect?: string; // 'non-scaling-stroke' - used to disable line scale
-    shapeRendering?: string;
-
-    clipPath?: string;
-    clipRule?: string;
-
-    opacity?: string|number;
-    visibility?: string;
-}) : SVGEllipseElement => {
+export const createEllipse = (props: ICreateEllipseProps) : SVGEllipseElement => {
     const {
         document: _document,
     } = props;
@@ -257,49 +122,15 @@ export const createEllipse = (props: {
     return $ellipse;
 };
 
-/**
- * Create SVG line.
- */
-export const createLine = (props: {
-    document?: Document;
+export interface ICreateLineProps extends IPrimitiveShapeProps{
     x1?: string|number;
     y1?: string|number;
     x2?: string|number;
     y2?: string|number;
-
-    // -------------------------
-    id?: string;
-    classes?: string;
-    style?: string;
-
     pathLength?: string|number;
+}
 
-    stroke?: string;
-    strokeWidth?: number|string;
-    strokeOpacity?: number|string;
-    strokeLinecap?: string; // 'round'
-    strokeLinejoin?: string;
-    strokeDasharray?: string;
-    strokeDashoffset?: number|string;
-    strokeMiterlimit?: number|string;
-
-    fill?: string;
-    fillOpacity?: number|string;
-    fillRule?: string;
-
-    filter?: string;
-    mask?: string;
-    transform?: string;
-
-    vectorEffect?: string; // 'non-scaling-stroke' - used to disable line scale
-    shapeRendering?: string;
-
-    clipPath?: string;
-    clipRule?: string;
-
-    opacity?: string|number;
-    visibility?: string;
-}) : SVGLineElement => {
+export const createLine = (props: ICreateLineProps) : SVGLineElement => {
     const {
         document: _document,
     } = props;
@@ -320,46 +151,12 @@ export const createLine = (props: {
     return $line;
 };
 
-/**
- * Create SVG polygon.
- */
-export const createPolygon = (props: {
-    document?: Document;
-
-    id?: string;
-    classes?: string;
-    style?: string;
-
+export interface ICreatePolygonProps extends IPrimitiveShapeProps{
     points?: string;
     pathLength?: string|number;
+}
 
-    stroke?: string;
-    strokeWidth?: number|string;
-    strokeOpacity?: number|string;
-    strokeLinecap?: string; // 'round'
-    strokeLinejoin?: string;
-    strokeDasharray?: string;
-    strokeDashoffset?: number|string;
-    strokeMiterlimit?: number|string;
-
-    fill?: string;
-    fillOpacity?: number|string;
-    fillRule?: string;
-
-    filter?: string;
-    mask?: string;
-    transform?: string;
-
-    vectorEffect?: string; // 'non-scaling-stroke' - used to disable line scale
-    shapeRendering?: string;
-
-    clipPath?: string;
-    clipRule?: string;
-
-    opacity?: string|number;
-    visibility?: string;
-
-}) : SVGPolygonElement => {
+export const createPolygon = (props: ICreatePolygonProps) : SVGPolygonElement => {
 
     const {
         document: _document

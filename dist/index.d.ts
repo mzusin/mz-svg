@@ -1,3 +1,5 @@
+import { IPrimitiveShapeProps } from '../types/interfaces';
+
 declare module 'mz-svg' {
 
     export const createSVG: (props: {
@@ -29,263 +31,62 @@ declare module 'mz-svg' {
         msg?: string | undefined;
     }>;
 
-    export const createPath: (props: {
-        document?: Document;
-        id?: string;
-        classes?: string;
-        style?: string;
+    export interface ICreatePathProps extends IPrimitiveShapeProps {
         d?: string;
         pathLength?: string | number;
-        stroke?: string;
-        strokeWidth?: number | string;
-        strokeOpacity?: number | string;
-        strokeLinecap?: string;
-        strokeLinejoin?: string;
-        strokeDasharray?: string;
-        strokeDashoffset?: number | string;
-        strokeMiterlimit?: number | string;
-        fill?: string;
-        fillOpacity?: number | string;
-        fillRule?: string;
-        filter?: string;
-        mask?: string;
-        transform?: string;
-        vectorEffect?: string;
-        shapeRendering?: string;
-        clipPath?: string;
-        clipRule?: string;
-        opacity?: string | number;
-        visibility?: string;
-    }) => SVGPathElement;
-
-    export const createRect: (props: {
-        document?: Document;
+    }
+    export const createPath: (props: ICreatePathProps) => SVGPathElement;
+    export interface ICreateRectProps extends IPrimitiveShapeProps {
         x?: number | string;
         y?: number | string;
         width?: number | string;
         height?: number | string;
         rx?: number | string;
         ry?: number | string;
-        id?: string;
-        classes?: string;
-        style?: string;
         pathLength?: string | number;
-        stroke?: string;
-        strokeWidth?: number | string;
-        strokeOpacity?: number | string;
-        strokeLinecap?: string;
-        strokeLinejoin?: string;
-        strokeDasharray?: string;
-        strokeDashoffset?: number | string;
-        strokeMiterlimit?: number | string;
-        fill?: string;
-        fillOpacity?: number | string;
-        fillRule?: string;
-        filter?: string;
-        mask?: string;
-        transform?: string;
-        vectorEffect?: string;
-        shapeRendering?: string;
-        clipPath?: string;
-        clipRule?: string;
-        opacity?: string | number;
-        visibility?: string;
-    }) => SVGRectElement;
-
-    export const createRectPath: (props: {
-        document?: Document;
-        x: number;
-        y: number;
-        width: number;
-        height: number;
-        rx?: number;
-        ry?: number;
-        id?: string;
-        classes?: string;
-        style?: string;
-        pathLength?: string | number;
-        stroke?: string;
-        strokeWidth?: number | string;
-        strokeOpacity?: number | string;
-        strokeLinecap?: string;
-        strokeLinejoin?: string;
-        strokeDasharray?: string;
-        strokeDashoffset?: number | string;
-        strokeMiterlimit?: number | string;
-        fill?: string;
-        fillOpacity?: number | string;
-        fillRule?: string;
-        filter?: string;
-        mask?: string;
-        transform?: string;
-        vectorEffect?: string;
-        shapeRendering?: string;
-        clipPath?: string;
-        clipRule?: string;
-        opacity?: string | number;
-        visibility?: string;
-    }) => SVGPathElement;
-
-    export const createCircle: (props: {
-        document?: Document;
+    }
+    export const createRect: (props: ICreateRectProps) => SVGRectElement;
+    export interface ICreateCircleProps extends IPrimitiveShapeProps {
         cx?: string | number;
         cy?: string | number;
         r?: string | number;
-        id?: string;
-        classes?: string;
-        style?: string;
         pathLength?: string | number;
-        stroke?: string;
-        strokeWidth?: number | string;
-        strokeOpacity?: number | string;
-        strokeLinecap?: string;
-        strokeLinejoin?: string;
-        strokeDasharray?: string;
-        strokeDashoffset?: number | string;
-        strokeMiterlimit?: number | string;
-        fill?: string;
-        fillOpacity?: number | string;
-        fillRule?: string;
-        filter?: string;
-        mask?: string;
-        transform?: string;
-        vectorEffect?: string;
-        shapeRendering?: string;
-        clipPath?: string;
-        clipRule?: string;
-        opacity?: string | number;
-        visibility?: string;
-    }) => SVGCircleElement;
-
-    export const createEllipse: (props: {
-        document?: Document;
+    }
+    export const createCircle: (props: ICreateCircleProps) => SVGCircleElement;
+    export interface ICreateEllipseProps extends IPrimitiveShapeProps {
         cx?: string | number;
         cy?: string | number;
         rx?: string | number;
         ry?: string | number;
-        id?: string;
-        classes?: string;
-        style?: string;
         pathLength?: string | number;
-        stroke?: string;
-        strokeWidth?: number | string;
-        strokeOpacity?: number | string;
-        strokeLinecap?: string;
-        strokeLinejoin?: string;
-        strokeDasharray?: string;
-        strokeDashoffset?: number | string;
-        strokeMiterlimit?: number | string;
-        fill?: string;
-        fillOpacity?: number | string;
-        fillRule?: string;
-        filter?: string;
-        mask?: string;
-        transform?: string;
-        vectorEffect?: string;
-        shapeRendering?: string;
-        clipPath?: string;
-        clipRule?: string;
-        opacity?: string | number;
-        visibility?: string;
-    }) => SVGEllipseElement;
-
-    export const createLine: (props: {
-        document?: Document;
+    }
+    export const createEllipse: (props: ICreateEllipseProps) => SVGEllipseElement;
+    export interface ICreateLineProps extends IPrimitiveShapeProps {
         x1?: string | number;
         y1?: string | number;
         x2?: string | number;
         y2?: string | number;
-        id?: string;
-        classes?: string;
-        style?: string;
         pathLength?: string | number;
-        stroke?: string;
-        strokeWidth?: number | string;
-        strokeOpacity?: number | string;
-        strokeLinecap?: string;
-        strokeLinejoin?: string;
-        strokeDasharray?: string;
-        strokeDashoffset?: number | string;
-        strokeMiterlimit?: number | string;
-        fill?: string;
-        fillOpacity?: number | string;
-        fillRule?: string;
-        filter?: string;
-        mask?: string;
-        transform?: string;
-        vectorEffect?: string;
-        shapeRendering?: string;
-        clipPath?: string;
-        clipRule?: string;
-        opacity?: string | number;
-        visibility?: string;
-    }) => SVGLineElement;
-
-    export const createPolygon: (props: {
-        document?: Document;
-        id?: string;
-        classes?: string;
-        style?: string;
+    }
+    export const createLine: (props: ICreateLineProps) => SVGLineElement;
+    export interface ICreatePolygonProps extends IPrimitiveShapeProps {
         points?: string;
         pathLength?: string | number;
-        stroke?: string;
-        strokeWidth?: number | string;
-        strokeOpacity?: number | string;
-        strokeLinecap?: string;
-        strokeLinejoin?: string;
-        strokeDasharray?: string;
-        strokeDashoffset?: number | string;
-        strokeMiterlimit?: number | string;
-        fill?: string;
-        fillOpacity?: number | string;
-        fillRule?: string;
-        filter?: string;
-        mask?: string;
-        transform?: string;
-        vectorEffect?: string;
-        shapeRendering?: string;
-        clipPath?: string;
-        clipRule?: string;
-        opacity?: string | number;
-        visibility?: string;
-    }) => SVGPolygonElement;
+    }
+    export const createPolygon: (props: ICreatePolygonProps) => SVGPolygonElement;
 
-    export const createStar: (props: {
-        document?: Document;
+    export interface ICreateStarProps extends IPrimitiveShapeProps {
         raysNumber: number;
         centerX: number;
         centerY: number;
         outerRadius: number;
         innerRadius: number;
-        id?: string;
-        classes?: string;
-        style?: string;
-        d?: string;
+        decimalPlaces?: number;
         pathLength?: string | number;
-        stroke?: string;
-        strokeWidth?: number | string;
-        strokeOpacity?: number | string;
-        strokeLinecap?: string;
-        strokeLinejoin?: string;
-        strokeDasharray?: string;
-        strokeDashoffset?: number | string;
-        strokeMiterlimit?: number | string;
-        fill?: string;
-        fillOpacity?: number | string;
-        fillRule?: string;
-        filter?: string;
-        mask?: string;
-        transform?: string;
-        vectorEffect?: string;
-        shapeRendering?: string;
-        clipPath?: string;
-        clipRule?: string;
-        opacity?: string | number;
-        visibility?: string;
-    }) => SVGPathElement;
+    }
+    export const createStar: (props: ICreateStarProps) => SVGPathElement;
 
-    export const createPattern: (props: {
-        document?: Document;
+    export interface ICreatePatternProps extends IPrimitiveShapeProps {
         x?: string | number;
         y?: string | number;
         width?: string | number;
@@ -296,30 +97,8 @@ declare module 'mz-svg' {
         patternUnits?: string;
         preserveAspectRatio?: string;
         viewBox?: string;
-        id?: string;
-        classes?: string;
-        style?: string;
-        clipPath?: string;
-        clipRule?: string;
-        fill?: string;
-        fillOpacity?: number | string;
-        fillRule?: string;
-        filter?: string;
-        mask?: string;
-        transform?: string;
-        vectorEffect?: string;
-        shapeRendering?: string;
-        opacity?: string | number;
-        visibility?: string;
-        stroke?: string;
-        strokeWidth?: number | string;
-        strokeOpacity?: number | string;
-        strokeLinecap?: string;
-        strokeLinejoin?: string;
-        strokeDasharray?: string;
-        strokeDashoffset?: number | string;
-        strokeMiterlimit?: number | string;
-    }) => SVGPatternElement;
+    }
+    export const createPattern: (props: ICreatePatternProps) => SVGPatternElement;
 
     export const createDefs: (props: {
         document?: Document;
