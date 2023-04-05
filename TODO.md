@@ -1,7 +1,6 @@
 # TODO
 
 ## Add more shapes elements / primitives:
-- polyline
 - text
 - textPath
 - tref
