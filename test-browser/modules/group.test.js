@@ -1,5 +1,11 @@
 QUnit.module('Group', (hooks) => {
 
+  QUnit.test('create an empty group', (assert) => {
+    const $group1 = mzSVG.createGroup();
+    const $group2 = htmlSVGElementFromString(`<g></g>`);
+    assert.strictEqual($group1.isEqualNode($group2), true);
+  });
+
   QUnit.test('createGroup with provided fill', (assert) => {
     const fill = 'none';
 

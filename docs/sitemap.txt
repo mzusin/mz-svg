@@ -14,6 +14,7 @@ https://range-slider.toolcool.org/pages/create-line.html
 https://range-slider.toolcool.org/pages/create-polygon.html
 https://range-slider.toolcool.org/pages/create-polyline.html
 https://range-slider.toolcool.org/pages/create-star.html
+https://range-slider.toolcool.org/pages/create-group.html
 https://range-slider.toolcool.org/pages/create-defs.html
 https://range-slider.toolcool.org/pages/create-pattern.html
 https://range-slider.toolcool.org/pages/save-svg.html

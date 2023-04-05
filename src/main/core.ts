@@ -75,7 +75,7 @@ export const setAttributes = ($svgElement: SVGElement, attr: [string, string|num
     }
 };
 
-export const getCommonAttributes = (props: {
+export const getCommonAttributes = (props?: {
     id?: string;
     classes?: string;
     style?: string;
@@ -106,6 +106,9 @@ export const getCommonAttributes = (props: {
     opacity?: string|number;
     visibility?: string;
 }) : [string, string|number|undefined][] => {
+
+    if(!props) return [];
+
     return [
         ['id', props.id],
         ['class', props.classes],
