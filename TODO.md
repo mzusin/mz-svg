@@ -1,19 +1,36 @@
 # TODO
 
 ## Add more shapes elements / primitives:
-- text
-- textPath
-- tref
-- tspan
-- linearGradient
 - a
+- clipPath
+- desc
+- foreignObject
+- g
+- image
+- marker
+- mask
+- metadata
+- script
+- style
+- symbol
+- title — the SVG accessible name element
+- use
+- view
+
+## Gradient
+- linearGradient
+- stop
+- radialGradient
+
+## Animation
 - animate
 - animateMotion
 - animateTransform
-- clipPath
-- cursor
-- desc
-- discard
+- mpath
+- set
+
+## Filters
+- filter
 - feBlend
 - feColorMatrix
 - feComponentTransfer
@@ -39,25 +56,15 @@
 - feSpotLight
 - feTile
 - feTurbulence
-- filter
-- foreignObject
-- g
-- glyph
-- image
-- marker
-- mask
-- metadata
-- mpath
-- radialGradient
-- script
-- set
-- stop
-- style
+
+## Text
+- text
+- textPath
+- tspan
 - switch
-- symbol
-- title — the SVG accessible name element
-- use
-- view
+
+## Performance
+- discard SVG element - https://developer.mozilla.org/en-US/docs/Web/SVG/Element/discard
 
 ## IO
 - Save file as PNG / JPG in Node.js
