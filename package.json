@@ -6,7 +6,11 @@
   "main": "./dist/mz-svg.min.js",
   "module": "./dist/mz-svg.esm.js",
   "types": "./dist/index.d.ts",
-  "exports": "./dist/mz-svg.esm.js",
+  "exports": {
+    "import": "./dist/mz-svg.esm.js",
+    "require": "./dist/mz-svg.node.cjs",
+    "default": "./dist/mz-svg.esm.js"
+  },
   "scripts": {
     "build:all": "npm run build:es6 & npm run build:node & npm run build:esm",
     "watch:all": "npm run watch:es6 & npm run watch:node & npm run watch:esm",
