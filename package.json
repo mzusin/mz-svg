@@ -36,7 +36,8 @@
     "vector graphics",
     "star shape",
     "svg patterns",
-    "clippath"
+    "clippath",
+    "svg mask"
   ],
   "author": "Miriam Zusin <miriam.zusin@gmail.com>",
   "license": "SEE LICENSE IN LICENSE.md",

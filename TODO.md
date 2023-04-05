@@ -1,11 +1,9 @@
 # TODO
 
 ## Add more shapes elements / primitives:
-- image
 - marker
 - mask
 - symbol
-- view
 
 ## Gradient
 - linearGradient
@@ -24,6 +22,8 @@
 - foreignObject
 - style
 - script
+- view
+- image
 
 ## Metadata
 - desc

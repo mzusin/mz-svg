@@ -30,3 +30,12 @@ export interface ICreateClipPathProps extends IPrimitiveShapeProps {
     clipPathUnits?: string;
 }
 export declare const createClipPath: (props?: ICreateClipPathProps) => SVGClipPathElement;
+export interface ICreateMaskProps extends IPrimitiveShapeProps {
+    x?: number | string;
+    y?: number | string;
+    width?: number | string;
+    height?: number | string;
+    maskContentUnits?: string;
+    maskUnits?: string;
+}
+export declare const createMask: (props?: ICreateMaskProps) => SVGMaskElement;

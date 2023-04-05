@@ -114,3 +114,30 @@ export const createClipPath = (props?: ICreateClipPathProps) : SVGClipPathElemen
 
     return $clipPath;
 };
+
+export interface ICreateMaskProps extends IPrimitiveShapeProps{
+    x?: number|string;
+    y?: number|string;
+    width?: number|string;
+    height?: number|string;
+    maskContentUnits?: string;
+    maskUnits?: string;
+}
+
+export const createMask = (props?: ICreateMaskProps) : SVGMaskElement => {
+
+    const doc = props?.document || window.document;
+    const $mask = doc.createElementNS(SVG_NAMESPACE, 'mask');
+
+    setAttributes($mask, [
+        ['x', props?.x],
+        ['y', props?.y],
+        ['width', props?.width],
+        ['height', props?.height],
+        ['maskContentUnits', props?.maskContentUnits],
+        ['maskUnits', props?.maskUnits],
+        ...getCommonAttributes(props),
+    ]);
+
+    return $mask;
+};

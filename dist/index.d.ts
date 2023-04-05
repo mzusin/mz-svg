@@ -155,6 +155,16 @@ declare module 'mz-svg' {
     }
     export const createUse: (props?: ICreateUseProps) => SVGUseElement;
 
+    export interface ICreateMaskProps extends IPrimitiveShapeProps {
+        x?: number | string;
+        y?: number | string;
+        width?: number | string;
+        height?: number | string;
+        maskContentUnits?: string;
+        maskUnits?: string;
+    }
+    export const createMask: (props?: ICreateMaskProps) => SVGMaskElement;
+
     export const appendOnce: ($parent: SVGSVGElement | SVGElement, $el: SVGElement) => void;
     export const prependOnce: ($parent: SVGSVGElement | SVGElement, $el: SVGElement) => void;
 
