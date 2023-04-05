@@ -6,7 +6,7 @@ import { createNodeDoc } from './core.test';
 describe('Defs: createDefs', () => {
     
     test('createDefs with provided id', () => {
-        const id = 'path-1';
+        const id = 'defs-1';
 
         const $defs = createDefs({
             id,
@@ -17,7 +17,7 @@ describe('Defs: createDefs', () => {
     });
 
     test('createDefs with provided classes', () => {
-        const classes = 'path-class-1 path-class-2';
+        const classes = 'defs-class-1 defs-class-2';
 
         const $defs = createDefs({
             classes,

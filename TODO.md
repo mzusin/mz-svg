@@ -6,7 +6,6 @@
 - marker
 - mask
 - symbol
-- use
 - view
 
 ## Gradient
@@ -78,12 +77,10 @@
 - Heart shapes
 - Flower shape
 - Flag shape
-- Simple helper for polygons like triangle, romb, шестиугольник
-- Rect around dots
+- Simple helper for polygons like triangle, rhombus, hexagon
+- Rect around dot
 - Arrow shapes
 - Functions like parabola or wave
-- Animate
-- Mask
 
 ## Other features
 - If 2 shapes intersect

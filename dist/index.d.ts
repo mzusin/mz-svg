@@ -115,6 +115,17 @@ declare module 'mz-svg' {
         classes?: string;
     }) => SVGDefsElement;
 
+    export const createUse: (props?: {
+        document?: Document;
+        href?: string;
+        x?: number | string;
+        y?: number | string;
+        width?: number | string;
+        height?: number | string;
+        id?: string;
+        classes?: string;
+    }) => SVGUseElement;
+
     export const appendOnce: ($parent: SVGSVGElement | SVGElement, $el: SVGElement) => void;
     export const prependOnce: ($parent: SVGSVGElement | SVGElement, $el: SVGElement) => void;
 

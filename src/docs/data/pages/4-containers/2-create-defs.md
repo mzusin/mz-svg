@@ -1,6 +1,6 @@
-## How to create Defs Element
+## How to create &lt;defs> element
 
-The **createDefs()** function is used to create an SVG Defs element.
+The **createDefs()** function is used to create an SVG &lt;defs> element.
 
 ```js
 import { createDefs } from 'mz-svg';
@@ -21,12 +21,12 @@ const $defs = createDefs({
 The function can accept the following parameters. Note that **all parameters are optional**:
 
 ```js
-import { createPattern } from 'mz-svg';
+import { createDefs } from 'mz-svg';
 
-const $pattern = createPattern({
+const $defs = createDefs({
     
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/id
-    id: 'my-pattern-id',
+    id: 'my-defs-id',
     
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/class
     classes: 'css-class1 css-class2',

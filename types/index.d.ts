@@ -10,6 +10,16 @@ declare const api: {
         id?: string | undefined;
         classes?: string | undefined;
     } | undefined) => SVGDefsElement;
+    createUse: (props?: {
+        document?: Document | undefined;
+        href?: string | undefined;
+        x?: string | number | undefined;
+        y?: string | number | undefined;
+        width?: string | number | undefined;
+        height?: string | number | undefined;
+        id?: string | undefined;
+        classes?: string | undefined;
+    } | undefined) => SVGUseElement;
     createPattern: (props: containers.ICreatePatternProps) => SVGPatternElement;
     getRectPathD: (props: {
         x: number;
@@ -83,7 +93,7 @@ declare const api: {
     }) => SVGSVGElement;
     getSVGAsString: ($svg: SVGSVGElement) => string;
     setAttributes: ($svgElement: SVGElement, attr: [string, string | number | undefined][]) => void;
-    getCommonAttributes: (props: {
+    getCommonAttributes: (props?: {
         id?: string | undefined;
         classes?: string | undefined;
         style?: string | undefined;
@@ -107,7 +117,7 @@ declare const api: {
         clipRule?: string | undefined;
         opacity?: string | number | undefined;
         visibility?: string | undefined;
-    }) => [string, string | number | undefined][];
+    } | undefined) => [string, string | number | undefined][];
 };
 declare global {
     interface Window {

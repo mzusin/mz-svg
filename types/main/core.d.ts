@@ -23,7 +23,7 @@ export declare const createSVGFromString: (props: {
 }) => SVGSVGElement;
 export declare const getSVGAsString: ($svg: SVGSVGElement) => string;
 export declare const setAttributes: ($svgElement: SVGElement, attr: [string, string | number | undefined][]) => void;
-export declare const getCommonAttributes: (props: {
+export declare const getCommonAttributes: (props?: {
     id?: string;
     classes?: string;
     style?: string;

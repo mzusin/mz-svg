@@ -5,6 +5,16 @@ export declare const createDefs: (props?: {
     id?: string;
     classes?: string;
 }) => SVGDefsElement;
+export declare const createUse: (props?: {
+    document?: Document;
+    href?: string;
+    x?: number | string;
+    y?: number | string;
+    width?: number | string;
+    height?: number | string;
+    id?: string;
+    classes?: string;
+}) => SVGUseElement;
 export interface ICreatePatternProps extends IPrimitiveShapeProps {
     x?: string | number;
     y?: string | number;

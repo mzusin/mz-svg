@@ -81,42 +81,54 @@
               </svg>
             </button>
 
-            <div class="text-xl my-4">Main</div><a href="/pages/typescript-usage.html" title="" class="mb-2 text-slate-500">TypesScript Usage</a><a href="/pages/browser-usage.html" title="" class="mb-2 text-slate-500">Browser Usage</a><a href="/pages/nodejs-usage.html" title="" class="mb-2 text-slate-500">Node.js Usage</a><div class="text-xl my-4">Create SVG</div><a href="/pages/create-svg-element.html" title="" class="mb-2 text-slate-500">Create Svg Element</a><a href="/pages/create-svg-from-string.html" title="" class="mb-2 text-blue-500 bg-slate-100 px-4 py-2 rounded-md">Create Svg From String</a><a href="/pages/get-svg-as-string.html" title="" class="mb-2 text-slate-500">Get Svg As String</a><div class="text-xl my-4">Create Shapes</div><a href="/pages/create-path.html" title="" class="mb-2 text-slate-500">Create Path</a><a href="/pages/create-rect.html" title="" class="mb-2 text-slate-500">Create Rect</a><a href="/pages/create-rect-path.html" title="" class="mb-2 text-slate-500">Create Rect Path</a><a href="/pages/create-circle.html" title="" class="mb-2 text-slate-500">Create Circle</a><a href="/pages/create-ellipse.html" title="" class="mb-2 text-slate-500">Create Ellipse</a><a href="/pages/create-line.html" title="" class="mb-2 text-slate-500">Create Line</a><a href="/pages/create-polygon.html" title="" class="mb-2 text-slate-500">Create Polygon</a><a href="/pages/create-polyline.html" title="" class="mb-2 text-slate-500">Create Polyline</a><a href="/pages/create-star.html" title="" class="mb-2 text-slate-500">Create Star</a><div class="text-xl my-4">Containers</div><a href="/pages/create-group.html" title="" class="mb-2 text-slate-500">Create Group</a><a href="/pages/create-defs.html" title="" class="mb-2 text-slate-500">Create Defs</a><a href="/pages/create-use.html" title="" class="mb-2 text-slate-500">Create Use</a><a href="/pages/create-pattern.html" title="" class="mb-2 text-slate-500">Create Pattern</a><div class="text-xl my-4">IO</div><a href="/pages/save-svg.html" title="" class="mb-2 text-slate-500">Save Svg</a><a href="/pages/download-svg.html" title="" class="mb-2 text-slate-500">Download Svg</a><div class="text-xl my-4">Helpers</div><a href="/pages/append-once.html" title="" class="mb-2 text-slate-500">Append Once</a><a href="/pages/prepend-once.html" title="" class="mb-2 text-slate-500">Prepend Once</a><div class="text-xl my-4">Other</div><a href="/pages/constants.html" title="" class="mb-2 text-slate-500">Constants</a><a href="/pages/unit-tests.html" title="" class="mb-2 text-slate-500">Unit Tests</a>
+            <div class="text-xl my-4">Main</div><a href="/pages/typescript-usage.html" title="" class="mb-2 text-slate-500">TypesScript Usage</a><a href="/pages/browser-usage.html" title="" class="mb-2 text-slate-500">Browser Usage</a><a href="/pages/nodejs-usage.html" title="" class="mb-2 text-slate-500">Node.js Usage</a><div class="text-xl my-4">Create SVG</div><a href="/pages/create-svg-element.html" title="" class="mb-2 text-slate-500">Create Svg Element</a><a href="/pages/create-svg-from-string.html" title="" class="mb-2 text-slate-500">Create Svg From String</a><a href="/pages/get-svg-as-string.html" title="" class="mb-2 text-slate-500">Get Svg As String</a><div class="text-xl my-4">Create Shapes</div><a href="/pages/create-path.html" title="" class="mb-2 text-slate-500">Create Path</a><a href="/pages/create-rect.html" title="" class="mb-2 text-slate-500">Create Rect</a><a href="/pages/create-rect-path.html" title="" class="mb-2 text-slate-500">Create Rect Path</a><a href="/pages/create-circle.html" title="" class="mb-2 text-slate-500">Create Circle</a><a href="/pages/create-ellipse.html" title="" class="mb-2 text-slate-500">Create Ellipse</a><a href="/pages/create-line.html" title="" class="mb-2 text-slate-500">Create Line</a><a href="/pages/create-polygon.html" title="" class="mb-2 text-slate-500">Create Polygon</a><a href="/pages/create-polyline.html" title="" class="mb-2 text-slate-500">Create Polyline</a><a href="/pages/create-star.html" title="" class="mb-2 text-slate-500">Create Star</a><div class="text-xl my-4">Containers</div><a href="/pages/create-group.html" title="" class="mb-2 text-slate-500">Create Group</a><a href="/pages/create-defs.html" title="" class="mb-2 text-slate-500">Create Defs</a><a href="/pages/create-use.html" title="" class="mb-2 text-blue-500 bg-slate-100 px-4 py-2 rounded-md">Create Use</a><a href="/pages/create-pattern.html" title="" class="mb-2 text-slate-500">Create Pattern</a><div class="text-xl my-4">IO</div><a href="/pages/save-svg.html" title="" class="mb-2 text-slate-500">Save Svg</a><a href="/pages/download-svg.html" title="" class="mb-2 text-slate-500">Download Svg</a><div class="text-xl my-4">Helpers</div><a href="/pages/append-once.html" title="" class="mb-2 text-slate-500">Append Once</a><a href="/pages/prepend-once.html" title="" class="mb-2 text-slate-500">Prepend Once</a><div class="text-xl my-4">Other</div><a href="/pages/constants.html" title="" class="mb-2 text-slate-500">Constants</a><a href="/pages/unit-tests.html" title="" class="mb-2 text-slate-500">Unit Tests</a>
           </div>
         </div>
 
         <div class="p-4 overflow-y-auto h-full md:w-100-350">
-          <div class="w-800 max-w-full mx-auto my-10 leading-7 text-lg text-slate-800"><h2 class="text-3xl mb-8">Create SVG element from string</h2>
-<p class="mb-4">To create an SVG element from string, use the <strong class="font-bold">createSVGFromString()</strong> function as follows:</p>
-<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createSVGFromString } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
+          <div class="w-800 max-w-full mx-auto my-10 leading-7 text-lg text-slate-800"><h2 class="text-3xl mb-8">How to create &lt;use&gt; element</h2>
+<p class="mb-4">The <strong class="font-bold">createUse()</strong> function is used to create an SVG &lt;use&gt; element.</p>
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createUse } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
 
-<span class="hljs-keyword">const</span> svg = <span class="hljs-string">`
-&lt;svg viewBox=&quot;0 0 100 300&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
-  &lt;radialGradient cy=&quot;25%&quot; id=&quot;myGradient&quot;&gt;
-    &lt;stop offset=&quot;0&quot; stop-color=&quot;white&quot; /&gt;
-    &lt;stop offset=&quot;100%&quot; stop-color=&quot;black&quot; /&gt;
-  &lt;/radialGradient&gt;
-
-  &lt;circle cy=&quot;50&quot; cx=&quot;50&quot; r=&quot;45&quot; /&gt;
-  &lt;ellipse cy=&quot;150&quot; cx=&quot;50&quot; rx=&quot;45&quot; ry=&quot;25&quot; /&gt;
-  &lt;rect x=&quot;5&quot; y=&quot;205&quot; width=&quot;90&quot; height=&quot;90&quot; fill=&quot;url(#myGradient)&quot; /&gt;
-&lt;/svg&gt;`</span>;
-
-<span class="hljs-keyword">const</span> $svg = <span class="hljs-title function_">createSVGFromString</span>({
-    svg
-});</code></pre>
+<span class="hljs-keyword">const</span> $use = <span class="hljs-title function_">createUse</span>();</code></pre>
 <p class="mb-4">In Node.js, you need to first create a <a href="https://github.com/jsdom/jsdom" class="text-blue-500">JSDom</a> document, as described <a href="/pages/nodejs-usage.html" class="text-blue-500">here</a>, and then pass this document as additional parameter:</p>
-<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createSVGFromString } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg/dist/mz-svg.node.cjs&#x27;</span>;
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createUse } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg/dist/mz-svg.node.cjs&#x27;</span>;
 
-<span class="hljs-keyword">const</span> $svg = <span class="hljs-title function_">createSVGFromString</span>({
-    svg,
+<span class="hljs-keyword">const</span> $use = <span class="hljs-title function_">createUse</span>({
     <span class="hljs-attr">document</span>: doc
+});</code></pre>
+<p class="mb-4">The function can accept the following parameters. Note that <strong class="font-bold">all parameters are optional</strong>:</p>
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createUse } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
+
+<span class="hljs-keyword">const</span> $use = <span class="hljs-title function_">createUse</span>({
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/id</span>
+    <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;my-use-id&#x27;</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/class</span>
+    <span class="hljs-attr">classes</span>: <span class="hljs-string">&#x27;css-class1 css-class2&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/href</span>
+    <span class="hljs-attr">href</span>: <span class="hljs-string">&#x27;#my-circle&#x27;</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x</span>
+    <span class="hljs-attr">x</span>: <span class="hljs-number">0</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y</span>
+    <span class="hljs-attr">y</span>: <span class="hljs-number">0</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/width</span>
+    <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>,
+
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/height</span>
+    <span class="hljs-attr">height</span>: <span class="hljs-number">200</span>,
+
 });</code></pre>
 </div>
 
           <div class="w-800 max-w-full mx-auto grid lg:grid-cols-2 gap-8 items-center text-slate-500">
 <div class="flex justify-between items-start border border-slate-200 rounded p-4">
-  <a href="/pages/create-svg-element.html" title="" class="mr-4 hover:text-blue-500">
+  <a href="/pages/create-defs.html" title="" class="mr-4 hover:text-blue-500">
     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">
     <path stroke="none" d="M0 0h24v24H0z"/>
     <path d="M5 12h14M5 12l6 6m-6-6 6-6"/>
@@ -124,7 +136,7 @@
   </a>
   <div class="flex flex-col items-end justify-center">
     <div class="mb-2 text-sm text-slate-300">Previous</div>
-    <a href="/pages/create-svg-element.html" title="" class="hover:text-blue-500">Create Svg Element</a>
+    <a href="/pages/create-defs.html" title="" class="hover:text-blue-500">Create Defs</a>
   </div>
 </div>      
     
@@ -132,10 +144,10 @@
   
   <div class="flex flex-col justify-center">
     <div class="mb-2 text-sm text-slate-300">Next</div>
-    <a href="/pages/get-svg-as-string.html" title="" class="hover:text-blue-500">Get Svg As String</a>
+    <a href="/pages/create-pattern.html" title="" class="hover:text-blue-500">Create Pattern</a>
   </div>
   
-  <a href="/pages/get-svg-as-string.html" title="" class="mr-4 hover:text-blue-500">
+  <a href="/pages/create-pattern.html" title="" class="mr-4 hover:text-blue-500">
     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">
      <path stroke="none" d="M0 0h24v24H0z"/>
      <path d="M5 12h14m-6 6 6-6m-6-6 6 6"/>

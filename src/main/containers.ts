@@ -30,6 +30,35 @@ export const createDefs = (props?: {
     return $defs;
 };
 
+export const createUse = (props?: {
+    document?: Document;
+
+    href?: string;
+    x?: number|string;
+    y?: number|string;
+    width?: number|string;
+    height?: number|string;
+
+    id?: string;
+    classes?: string;
+}) : SVGUseElement => {
+
+    const doc = props?.document || window.document;
+    const $use = doc.createElementNS(SVG_NAMESPACE, 'use');
+
+    setAttributes($use, [
+        ['id', props?.id],
+        ['class', props?.classes],
+        ['href', props?.href],
+        ['x', props?.x],
+        ['y', props?.y],
+        ['width', props?.width],
+        ['height', props?.height],
+    ]);
+
+    return $use;
+};
+
 export interface ICreatePatternProps extends IPrimitiveShapeProps{
     x?: string|number;
     y?: string|number;
