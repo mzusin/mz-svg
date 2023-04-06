@@ -1,6 +1,19 @@
 # TODO
 
-## Add more shapes elements / primitives:
+## Other features
+- If 2 shapes/paths intersect
+- If shape inside viewport
+- Union, intersection, etc.
+- Shape transformations
+- Convert simple shape to path
+- Path relative to absolute and vise versa
+- Primitives as paths - possibility to get relative / abs coordinates
+- SVG in canvas
+
+## Docs
+- Add interactive examples to "create shapes" docs pages
+
+## Container objects:
 - marker
 
 ## Gradient
@@ -79,14 +92,3 @@
 - Arrow shapes
 - Functions like parabola or wave
 
-## Other features
-- If 2 shapes intersect
-- If shape inside viewport
-- Union, intersection, etc.
-- Shape transformations
-- Convert simple shape to path
-- Path relative to absolute and vise versa
-- Primitives as paths - possibility to get relative / abs coordinates
-
-## Docs
-- Add interactive examples to "create shapes" docs pages
