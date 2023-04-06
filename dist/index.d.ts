@@ -191,6 +191,18 @@ declare module 'mz-svg' {
     }
     export const createMask: (props?: ICreateMaskProps) => SVGMaskElement;
 
+    export interface ICreateSymbolProps extends IPrimitiveShapeProps {
+        x?: number | string;
+        y?: number | string;
+        width?: number | string;
+        height?: number | string;
+        preserveAspectRatio?: string;
+        refX?: number | string;
+        refY?: number | string;
+        viewBox?: string;
+    }
+    export const createSymbol: (props?: ICreateSymbolProps) => SVGSymbolElement;
+
     export const appendOnce: ($parent: SVGSVGElement | SVGElement, $el: SVGElement) => void;
     export const prependOnce: ($parent: SVGSVGElement | SVGElement, $el: SVGElement) => void;
 

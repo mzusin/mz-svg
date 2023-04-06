@@ -16,6 +16,7 @@ declare const api: {
     createPattern: (props?: containers.ICreatePatternProps | undefined) => SVGPatternElement;
     createClipPath: (props?: containers.ICreateClipPathProps | undefined) => SVGClipPathElement;
     createMask: (props?: containers.ICreateMaskProps | undefined) => SVGMaskElement;
+    createSymbol: (props?: containers.ICreateSymbolProps | undefined) => SVGSymbolElement;
     getRectPathD: (props: {
         x: number;
         y: number;

@@ -89,5 +89,5 @@
 - Path relative to absolute and vise versa
 - Primitives as paths - possibility to get relative / abs coordinates
 
-## Bugs
-- Go over all create function and check if it can be called without parameters
+## Docs
+- Add interactive examples to "create shapes" docs pages

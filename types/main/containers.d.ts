@@ -39,3 +39,14 @@ export interface ICreateMaskProps extends IPrimitiveShapeProps {
     maskUnits?: string;
 }
 export declare const createMask: (props?: ICreateMaskProps) => SVGMaskElement;
+export interface ICreateSymbolProps extends IPrimitiveShapeProps {
+    x?: number | string;
+    y?: number | string;
+    width?: number | string;
+    height?: number | string;
+    preserveAspectRatio?: string;
+    refX?: number | string;
+    refY?: number | string;
+    viewBox?: string;
+}
+export declare const createSymbol: (props?: ICreateSymbolProps) => SVGSymbolElement;

@@ -17,9 +17,7 @@ export const createDefs = (props?: {
     id?: string;
     classes?: string;
 }) : SVGDefsElement => {
-
     const doc = props?.document || window.document;
-
     const $defs = doc.createElementNS(SVG_NAMESPACE, 'defs');
 
     setAttributes($defs, [
@@ -134,4 +132,37 @@ export const createMask = (props?: ICreateMaskProps) : SVGMaskElement => {
     ]);
 
     return $mask;
+};
+
+export interface ICreateSymbolProps extends IPrimitiveShapeProps{
+    x?: number|string;
+    y?: number|string;
+    width?: number|string;
+    height?: number|string;
+    preserveAspectRatio?: string;
+    refX?: number|string;
+    refY?: number|string;
+    viewBox?: string;
+}
+
+export const createSymbol = (props?: ICreateSymbolProps) : SVGSymbolElement => {
+
+    const doc = props?.document || window.document;
+    const $symbol = doc.createElementNS(SVG_NAMESPACE, 'symbol');
+
+    setAttributes($symbol, [
+        ['x', props?.x],
+        ['y', props?.y],
+        ['width', props?.width],
+        ['height', props?.height],
+
+        ['preserveAspectRatio', props?.preserveAspectRatio],
+        ['refX', props?.refX],
+        ['refY', props?.refY],
+        ['viewBox', props?.viewBox],
+
+        ...getCommonAttributes(props),
+    ]);
+
+    return $symbol;
 };
