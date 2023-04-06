@@ -77,6 +77,26 @@ declare module 'mz-svg' {
         pathLength?: string | number;
     }
     export const createRect: (props: ICreateRectProps) => SVGRectElement;
+
+    export const getRectPathD: (props: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+        rx?: number;
+        ry?: number;
+    }) => string;
+
+    export interface ICreateRectPathProps extends IPrimitiveShapeProps {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+        rx?: number;
+        ry?: number;
+    }
+    export const createRectPath: (props: ICreateRectPathProps) => SVGPathElement;
+
     export interface ICreateCircleProps extends IPrimitiveShapeProps {
         cx?: string | number;
         cy?: string | number;

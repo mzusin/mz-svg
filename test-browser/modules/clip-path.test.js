@@ -1,5 +1,11 @@
 QUnit.module('ClipPath', (hooks) => {
 
+  QUnit.test('createClipPath without properties', (assert) => {
+    const $clipPath1 = mzSVG.createClipPath();
+    const $clipPath2 = htmlSVGElementFromString(`<clipPath></clipPath>`);
+    assert.strictEqual($clipPath1.isEqualNode($clipPath2), true);
+  });
+
   QUnit.test('createClipPath with provided fill', (assert) => {
     const fill = 'none';
 

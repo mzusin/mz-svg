@@ -1,5 +1,11 @@
 QUnit.module('Polygon', (hooks) => {
 
+  QUnit.test('createPolygon without properties', (assert) => {
+    const $polygon1 = mzSVG.createPolygon();
+    const $polygon2 = htmlSVGElementFromString(`<polygon></polygon>`);
+    assert.strictEqual($polygon1.isEqualNode($polygon2), true);
+  });
+
   QUnit.test('createPolygon with provided points', (assert) => {
     const points = '0,100 50,25 50,75 100,0';
 

@@ -6,27 +6,20 @@ export interface ICreatePathProps extends IPrimitiveShapeProps{
     pathLength?: string|number;
 }
 
-export const createPath = (props: ICreatePathProps) : SVGPathElement => {
+export const createPath = (props?: ICreatePathProps) : SVGPathElement => {
 
-    const {
-        document: _document,
-        d: _d,
-    } = props;
-
-    const doc = _document || window.document;
+    const doc = props?.document || window.document;
 
     const $path = doc.createElementNS(SVG_NAMESPACE, 'path');
 
-    if(_d){
+    if(props?.d){
         // remove newlines and double spaces
-        const d = _d.replace(/\s\s+/g, ' ');
-
-        $path.setAttribute('d', d);
+        props.d = props?.d.replace(/\s\s+/g, ' ');
     }
 
     setAttributes($path, [
-        ['d', _d],
-        ['pathLength', props.pathLength],
+        ['d', props?.d],
+        ['pathLength', props?.pathLength],
         ...getCommonAttributes(props),
     ]);
 
@@ -43,23 +36,19 @@ export interface ICreateRectProps extends IPrimitiveShapeProps{
     pathLength?: string|number;
 }
 
-export const createRect = (props: ICreateRectProps) : SVGRectElement => {
-    const {
-        document: _document
-    } = props;
-
-    const doc = _document || window.document;
+export const createRect = (props?: ICreateRectProps) : SVGRectElement => {
+    const doc = props?.document || window.document;
 
     const $rect = doc.createElementNS(SVG_NAMESPACE, 'rect');
 
     setAttributes($rect, [
-        ['x', props.x],
-        ['y', props.y],
-        ['rx', props.rx],
-        ['ry', props.ry],
-        ['width', props.width],
-        ['height', props.height],
-        ['pathLength', props.pathLength],
+        ['x', props?.x],
+        ['y', props?.y],
+        ['rx', props?.rx],
+        ['ry', props?.ry],
+        ['width', props?.width],
+        ['height', props?.height],
+        ['pathLength', props?.pathLength],
         ...getCommonAttributes(props),
     ]);
 
@@ -73,20 +62,16 @@ export interface ICreateCircleProps extends IPrimitiveShapeProps{
     pathLength?: string|number;
 }
 
-export const createCircle = (props: ICreateCircleProps) : SVGCircleElement => {
-    const {
-        document: _document,
-    } = props;
+export const createCircle = (props?: ICreateCircleProps) : SVGCircleElement => {
 
-    const doc = _document || window.document;
-
+    const doc = props?.document || window.document;
     const $circle = doc.createElementNS(SVG_NAMESPACE, 'circle');
 
     setAttributes($circle, [
-        ['cx', props.cx],
-        ['cy', props.cy],
-        ['r', props.r],
-        ['pathLength', props.pathLength],
+        ['cx', props?.cx],
+        ['cy', props?.cy],
+        ['r', props?.r],
+        ['pathLength', props?.pathLength],
         ...getCommonAttributes(props),
     ]);
 
@@ -101,21 +86,16 @@ export interface ICreateEllipseProps extends IPrimitiveShapeProps{
     pathLength?: string|number;
 }
 
-export const createEllipse = (props: ICreateEllipseProps) : SVGEllipseElement => {
-    const {
-        document: _document,
-    } = props;
-
-    const doc = _document || window.document;
-
+export const createEllipse = (props?: ICreateEllipseProps) : SVGEllipseElement => {
+    const doc = props?.document || window.document;
     const $ellipse = doc.createElementNS(SVG_NAMESPACE, 'ellipse');
 
     setAttributes($ellipse, [
-        ['cx', props.cx],
-        ['cy', props.cy],
-        ['rx', props.rx],
-        ['ry', props.ry],
-        ['pathLength', props.pathLength],
+        ['cx', props?.cx],
+        ['cy', props?.cy],
+        ['rx', props?.rx],
+        ['ry', props?.ry],
+        ['pathLength', props?.pathLength],
         ...getCommonAttributes(props),
     ]);
 
@@ -130,21 +110,16 @@ export interface ICreateLineProps extends IPrimitiveShapeProps{
     pathLength?: string|number;
 }
 
-export const createLine = (props: ICreateLineProps) : SVGLineElement => {
-    const {
-        document: _document,
-    } = props;
-
-    const doc = _document || window.document;
-
+export const createLine = (props?: ICreateLineProps) : SVGLineElement => {
+    const doc = props?.document || window.document;
     const $line = doc.createElementNS(SVG_NAMESPACE, 'line');
 
     setAttributes($line, [
-        ['x1', props.x1],
-        ['x2', props.x2],
-        ['y1', props.y1],
-        ['y2', props.y2],
-        ['pathLength', props.pathLength],
+        ['x1', props?.x1],
+        ['x2', props?.x2],
+        ['y1', props?.y1],
+        ['y2', props?.y2],
+        ['pathLength', props?.pathLength],
         ...getCommonAttributes(props),
     ]);
 
@@ -156,22 +131,16 @@ export interface ICreatePolygonProps extends IPrimitiveShapeProps{
     pathLength?: string|number;
 }
 
-export const createPolygon = (props: ICreatePolygonProps) : SVGPolygonElement => {
-
-    const {
-        document: _document
-    } = props;
-
-    const doc = _document || window.document;
-
+export const createPolygon = (props?: ICreatePolygonProps) : SVGPolygonElement => {
+    const doc = props?.document || window.document;
     const $polygon = doc.createElementNS(SVG_NAMESPACE, 'polygon');
 
     setAttributes($polygon, [
-        ['id', props.id],
-        ['class', props.classes],
-        ['style', props.style],
-        ['points', props.points],
-        ['pathLength', props.pathLength],
+        ['id', props?.id],
+        ['class', props?.classes],
+        ['style', props?.style],
+        ['points', props?.points],
+        ['pathLength', props?.pathLength],
         ...getCommonAttributes(props),
     ]);
 
@@ -183,22 +152,17 @@ export interface ICreatePolylineProps extends IPrimitiveShapeProps{
     pathLength?: string|number;
 }
 
-export const createPolyline = (props: ICreatePolygonProps) : SVGPolylineElement => {
-
-    const {
-        document: _document
-    } = props;
-
-    const doc = _document || window.document;
+export const createPolyline = (props?: ICreatePolylineProps) : SVGPolylineElement => {
+    const doc = props?.document || window.document;
 
     const $polyline = doc.createElementNS(SVG_NAMESPACE, 'polyline');
 
     setAttributes($polyline, [
-        ['id', props.id],
-        ['class', props.classes],
-        ['style', props.style],
-        ['points', props.points],
-        ['pathLength', props.pathLength],
+        ['id', props?.id],
+        ['class', props?.classes],
+        ['style', props?.style],
+        ['points', props?.points],
+        ['pathLength', props?.pathLength],
         ...getCommonAttributes(props),
     ]);
 

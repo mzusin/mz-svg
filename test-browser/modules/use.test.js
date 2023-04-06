@@ -2,7 +2,6 @@ QUnit.module('Use: createUse', (hooks) => {
 
   QUnit.test('createUse without parameters', (assert) => {
     const $use = mzSVG.createUse();
-
     assert.strictEqual(!!$use, true);
   });
 

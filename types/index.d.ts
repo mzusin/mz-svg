@@ -1,18 +1,19 @@
 import * as core from './main/core';
 import * as primitiveShapes from './main/shapes/primitive-shapes';
 import * as stars from './main/shapes/star-shapes';
+import * as shapePaths from './main/shapes/shape-paths';
 import * as containers from './main/containers';
 declare const api: {
     appendOnce: ($parent: SVGElement | SVGSVGElement, $el: SVGElement) => void;
     prependOnce: ($parent: SVGElement | SVGSVGElement, $el: SVGElement) => void;
-    createGroup: (props: import("./interfaces").IPrimitiveShapeProps) => SVGGElement;
+    createGroup: (props?: import("./interfaces").IPrimitiveShapeProps | undefined) => SVGGElement;
     createDefs: (props?: {
         document?: Document | undefined;
         id?: string | undefined;
         classes?: string | undefined;
     } | undefined) => SVGDefsElement;
     createUse: (props?: containers.ICreateUseProps | undefined) => SVGUseElement;
-    createPattern: (props: containers.ICreatePatternProps) => SVGPatternElement;
+    createPattern: (props?: containers.ICreatePatternProps | undefined) => SVGPatternElement;
     createClipPath: (props?: containers.ICreateClipPathProps | undefined) => SVGClipPathElement;
     createMask: (props?: containers.ICreateMaskProps | undefined) => SVGMaskElement;
     getRectPathD: (props: {
@@ -23,39 +24,7 @@ declare const api: {
         rx?: number | undefined;
         ry?: number | undefined;
     }) => string;
-    createRectPath: (props: {
-        document?: Document | undefined;
-        x: number;
-        y: number;
-        width: number;
-        height: number;
-        rx?: number | undefined;
-        ry?: number | undefined;
-        id?: string | undefined;
-        classes?: string | undefined;
-        style?: string | undefined;
-        pathLength?: string | number | undefined;
-        stroke?: string | undefined;
-        strokeWidth?: string | number | undefined;
-        strokeOpacity?: string | number | undefined;
-        strokeLinecap?: string | undefined;
-        strokeLinejoin?: string | undefined;
-        strokeDasharray?: string | undefined;
-        strokeDashoffset?: string | number | undefined;
-        strokeMiterlimit?: string | number | undefined;
-        fill?: string | undefined;
-        fillOpacity?: string | number | undefined;
-        fillRule?: string | undefined;
-        filter?: string | undefined;
-        mask?: string | undefined;
-        transform?: string | undefined;
-        vectorEffect?: string | undefined;
-        shapeRendering?: string | undefined;
-        clipPath?: string | undefined;
-        clipRule?: string | undefined;
-        opacity?: string | number | undefined;
-        visibility?: string | undefined;
-    }) => SVGPathElement;
+    createRectPath: (props: shapePaths.ICreateRectPathProps) => SVGPathElement;
     createStar: (props: stars.ICreateStarProps) => SVGPathElement;
     download: (props: {
         $svg?: SVGSVGElement | undefined;
@@ -66,13 +35,13 @@ declare const api: {
         isError: boolean;
         msg?: string | undefined;
     }>;
-    createPath: (props: primitiveShapes.ICreatePathProps) => SVGPathElement;
-    createRect: (props: primitiveShapes.ICreateRectProps) => SVGRectElement;
-    createCircle: (props: primitiveShapes.ICreateCircleProps) => SVGCircleElement;
-    createEllipse: (props: primitiveShapes.ICreateEllipseProps) => SVGEllipseElement;
-    createLine: (props: primitiveShapes.ICreateLineProps) => SVGLineElement;
-    createPolygon: (props: primitiveShapes.ICreatePolygonProps) => SVGPolygonElement;
-    createPolyline: (props: primitiveShapes.ICreatePolygonProps) => SVGPolylineElement;
+    createPath: (props?: primitiveShapes.ICreatePathProps | undefined) => SVGPathElement;
+    createRect: (props?: primitiveShapes.ICreateRectProps | undefined) => SVGRectElement;
+    createCircle: (props?: primitiveShapes.ICreateCircleProps | undefined) => SVGCircleElement;
+    createEllipse: (props?: primitiveShapes.ICreateEllipseProps | undefined) => SVGEllipseElement;
+    createLine: (props?: primitiveShapes.ICreateLineProps | undefined) => SVGLineElement;
+    createPolygon: (props?: primitiveShapes.ICreatePolygonProps | undefined) => SVGPolygonElement;
+    createPolyline: (props?: primitiveShapes.ICreatePolylineProps | undefined) => SVGPolylineElement;
     SVG_NAMESPACE: "http://www.w3.org/2000/svg";
     XMLNS_NAMESPACE: "http://www.w3.org/2000/xmlns/";
     DEFAULT_DECIMAL_PLACES: 2;

@@ -1,5 +1,11 @@
 QUnit.module('Polyline', (hooks) => {
 
+  QUnit.test('createPolyline without properties', (assert) => {
+    const $polyline1 = mzSVG.createPolyline();
+    const $polyline2 = htmlSVGElementFromString(`<polyline></polyline>`);
+    assert.strictEqual($polyline1.isEqualNode($polyline2), true);
+  });
+
   QUnit.test('createPolyline with provided points', (assert) => {
     const points = '0,100 50,25 50,75 100,0';
 

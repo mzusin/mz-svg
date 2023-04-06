@@ -1,5 +1,11 @@
 QUnit.module('Line', (hooks) => {
 
+  QUnit.test('createLine without parameters', (assert) => {
+    const $line1 = mzSVG.createLine();
+    const $line2 = htmlSVGElementFromString(`<line></line>`);
+    assert.strictEqual($line1.isEqualNode($line2), true);
+  });
+
   QUnit.test('createLine with provided x1', (assert) => {
     const x1 = 10;
 

@@ -1,5 +1,12 @@
 QUnit.module('Circle', (hooks) => {
 
+  QUnit.test('createCircle without properties', (assert) => {
+    const $circle1 = mzSVG.createCircle();
+    const $circle2 = htmlSVGElementFromString(`<circle></circle>`);
+
+    assert.strictEqual($circle1.isEqualNode($circle2), true);
+  });
+
   QUnit.test('createCircle with provided cx', (assert) => {
     const cx = 10;
 

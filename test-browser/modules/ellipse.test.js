@@ -1,5 +1,11 @@
 QUnit.module('Ellipse', (hooks) => {
 
+  QUnit.test('createEllipse without properties', (assert) => {
+    const $ellipse1 = mzSVG.createEllipse();
+    const $ellipse2 = htmlSVGElementFromString(`<ellipse></ellipse>`);
+    assert.strictEqual($ellipse1.isEqualNode($ellipse2), true);
+  });
+
   QUnit.test('createEllipse with provided cx', (assert) => {
     const cx = 10;
 

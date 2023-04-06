@@ -1,5 +1,11 @@
 QUnit.module('Rect', (hooks) => {
 
+  QUnit.test('createRect without properties', (assert) => {
+    const $rect1 = mzSVG.createRect();
+    const $rect2 = htmlSVGElementFromString(`<rect></rect>`);
+    assert.strictEqual($rect1.isEqualNode($rect2), true);
+  });
+
   QUnit.test('createRect with provided x', (assert) => {
     const x = 10;
 

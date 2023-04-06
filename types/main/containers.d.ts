@@ -1,5 +1,5 @@
 import { IPrimitiveShapeProps } from '../interfaces';
-export declare const createGroup: (props: IPrimitiveShapeProps) => SVGGElement;
+export declare const createGroup: (props?: IPrimitiveShapeProps) => SVGGElement;
 export declare const createDefs: (props?: {
     document?: Document;
     id?: string;
@@ -25,7 +25,7 @@ export interface ICreatePatternProps extends IPrimitiveShapeProps {
     preserveAspectRatio?: string;
     viewBox?: string;
 }
-export declare const createPattern: (props: ICreatePatternProps) => SVGPatternElement;
+export declare const createPattern: (props?: ICreatePatternProps) => SVGPatternElement;
 export interface ICreateClipPathProps extends IPrimitiveShapeProps {
     clipPathUnits?: string;
 }

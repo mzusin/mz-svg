@@ -1,5 +1,11 @@
 QUnit.module('Pattern: createPattern', (hooks) => {
 
+  QUnit.test('createPattern without properties', (assert) => {
+    const $pattern1 = mzSVG.createPattern();
+    const $pattern2 = htmlSVGElementFromString(`<pattern></pattern>`);
+    assert.strictEqual($pattern1.isEqualNode($pattern2), true);
+  });
+
   QUnit.test('createPattern with provided href', (assert) => {
     const href = 'example.svg#pattern';
 

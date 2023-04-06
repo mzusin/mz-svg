@@ -2,7 +2,6 @@ QUnit.module('Defs: createDefs', (hooks) => {
 
   QUnit.test('createDefs without parameters', (assert) => {
     const $defs = mzSVG.createDefs();
-
     assert.strictEqual(!!$defs, true);
   });
 

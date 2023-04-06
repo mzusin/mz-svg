@@ -1,5 +1,11 @@
 QUnit.module('Mask: createMask', (hooks) => {
 
+  QUnit.test('createMask without parameters', (assert) => {
+    const $mask1 = mzSVG.createMask();
+    const $mask2 = htmlSVGElementFromString(`<mask></mask>`);
+    assert.strictEqual($mask1.isEqualNode($mask2), true);
+  });
+
   QUnit.test('createMask with provided x', (assert) => {
     const x = 10;
 

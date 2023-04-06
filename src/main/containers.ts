@@ -1,7 +1,7 @@
 import { getCommonAttributes, setAttributes, SVG_NAMESPACE } from './core';
 import { IPrimitiveShapeProps } from '../interfaces';
 
-export const createGroup = (props: IPrimitiveShapeProps) : SVGGElement => {
+export const createGroup = (props?: IPrimitiveShapeProps) : SVGGElement => {
     const doc = props?.document || window.document;
     const $g = doc.createElementNS(SVG_NAMESPACE, 'g');
 
@@ -69,28 +69,22 @@ export interface ICreatePatternProps extends IPrimitiveShapeProps{
     viewBox?: string;
 }
 
-export const createPattern = (props: ICreatePatternProps) : SVGPatternElement => {
-
-    const {
-        document: _document,
-    } = props;
-
-    const doc = _document || window.document;
-
+export const createPattern = (props?: ICreatePatternProps) : SVGPatternElement => {
+    const doc = props?.document || window.document;
     const $pattern = doc.createElementNS(SVG_NAMESPACE, 'pattern');
 
     setAttributes($pattern, [
-        ['x', props.x],
-        ['y', props.y],
-        ['width', props.width],
-        ['height', props.height],
+        ['x', props?.x],
+        ['y', props?.y],
+        ['width', props?.width],
+        ['height', props?.height],
 
-        ['href', props.href],
-        ['patternContentUnits', props.patternContentUnits],
-        ['patternTransform', props.patternTransform],
-        ['patternUnits', props.patternUnits],
-        ['preserveAspectRatio', props.preserveAspectRatio],
-        ['viewBox', props.viewBox],
+        ['href', props?.href],
+        ['patternContentUnits', props?.patternContentUnits],
+        ['patternTransform', props?.patternTransform],
+        ['patternUnits', props?.patternUnits],
+        ['preserveAspectRatio', props?.preserveAspectRatio],
+        ['viewBox', props?.viewBox],
 
         ...getCommonAttributes(props),
     ]);

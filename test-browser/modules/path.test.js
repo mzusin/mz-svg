@@ -1,5 +1,11 @@
 QUnit.module('Path', (hooks) => {
 
+  QUnit.test('createPath without parameters', (assert) => {
+    const $path1 = mzSVG.createPath();
+    const $path2 = htmlSVGElementFromString(`<path></path>`);
+    assert.strictEqual($path1.isEqualNode($path2), true);
+  });
+
   QUnit.test('createPath with provided d', (assert) => {
     const d = 'M10,30 A20,20 0,0,1 50,30 A20,20 0,0,1 90,30 Q90,60 50,90 Q10,60 10,30 z M5,5 L90,90';
 

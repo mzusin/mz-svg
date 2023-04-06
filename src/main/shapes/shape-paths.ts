@@ -1,4 +1,5 @@
 import { createPath } from './primitive-shapes';
+import { IPrimitiveShapeProps } from '../../interfaces';
 
 export const getRectPathD = (props: {
     x: number,
@@ -51,49 +52,16 @@ export const getRectPathD = (props: {
     return `M${ x + width } ${ y } L${ x + width } ${ height + y } L${ x } ${ height + y } L${ x } ${ y } L${ x + width } ${ y } Z`;
 };
 
-export const createRectPath = (props: {
-    document?: Document;
+export interface ICreateRectPathProps extends IPrimitiveShapeProps{
     x: number;
     y: number;
     width: number;
     height: number;
     rx?: number;
     ry?: number;
+}
 
-    // -------------------------
-
-    id?: string;
-    classes?: string;
-    style?: string;
-
-    pathLength?: string|number;
-
-    stroke?: string;
-    strokeWidth?: number|string;
-    strokeOpacity?: number|string;
-    strokeLinecap?: string; // 'round'
-    strokeLinejoin?: string;
-    strokeDasharray?: string;
-    strokeDashoffset?: number|string;
-    strokeMiterlimit?: number|string;
-
-    fill?: string;
-    fillOpacity?: number|string;
-    fillRule?: string;
-
-    filter?: string;
-    mask?: string;
-    transform?: string;
-
-    vectorEffect?: string; // 'non-scaling-stroke' - used to disable line scale
-    shapeRendering?: string;
-
-    clipPath?: string;
-    clipRule?: string;
-
-    opacity?: string|number;
-    visibility?: string;
-}) : SVGPathElement => {
+export const createRectPath = (props: ICreateRectPathProps) : SVGPathElement => {
 
     const pathProps = {
         ...props,

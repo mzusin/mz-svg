@@ -3,7 +3,7 @@ export interface ICreatePathProps extends IPrimitiveShapeProps {
     d?: string;
     pathLength?: string | number;
 }
-export declare const createPath: (props: ICreatePathProps) => SVGPathElement;
+export declare const createPath: (props?: ICreatePathProps) => SVGPathElement;
 export interface ICreateRectProps extends IPrimitiveShapeProps {
     x?: number | string;
     y?: number | string;
@@ -13,14 +13,14 @@ export interface ICreateRectProps extends IPrimitiveShapeProps {
     ry?: number | string;
     pathLength?: string | number;
 }
-export declare const createRect: (props: ICreateRectProps) => SVGRectElement;
+export declare const createRect: (props?: ICreateRectProps) => SVGRectElement;
 export interface ICreateCircleProps extends IPrimitiveShapeProps {
     cx?: string | number;
     cy?: string | number;
     r?: string | number;
     pathLength?: string | number;
 }
-export declare const createCircle: (props: ICreateCircleProps) => SVGCircleElement;
+export declare const createCircle: (props?: ICreateCircleProps) => SVGCircleElement;
 export interface ICreateEllipseProps extends IPrimitiveShapeProps {
     cx?: string | number;
     cy?: string | number;
@@ -28,7 +28,7 @@ export interface ICreateEllipseProps extends IPrimitiveShapeProps {
     ry?: string | number;
     pathLength?: string | number;
 }
-export declare const createEllipse: (props: ICreateEllipseProps) => SVGEllipseElement;
+export declare const createEllipse: (props?: ICreateEllipseProps) => SVGEllipseElement;
 export interface ICreateLineProps extends IPrimitiveShapeProps {
     x1?: string | number;
     y1?: string | number;
@@ -36,14 +36,14 @@ export interface ICreateLineProps extends IPrimitiveShapeProps {
     y2?: string | number;
     pathLength?: string | number;
 }
-export declare const createLine: (props: ICreateLineProps) => SVGLineElement;
+export declare const createLine: (props?: ICreateLineProps) => SVGLineElement;
 export interface ICreatePolygonProps extends IPrimitiveShapeProps {
     points?: string;
     pathLength?: string | number;
 }
-export declare const createPolygon: (props: ICreatePolygonProps) => SVGPolygonElement;
+export declare const createPolygon: (props?: ICreatePolygonProps) => SVGPolygonElement;
 export interface ICreatePolylineProps extends IPrimitiveShapeProps {
     points?: string;
     pathLength?: string | number;
 }
-export declare const createPolyline: (props: ICreatePolygonProps) => SVGPolylineElement;
+export declare const createPolyline: (props?: ICreatePolylineProps) => SVGPolylineElement;
