@@ -27,11 +27,17 @@ declare module 'mz-svg' {
         visibility?: string;
     }
 
-    export const createSVG: (props: {
-        width: number;
-        height: number;
-        document?: Document;
-    }) => SVGSVGElement;
+    export interface ICreateSVGProps extends IPrimitiveShapeProps {
+        x?: string | number;
+        y?: string | number;
+        width?: string | number;
+        height?: string | number;
+        preserveAspectRatio?: string;
+        viewBox?: string;
+        autoViewBox?: boolean;
+    }
+
+    export const createSVG: (props?: ICreateSVGProps) => SVGSVGElement;
 
     export const createSVGFromString: (props: {
         document?: Document;

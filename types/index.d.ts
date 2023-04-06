@@ -1,3 +1,4 @@
+import * as core from './main/core';
 import * as primitiveShapes from './main/shapes/primitive-shapes';
 import * as stars from './main/shapes/star-shapes';
 import * as containers from './main/containers';
@@ -75,11 +76,7 @@ declare const api: {
     SVG_NAMESPACE: "http://www.w3.org/2000/svg";
     XMLNS_NAMESPACE: "http://www.w3.org/2000/xmlns/";
     DEFAULT_DECIMAL_PLACES: 2;
-    createSVG: (props: {
-        width: number;
-        height: number;
-        document?: Document | undefined;
-    }) => SVGSVGElement;
+    createSVG: (props?: core.ICreateSVGProps | undefined) => SVGSVGElement;
     createSVGFromString: (props: {
         document?: Document | undefined;
         svg: string;

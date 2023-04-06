@@ -1,3 +1,5 @@
+import { IPrimitiveShapeProps } from '../interfaces';
+
 /**
  * SVG namespace that is defined in SVG v1.0 Specification
  * and subsequently added to by SVG 1.1, SVG 1.2 and SVG 2
@@ -6,42 +8,40 @@ export const SVG_NAMESPACE= 'http://www.w3.org/2000/svg';
 export const XMLNS_NAMESPACE = 'http://www.w3.org/2000/xmlns/';
 export const DEFAULT_DECIMAL_PLACES = 2;
 
+export interface ICreateSVGProps extends IPrimitiveShapeProps{
+    x?: string|number;
+    y?: string|number;
+    width?: string|number;
+    height?: string|number;
+    preserveAspectRatio?: string;
+    viewBox?: string;
+    autoViewBox?: boolean;
+}
+
 /**
  * Create new SVG element in browser or Node.js environment.
  * In case of Node.js, JSDom document can be provided.
  */
-export const createSVG = (props?: {
-    document?: Document;
-    x?: string|number;
-    y?: string|number;
-    width?: number;
-    height?: number;
-    preserveAspectRatio?: string;
-    viewBox?: string;
-    id?: string;
-    classes?: string;
-}) : SVGSVGElement => {
+export const createSVG = (props?: ICreateSVGProps) : SVGSVGElement => {
 
     const doc = props?.document || window.document;
     const $svg= doc.createElementNS(SVG_NAMESPACE, 'svg');
 
-    const x = Number(props?.x) || 0;
-    const y = Number(props?.y) || 0;
-    const width = Math.max(0, Number(props?.width) || 0);
-    const height = Math.max(0, Number(props?.height) || 0);
-
     $svg.setAttributeNS(XMLNS_NAMESPACE, 'xmlns', SVG_NAMESPACE);
 
-    setAttributes($svg, [
-        ['x', x],
-        ['y', y],
-        ['width', width],
-        ['height', height],
-        ['viewBox', props?.viewBox ? props?.viewBox : `${ x } ${ y } ${ width } ${ height }`],
+    let viewBox = props?.viewBox;
+    if(props?.autoViewBox){
+        viewBox = `${ props?.x || 0 } ${ props?.y || 0 } ${ props?.width || 0 } ${ props?.height || 0 }`;
+    }
 
-        ['id', props?.id],
-        ['class', props?.classes],
+    setAttributes($svg, [
+        ['x', props?.x],
+        ['y', props?.y],
+        ['width', props?.width],
+        ['height', props?.height],
+        ['viewBox', viewBox],
         ['preserveAspectRatio', props?.preserveAspectRatio],
+        ...getCommonAttributes(props),
     ]);
 
     return $svg;

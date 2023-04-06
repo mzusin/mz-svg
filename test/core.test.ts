@@ -16,6 +16,7 @@ export const createNodeDoc = () => {
 };
 
 describe('Core: createSVG', () => {
+
     test('createSVG 100x200 ---> width should be 100', () => {
 
         const $svg = createSVG({
@@ -38,11 +39,12 @@ describe('Core: createSVG', () => {
         expect($svg.getAttribute('height')).toStrictEqual('200');
     });
 
-    test('createSVG 100x200 ---> viewBox should be 0 0 100 200', () => {
+    test('createSVG 100x200 with auto viewBox ---> viewBox should be 0 0 100 200', () => {
 
         const $svg = createSVG({
             width: 100,
             height: 200,
+            autoViewBox: true,
             document: createNodeDoc(),
         });
 
@@ -71,31 +73,6 @@ describe('Core: createSVG', () => {
         expect($svg.getAttribute('width')).toStrictEqual('0');
     });
 
-    test('createSVG -10x-10 ---> width should be 0', () => {
-
-        const $svg = createSVG({
-            width: -10,
-            height: -10,
-            document: createNodeDoc(),
-        });
-
-        expect($svg.getAttribute('width')).toStrictEqual('0');
-    });
-
-    test('createSVG -aaa x aaa ---> width should be 0', () => {
-
-        const $svg = createSVG({
-            // @ts-ignore - needed for testing
-            width: 'aaa',
-
-            // @ts-ignore - needed for testing
-            height: 'aaa',
-            document: createNodeDoc(),
-        });
-
-        expect($svg.getAttribute('width')).toStrictEqual('0');
-    });
-
     test('createSVG 0x0 ---> height should be 0', () => {
 
         const $svg = createSVG({
@@ -107,61 +84,12 @@ describe('Core: createSVG', () => {
         expect($svg.getAttribute('height')).toStrictEqual('0');
     });
 
-    test('createSVG -10x-10 ---> height should be 0', () => {
-
-        const $svg = createSVG({
-            width: -10,
-            height: -10,
-            document: createNodeDoc(),
-        });
-
-        expect($svg.getAttribute('height')).toStrictEqual('0');
-    });
-
-    test('createSVG -aaa x aaa ---> height should be 0', () => {
-
-        const $svg = createSVG({
-            // @ts-ignore - needed for testing
-            width: 'aaa',
-
-            // @ts-ignore - needed for testing
-            height: 'aaa',
-            document: createNodeDoc(),
-        });
-
-        expect($svg.getAttribute('height')).toStrictEqual('0');
-    });
-
     test('createSVG 0x0 ---> viewBox should be 0', () => {
 
         const $svg = createSVG({
             width: 0,
             height: 0,
-            document: createNodeDoc(),
-        });
-
-        expect($svg.getAttribute('viewBox')).toStrictEqual('0 0 0 0');
-    });
-
-    test('createSVG -10x-10 ---> viewBox should be 0', () => {
-
-        const $svg = createSVG({
-            width: -10,
-            height: -10,
-            document: createNodeDoc(),
-        });
-
-        expect($svg.getAttribute('viewBox')).toStrictEqual('0 0 0 0');
-    });
-
-    test('createSVG -aaa x aaa ---> viewBox should be 0', () => {
-
-        const $svg = createSVG({
-            // @ts-ignore - needed for testing
-            width: 'aaa',
-
-            // @ts-ignore - needed for testing
-            height: 'aaa',
+            autoViewBox: true,
             document: createNodeDoc(),
         });
 
@@ -192,6 +120,16 @@ describe('Core: createSVG', () => {
         });
 
         expect($svg.getAttribute('y')).toStrictEqual('-10');
+    });
+
+    test('createSVG - preserveAspectRatio', () => {
+
+        const $svg = createSVG({
+            preserveAspectRatio: 'xMinYMid',
+            document: createNodeDoc(),
+        });
+
+        expect($svg.getAttribute('preserveAspectRatio')).toStrictEqual('xMinYMid');
     });
 });
 
