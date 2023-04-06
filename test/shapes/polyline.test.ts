@@ -1,7 +1,7 @@
 import {
     createPolyline,
-} from '../src/index-esm';
-import { createNodeDoc } from './core.test';
+} from '../../src/index-esm';
+import { createNodeDoc } from '../core.test';
 
 describe('Polyline: createPolyline', () => {
 

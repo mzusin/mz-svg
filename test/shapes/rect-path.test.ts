@@ -1,6 +1,6 @@
 import {
     getRectPathD,
-} from '../src/index-esm';
+} from '../../src/index-esm';
 
 describe('Shape Paths: createRectPath', () => {
 

@@ -23,7 +23,7 @@ describe('Core: saveSVG', () => {
   <rect x="5" y="205" width="90" height="90" fill="url(#myGradient)" />
 </svg>`;
 
-        const absOutFilePath = path.join(__dirname, './out/test.svg');
+        const absOutFilePath = path.join(__dirname, './test.svg');
 
         if (fs.existsSync(absOutFilePath)) {
             fs.unlinkSync(absOutFilePath);

@@ -1,7 +1,7 @@
 import {
     createEllipse,
-} from '../src/index-esm';
-import { createNodeDoc } from './core.test';
+} from '../../src/index-esm';
+import { createNodeDoc } from '../core.test';
 
 describe('Ellipse: createEllipse', () => {
 

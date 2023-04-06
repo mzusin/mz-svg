@@ -1,58 +1,80 @@
 import {
-    createLine,
-} from '../src/index-esm';
-import { createNodeDoc } from './core.test';
+    createRect,
+} from '../../src/index-esm';
+import { createNodeDoc } from '../core.test';
 
-describe('Line: createLine', () => {
+describe('Path: createRect', () => {
 
-    test('createLine with provided x1', () => {
-        const x1 = 10;
+    test('createRect with provided x', () => {
+        const x = 10;
 
-        const $rect = createLine({
-            x1,
+        const $rect = createRect({
+            x,
             document: createNodeDoc(),
         });
 
-        expect($rect.getAttribute('x1')).toStrictEqual(x1.toString());
+        expect($rect.getAttribute('x')).toStrictEqual(x.toString());
     });
 
-    test('createLine with provided x2', () => {
-        const x2 = 10;
+    test('createRect with provided y', () => {
+        const y = 20;
 
-        const $rect = createLine({
-            x2,
+        const $rect = createRect({
+            y,
             document: createNodeDoc(),
         });
 
-        expect($rect.getAttribute('x2')).toStrictEqual(x2.toString());
+        expect($rect.getAttribute('y')).toStrictEqual(y.toString());
     });
 
-    test('createLine with provided y1', () => {
-        const y1 = 20;
+    test('createRect with provided rx', () => {
+        const rx = 10;
 
-        const $rect = createLine({
-            y1,
+        const $rect = createRect({
+            rx,
             document: createNodeDoc(),
         });
 
-        expect($rect.getAttribute('y1')).toStrictEqual(y1.toString());
+        expect($rect.getAttribute('rx')).toStrictEqual(rx.toString());
     });
 
-    test('createLine with provided y2', () => {
-        const y2 = 20;
+    test('createRect with provided ry', () => {
+        const ry = 20;
 
-        const $rect = createLine({
-            y2,
+        const $rect = createRect({
+            ry,
             document: createNodeDoc(),
         });
 
-        expect($rect.getAttribute('y2')).toStrictEqual(y2.toString());
+        expect($rect.getAttribute('ry')).toStrictEqual(ry.toString());
     });
 
-    test('createLine with provided fill', () => {
+    test('createRect with provided width', () => {
+        const width = 100;
+
+        const $rect = createRect({
+            width,
+            document: createNodeDoc(),
+        });
+
+        expect($rect.getAttribute('width')).toStrictEqual(width.toString());
+    });
+
+    test('createRect with provided height', () => {
+        const height = 200;
+
+        const $rect = createRect({
+            height,
+            document: createNodeDoc(),
+        });
+
+        expect($rect.getAttribute('height')).toStrictEqual(height.toString());
+    });
+
+    test('createRect with provided fill', () => {
         const fill = 'none';
 
-        const $rect = createLine({
+        const $rect = createRect({
             fill,
             document: createNodeDoc(),
         });
@@ -60,10 +82,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('fill')).toStrictEqual(fill);
     });
 
-    test('createLine with provided strokeWidth', () => {
+    test('createRect with provided strokeWidth', () => {
         const strokeWidth = 10;
 
-        const $rect = createLine({
+        const $rect = createRect({
             strokeWidth,
             document: createNodeDoc(),
         });
@@ -71,10 +93,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('stroke-width')).toStrictEqual(strokeWidth.toString());
     });
 
-    test('createLine with provided stroke', () => {
+    test('createRect with provided stroke', () => {
         const stroke = 'red';
 
-        const $rect = createLine({
+        const $rect = createRect({
             stroke,
             document: createNodeDoc(),
         });
@@ -82,10 +104,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('stroke')).toStrictEqual(stroke);
     });
 
-    test('createLine with provided strokeLinecap', () => {
+    test('createRect with provided strokeLinecap', () => {
         const strokeLinecap = 'round';
 
-        const $rect = createLine({
+        const $rect = createRect({
             strokeLinecap,
             document: createNodeDoc(),
         });
@@ -93,10 +115,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('stroke-linecap')).toStrictEqual(strokeLinecap);
     });
 
-    test('createLine with provided strokeLinejoin', () => {
+    test('createRect with provided strokeLinejoin', () => {
         const strokeLinejoin = 'round';
 
-        const $rect = createLine({
+        const $rect = createRect({
             strokeLinejoin,
             document: createNodeDoc(),
         });
@@ -104,10 +126,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('stroke-linejoin')).toStrictEqual(strokeLinejoin);
     });
 
-    test('createLine with provided vectorEffect', () => {
+    test('createRect with provided vectorEffect', () => {
         const vectorEffect = 'non-scaling-stroke';
 
-        const $rect = createLine({
+        const $rect = createRect({
             vectorEffect,
             document: createNodeDoc(),
         });
@@ -115,10 +137,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('vector-effect')).toStrictEqual(vectorEffect);
     });
 
-    test('createLine with provided id', () => {
+    test('createRect with provided id', () => {
         const id = 'path-1';
 
-        const $rect = createLine({
+        const $rect = createRect({
             id,
             document: createNodeDoc(),
         });
@@ -126,10 +148,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('id')).toStrictEqual(id);
     });
 
-    test('createLine with provided classes', () => {
+    test('createRect with provided classes', () => {
         const classes = 'path-class-1 path-class-2';
 
-        const $rect = createLine({
+        const $rect = createRect({
             classes,
             document: createNodeDoc(),
         });
@@ -137,10 +159,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('class')).toStrictEqual(classes);
     });
 
-    test('createLine with provided style', () => {
+    test('createRect with provided style', () => {
         const style = 'stroke: red; fill: blue;';
 
-        const $rect = createLine({
+        const $rect = createRect({
             style,
             document: createNodeDoc(),
         });
@@ -148,10 +170,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('style')).toStrictEqual(style);
     });
 
-    test('createLine with provided pathLength', () => {
+    test('createRect with provided pathLength', () => {
         const pathLength = '50%';
 
-        const $rect = createLine({
+        const $rect = createRect({
             pathLength,
             document: createNodeDoc(),
         });
@@ -159,10 +181,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('pathLength')).toStrictEqual(pathLength);
     });
 
-    test('createLine with provided strokeOpacity', () => {
+    test('createRect with provided strokeOpacity', () => {
         const strokeOpacity = 0.5;
 
-        const $rect = createLine({
+        const $rect = createRect({
             strokeOpacity,
             document: createNodeDoc(),
         });
@@ -170,10 +192,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('stroke-opacity')).toStrictEqual(strokeOpacity.toString());
     });
 
-    test('createLine with provided strokeDasharray', () => {
+    test('createRect with provided strokeDasharray', () => {
         const strokeDasharray = '5 10';
 
-        const $rect = createLine({
+        const $rect = createRect({
             strokeDasharray,
             document: createNodeDoc(),
         });
@@ -181,10 +203,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('stroke-dasharray')).toStrictEqual(strokeDasharray);
     });
 
-    test('createLine with provided strokeDashoffset', () => {
+    test('createRect with provided strokeDashoffset', () => {
         const strokeDashoffset = '10%';
 
-        const $rect = createLine({
+        const $rect = createRect({
             strokeDashoffset,
             document: createNodeDoc(),
         });
@@ -192,10 +214,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('stroke-dashoffset')).toStrictEqual(strokeDashoffset);
     });
 
-    test('createLine with provided strokeMiterlimit', () => {
+    test('createRect with provided strokeMiterlimit', () => {
         const strokeMiterlimit = 2;
 
-        const $rect = createLine({
+        const $rect = createRect({
             strokeMiterlimit,
             document: createNodeDoc(),
         });
@@ -203,10 +225,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('stroke-miterlimit')).toStrictEqual(strokeMiterlimit.toString());
     });
 
-    test('createLine with provided fillOpacity', () => {
+    test('createRect with provided fillOpacity', () => {
         const fillOpacity = 0.5;
 
-        const $rect = createLine({
+        const $rect = createRect({
             fillOpacity,
             document: createNodeDoc(),
         });
@@ -214,10 +236,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('fill-opacity')).toStrictEqual(fillOpacity.toString());
     });
 
-    test('createLine with provided fillRule', () => {
+    test('createRect with provided fillRule', () => {
         const fillRule = 'evenodd';
 
-        const $rect = createLine({
+        const $rect = createRect({
             fillRule,
             document: createNodeDoc(),
         });
@@ -225,10 +247,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('fill-rule')).toStrictEqual(fillRule);
     });
 
-    test('createLine with provided filter', () => {
+    test('createRect with provided filter', () => {
         const filter = 'url(#drop-shadow)';
 
-        const $rect = createLine({
+        const $rect = createRect({
             filter,
             document: createNodeDoc(),
         });
@@ -236,10 +258,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('filter')).toStrictEqual(filter);
     });
 
-    test('createLine with provided mask', () => {
+    test('createRect with provided mask', () => {
         const mask = 'url(#my-mask)';
 
-        const $rect = createLine({
+        const $rect = createRect({
             mask,
             document: createNodeDoc(),
         });
@@ -247,10 +269,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('mask')).toStrictEqual(mask);
     });
 
-    test('createLine with provided transform', () => {
+    test('createRect with provided transform', () => {
         const transform = 'translate(50,50)';
 
-        const $rect = createLine({
+        const $rect = createRect({
             transform,
             document: createNodeDoc(),
         });
@@ -258,10 +280,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('transform')).toStrictEqual(transform);
     });
 
-    test('createLine with provided shapeRendering', () => {
+    test('createRect with provided shapeRendering', () => {
         const shapeRendering = 'crispEdges';
 
-        const $rect = createLine({
+        const $rect = createRect({
             shapeRendering,
             document: createNodeDoc(),
         });
@@ -269,10 +291,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('shape-rendering')).toStrictEqual(shapeRendering);
     });
 
-    test('createLine with provided clipPath', () => {
+    test('createRect with provided clipPath', () => {
         const clipPath = 'url(#my-clip)';
 
-        const $rect = createLine({
+        const $rect = createRect({
             clipPath,
             document: createNodeDoc(),
         });
@@ -280,10 +302,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('clip-path')).toStrictEqual(clipPath);
     });
 
-    test('createLine with provided clipRule', () => {
+    test('createRect with provided clipRule', () => {
         const clipRule = 'evenodd';
 
-        const $rect = createLine({
+        const $rect = createRect({
             clipRule,
             document: createNodeDoc(),
         });
@@ -291,10 +313,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('clip-rule')).toStrictEqual(clipRule);
     });
 
-    test('createLine with provided opacity', () => {
+    test('createRect with provided opacity', () => {
         const opacity = 0.5;
 
-        const $rect = createLine({
+        const $rect = createRect({
             opacity,
             document: createNodeDoc(),
         });
@@ -302,10 +324,10 @@ describe('Line: createLine', () => {
         expect($rect.getAttribute('opacity')).toStrictEqual(opacity.toString());
     });
 
-    test('createLine with provided visibility', () => {
+    test('createRect with provided visibility', () => {
         const visibility = 'hidden';
 
-        const $rect = createLine({
+        const $rect = createRect({
             visibility,
             document: createNodeDoc(),
         });
