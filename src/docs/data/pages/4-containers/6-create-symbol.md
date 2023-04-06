@@ -1,65 +1,101 @@
-## How to create &lt;mask>
+## How to create &lt;symbol>
 
-The **createMask()** function is used to create &lt;mask> element.
+The **createSymbol()** function is used to create &lt;symbol> element.
 
 ```js
-import { createMask } from 'mz-svg';
+import { createSymbol } from 'mz-svg';
 
-const $mask = createMask();
+const $symbol = createSymbol();
 ```
 
-Below is a complete example that uses a mask:
+Below is a complete example that uses a symbol:
 
 <div class="flex justify-center my-4">
-    <svg viewBox="-10 -10 120 120" width="120" height="120">
-        <mask id="myMask">
-            <rect x="0" y="0" width="100" height="100" fill="white" />
-            <path
-                    d="M10,35 A20,20,0,0,1,50,35 A20,20,0,0,1,90,35 Q90,65,50,95 Q10,65,10,35 Z"
-                    fill="black" />
-        </mask>
-        <circle cx="50" cy="50" r="50" mask="url(#myMask)" />
+    <svg viewBox="0 0 80 20" width="240" height="60" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="myDot" width="10" height="10" viewBox="0 0 2 2">
+            <circle cx="1" cy="1" r="1" />
+        </symbol>
+        <path
+                d="M0,10 h80 M10,0 v20 M25,0 v20 M40,0 v20 M55,0 v20 M70,0 v20"
+                fill="none"
+                stroke="pink" />
+        <use href="#myDot" x="5" y="5" style="opacity:1.0" />
+        <use href="#myDot" x="20" y="5" style="opacity:0.8" />
+        <use href="#myDot" x="35" y="5" style="opacity:0.6" />
+        <use href="#myDot" x="50" y="5" style="opacity:0.4" />
+        <use href="#myDot" x="65" y="5" style="opacity:0.2" />
     </svg>
 </div>
 
 ```js
-const $svg = mzSVG.createSVG({
-    x: -10,
-    y: -10,
-    width: 120,
-    height: 120
-});
-
-const $mask = mzSVG.createMask({
-    id: 'my-mask',
-});
-
-// Everything under a white pixel will be visible
-$mask.append(mzSVG.createRect({
+        const $svg = mzSVG.createSVG({
     x: 0,
     y: 0,
-    width: 100,
-    height: 100,
-    fill: '#ffffff',
-}));
-
-// Everything under a black pixel will be invisible
-$mask.append(mzSVG.createPath({
-    d: 'M10,35 A20,20,0,0,1,50,35 A20,20,0,0,1,90,35 Q90,65,50,95 Q10,65,10,35 Z',
-    fill: 'black',
-}));
-
-$svg.append($mask);
-
-// with this mask applied, we "punch" a heart shape hole into the circle
-const $circle = mzSVG.createCircle({
-    cx: 50,
-    cy: 50,
-    r: 50,
-    mask: 'url(#my-mask)',
+    width: 240,
+    height: 60,
+    viewBox: '0 0 80 20',
 });
 
-$svg.append($circle);
+// Create a circle symbol in its own coordinate system
+const $symbol = mzSVG.createSymbol({
+    id: 'dot-symbol',
+    width: 10,
+    height: 10,
+    viewBox: '0 0 2 2',
+});
+
+const $circle = mzSVG.createCircle({
+    cx: 1,
+    cy: 1,
+    r: 1,
+});
+$symbol.append($circle);
+
+$svg.append($symbol);
+
+// A grid to materialize our symbol positioning
+const $path = mzSVG.createPath({
+    d: 'M0,10 h80 M10,0 v20 M25,0 v20 M40,0 v20 M55,0 v20 M70,0 v20',
+    fill: 'none',
+    stroke: 'pink',
+});
+$svg.append($path);
+
+// All instances of our symbol
+$svg.append(mzSVG.createUse({
+    href: '#dot-symbol',
+    x: 5,
+    y: 5,
+    opacity: 1,
+}));
+
+$svg.append(mzSVG.createUse({
+    href: '#dot-symbol',
+    x: 20,
+    y: 5,
+    opacity: 0.8,
+}));
+
+$svg.append(mzSVG.createUse({
+    href: '#dot-symbol',
+    x: 35,
+    y: 5,
+    opacity: 0.6,
+}));
+
+$svg.append(mzSVG.createUse({
+    href: '#dot-symbol',
+    x: 50,
+    y: 5,
+    opacity: 0.4,
+}));
+
+$svg.append(mzSVG.createUse({
+    href: '#dot-symbol',
+    x: 65,
+    y: 5,
+    opacity: 0.2,
+}));
 
 document.body.append($svg);
 ```
@@ -67,10 +103,10 @@ document.body.append($svg);
 The function can accept the following parameters. Note that **all parameters are optional**:
 
 ```js
-import { createMask } from 'mz-svg';
+import { createSymbol } from 'mz-svg';
 
-const $mask = createMask({
-    
+const $symbol = createSymbol({
+
     id: 'my-id',
     classes: 'css-class1 css-class2',
     style: 'stroke: blue',
@@ -87,11 +123,17 @@ const $mask = createMask({
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/height
     height: 200,
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/maskContentUnits
-    maskContentUnits: 'userSpaceOnUse',
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/refX
+    refX: 'left',
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/maskUnits
-    maskUnits: 'userSpaceOnUse',
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/refY
+    refY: 'top',
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
+    preserveAspectRatio: 'xMidYMid meet',
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
+    viewBox: '0, 0, 10, 10',
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke
     stroke: '#00ffff',

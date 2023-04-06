@@ -2,7 +2,6 @@
 
 ## Add more shapes elements / primitives:
 - marker
-- symbol
 
 ## Gradient
 - linearGradient

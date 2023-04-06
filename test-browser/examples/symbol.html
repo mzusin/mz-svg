@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mzSVG</title>
+</head>
+<body>
+    <svg viewBox="0 0 80 20" width="240" height="60" xmlns="http://www.w3.org/2000/svg">
+        <!-- Our symbol in its own coordinate system -->
+        <symbol id="myDot" width="10" height="10" viewBox="0 0 2 2">
+            <circle cx="1" cy="1" r="1" />
+        </symbol>
+
+        <!-- A grid to materialize our symbol positioning -->
+        <path
+                d="M0,10 h80 M10,0 v20 M25,0 v20 M40,0 v20 M55,0 v20 M70,0 v20"
+                fill="none"
+                stroke="pink" />
+
+        <!-- All instances of our symbol -->
+        <use href="#myDot" x="5" y="5" style="opacity:1.0" />
+        <use href="#myDot" x="20" y="5" style="opacity:0.8" />
+        <use href="#myDot" x="35" y="5" style="opacity:0.6" />
+        <use href="#myDot" x="50" y="5" style="opacity:0.4" />
+        <use href="#myDot" x="65" y="5" style="opacity:0.2" />
+    </svg>
+
+    <script src="../../dist/mz-svg.min.js"></script>
+    <script>
+
+        const $svg = mzSVG.createSVG({
+            x: 0,
+            y: 0,
+            width: 240,
+            height: 60,
+            viewBox: '0 0 80 20',
+        });
+
+        // Create a circle symbol in its own coordinate system
+        const $symbol = mzSVG.createSymbol({
+            id: 'dot-symbol',
+            width: 10,
+            height: 10,
+            viewBox: '0 0 2 2',
+        });
+
+        const $circle = mzSVG.createCircle({
+            cx: 1,
+            cy: 1,
+            r: 1,
+        });
+        $symbol.append($circle);
+
+        $svg.append($symbol);
+
+        // A grid to materialize our symbol positioning
+        const $path = mzSVG.createPath({
+            d: 'M0,10 h80 M10,0 v20 M25,0 v20 M40,0 v20 M55,0 v20 M70,0 v20',
+            fill: 'none',
+            stroke: 'pink',
+        });
+        $svg.append($path);
+
+        // All instances of our symbol
+        $svg.append(mzSVG.createUse({
+            href: '#dot-symbol',
+            x: 5,
+            y: 5,
+            opacity: 1,
+        }));
+
+        $svg.append(mzSVG.createUse({
+            href: '#dot-symbol',
+            x: 20,
+            y: 5,
+            opacity: 0.8,
+        }));
+
+        $svg.append(mzSVG.createUse({
+            href: '#dot-symbol',
+            x: 35,
+            y: 5,
+            opacity: 0.6,
+        }));
+
+        $svg.append(mzSVG.createUse({
+            href: '#dot-symbol',
+            x: 50,
+            y: 5,
+            opacity: 0.4,
+        }));
+
+        $svg.append(mzSVG.createUse({
+            href: '#dot-symbol',
+            x: 65,
+            y: 5,
+            opacity: 0.2,
+        }));
+
+        document.body.append($svg);
+    </script>
+</body>
+</html>

@@ -20,6 +20,7 @@ https://range-slider.toolcool.org/pages/create-use.html
 https://range-slider.toolcool.org/pages/create-pattern.html
 https://range-slider.toolcool.org/pages/create-clip-path.html
 https://range-slider.toolcool.org/pages/create-mask.html
+https://range-slider.toolcool.org/pages/create-symbol.html
 https://range-slider.toolcool.org/pages/save-svg.html
 https://range-slider.toolcool.org/pages/download-svg.html
 https://range-slider.toolcool.org/pages/append-once.html
