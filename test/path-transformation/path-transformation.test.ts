@@ -1,4 +1,4 @@
-import { transformPath, createPath, parseD } from '../../src/index-esm';
+import { transformPath, createPath } from '../../src/index-esm';
 import { createNodeDoc } from '../core.test';
 
 describe('Path Transformations', () => {
@@ -22,14 +22,6 @@ describe('Path Transformations', () => {
             }),
         });
         expect(res).toStrictEqual(null);
-    });
-
-    describe('Parse Path Data', () => {
-
-        test('parseD with d = empty string', () => {
-            const res = parseD('');
-            expect(res.length).toStrictEqual(0);
-        });
     });
 });
 

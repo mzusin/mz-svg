@@ -1,43 +1,4 @@
-export enum ETokenType {
-
-    // Literals ----------
-    NUMBER = 'num',
-
-    // Keywords ----------
-    // The "moveto" commands (M or m) establish a new current point.
-    // The effect is as if the "pen" were lifted and moved to a new location.
-    MoveToAbs = 'M',
-    MoveToRel = 'm',
-
-    // The "closepath" (Z or z) ends the current sub-path and causes an automatic straight line
-    // to be drawn from the current point to the initial point of the current sub-path.
-    ClosePathAbs = 'Z',
-    ClosePathRel = 'z',
-
-    // The various "lineto" commands draw straight lines from the current point to a new point.
-    LineToAbs = 'L',
-    LineToRel = 'l',
-    LineToHorizontalAbs = 'H',
-    LineToHorizontalRel = 'h',
-    LineToVerticalAbs = 'V',
-    LineToVerticalRel = 'v',
-
-    // Cubic Bézier commands
-    CubicCurveToAbs = 'C',
-    CubicCurveToRel = 'c',
-    CubicCurveToSmoothAbs = 'S',
-    CubicCurveToSmoothRel = 's',
-
-    // Quadratic Bézier commands
-    QuadraticCurveToAbs = 'Q',
-    QuadraticCurveToRel = 'q',
-    QuadraticCurveToSmoothAbs = 'T',
-    QuadraticCurveToSmoothRel = 't',
-
-    // Elliptical arc commands
-    ArcAbs = 'A',
-    ArcRel = 'a',
-}
+import { EPathDataCommand } from './parser';
 
 export interface IPathDataError {
     line: number;
@@ -46,7 +7,7 @@ export interface IPathDataError {
 }
 
 export interface IPathDataToken{
-    tokenType: ETokenType;
+    tokenType: string;
     value?: string|number;
     line: number;
     col: number;
@@ -63,7 +24,6 @@ const NUMBER_REGEX = /^[+\-]?(?=\.\d|\d)(?:0|[1-9]\d*)?(?:\.\d+)?(?:(?<=\d)(?:[e
 
 /**
  * Path Data Scanner.
- * http://craftinginterpreters.com/scanning.html
  */
 export const scan = (pathData?: string) : IPathDataScanResult => {
 
@@ -82,7 +42,7 @@ export const scan = (pathData?: string) : IPathDataScanResult => {
         return current >= pathData.length;
     };
 
-    const addKeywordToken = (tokenType: ETokenType) => {
+    const addKeywordToken = (tokenType: EPathDataCommand) => {
         result.tokens.push({
             tokenType,
             line,
@@ -92,7 +52,7 @@ export const scan = (pathData?: string) : IPathDataScanResult => {
 
     const addNumberToken = (num: number|string) => {
         result.tokens.push({
-            tokenType: ETokenType.NUMBER,
+            tokenType: 'num',
             value: num,
             line,
             col,
@@ -151,26 +111,26 @@ export const scan = (pathData?: string) : IPathDataScanResult => {
         }
 
         switch(char){
-            case 'M': addKeywordToken(ETokenType.MoveToAbs); break;
-            case 'm': addKeywordToken(ETokenType.MoveToRel); break;
-            case 'Z': addKeywordToken(ETokenType.ClosePathAbs); break;
-            case 'z': addKeywordToken(ETokenType.ClosePathRel); break;
-            case 'L': addKeywordToken(ETokenType.LineToAbs); break;
-            case 'l': addKeywordToken(ETokenType.LineToRel); break;
-            case 'H': addKeywordToken(ETokenType.LineToHorizontalAbs); break;
-            case 'h': addKeywordToken(ETokenType.LineToHorizontalRel); break;
-            case 'V': addKeywordToken(ETokenType.LineToVerticalAbs); break;
-            case 'v': addKeywordToken(ETokenType.LineToVerticalRel); break;
-            case 'C': addKeywordToken(ETokenType.CubicCurveToAbs); break;
-            case 'c': addKeywordToken(ETokenType.CubicCurveToRel); break;
-            case 'S': addKeywordToken(ETokenType.CubicCurveToSmoothAbs); break;
-            case 's': addKeywordToken(ETokenType.CubicCurveToSmoothRel); break;
-            case 'Q': addKeywordToken(ETokenType.QuadraticCurveToAbs); break;
-            case 'q': addKeywordToken(ETokenType.QuadraticCurveToRel); break;
-            case 'T': addKeywordToken(ETokenType.QuadraticCurveToSmoothAbs); break;
-            case 't': addKeywordToken(ETokenType.QuadraticCurveToSmoothRel); break;
-            case 'A': addKeywordToken(ETokenType.ArcAbs); break;
-            case 'a': addKeywordToken(ETokenType.ArcRel); break;
+            case 'M': addKeywordToken(EPathDataCommand.MoveToAbs); break;
+            case 'm': addKeywordToken(EPathDataCommand.MoveToRel); break;
+            case 'Z': addKeywordToken(EPathDataCommand.ClosePathAbs); break;
+            case 'z': addKeywordToken(EPathDataCommand.ClosePathRel); break;
+            case 'L': addKeywordToken(EPathDataCommand.LineToAbs); break;
+            case 'l': addKeywordToken(EPathDataCommand.LineToRel); break;
+            case 'H': addKeywordToken(EPathDataCommand.LineToHorizontalAbs); break;
+            case 'h': addKeywordToken(EPathDataCommand.LineToHorizontalRel); break;
+            case 'V': addKeywordToken(EPathDataCommand.LineToVerticalAbs); break;
+            case 'v': addKeywordToken(EPathDataCommand.LineToVerticalRel); break;
+            case 'C': addKeywordToken(EPathDataCommand.CubicCurveToAbs); break;
+            case 'c': addKeywordToken(EPathDataCommand.CubicCurveToRel); break;
+            case 'S': addKeywordToken(EPathDataCommand.CubicCurveToSmoothAbs); break;
+            case 's': addKeywordToken(EPathDataCommand.CubicCurveToSmoothRel); break;
+            case 'Q': addKeywordToken(EPathDataCommand.QuadraticCurveToAbs); break;
+            case 'q': addKeywordToken(EPathDataCommand.QuadraticCurveToRel); break;
+            case 'T': addKeywordToken(EPathDataCommand.QuadraticCurveToSmoothAbs); break;
+            case 't': addKeywordToken(EPathDataCommand.QuadraticCurveToSmoothRel); break;
+            case 'A': addKeywordToken(EPathDataCommand.ArcAbs); break;
+            case 'a': addKeywordToken(EPathDataCommand.ArcRel); break;
 
             default: {
                 addError(`Unexpected character ${ char }`);

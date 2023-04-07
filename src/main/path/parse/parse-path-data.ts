@@ -1,75 +1,13 @@
 import { scan } from './scanner';
-
-/**
- * All path data instructions are expressed as one character (e.g., a moveto is expressed as an M).
- * Relative versions of all commands are available (uppercase means absolute coordinates, lowercase means relative coordinates).
- * https://www.w3.org/TR/SVG11/paths.html#PathData
- */
-export enum EPathDataCommand {
-
-    // The "moveto" commands (M or m) establish a new current point.
-    // The effect is as if the "pen" were lifted and moved to a new location.
-    MoveToAbs = 'M',
-    MoveToRel = 'm',
-
-    // The "closepath" (Z or z) ends the current sub-path and causes an automatic straight line
-    // to be drawn from the current point to the initial point of the current sub-path.
-    ClosePathAbs = 'Z',
-    ClosePathRel = 'z',
-
-    // The various "lineto" commands draw straight lines from the current point to a new point.
-    LineToAbs = 'L',
-    LineToRel = 'l',
-    LineToHorizontalAbs = 'H',
-    LineToHorizontalRel = 'h',
-    LineToVerticalAbs = 'V',
-    LineToVerticalRel = 'v',
-
-    // Cubic Bézier commands
-    CubicCurveToAbs = 'C',
-    CubicCurveToRel = 'c',
-    CubicCurveToSmoothAbs = 'S',
-    CubicCurveToSmoothRel = 's',
-
-    // Quadratic Bézier commands
-    QuadraticCurveToAbs = 'Q',
-    QuadraticCurveToRel = 'q',
-    QuadraticCurveToSmoothAbs = 'T',
-    QuadraticCurveToSmoothRel = 't',
-
-    // Elliptical arc commands
-    ArcAbs = 'A',
-    ArcRel = 'a',
-}
-
-export interface IPathDataCommand {
-    command: EPathDataCommand;
-    params: string|number[];
-}
-
-export interface IPathData {
-    length: number;
-    commands: IPathDataCommand[];
-}
+import { IPathData, parse } from './parser';
 
 /**
  * https://www.w3.org/TR/SVG11/paths.html#PathData
  * ‘d’ attribute contains the moveto, line, curve (both cubic and quadratic Béziers), arc and closepath instructions.
  */
 export const parseD = (d?: string): IPathData => {
-
-    const commands: IPathDataCommand[] = [];
-
     const scanResult = scan(d);
-
-    for(const token of scanResult.tokens){
-        console.log('token', token);
-    }
-
-    return {
-        length: commands.length,
-        commands,
-    };
+    return parse(scanResult);
 
     // A path data segment (if there is one) must begin with a "moveto" command. Subsequent "moveto" commands (i.e., when the "moveto" is not the first command) represent the start of a new sub-path:
     // TODO: validate that path starts with M
