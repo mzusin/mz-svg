@@ -1,3 +1,5 @@
+import { scan } from './scanner';
+
 /**
  * All path data instructions are expressed as one character (e.g., a moveto is expressed as an M).
  * Relative versions of all commands are available (uppercase means absolute coordinates, lowercase means relative coordinates).
@@ -54,9 +56,20 @@ export interface IPathData {
  * https://www.w3.org/TR/SVG11/paths.html#PathData
  * ‘d’ attribute contains the moveto, line, curve (both cubic and quadratic Béziers), arc and closepath instructions.
  */
-export const parseD = (_d?: string): IPathData => {
+export const parseD = (d?: string): IPathData => {
 
     const commands: IPathDataCommand[] = [];
+
+    const scanResult = scan(d);
+
+    for(const token of scanResult.tokens){
+        console.log('token', token);
+    }
+
+    return {
+        length: commands.length,
+        commands,
+    };
 
     // Path data can contain newline characters and thus can be broken up into multiple lines to improve readability.
     // TODO: remove all newline and double-space characters
@@ -78,8 +91,4 @@ export const parseD = (_d?: string): IPathData => {
 
     // For the relative versions of the commands, all coordinate values are relative to the current point at the start of the command.
 
-    return {
-        length: commands.length,
-        commands,
-    };
 };

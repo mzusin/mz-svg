@@ -1,4 +1,4 @@
-import { parseD } from './parse-path-data';
+import { parseD } from './parse/parse-path-data';
 
 /**
  * SVG paths transformations that works with 'path data' - https://www.w3.org/TR/SVG11/paths.html#PathData

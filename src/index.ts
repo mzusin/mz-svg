@@ -6,7 +6,7 @@ import * as containers from './main/containers';
 import * as ioBrowser from './main/io-browser';
 import * as helpers from './main/helpers';
 import * as pathTransforms from './main/path/path-transformation';
-import * as parsePAthData from './main/path/parse-path-data';
+import * as parsePathData from './main/path/parse/parse-path-data';
 
 const api = {
     ...core,
@@ -17,7 +17,7 @@ const api = {
     ...containers,
     ...helpers,
     ...pathTransforms,
-    ...parsePAthData,
+    ...parsePathData,
 };
 
 declare global {
@@ -36,4 +36,4 @@ export * from './main/shapes/shape-paths';
 export * from './main/containers';
 export * from './main/helpers';
 export * from './main/path/path-transformation';
-export * from './main/path/parse-path-data';
+export * from './main/path/parse/parse-path-data';

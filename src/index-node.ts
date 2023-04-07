@@ -6,4 +6,4 @@ export * from './main/shapes/shape-paths';
 export * from './main/containers';
 export * from './main/helpers';
 export * from './main/path/path-transformation';
-export * from './main/path/parse-path-data';
+export * from './main/path/parse/parse-path-data';
