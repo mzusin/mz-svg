@@ -768,6 +768,376 @@ describe('Path Data Parser', () => {
 
     });
 
+    describe('H/h commands', () => {
+
+        test('M 10 20 H 100', () => {
+            const res = parseD('M 10 20 H 100');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 20 ]
+                    },
+                    {
+                        "command": "H",
+                        "params": [ 100 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+
+        test('M 10 20 h 100', () => {
+            const res = parseD('M 10 20 h 100');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 20 ]
+                    },
+                    {
+                        "command": "h",
+                        "params": [ 100 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+
+        test('M 10 20 H 100 200 300', () => {
+            const res = parseD('M 10 20 H 100 200 300');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 20 ]
+                    },
+                    {
+                        "command": "H",
+                        "params": [ 100 ]
+                    },
+                    {
+                        "command": "H",
+                        "params": [ 200 ]
+                    },
+                    {
+                        "command": "H",
+                        "params": [ 300 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+
+        test('M 10 20 h 100 200 300', () => {
+            const res = parseD('M 10 20 h 100 200 300');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 20 ]
+                    },
+                    {
+                        "command": "h",
+                        "params": [ 100 ]
+                    },
+                    {
+                        "command": "h",
+                        "params": [ 200 ]
+                    },
+                    {
+                        "command": "h",
+                        "params": [ 300 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+
+        test('M 10 20 H  ---> error', () => {
+            const res = parseD('M 10 20 H ');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [
+                            10,
+                            20
+                        ]
+                    }
+                ],
+                "errors": [
+                    {
+                        "col": 8,
+                        "line": 0,
+                        "msg": "Expected number(s) after command L."
+                    }
+                ]
+            });
+        });
+
+        test('M 10 20 H 30 H ---> error', () => {
+            const res = parseD('M 10 20 H 30 H');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [
+                            10,
+                            20
+                        ]
+                    },
+                    {
+                        "command": "H",
+                        "params": [
+                            30
+                        ]
+                    }
+                ],
+                "errors": [
+                    {
+                        "col": 13,
+                        "line": 0,
+                        "msg": "Expected number(s) after command H."
+                    }
+                ]
+            });
+        });
+
+        test('M 10 20 H 100 200 h 300', () => {
+            const res = parseD('M 10 20 H 100 200 h 300');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 20 ]
+                    },
+                    {
+                        "command": "H",
+                        "params": [ 100 ]
+                    },
+                    {
+                        "command": "H",
+                        "params": [ 200 ]
+                    },
+                    {
+                        "command": "h",
+                        "params": [ 300 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+    });
+
+    describe('V/v commands', () => {
+
+        test('M 10 20 V 100', () => {
+            const res = parseD('M 10 20 V 100');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 20 ]
+                    },
+                    {
+                        "command": "V",
+                        "params": [ 100 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+
+        test('M 10 20 v 100', () => {
+            const res = parseD('M 10 20 v 100');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 20 ]
+                    },
+                    {
+                        "command": "v",
+                        "params": [ 100 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+
+        test('M 10 20 V 100 200 300', () => {
+            const res = parseD('M 10 20 V 100 200 300');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 20 ]
+                    },
+                    {
+                        "command": "V",
+                        "params": [ 100 ]
+                    },
+                    {
+                        "command": "V",
+                        "params": [ 200 ]
+                    },
+                    {
+                        "command": "V",
+                        "params": [ 300 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+
+        test('M 10 20 h 100 200 300', () => {
+            const res = parseD('M 10 20 h 100 200 300');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 20 ]
+                    },
+                    {
+                        "command": "h",
+                        "params": [ 100 ]
+                    },
+                    {
+                        "command": "h",
+                        "params": [ 200 ]
+                    },
+                    {
+                        "command": "h",
+                        "params": [ 300 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+
+        test('M 10 20 V  ---> error', () => {
+            const res = parseD('M 10 20 V ');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [
+                            10,
+                            20
+                        ]
+                    }
+                ],
+                "errors": [
+                    {
+                        "col": 8,
+                        "line": 0,
+                        "msg": "Expected number(s) after command V."
+                    }
+                ]
+            });
+        });
+
+        test('M 10 20 V 30 V ---> error', () => {
+            const res = parseD('M 10 20 V 30 V');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [
+                            10,
+                            20
+                        ]
+                    },
+                    {
+                        "command": "V",
+                        "params": [
+                            30
+                        ]
+                    }
+                ],
+                "errors": [
+                    {
+                        "col": 13,
+                        "line": 0,
+                        "msg": "Expected number(s) after command V."
+                    }
+                ]
+            });
+        });
+
+        test('M 10 20 V 100 200 v 300', () => {
+            const res = parseD('M 10 20 V 100 200 v 300');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 20 ]
+                    },
+                    {
+                        "command": "V",
+                        "params": [ 100 ]
+                    },
+                    {
+                        "command": "V",
+                        "params": [ 200 ]
+                    },
+                    {
+                        "command": "v",
+                        "params": [ 300 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+    });
+
+    describe('V/v/H/h', () => {
+        test('M 10 20 V 100 200 H 300 400 v 500 600 h 700 800', () => {
+            const res = parseD('M 10 20 V 100 200 H 300 400 v 500 600 h 700 800');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 20 ]
+                    },
+                    {
+                        "command": "V",
+                        "params": [ 100 ]
+                    },
+                    {
+                        "command": "V",
+                        "params": [ 200 ]
+                    },
+                    {
+                        "command": "H",
+                        "params": [ 300 ]
+                    },
+                    {
+                        "command": "H",
+                        "params": [ 400 ]
+                    },
+                    {
+                        "command": "v",
+                        "params": [ 500 ]
+                    },
+                    {
+                        "command": "v",
+                        "params": [ 600 ]
+                    },
+                    {
+                        "command": "h",
+                        "params": [ 700 ]
+                    },
+                    {
+                        "command": "h",
+                        "params": [ 800 ]
+                    },
+                ],
+                "errors": []
+            });
+        });
+    });
 });
 
 

@@ -87,11 +87,11 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
     };
 
     /**
-     * Moveto command, Lineto command.
+     * M, m, L, l.
      */
     const parseBinaryCommand = (isRelative: boolean) => {
 
-        // The next pair of coordinates should be (x,y) parameters of 'M' or 'm'.
+        // The next pair of coordinates should be (x,y) parameters.
         if(!tokens[current + 1] || !tokens[current + 2]){
             error(tokens[current], `Expected number(s) after command ${ tokens[current].tokenType }.`);
             current += 2;
@@ -108,7 +108,7 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
 
         current += 3;
 
-        // If a moveto is followed by multiple pairs of coordinates, the subsequent pairs are treated as implicit lineto commands.
+        // If the command is followed by multiple pairs of coordinates, the subsequent pairs are treated as implicit lineto commands.
         const lineToTokens: IPathDataToken[] = [];
 
         while(tokens[current]?.tokenType === 'num'){
@@ -137,6 +137,41 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
     };
 
     /**
+     * H, h, V, v.
+     */
+    const parseUnaryCommand = (_isRelative: boolean) => {
+
+        const tokenType = tokens[current].tokenType;
+
+        // The next coordinate should be x (or y) parameter of the command.
+        if(!tokens[current + 1]){
+            error(tokens[current], `Expected number(s) after command ${ tokens[current].tokenType }.`);
+            current++;
+            return;
+        }
+
+        pathData.commands.push({
+            command: tokens[current].tokenType as EPathDataCommand,
+            params: [
+                Number(tokens[current + 1].value),
+            ],
+        });
+
+        current += 2;
+
+        // If the command is followed by multiple coordinates, the subsequent coordinates are treated as implicit lineto commands.
+        while(tokens[current]?.tokenType === 'num'){
+            pathData.commands.push({
+                command: tokenType as EPathDataCommand,
+                params: [
+                    Number(tokens[current].value),
+                ],
+            });
+            current++;
+        }
+    };
+
+    /**
      * The "closepath" command.
      * The "closepath" (Z or z) ends the current sub-path and causes an automatic straight line to be drawn from the current point to the initial point of the current sub-path.
      * Since the Z and z commands take no parameters, they have an identical effect.
@@ -159,7 +194,9 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
 
         switch (token.tokenType){
             case EPathDataCommand.MoveToAbs:
-            case EPathDataCommand.MoveToRel: {
+            case EPathDataCommand.MoveToRel:
+            case EPathDataCommand.LineToAbs:
+            case EPathDataCommand.LineToRel:{
                 parseBinaryCommand(isRelative);
                 break;
             }
@@ -170,21 +207,11 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
                 break;
             }
 
-            case EPathDataCommand.LineToAbs:
-            case EPathDataCommand.LineToRel:{
-                parseBinaryCommand(isRelative);
-                break;
-            }
-
             case EPathDataCommand.LineToHorizontalAbs:
-            case EPathDataCommand.LineToHorizontalRel:{
-                // parseBinaryCommand(isRelative);
-                break;
-            }
-
+            case EPathDataCommand.LineToHorizontalRel:
             case EPathDataCommand.LineToVerticalAbs:
             case EPathDataCommand.LineToVerticalRel:{
-                // parseBinaryCommand(isRelative);
+                parseUnaryCommand(isRelative);
                 break;
             }
 
