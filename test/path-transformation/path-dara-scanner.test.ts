@@ -23,29 +23,251 @@ describe('Path Data Scanner', () => {
         });
     });
 
-    test('AAA1', () => {
-        console.log(scan('M 0.0 0.0'));
-        expect(scan('   ')).toStrictEqual({
-            tokens: [],
-            errors: [],
+    test('M 0 0', () => {
+        expect(scan('M 0 0')).toStrictEqual({
+            "errors": [],
+            "tokens": [
+                {
+                    "col": 0,
+                    "line": 0,
+                    "tokenType": "M"
+                },
+                {
+                    "col": 2,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0"
+                },
+                {
+                    "col": 4,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0"
+                }
+            ]
         });
     });
 
-    test('AAA2', () => {
-        console.log(scan(`M 0.0 0.0
-        M 0.0 0.0`));
-        expect(scan('   ')).toStrictEqual({
-            tokens: [],
-            errors: [],
+    test('M 0.0 0.0', () => {
+        expect(scan('M 0.0 0.0')).toStrictEqual({
+            "errors": [],
+            "tokens": [
+                {
+                    "col": 0,
+                    "line": 0,
+                    "tokenType": "M"
+                },
+                {
+                    "col": 2,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0.0"
+                },
+                {
+                    "col": 6,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0.0"
+                }
+            ]
         });
     });
 
-    test('AAA3', () => {
-        console.log(scan(`  M 0.0 0.0,   
-          M 0.0 0.0  `));
-        expect(scan('   ')).toStrictEqual({
-            tokens: [],
-            errors: [],
+    test('Multiline 1', () => {
+        expect(scan(`M 0.0 0.0
+M 0.0 0.0`)).toStrictEqual({
+            "errors": [],
+            "tokens": [
+                {
+                    "col": 0,
+                    "line": 0,
+                    "tokenType": "M"
+                },
+                {
+                    "col": 2,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0.0"
+                },
+                {
+                    "col": 6,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0.0"
+                },
+                {
+                    "col": 0,
+                    "line": 1,
+                    "tokenType": "M"
+                },
+                {
+                    "col": 2,
+                    "line": 1,
+                    "tokenType": "num",
+                    "value": "0.0"
+                },
+                {
+                    "col": 6,
+                    "line": 1,
+                    "tokenType": "num",
+                    "value": "0.0"
+                }
+            ]
+        });
+    });
+
+    test('Multiline 2', () => {
+        expect(scan(`M 0.0 0.0  M 0.0 0.0
+M 0.0 0.0`)).toStrictEqual({
+            "errors": [],
+            "tokens": [
+                {
+                    "col": 0,
+                    "line": 0,
+                    "tokenType": "M"
+                },
+                {
+                    "col": 2,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0.0"
+                },
+                {
+                    "col": 6,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0.0"
+                },
+
+                {
+                    "col": 11,
+                    "line": 0,
+                    "tokenType": "M"
+                },
+                {
+                    "col": 13,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0.0"
+                },
+                {
+                    "col": 17,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0.0"
+                },
+
+                {
+                    "col": 0,
+                    "line": 1,
+                    "tokenType": "M"
+                },
+                {
+                    "col": 2,
+                    "line": 1,
+                    "tokenType": "num",
+                    "value": "0.0"
+                },
+                {
+                    "col": 6,
+                    "line": 1,
+                    "tokenType": "num",
+                    "value": "0.0"
+                }
+            ]
+        });
+    });
+
+    test('Multiline with spaces', () => {
+        expect(scan(`  M 0.0 0.0,   
+          M 0.0 0.0  `)).toStrictEqual({
+            "errors": [],
+            "tokens": [
+                {
+                    "col": 2,
+                    "line": 0,
+                    "tokenType": "M"
+                },
+                {
+                    "col": 4,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0.0"
+                },
+                {
+                    "col": 8,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0.0"
+                },
+                {
+                    "col": 10,
+                    "line": 1,
+                    "tokenType": "M"
+                },
+                {
+                    "col": 12,
+                    "line": 1,
+                    "tokenType": "num",
+                    "value": "0.0"
+                },
+                {
+                    "col": 16,
+                    "line": 1,
+                    "tokenType": "num",
+                    "value": "0.0"
+                }
+            ]
+        });
+    });
+
+    test('M 0.0 0.0 with tabs', () => {
+        expect(scan('\tM 0.0 0.0\t')).toStrictEqual({
+            "errors": [],
+            "tokens": [
+                {
+                    "col": 1,
+                    "line": 0,
+                    "tokenType": "M"
+                },
+                {
+                    "col": 3,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0.0"
+                },
+                {
+                    "col": 7,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0.0"
+                }
+            ]
+        });
+    });
+
+    test('M 1e+2 0', () => {
+        expect(scan('M 1e+2 0')).toStrictEqual({
+            "errors": [],
+            "tokens": [
+                {
+                    "col": 0,
+                    "line": 0,
+                    "tokenType": "M"
+                },
+                {
+                    "col": 2,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "1e+2"
+                },
+                {
+                    "col": 7,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0"
+                }
+            ]
         });
     });
 });

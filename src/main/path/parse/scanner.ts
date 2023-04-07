@@ -37,8 +37,6 @@ export enum ETokenType {
     // Elliptical arc commands
     ArcAbs = 'A',
     ArcRel = 'a',
-
-    EOF = 'EOF',
 }
 
 export interface IPathDataError {
@@ -78,17 +76,10 @@ export const scan = (pathData?: string) : IPathDataScanResult => {
 
     let current = 0;
     let line = 0;
-    let col = -1;
+    let col = 0;
 
     const isEnd = () => {
         return current >= pathData.length;
-    };
-
-    const advance = () => {
-        const char = pathData[current];
-        current++;
-        col++;
-        return char;
     };
 
     const addKeywordToken = (tokenType: ETokenType) => {
@@ -118,14 +109,14 @@ export const scan = (pathData?: string) : IPathDataScanResult => {
 
     const matchNumber = () : boolean => {
         if(isEnd()) return false;
-        return NUMBER_REGEX.test(pathData.substring(current - 1));
+        return NUMBER_REGEX.test(pathData.substring(current));
     };
 
     /**
      * Scan a single token.
      */
     const scanToken = () => {
-        const char = advance();
+        const char = pathData[current];
 
         // if a new line ---> update line and col params
         if(char.charAt(0) === '\n' || char.charAt(0) === '\r'){
@@ -136,16 +127,21 @@ export const scan = (pathData?: string) : IPathDataScanResult => {
 
         // skip whitespaces, commas, etc.
         if(/\s/.test(char) || char === ','){
+            current++;
+            col++;
             return;
         }
 
         // try to match a number
         if(matchNumber()){
-            const matchRes = pathData.substring(current - 1).match(NUMBER_REGEX);
+            const matchRes = pathData.substring(current).match(NUMBER_REGEX);
+
             if(matchRes && matchRes.length > 0){
                 const num = matchRes[0];
                 addNumberToken(num);
+
                 current += num.length;
+                col += num.length;
                 return;
             }
         }
@@ -177,6 +173,9 @@ export const scan = (pathData?: string) : IPathDataScanResult => {
                 break;
             }
         }
+
+        current++;
+        col++;
     };
 
     /**
@@ -185,15 +184,6 @@ export const scan = (pathData?: string) : IPathDataScanResult => {
     while(!isEnd()){
         scanToken();
     }
-
-    /**
-     * We've reached the end of the path data pathData.
-     */
-    result.tokens.push({
-        tokenType: ETokenType.EOF,
-        line,
-        col,
-    });
 
     return result;
 };
