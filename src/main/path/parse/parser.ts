@@ -155,10 +155,12 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
     const parseNext = () => {
         const token = tokens[current];
 
+        const isRelative = token.tokenType.toLowerCase() === token.tokenType;
+
         switch (token.tokenType){
             case EPathDataCommand.MoveToAbs:
             case EPathDataCommand.MoveToRel: {
-                parseBinaryCommand(token.tokenType === EPathDataCommand.MoveToRel);
+                parseBinaryCommand(isRelative);
                 break;
             }
 
@@ -170,7 +172,49 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
 
             case EPathDataCommand.LineToAbs:
             case EPathDataCommand.LineToRel:{
-                parseBinaryCommand(token.tokenType === EPathDataCommand.LineToRel);
+                parseBinaryCommand(isRelative);
+                break;
+            }
+
+            case EPathDataCommand.LineToHorizontalAbs:
+            case EPathDataCommand.LineToHorizontalRel:{
+                // parseBinaryCommand(isRelative);
+                break;
+            }
+
+            case EPathDataCommand.LineToVerticalAbs:
+            case EPathDataCommand.LineToVerticalRel:{
+                // parseBinaryCommand(isRelative);
+                break;
+            }
+
+            case EPathDataCommand.CubicCurveToAbs:
+            case EPathDataCommand.CubicCurveToRel:{
+                // parseBinaryCommand(isRelative);
+                break;
+            }
+
+            case EPathDataCommand.CubicCurveToSmoothAbs:
+            case EPathDataCommand.CubicCurveToSmoothRel:{
+                // parseBinaryCommand(isRelative);
+                break;
+            }
+
+            case EPathDataCommand.QuadraticCurveToAbs:
+            case EPathDataCommand.QuadraticCurveToRel:{
+                // parseBinaryCommand(isRelative);
+                break;
+            }
+
+            case EPathDataCommand.QuadraticCurveToSmoothAbs:
+            case EPathDataCommand.QuadraticCurveToSmoothRel:{
+                // parseBinaryCommand(isRelative);
+                break;
+            }
+
+            case EPathDataCommand.ArcAbs:
+            case EPathDataCommand.ArcRel:{
+                // parseBinaryCommand(isRelative);
                 break;
             }
 
