@@ -118,7 +118,9 @@ export const scan = (pathData?: string) : IPathDataScanResult => {
     const scanToken = () => {
         const char = pathData[current];
 
-        // if a new line ---> update line and col params
+        // Path data can contain newline characters and
+        // thus can be broken up into multiple lines to improve readability.
+        // If a newline character ---> update line and col params.
         if(char.charAt(0) === '\n' || char.charAt(0) === '\r'){
             current++;
             col = 0;
@@ -126,7 +128,8 @@ export const scan = (pathData?: string) : IPathDataScanResult => {
             return;
         }
 
-        // skip whitespaces, commas, etc.
+        // Superfluous white space and separators such as commas can be eliminated.
+        // "M 100 100 L 200 200" contains unnecessary spaces and could be expressed more compactly as "M100 100L200 200".
         if(/\s/.test(char) || char === ','){
             current++;
             col++;

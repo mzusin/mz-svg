@@ -71,13 +71,6 @@ export const parseD = (d?: string): IPathData => {
         commands,
     };
 
-    // Path data can contain newline characters and thus can be broken up into multiple lines to improve readability.
-    // TODO: remove all newline and double-space characters
-
-    // Superfluous white space and separators such as commas can be eliminated
-    // TODO: remove commas
-    // (e.g., "M 100 100 L 200 200" contains unnecessary spaces and could be expressed more compactly as "M100 100L200 200").
-
     // A path data segment (if there is one) must begin with a "moveto" command. Subsequent "moveto" commands (i.e., when the "moveto" is not the first command) represent the start of a new sub-path:
     // TODO: validate that path starts with M
     // TODO: how to handle sub-paths?
