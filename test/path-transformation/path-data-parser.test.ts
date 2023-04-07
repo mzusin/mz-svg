@@ -208,6 +208,98 @@ describe('Path Data Parser', () => {
             "errors": []
         });
     });
+
+    test('M 10 20 M 10 20', () => {
+        const res = parseD('M 10 20 M 10 20');
+        expect(res).toStrictEqual({
+            "commands": [
+                {
+                    "command": "M",
+                    "params": [ 10, 20 ]
+                },
+                {
+                    "command": "M",
+                    "params": [ 10, 20 ]
+                }
+            ],
+            "errors": []
+        });
+    });
+
+    test('m 10 20 m 10 20', () => {
+        const res = parseD('m 10 20 m 10 20');
+        expect(res).toStrictEqual({
+            "commands": [
+                {
+                    "command": "m",
+                    "params": [ 10, 20 ]
+                },
+                {
+                    "command": "m",
+                    "params": [ 10, 20 ]
+                }
+            ],
+            "errors": []
+        });
+    });
+
+    test('M 10 20 100 200 M 10 20 100 200', () => {
+        const res = parseD('M 10 20 100 200 M 10 20 100 200');
+        expect(res).toStrictEqual({
+            "commands": [
+                {
+                    "command": "M",
+                    "params": [ 10, 20 ]
+                },
+                {
+                    "command": "L",
+                    "params": [ 100, 200 ]
+                },
+                {
+                    "command": "M",
+                    "params": [ 10, 20 ]
+                },
+                {
+                    "command": "L",
+                    "params": [ 100, 200 ]
+                }
+            ],
+            "errors": []
+        });
+    });
+
+    test('m 10 20 100 200 m 10 20 100 200 m 50 60 70 80', () => {
+        const res = parseD('m 10 20 100 200 m 10 20 100 200 m 50 60 70 80');
+        expect(res).toStrictEqual({
+            "commands": [
+                {
+                    "command": "m",
+                    "params": [ 10, 20 ]
+                },
+                {
+                    "command": "l",
+                    "params": [ 100, 200 ]
+                },
+                {
+                    "command": "m",
+                    "params": [ 10, 20 ]
+                },
+                {
+                    "command": "l",
+                    "params": [ 100, 200 ]
+                },
+                {
+                    "command": "m",
+                    "params": [ 50, 60 ]
+                },
+                {
+                    "command": "l",
+                    "params": [ 70, 80 ]
+                }
+            ],
+            "errors": []
+        });
+    });
 });
 
 

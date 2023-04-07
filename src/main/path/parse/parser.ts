@@ -1,6 +1,5 @@
 import { IPathDataError, IPathDataScanResult, IPathDataToken } from './scanner';
 
-
 /**
  * All path data instructions are expressed as one character (e.g., a moveto is expressed as an M).
  * Relative versions of all commands are available (uppercase means absolute coordinates, lowercase means relative coordinates).
@@ -95,6 +94,7 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
         // The next pair of coordinates should be (x,y) parameters of 'M' or 'm'.
         if(!tokens[current + 1] || !tokens[current + 2]){
             error(tokens[current], `Expected number(s) after attribute ${ tokens[current].tokenType }.`);
+            current++;
             return;
         }
 
@@ -110,7 +110,7 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
 
         current += 3;
 
-        // If a moveto is followed by multiple pairs of coordinates, the subsequent pairs are treated as implicit lineto commands. Hence, implicit lineto commands will be relative if the moveto is relative, and absolute if the moveto is absolute. If a relative moveto (m) appears as the first element of the path, then it is treated as a pair of absolute coordinates. In this case, subsequent pairs of coordinates are treated as relative even though the initial moveto is interpreted as an absolute moveto.
+        // If a moveto is followed by multiple pairs of coordinates, the subsequent pairs are treated as implicit lineto commands.
         const lineToTokens: IPathDataToken[] = [];
 
         while(tokens[current]?.tokenType === 'num'){
@@ -123,7 +123,11 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
             return;
         }
 
-        for(let i=0; i<lineToTokens.length; i+=2){
+        for(let i= 0; i < lineToTokens.length; i += 2){
+
+            //  Hence, implicit lineto commands will be relative if the moveto is relative, and absolute if the moveto is absolute.
+            //  If a relative moveto (m) appears as the first element of the path, then it is treated as a pair of absolute coordinates.
+            //  In this case, subsequent pairs of coordinates are treated as relative even though the initial moveto is interpreted as an absolute moveto.
             pathData.commands.push({
                 command: isRelative ? EPathDataCommand.LineToRel : EPathDataCommand.LineToAbs,
                 params: [
@@ -135,7 +139,19 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
     };
 
     const parseNext = () => {
-        current++;
+        const token = tokens[current];
+
+        switch (token.tokenType){
+            case EPathDataCommand.MoveToAbs:
+            case EPathDataCommand.MoveToRel: {
+                parseM();
+                break;
+            }
+            default: {
+                current++;
+                break;
+            }
+        }
     };
 
     // A path data segment (if there is one) must begin with a "moveto" command.
