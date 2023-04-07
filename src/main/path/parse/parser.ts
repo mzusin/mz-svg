@@ -87,19 +87,16 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
     };
 
     /**
-     * The "moveto" commands.
-     * Match sub-path that starts with M / m.
+     * Moveto command, Lineto command.
      */
-    const parseM = () => {
+    const parseBinaryCommand = (isRelative: boolean) => {
 
         // The next pair of coordinates should be (x,y) parameters of 'M' or 'm'.
         if(!tokens[current + 1] || !tokens[current + 2]){
-            error(tokens[current], `Expected number(s) after attribute ${ tokens[current].tokenType }.`);
+            error(tokens[current], `Expected number(s) after command ${ tokens[current].tokenType }.`);
             current += 2;
             return;
         }
-
-        const isRelative = tokens[current].tokenType === EPathDataCommand.MoveToRel;
 
         pathData.commands.push({
             command: tokens[current].tokenType as EPathDataCommand,
@@ -155,25 +152,13 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
         current++;
     };
 
-    /**
-     * The "lineto" command.
-     * Draw a line from the current point to the given (x,y) coordinate which becomes the new current point.
-     * L (uppercase) indicates that absolute coordinates will follow;
-     * l (lowercase) indicates that relative coordinates will follow.
-     * A number of coordinates pairs may be specified to draw a polyline.
-     * At the end of the command, the new current point is set to the final set of coordinates provided.
-     */
-    const parseL = () => {
-
-    };
-
     const parseNext = () => {
         const token = tokens[current];
 
         switch (token.tokenType){
             case EPathDataCommand.MoveToAbs:
             case EPathDataCommand.MoveToRel: {
-                parseM();
+                parseBinaryCommand(token.tokenType === EPathDataCommand.MoveToRel);
                 break;
             }
 
@@ -185,7 +170,7 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
 
             case EPathDataCommand.LineToAbs:
             case EPathDataCommand.LineToRel:{
-                parseL();
+                parseBinaryCommand(token.tokenType === EPathDataCommand.LineToRel);
                 break;
             }
 
@@ -198,7 +183,7 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
     };
 
     // A path data segment (if there is one) must begin with a "moveto" command.
-    parseM();
+    parseBinaryCommand(tokens[0].tokenType === EPathDataCommand.MoveToRel);
 
     /**
      * The loop.
