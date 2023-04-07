@@ -49,8 +49,7 @@ export interface IPathDataError {
 
 export interface IPathDataToken{
     tokenType: ETokenType;
-    lexeme?: string;
-    literal?: number;
+    value?: string|number;
     line: number;
     col: number;
 }
@@ -62,6 +61,12 @@ export interface IPathDataScanResult {
 
 // ----------------------------------------------------------------
 
+const NUMBER_REGEX = /^[+\-]?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+\-]?\d+)?/;
+
+/**
+ * Path Data Scanner.
+ * http://craftinginterpreters.com/scanning.html
+ */
 export const scan = (pathData?: string) : IPathDataScanResult => {
 
     const result: IPathDataScanResult = {
@@ -71,19 +76,16 @@ export const scan = (pathData?: string) : IPathDataScanResult => {
 
     if(!pathData || pathData.trim() === '') return result;
 
-    let source = pathData;
-
-    let start = 0; // points to the first character in the lexeme being scanned
-    let current = 0; // points at the character currently being considered
+    let current = 0;
     let line = 0;
     let col = -1;
 
     const isEnd = () => {
-        return current >= source.length;
+        return current >= pathData.length;
     };
 
     const advance = () => {
-        const char = source[current];
+        const char = pathData[current];
         current++;
         col++;
         return char;
@@ -97,12 +99,26 @@ export const scan = (pathData?: string) : IPathDataScanResult => {
         });
     };
 
+    const addNumberToken = (num: number|string) => {
+        result.tokens.push({
+            tokenType: ETokenType.NUMBER,
+            value: num,
+            line,
+            col,
+        });
+    };
+
     const addError = (msg: string) => {
         result.errors.push({
             line,
             col,
             msg,
         });
+    };
+
+    const matchNumber = () : boolean => {
+        if(isEnd()) return false;
+        return NUMBER_REGEX.test(pathData.substring(current - 1));
     };
 
     /**
@@ -119,8 +135,19 @@ export const scan = (pathData?: string) : IPathDataScanResult => {
         }
 
         // skip whitespaces, commas, etc.
-        if(/\s\s+/.test(char) || char === ','){
+        if(/\s/.test(char) || char === ','){
             return;
+        }
+
+        // try to match a number
+        if(matchNumber()){
+            const matchRes = pathData.substring(current - 1).match(NUMBER_REGEX);
+            if(matchRes && matchRes.length > 0){
+                const num = matchRes[0];
+                addNumberToken(num);
+                current += num.length;
+                return;
+            }
         }
 
         switch(char){
@@ -152,19 +179,15 @@ export const scan = (pathData?: string) : IPathDataScanResult => {
         }
     };
 
-    console.log(start);
-
     /**
      * The loop.
      */
     while(!isEnd()){
-        // we are at the beginning of the next lexeme.
-        start = current;
         scanToken();
     }
 
     /**
-     * We've reached the end of the path data source.
+     * We've reached the end of the path data pathData.
      */
     result.tokens.push({
         tokenType: ETokenType.EOF,
