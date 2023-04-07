@@ -270,6 +270,108 @@ M 0.0 0.0`)).toStrictEqual({
             ]
         });
     });
+
+    test('M +1e+2 0', () => {
+        expect(scan('M +1e+2 0')).toStrictEqual({
+            "errors": [],
+            "tokens": [
+                {
+                    "col": 0,
+                    "line": 0,
+                    "tokenType": "M"
+                },
+                {
+                    "col": 2,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "+1e+2"
+                },
+                {
+                    "col": 8,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0"
+                }
+            ]
+        });
+    });
+
+    test('M 1e-2 0', () => {
+        expect(scan('M 1e-2 0')).toStrictEqual({
+            "errors": [],
+            "tokens": [
+                {
+                    "col": 0,
+                    "line": 0,
+                    "tokenType": "M"
+                },
+                {
+                    "col": 2,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "1e-2"
+                },
+                {
+                    "col": 7,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0"
+                }
+            ]
+        });
+    });
+
+    test('M 0.1e-2 0', () => {
+        // 0.1e-2 = 0.001
+        expect(scan('M 0.1e-2 0')).toStrictEqual({
+            "errors": [],
+            "tokens": [
+                {
+                    "col": 0,
+                    "line": 0,
+                    "tokenType": "M"
+                },
+                {
+                    "col": 2,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0.1e-2"
+                },
+                {
+                    "col": 9,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0"
+                }
+            ]
+        });
+    });
+
+    test('M .1e-2 0', () => {
+        // .1e-2 = 0.001
+        expect(scan('M .1e-2 0')).toStrictEqual({
+            "errors": [],
+            "tokens": [
+                {
+                    "col": 0,
+                    "line": 0,
+                    "tokenType": "M"
+                },
+                {
+                    "col": 2,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": ".1e-2"
+                },
+                {
+                    "col": 8,
+                    "line": 0,
+                    "tokenType": "num",
+                    "value": "0"
+                }
+            ]
+        });
+    });
 });
 
 

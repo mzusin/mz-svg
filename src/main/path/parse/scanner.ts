@@ -59,7 +59,7 @@ export interface IPathDataScanResult {
 
 // ----------------------------------------------------------------
 
-const NUMBER_REGEX = /^[+\-]?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+\-]?\d+)?/;
+const NUMBER_REGEX = /^[+\-]?(?=\.\d|\d)(?:0|[1-9]\d*)?(?:\.\d+)?(?:(?<=\d)(?:[eE][+\-]?\d+))?/;
 
 /**
  * Path Data Scanner.
@@ -120,6 +120,7 @@ export const scan = (pathData?: string) : IPathDataScanResult => {
 
         // if a new line ---> update line and col params
         if(char.charAt(0) === '\n' || char.charAt(0) === '\r'){
+            current++;
             col = 0;
             line++;
             return;
