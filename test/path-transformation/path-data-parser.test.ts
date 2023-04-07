@@ -133,6 +133,50 @@ describe('Path Data Parser', () => {
         });
     });
 
+    test('M 10 20 M ---> error', () => {
+        const res = parseD('M 10 20 M');
+        expect(res).toStrictEqual({
+            "commands": [
+                {
+                    "command": "M",
+                    "params": [
+                        10,
+                        20
+                    ]
+                }
+            ],
+            "errors": [
+                {
+                    "col": 8,
+                    "line": 0,
+                    "msg": "Expected number(s) after attribute M."
+                }
+            ]
+        });
+    });
+
+    test('M 10 20 M 10 ---> error', () => {
+        const res = parseD('M 10 20 M 10');
+        expect(res).toStrictEqual({
+            "commands": [
+                {
+                    "command": "M",
+                    "params": [
+                        10,
+                        20
+                    ]
+                }
+            ],
+            "errors": [
+                {
+                    "col": 8,
+                    "line": 0,
+                    "msg": "Expected number(s) after attribute M."
+                }
+            ]
+        });
+    });
+
     test('M 10 20 100 200', () => {
         const res = parseD('M 10 20 100 200');
         expect(res).toStrictEqual({
@@ -295,6 +339,140 @@ describe('Path Data Parser', () => {
                 {
                     "command": "l",
                     "params": [ 70, 80 ]
+                }
+            ],
+            "errors": []
+        });
+    });
+
+    test('R ---> error', () => {
+        const res = parseD('R');
+        expect(res).toStrictEqual({
+            "commands": [],
+            "errors": [
+                {
+                    "col": 0,
+                    "line": 0,
+                    "msg": "Unexpected character R"
+                }
+            ]
+        });
+    });
+
+    test('R 10 20 ---> error', () => {
+        const res = parseD('R 10 20');
+        expect(res).toStrictEqual({
+            "commands": [],
+            "errors": [
+                {
+                    "col": 0,
+                    "line": 0,
+                    "msg": "Unexpected character R"
+                }
+            ]
+        });
+    });
+
+    test('M 10 20 R 10 20 ---> error', () => {
+        const res = parseD('M 10 20 R 10 20');
+        expect(res).toStrictEqual({
+            "commands": [],
+            "errors": [
+                {
+                    "col": 8,
+                    "line": 0,
+                    "msg": "Unexpected character R"
+                }
+            ]
+        });
+    });
+
+    test('M 10 20 z', () => {
+        const res = parseD('M 10 20 z');
+        expect(res).toStrictEqual({
+            "commands": [
+                {
+                    "command": "M",
+                    "params": [
+                        10,
+                        20
+                    ]
+                },
+                {
+                    "command": "z",
+                    "params": []
+                }
+            ],
+            "errors": []
+        });
+    });
+
+    test('M 10 20 Z', () => {
+        const res = parseD('M 10 20 Z');
+        expect(res).toStrictEqual({
+            "commands": [
+                {
+                    "command": "M",
+                    "params": [
+                        10,
+                        20
+                    ]
+                },
+                {
+                    "command": "Z",
+                    "params": []
+                }
+            ],
+            "errors": []
+        });
+    });
+
+    test('m 10 20 m 10 20 z', () => {
+        const res = parseD('m 10 20 m 10 20 z');
+        expect(res).toStrictEqual({
+            "commands": [
+                {
+                    "command": "m",
+                    "params": [ 10, 20 ]
+                },
+                {
+                    "command": "m",
+                    "params": [ 10, 20 ]
+                },
+                {
+                    "command": "z",
+                    "params": []
+                }
+            ],
+            "errors": []
+        });
+    });
+
+    test('M 10 20 Z M 10 20 Z', () => {
+        const res = parseD('M 10 20 Z M 10 20 Z');
+        expect(res).toStrictEqual({
+            "commands": [
+                {
+                    "command": "M",
+                    "params": [
+                        10,
+                        20
+                    ]
+                },
+                {
+                    "command": "Z",
+                    "params": []
+                },
+                {
+                    "command": "M",
+                    "params": [
+                        10,
+                        20
+                    ]
+                },
+                {
+                    "command": "Z",
+                    "params": []
                 }
             ],
             "errors": []

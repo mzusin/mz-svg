@@ -87,6 +87,7 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
     };
 
     /**
+     * The "moveto" commands.
      * Match sub-path that starts with M / m.
      */
     const parseM = () => {
@@ -94,7 +95,7 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
         // The next pair of coordinates should be (x,y) parameters of 'M' or 'm'.
         if(!tokens[current + 1] || !tokens[current + 2]){
             error(tokens[current], `Expected number(s) after attribute ${ tokens[current].tokenType }.`);
-            current++;
+            current += 2;
             return;
         }
 
@@ -138,6 +139,34 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
         }
     };
 
+    /**
+     * The "closepath" command.
+     * The "closepath" (Z or z) ends the current sub-path and causes an automatic straight line to be drawn from the current point to the initial point of the current sub-path.
+     * Since the Z and z commands take no parameters, they have an identical effect.
+     */
+    const parseZ = () => {
+
+        pathData.commands.push({
+            command: tokens[current].tokenType as EPathDataCommand,
+            params: [],
+        });
+
+        // If a "closepath" is followed immediately by a "moveto", then the "moveto" identifies the start point of the next sub-path. If a "closepath" is followed immediately by any other command, then the next sub-path starts at the same initial point as the current sub-path.
+        current++;
+    };
+
+    /**
+     * The "lineto" command.
+     * Draw a line from the current point to the given (x,y) coordinate which becomes the new current point.
+     * L (uppercase) indicates that absolute coordinates will follow;
+     * l (lowercase) indicates that relative coordinates will follow.
+     * A number of coordinates pairs may be specified to draw a polyline.
+     * At the end of the command, the new current point is set to the final set of coordinates provided.
+     */
+    const parseL = () => {
+
+    };
+
     const parseNext = () => {
         const token = tokens[current];
 
@@ -147,7 +176,21 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
                 parseM();
                 break;
             }
+
+            case EPathDataCommand.ClosePathAbs:
+            case EPathDataCommand.ClosePathRel:{
+                parseZ();
+                break;
+            }
+
+            case EPathDataCommand.LineToAbs:
+            case EPathDataCommand.LineToRel:{
+                parseL();
+                break;
+            }
+
             default: {
+                error(tokens[current], `Wrong path command.`);
                 current++;
                 break;
             }
