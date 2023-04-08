@@ -137,22 +137,6 @@ describe('Path Data Parser', () => {
             });
         });
 
-        test('M 1.1', () => {
-            const res = parsePath('M 1.1');
-            expect(res).toStrictEqual({
-                "commands": [
-                    {
-                        "command": "M",
-                        "params": [
-                            1,
-                            0.1
-                        ]
-                    }
-                ],
-                "errors": []
-            });
-        });
-
         test('m 10 20', () => {
             const res = parsePath('m 10 20');
             expect(res).toStrictEqual({
@@ -2222,56 +2206,6 @@ describe('Path Data Parser', () => {
             });
         });
 
-        test('M 0 0 a.625.625 0 01.84-.925', () => {
-            const res = parsePath('M 0 0 a.625.625 0 01.84-.925');
-            expect(res).toStrictEqual({
-                "commands": [
-                    {
-                        "command": "M",
-                        "params": [ 0, 0 ]
-                    },
-                    {
-                        "command": "a",
-                        "params": [ 0.625, 0.625, 0, 0, 1, 0.84, -0.925 ]
-                    },
-                ],
-                "errors": []
-            });
-        });
-
-        test('M 0 0 a.625.625 0 0 1 .84-.925', () => {
-            const res = parsePath('M 0 0 a.625.625 0 01.84-.925');
-            expect(res).toStrictEqual({
-                "commands": [
-                    {
-                        "command": "M",
-                        "params": [ 0, 0 ]
-                    },
-                    {
-                        "command": "a",
-                        "params": [ 0.625, 0.625, 0, 0, 1, 0.84, -0.925 ]
-                    },
-                ],
-                "errors": []
-            });
-        });
-
-        test('M 0 0 a 1.625 1.625 1.625 1 1 1.625 1.625', () => {
-            const res = parsePath('M 0 0 a 1.625 1.625 1.625 1 1 1.625 1.625');
-            expect(res).toStrictEqual({
-                "commands": [
-                    {
-                        "command": "M",
-                        "params": [ 0, 0 ]
-                    },
-                    {
-                        "command": "a",
-                        "params": [ 1.625, 1.625, 1.625, 1, 1, 1.625, 1.625 ]
-                    },
-                ],
-                "errors": []
-            });
-        });
     });
 
     describe('Combined', () => {
