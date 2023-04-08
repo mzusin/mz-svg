@@ -1379,6 +1379,181 @@ describe('Path Data Parser', () => {
         });
 
     });
+
+    describe('S/s commands', () => {
+
+        test('M 10 20 S 1 1 2 2', () => {
+            const res = parseD('M 10 20 S 1 1 2 2');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 20 ]
+                    },
+                    {
+                        "command": "S",
+                        "params": [ 1, 1, 2, 2 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+
+        test('M 10 20 s 1 1 2 2', () => {
+            const res = parseD('M 10 20 s 1 1 2 2');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 20 ]
+                    },
+                    {
+                        "command": "s",
+                        "params": [ 1, 1, 2, 2 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+
+        test('M 10 20 S 1 1 2 2 3 3 4 4', () => {
+            const res = parseD('M 10 20 S 1 1 2 2 3 3 4 4');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 20 ]
+                    },
+                    {
+                        "command": "S",
+                        "params": [ 1, 1, 2, 2 ]
+                    },
+                    {
+                        "command": "S",
+                        "params": [ 3, 3, 4, 4 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+
+        test('M 10 20 s 1 1 2 2 3 3 4 4', () => {
+            const res = parseD('M 10 20 s 1 1 2 2 3 3 4 4');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 20 ]
+                    },
+                    {
+                        "command": "s",
+                        "params": [ 1, 1, 2, 2 ]
+                    },
+                    {
+                        "command": "s",
+                        "params": [ 3, 3, 4, 4 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+
+        test('M 10 20 s 1 1 2 2 3 3 4 4 5 5 6 6 S 7 7 8 8', () => {
+            const res = parseD('M 10 20 s 1 1 2 2 3 3 4 4 5 5 6 6 S 7 7 8 8');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 20 ]
+                    },
+                    {
+                        "command": "s",
+                        "params": [ 1, 1, 2, 2 ]
+                    },
+                    {
+                        "command": "s",
+                        "params": [ 3, 3, 4, 4 ]
+                    },
+                    {
+                        "command": "s",
+                        "params": [ 5, 5, 6, 6 ]
+                    },
+                    {
+                        "command": "S",
+                        "params": [ 7, 7, 8, 8 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+
+        test('M 10 20 S 1  ---> error', () => {
+            const res = parseD('M 10 20 S 1');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [
+                            10,
+                            20
+                        ]
+                    }
+                ],
+                "errors": [
+                    {
+                        "col": 8,
+                        "line": 0,
+                        "msg": "Expected number(s) after command S."
+                    }
+                ]
+            });
+        });
+
+        test('M 10 20 S 1 2  ---> error', () => {
+            const res = parseD('M 10 20 S 1 2');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [
+                            10,
+                            20
+                        ]
+                    }
+                ],
+                "errors": [
+                    {
+                        "col": 8,
+                        "line": 0,
+                        "msg": "Expected number(s) after command S."
+                    }
+                ]
+            });
+        });
+
+        test('M 10 20 S 1 2 3  ---> error', () => {
+            const res = parseD('M 10 20 S 1 2 3');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [
+                            10,
+                            20
+                        ]
+                    }
+                ],
+                "errors": [
+                    {
+                        "col": 8,
+                        "line": 0,
+                        "msg": "Expected number(s) after command S."
+                    }
+                ]
+            });
+        });
+
+    });
 });
 
 

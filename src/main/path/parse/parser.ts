@@ -86,165 +86,62 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
         return current >= tokens.length;
     };
 
-    /**
-     * M, m, L, l.
-     */
-    const parseBinaryCommand = (_isRelative: boolean) => {
-
-        // The next pair of coordinates should be (x,y) parameters.
-        if(!tokens[current + 1] || !tokens[current + 2]){
-            error(tokens[current], `Expected number(s) after command ${ tokens[current].tokenType }.`);
-            current += 2;
-            return;
-        }
-
-        pathData.commands.push({
-            command: tokens[current].tokenType as EPathDataCommand,
-            params: [
-                Number(tokens[current + 1].value),
-                Number(tokens[current + 2].value),
-            ],
-        });
-
-        current += 3;
-
-        // If the command is followed by multiple pairs of coordinates, the subsequent pairs are treated as implicit lineto commands.
-        const lineToTokens: IPathDataToken[] = [];
-
-        while(tokens[current]?.tokenType === 'num'){
-            lineToTokens.push(tokens[current]);
-            current++;
-        }
-
-        if(lineToTokens.length % 2 !== 0){
-            error(lineToTokens[lineToTokens.length - 1], `Expected a number.`);
-            return;
-        }
-
-        for(let i= 0; i < lineToTokens.length; i += 2){
-
-            //  Hence, implicit lineto commands will be relative if the moveto is relative, and absolute if the moveto is absolute.
-            //  If a relative moveto (m) appears as the first element of the path, then it is treated as a pair of absolute coordinates.
-            //  In this case, subsequent pairs of coordinates are treated as relative even though the initial moveto is interpreted as an absolute moveto.
-            pathData.commands.push({
-                command: _isRelative ? EPathDataCommand.LineToRel : EPathDataCommand.LineToAbs,
-                params: [
-                    Number(lineToTokens[i].value),
-                    Number(lineToTokens[i + 1].value),
-                ],
-            });
-        }
-    };
-
-    /**
-     * H, h, V, v.
-     */
-    const parseUnaryCommand = (_isRelative: boolean) => {
+    const parseCommand = (paramsCount: number, nextParamsTokenType: EPathDataCommand, isRelative: boolean) => {
 
         const tokenType = tokens[current].tokenType;
+        const params: number[] = [];
 
-        // The next coordinate should be x (or y) parameter of the command.
-        if(!tokens[current + 1]){
-            error(tokens[current], `Expected number(s) after command ${ tokens[current].tokenType }.`);
-            current++;
-            return;
-        }
+        if(paramsCount > 0){
 
-        pathData.commands.push({
-            command: tokens[current].tokenType as EPathDataCommand,
-            params: [
-                Number(tokens[current + 1].value),
-            ],
-        });
+            // Validate the parameters count, and add them to the params list.
+            for(let i= 1; i <= paramsCount; i++){
+                if(!tokens[current + i]){
+                    error(tokens[current], `Expected number(s) after command ${ tokenType }.`);
+                    current += paramsCount;
+                    return;
+                }
 
-        current += 2;
-
-        // If the command is followed by multiple coordinates, the subsequent coordinates are treated as implicit lineto commands.
-        while(tokens[current]?.tokenType === 'num'){
-            pathData.commands.push({
-                command: tokenType as EPathDataCommand,
-                params: [
-                    Number(tokens[current].value),
-                ],
-            });
-            current++;
-        }
-    };
-
-    /**
-     * C, c.
-     */
-    const parseSenaryCommand = (_isRelative: boolean) => {
-
-        const tokenType = tokens[current].tokenType;
-
-        // The next 6 coordinates should be (x1 y1 x2 y2 x y) parameters.
-        for(let i= 1; i <= 6; i++){
-            if(!tokens[current + i]){
-                error(tokens[current], `Expected number(s) after command ${ tokenType }.`);
-                current += 6;
-                return;
+                params.push(Number(tokens[current + i].value));
             }
         }
 
         pathData.commands.push({
             command: tokens[current].tokenType as EPathDataCommand,
-            params: [
-                Number(tokens[current + 1].value),
-                Number(tokens[current + 2].value),
-                Number(tokens[current + 3].value),
-                Number(tokens[current + 4].value),
-                Number(tokens[current + 5].value),
-                Number(tokens[current + 6].value),
-            ],
+            params,
         });
 
-        current += 7;
+        current += paramsCount + 1;
 
-        // If the command is followed by multiple sets of coordinates, the subsequent pairs are treated as implicit C/c commands.
+        if(paramsCount <= 0) return;
+
+        // If the command is followed by multiple sets of coordinates, the subsequent pairs are treated as implicit commands.
         const nextTokens: IPathDataToken[] = [];
 
+        // Add all 'next params' to the list.
         while(tokens[current]?.tokenType === 'num'){
             nextTokens.push(tokens[current]);
             current++;
         }
 
-        if(nextTokens.length % 6 !== 0){
+        // Validate next params count.
+        if(nextTokens.length % paramsCount !== 0){
             error(nextTokens[nextTokens.length - 1], `Expected a number.`);
             return;
         }
 
-        for(let i= 0; i < nextTokens.length; i += 6){
+        const nextCommand = (isRelative ? nextParamsTokenType.toLowerCase() : nextParamsTokenType.toUpperCase()) as EPathDataCommand;
 
-            //  Multiple sets of coordinates may be specified to draw a poly-bézier. At the end of the command, the new current point becomes the final (x,y) coordinate pair used in the poly-bézier.
+        // Add them to the commands list.
+        for(let i= 0; i < nextTokens.length; i += paramsCount){
+            const nextParams: number[] = [];
+            for(let j = 0; j < paramsCount; j++){
+                nextParams.push(Number(nextTokens[i + j].value));
+            }
             pathData.commands.push({
-                command: tokenType as EPathDataCommand,
-                params: [
-                    Number(nextTokens[i].value),
-                    Number(nextTokens[i + 1].value),
-                    Number(nextTokens[i + 2].value),
-                    Number(nextTokens[i + 3].value),
-                    Number(nextTokens[i + 4].value),
-                    Number(nextTokens[i + 5].value),
-                ],
+                command: nextCommand,
+                params: nextParams,
             });
         }
-    };
-
-    /**
-     * The "closepath" command.
-     * The "closepath" (Z or z) ends the current sub-path and causes an automatic straight line to be drawn from the current point to the initial point of the current sub-path.
-     * Since the Z and z commands take no parameters, they have an identical effect.
-     */
-    const parseZ = () => {
-
-        pathData.commands.push({
-            command: tokens[current].tokenType as EPathDataCommand,
-            params: [],
-        });
-
-        // If a "closepath" is followed immediately by a "moveto", then the "moveto" identifies the start point of the next sub-path. If a "closepath" is followed immediately by any other command, then the next sub-path starts at the same initial point as the current sub-path.
-        current++;
     };
 
     const parseNext = () => {
@@ -257,13 +154,13 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
             case EPathDataCommand.MoveToRel:
             case EPathDataCommand.LineToAbs:
             case EPathDataCommand.LineToRel:{
-                parseBinaryCommand(isRelative);
+                parseCommand(2, EPathDataCommand.LineToAbs, isRelative);
                 break;
             }
 
             case EPathDataCommand.ClosePathAbs:
             case EPathDataCommand.ClosePathRel:{
-                parseZ();
+                parseCommand(0, EPathDataCommand.LineToAbs, isRelative);
                 break;
             }
 
@@ -271,37 +168,34 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
             case EPathDataCommand.LineToHorizontalRel:
             case EPathDataCommand.LineToVerticalAbs:
             case EPathDataCommand.LineToVerticalRel:{
-                parseUnaryCommand(isRelative);
+                parseCommand(1, token.tokenType, isRelative);
                 break;
             }
 
             case EPathDataCommand.CubicCurveToAbs:
             case EPathDataCommand.CubicCurveToRel:{
-                parseSenaryCommand(isRelative);
+                parseCommand(6, token.tokenType, isRelative);
                 break;
             }
 
             case EPathDataCommand.CubicCurveToSmoothAbs:
             case EPathDataCommand.CubicCurveToSmoothRel:{
-                // parseBinaryCommand(isRelative);
+                parseCommand(4, token.tokenType, isRelative);
                 break;
             }
 
             case EPathDataCommand.QuadraticCurveToAbs:
             case EPathDataCommand.QuadraticCurveToRel:{
-                // parseBinaryCommand(isRelative);
                 break;
             }
 
             case EPathDataCommand.QuadraticCurveToSmoothAbs:
             case EPathDataCommand.QuadraticCurveToSmoothRel:{
-                // parseBinaryCommand(isRelative);
                 break;
             }
 
             case EPathDataCommand.ArcAbs:
             case EPathDataCommand.ArcRel:{
-                // parseBinaryCommand(isRelative);
                 break;
             }
 
@@ -314,7 +208,7 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
     };
 
     // A path data segment (if there is one) must begin with a "moveto" command.
-    parseBinaryCommand(tokens[0].tokenType === EPathDataCommand.MoveToRel);
+    parseCommand(2, EPathDataCommand.LineToAbs, tokens[0].tokenType === EPathDataCommand.MoveToRel);
 
     /**
      * The loop.
