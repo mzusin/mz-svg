@@ -2003,6 +2003,88 @@ describe('Path Data Parser', () => {
         });
 
     });
+
+    describe('A/a commands', () => {
+
+        test('M600,350 l 50,-25 a25,25 -30 0,1 50,-25', () => {
+            const res = parseD('M600,350 l 50,-25 a25,25 -30 0,1 50,-25');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 600, 350 ]
+                    },
+                    {
+                        "command": "l",
+                        "params": [ 50, -25 ]
+                    },
+                    {
+                        "command": "a",
+                        "params": [ 25, 25, -30, 0, 1, 50, -25 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+
+        test('M600,350 l 50,-25 a25,25 -30 1000,1 50,-25 ---> error: 4th param (1000) of the arc can be 1 or 0 only', () => {
+            const res = parseD('M600,350 l 50,-25 a25,25 -30 1000,1 50,-25');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [
+                            600,
+                            350
+                        ]
+                    },
+                    {
+                        "command": "l",
+                        "params": [
+                            50,
+                            -25
+                        ]
+                    }
+                ],
+                "errors": [
+                    {
+                        "col": 18,
+                        "line": 0,
+                        "msg": "Arc flags must be 0 or 1."
+                    }
+                ]
+            });
+        });
+
+        test('M600,350 l 50,-25 a25,25 -30 0,2000 50,-25 ---> error: 5th param (2000) of the arc can be 1 or 0 only', () => {
+            const res = parseD('M600,350 l 50,-25 a25,25 -30 0,2000 50,-25');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [
+                            600,
+                            350
+                        ]
+                    },
+                    {
+                        "command": "l",
+                        "params": [
+                            50,
+                            -25
+                        ]
+                    }
+                ],
+                "errors": [
+                    {
+                        "col": 18,
+                        "line": 0,
+                        "msg": "Arc flags must be 0 or 1."
+                    }
+                ]
+            });
+        });
+    });
 });
 
 

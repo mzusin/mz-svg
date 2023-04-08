@@ -86,6 +86,21 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
         return current >= tokens.length;
     };
 
+    const areArcFlagsValid = (tokenType: string): boolean => {
+
+        // we are checking only 'A/a' type
+        if(!tokenType || tokenType.toLowerCase() !== 'a') return true;
+
+        // 4th and 5th param should be 0 or 1
+        const val4 = (tokens[current + 4]?.value || '').toString();
+        const val5 = (tokens[current + 5]?.value || '').toString();
+
+        return (val4 === '0' || val4 === '1') && (val5 === '0' || val5 === '1');
+    };
+
+    /**
+     * https://www.w3.org/TR/SVG11/paths.html#PathData
+     */
     const parseCommand = (paramsCount: number, nextParamsTokenType: EPathDataCommand, isRelative: boolean) => {
 
         const tokenType = tokens[current].tokenType;
@@ -103,6 +118,13 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
 
                 params.push(Number(tokens[current + i].value));
             }
+        }
+
+        // validate arc flags ------
+        if(!areArcFlagsValid(tokenType)){
+            error(tokens[current], `Arc flags must be 0 or 1.`);
+            current += paramsCount + 1;
+            return;
         }
 
         pathData.commands.push({
@@ -194,6 +216,7 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
 
             case EPathDataCommand.ArcAbs:
             case EPathDataCommand.ArcRel:{
+                parseCommand(7, token.tokenType, isRelative);
                 break;
             }
 
