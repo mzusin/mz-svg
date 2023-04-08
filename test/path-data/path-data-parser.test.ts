@@ -137,6 +137,22 @@ describe('Path Data Parser', () => {
             });
         });
 
+        test('M 1.1', () => {
+            const res = parsePath('M 1.1');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [
+                            1,
+                            0.1
+                        ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+
         test('m 10 20', () => {
             const res = parsePath('m 10 20');
             expect(res).toStrictEqual({
