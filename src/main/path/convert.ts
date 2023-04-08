@@ -1,4 +1,5 @@
 import { EPathDataCommand, IPathData } from './interfaces';
+import { setDecimalPlaces } from 'mz-math';
 
 export const pathDataToRelative = (pathData: IPathData): IPathData => {
 
@@ -30,6 +31,11 @@ export const pathDataToRelative = (pathData: IPathData): IPathData => {
                 break;
             }
 
+            case EPathDataCommand.MoveToRel:{
+                // ?
+                break;
+            }
+
             case EPathDataCommand.ClosePathAbs:
             case EPathDataCommand.ClosePathRel:{
                 x = mx;
@@ -50,6 +56,12 @@ export const pathDataToRelative = (pathData: IPathData): IPathData => {
                 break;
             }
 
+            case EPathDataCommand.LineToRel:{
+                x += commands[i].params[0];
+                y += commands[i].params[1];
+                break;
+            }
+
             case EPathDataCommand.LineToHorizontalAbs:{
                 const savedX = commands[i].params[0];
                 commands[i].params[0] -= x;
@@ -57,10 +69,20 @@ export const pathDataToRelative = (pathData: IPathData): IPathData => {
                 break;
             }
 
+            case EPathDataCommand.LineToHorizontalRel:{
+                x += commands[i].params[0];
+                break;
+            }
+
             case EPathDataCommand.LineToVerticalAbs:{
-                const savedY = commands[i].params[1];
+                const savedY = commands[i].params[0];
                 commands[i].params[0] -= y;
                 y = savedY;
+                break;
+            }
+
+            case EPathDataCommand.LineToVerticalRel:{
+                y += commands[i].params[0];
                 break;
             }
 
@@ -85,6 +107,12 @@ export const pathDataToRelative = (pathData: IPathData): IPathData => {
                 break;
             }
 
+            case EPathDataCommand.CubicCurveToRel:{
+                x += commands[i].params[4];
+                y += commands[i].params[5];
+                break;
+            }
+
             case EPathDataCommand.CubicCurveToSmoothAbs:
             case EPathDataCommand.QuadraticCurveToAbs:{
                 const savedX = commands[i].params[2];
@@ -101,6 +129,13 @@ export const pathDataToRelative = (pathData: IPathData): IPathData => {
                 break;
             }
 
+            case EPathDataCommand.CubicCurveToSmoothRel:
+            case EPathDataCommand.QuadraticCurveToRel:{
+                x += commands[i].params[2];
+                y += commands[i].params[3];
+                break;
+            }
+
             case EPathDataCommand.ArcAbs:{
                 // (rx ry x-axis-rotation large-arc-flag sweep-flag x y)+
                 const savedX = commands[i].params[5];
@@ -112,6 +147,12 @@ export const pathDataToRelative = (pathData: IPathData): IPathData => {
 
                 x = savedX;
                 y = savedY;
+                break;
+            }
+
+            case EPathDataCommand.ArcRel:{
+                x += commands[i].params[5];
+                y += commands[i].params[6];
                 break;
             }
         }
@@ -131,7 +172,7 @@ export const pathDataToString = (pathData: IPathData) : string => {
     for(const item of pathData.commands){
         d += item.command;
         if(item.params.length > 0){
-            d += ` ${ item.params.join(' ')} `
+            d += ` ${ item.params.map(param => Number.isInteger(param) ? param : setDecimalPlaces(param, 2)).join(' ')} `
         }
         else{
             d += ' ';
