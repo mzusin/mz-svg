@@ -10,7 +10,7 @@ TypeScript-based library for managing SVG in the browser and Node.js. The modula
 - [Documentation](https://svg.mzsoft.org/pages/typescript-usage.html)
 
 ## Features 🚀
-- Works in browser and Node.js
+- Works in browser and Node.js.
 - Based on TypeScript.
 - Save the SVG to the file system in Node.js, or download it as SVG, PNG, JPG, etc. in a browser environment.
 - Extensive Unit Testing.

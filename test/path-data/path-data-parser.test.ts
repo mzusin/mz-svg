@@ -2239,6 +2239,23 @@ describe('Path Data Parser', () => {
                 "errors": []
             });
         });
+
+        test('M 0 0 a 1.625 1.625 1.625 1 1 1.625 1.625', () => {
+            const res = parsePath('M 0 0 a 1.625 1.625 1.625 1 1 1.625 1.625');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 0, 0 ]
+                    },
+                    {
+                        "command": "a",
+                        "params": [ 1.625, 1.625, 1.625, 1, 1, 1.625, 1.625 ]
+                    },
+                ],
+                "errors": []
+            });
+        });
     });
 
     describe('Combined', () => {

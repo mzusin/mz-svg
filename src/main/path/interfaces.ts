@@ -62,3 +62,8 @@ export enum EPathDataCommand {
     ArcAbs = 'A',
     ArcRel = 'a',
 }
+
+export interface INumberVariants {
+    short: number,
+    long?: [number, number]
+}

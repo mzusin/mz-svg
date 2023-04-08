@@ -37,7 +37,10 @@
     "star shape",
     "svg patterns",
     "clippath",
-    "svg mask"
+    "svg mask",
+    "path parser",
+    "path parsing",
+    "path validation"
   ],
   "author": "Miriam Zusin <miriam.zusin@gmail.com>",
   "license": "SEE LICENSE IN LICENSE.md",

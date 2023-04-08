@@ -1,4 +1,4 @@
-import { EPathDataCommand, IPathData, IPathDataScanResult, IPathDataToken } from './interfaces';
+import { EPathDataCommand, INumberVariants, IPathData, IPathDataScanResult, IPathDataToken } from './interfaces';
 
 /**
  * All path data instructions are expressed as one character (e.g., a moveto is expressed as an M).
@@ -51,18 +51,25 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
         return (val4 === '0' || val4 === '1') && (val5 === '0' || val5 === '1');
     };
 
-    const getNumberVariants = (num: number) => {
+    const getNumberVariants = (num: number): INumberVariants => {
 
-        if(Number.isInteger(num)) return [ num ];
+        if(Number.isInteger(num)) return {
+            short: num,
+        };
 
         const parts = num.toString().split('.');
         const intPart = Number(parts[0]);
-        if(intPart === 0) return [ num ];
+        if(intPart === 0) return {
+            short: num,
+        };
 
-        return [
-            intPart,
-            Number(`0.${ parts[1] }`),
-        ];
+        return {
+            short: num,
+            long: [
+                intPart,
+                Number(`0.${ parts[1] }`),
+            ],
+        };
     };
 
     /**
@@ -76,20 +83,20 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
         if(paramsCount > 0){
 
             // Get param numbers including their variants.
-            const paramVariants: number[][] = [];
-            let includedNumbersCount = 0;
+            const paramVariants: INumberVariants[] = [];
+            let maxNumbersCount = 0;
 
             for(let i= 1; i <= paramsCount; i++){
                 if(!!tokens[current + i] && tokens[current + i].tokenType === 'num'){
-                    const variants = getNumberVariants(Number(tokens[current + i].value));
-                    paramVariants.push(variants);
-                    includedNumbersCount += variants.length;
+                    const variant = getNumberVariants(Number(tokens[current + i].value));
+                    paramVariants.push(variant);
+                    maxNumbersCount += variant.long ? 2 : 1;
                 }
                 else break;
             }
 
             // Validate the parameters count, and add them to the params list.
-            if(includedNumbersCount < paramsCount){
+            if(maxNumbersCount < paramsCount){
                 error(tokens[current], `Expected number(s) after command ${ tokenType }.`);
                 current += paramsCount;
                 return;
@@ -97,13 +104,14 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
 
             // Add all relevant parameters.
             let diff = Math.abs(paramVariants.length - paramsCount);
-            for(const variants of paramVariants){
-                params.push(variants[0]);
-                if(diff <= 0) continue;
+            for(const variant of paramVariants){
 
-                for(let i= 1; i<variants.length && diff > 0; i++){
-                    params.push(variants[i]);
+                if(diff > 0 && variant.long){
+                    params.push(...variant.long);
                     diff--;
+                }
+                else{
+                    params.push(variant.short);
                 }
             }
         }
