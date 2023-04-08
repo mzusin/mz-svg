@@ -380,6 +380,36 @@ describe('Path Data Parser', () => {
                 "errors": []
             });
         });
+
+        test('M+ ---> error', () => {
+            const res = parsePath('M+');
+            expect(res).toStrictEqual({
+                "commands": [],
+                "errors": [
+                    {
+                        "col": 1,
+                        "line": 0,
+                        "msg": "Unexpected character +"
+                    }
+                ]
+            });
+        });
+
+        test('M00', () => {
+            const res = parsePath('M00');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [
+                            0,
+                            0
+                        ]
+                    }
+                ],
+                "errors": []
+            });
+        });
     });
 
     describe('Non existing command', () => {

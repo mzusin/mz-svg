@@ -345,7 +345,8 @@ M 0.0 0.0`)).toStrictEqual({
         });
     });
 
-    describe('Numbers Notations', () => {
+    describe('Number Notations', () => {
+
         test('M 1e+2 0', () => {
             expect(scan('M 1e+2 0')).toStrictEqual({
                 "errors": [],
@@ -497,6 +498,34 @@ M 0.0 0.0`)).toStrictEqual({
                 ]
             });
         });
+
+        test('M1e6 1e6', () => {
+
+            // 1e6 = 1000000 = million
+            expect(scan('M1e6 1e6')).toStrictEqual({
+                "errors": [],
+                "tokens": [
+                    {
+                        "col": 0,
+                        "line": 0,
+                        "tokenType": "M"
+                    },
+                    {
+                        "col": 1,
+                        "line": 0,
+                        "tokenType": "num",
+                        "value": "1e6"
+                    },
+                    {
+                        "col": 5,
+                        "line": 0,
+                        "tokenType": "num",
+                        "value": "1e6"
+                    }
+                ]
+            });
+        });
+
     });
 
     describe('Commands Combinations', () => {
