@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mzSVG</title>
+</head>
+<body>
+    <script src="../../dist/mz-svg.min.js"></script>
+    <script>
+        console.log(mzSVG.isPathValid(`M 10,30
+           A 20,20 0,0,1 50,30
+           A 20,20 0,0,1 90,30
+           Q 90,60 50,90
+           Q 10,60 10,30 z`));
+
+        console.log(mzSVG.parsePath(`M 10,30
+           A 20,20 0,0,1 50,30
+           A 20,20 0,0,1 90,30
+           Q 90,60 50,90
+           Q 10,60 10,30 z`));
+    </script>
+</body>
+</html>

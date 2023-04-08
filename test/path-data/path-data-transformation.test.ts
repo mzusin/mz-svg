@@ -1,7 +1,7 @@
 import { transformPath, createPath } from '../../src/index-esm';
 import { createNodeDoc } from '../core.test';
 
-describe('Path Transformations', () => {
+describe('Path Data Transformations', () => {
 
     test('No props is provided', () => {
         expect(transformPath()).toStrictEqual(null);
