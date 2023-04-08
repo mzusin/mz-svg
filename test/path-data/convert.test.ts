@@ -1,4 +1,4 @@
-import { pathDataToRelative, pathDataToString } from '../../src/main/path/convert';
+import { pathDataToAbsolute, pathDataToRelative, pathDataToString } from '../../src/main/path/convert';
 import { parsePath } from '../../src/index-esm';
 
 describe('Path Data Convert', () => {
@@ -413,6 +413,70 @@ describe('Path Data Convert', () => {
                 ],
                 "errors": []
             });
+        });
+    });
+
+    describe('ToAbsolute', () => {
+
+        test('Empty path', () => {
+            const parsed = parsePath('')
+            const res = pathDataToAbsolute(parsed);
+            expect(pathDataToString(res)).toStrictEqual('');
+        });
+
+        test('M10 10 l 30 30', () => {
+            const parsed = parsePath('M10 10 l 30 30')
+            const res = pathDataToAbsolute(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 10 10 L 40 40');
+        });
+
+        test('M10 10 L30 30', () => {
+            const parsed = parsePath('M10 10 L30 30')
+            const res = pathDataToAbsolute(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 10 10 L 30 30');
+        });
+
+        test('M10 10 c 10 30 30 30 40, 0 10 -30 20 -30 40 0', () => {
+            const parsed = parsePath('M10 10 c 10 30 30 30 40, 0 10 -30 20 -30 40 0')
+            const res = pathDataToAbsolute(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 10 10 C 20 40 40 40 50 10 C 60 -20 70 -20 90 10');
+        });
+
+        test('M10 10H40h50', () => {
+            const parsed = parsePath('M10 10H40h50')
+            const res = pathDataToAbsolute(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 10 10 H 40 H 90');
+        });
+
+        test('M10 10V40v50', () => {
+            const parsed = parsePath('M10 10V40v50')
+            const res = pathDataToAbsolute(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 10 10 V 40 V 90');
+        });
+
+        test('M40 30a20 40 -45 0 1 20 50', () => {
+            const parsed = parsePath('M40 30a20 40 -45 0 1 20 50')
+            const res = pathDataToAbsolute(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 40 30 A 20 40 -45 0 1 60 80');
+        });
+
+        test('M10 10 l10 0 l0 10 Z l 0 10 l 10 0 z l-1-1', () => {
+            const parsed = parsePath('M10 10 l10 0 l0 10 Z l 0 10 l 10 0 z l-1-1')
+            const res = pathDataToAbsolute(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 10 10 L 20 10 L 20 20 Z L 10 20 L 20 20 Z L 9 9');
+        });
+
+        test(`Very long path 1`, () => {
+            const parsed = parsePath(`M233.51,56.8c-0.57,0.24-1.33,0.52-2.28,0.86c-0.95,0.33-1.93,0.5-2.92,0.5s-1.84-0.27-2.53-0.82
+\tc-0.69-0.55-1.03-1.49-1.03-2.82V36.25h7.85V28.9h-7.85V16.77h-9.56V28.9h-17.84V16.77h-9.56V28.9h-4.92v7.35h4.92v21.48
+\tc0,1.67,0.26,3.08,0.79,4.25c0.52,1.17,1.22,2.12,2.1,2.85c0.88,0.74,1.9,1.27,3.07,1.61c1.16,0.33,2.41,0.5,3.75,0.5
+\tc2.05,0,4-0.28,5.85-0.86c1.86-0.57,3.42-1.14,4.71-1.71l-1.93-7.56c-0.57,0.24-1.33,0.52-2.28,0.86c-0.95,0.33-1.93,0.5-2.92,0.5
+\tc-1,0-1.84-0.27-2.53-0.82c-0.69-0.55-1.03-1.49-1.03-2.82V36.25h17.84v21.48c0,1.67,0.26,3.08,0.79,4.25
+\tc0.52,1.17,1.22,2.12,2.1,2.85c0.88,0.74,1.9,1.27,3.07,1.61c1.16,0.33,2.41,0.5,3.75,0.5c2.05,0,4-0.28,5.85-0.86
+\tc1.86-0.57,3.42-1.14,4.71-1.71L233.51,56.8z`);
+
+            const res = pathDataToAbsolute(parsed);
+            expect(pathDataToString(res)).toStrictEqual(`M 233.51 56.8 C 232.94 57.04 232.18 57.32 231.23 57.66 C 230.28 57.99 229.3 58.16 228.31 58.16 S 226.47 57.89 225.78 57.34 C 225.09 56.79 224.75 55.85 224.75 54.52 V 36.25 H 232.6 V 28.9 H 224.75 V 16.77 H 215.19 V 28.9 H 197.35 V 16.77 H 187.79 V 28.9 H 182.87 V 36.25 H 187.79 V 57.73 C 187.79 59.4 188.05 60.81 188.58 61.98 C 189.1 63.15 189.8 64.1 190.68 64.83 C 191.56 65.57 192.58 66.1 193.75 66.44 C 194.91 66.77 196.16 66.94 197.5 66.94 C 199.55 66.94 201.5 66.66 203.35 66.08 C 205.21 65.51 206.77 64.94 208.06 64.37 L 206.13 56.81 C 205.56 57.05 204.8 57.33 203.85 57.67 C 202.9 58 201.92 58.17 200.93 58.17 C 199.93 58.17 199.09 57.9 198.4 57.35 C 197.71 56.8 197.37 55.86 197.37 54.53 V 36.25 H 215.21 V 57.73 C 215.21 59.4 215.47 60.81 216 61.98 C 216.52 63.15 217.22 64.1 218.1 64.83 C 218.98 65.57 220 66.1 221.17 66.44 C 222.33 66.77 223.58 66.94 224.92 66.94 C 226.97 66.94 228.92 66.66 230.77 66.08 C 232.63 65.51 234.19 64.94 235.48 64.37 L 233.51 56.8 Z`);
         });
     });
 
