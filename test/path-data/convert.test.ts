@@ -1,4 +1,4 @@
-import { pathDataToRelative } from '../../src/main/path/convert';
+import { pathDataToRelative, pathDataToString } from '../../src/main/path/convert';
 import { parsePath } from '../../src/index-esm';
 
 describe('Path Data Convert', () => {
@@ -17,7 +17,7 @@ describe('Path Data Convert', () => {
             expect(res).toStrictEqual({
                 "commands": [
                     {
-                        "command": "m",
+                        "command": "M",
                         "params": [
                             10,
                             10
@@ -41,7 +41,7 @@ describe('Path Data Convert', () => {
             expect(res).toStrictEqual({
                 "commands": [
                     {
-                        "command": "m",
+                        "command": "M",
                         "params": [
                             10,
                             10
@@ -65,7 +65,7 @@ describe('Path Data Convert', () => {
             expect(res).toStrictEqual({
                 "commands": [
                     {
-                        "command": "m",
+                        "command": "M",
                         "params": [
                             10,
                             10
@@ -93,7 +93,7 @@ describe('Path Data Convert', () => {
             expect(res).toStrictEqual({
                 "commands": [
                     {
-                        "command": "m",
+                        "command": "M",
                         "params": [
                             10,
                             10
@@ -120,7 +120,7 @@ describe('Path Data Convert', () => {
             expect(res).toStrictEqual({
                 "commands": [
                     {
-                        "command": "m",
+                        "command": "M",
                         "params": [
                             10,
                             10
@@ -147,7 +147,7 @@ describe('Path Data Convert', () => {
             expect(res).toStrictEqual({
                 "commands": [
                     {
-                        "command": "m",
+                        "command": "M",
                         "params": [
                             10,
                             10
@@ -174,7 +174,7 @@ describe('Path Data Convert', () => {
             expect(res).toStrictEqual({
                 "commands": [
                     {
-                        "command": "m",
+                        "command": "M",
                         "params": [
                             10,
                             10
@@ -202,7 +202,7 @@ describe('Path Data Convert', () => {
             expect(res).toStrictEqual({
                 "commands": [
                     {
-                        "command": "m",
+                        "command": "M",
                         "params": [
                             10,
                             10
@@ -243,7 +243,7 @@ describe('Path Data Convert', () => {
             expect(res).toStrictEqual({
                 "commands": [
                     {
-                        "command": "m",
+                        "command": "M",
                         "params": [
                             10,
                             10
@@ -272,7 +272,7 @@ describe('Path Data Convert', () => {
             expect(res).toStrictEqual({
                 "commands": [
                     {
-                        "command": "m",
+                        "command": "M",
                         "params": [
                             10,
                             10
@@ -301,7 +301,7 @@ describe('Path Data Convert', () => {
             expect(res).toStrictEqual({
                 "commands": [
                     {
-                        "command": "m",
+                        "command": "M",
                         "params": [
                             40,
                             30
@@ -326,7 +326,7 @@ describe('Path Data Convert', () => {
             expect(res).toStrictEqual({
                 "commands": [
                     {
-                        "command": "m",
+                        "command": "M",
                         "params": [
                             10,
                             10
@@ -373,6 +373,134 @@ describe('Path Data Convert', () => {
                 ],
                 "errors": []
             });
+        });
+
+        test('M10 20L0 0 5 5 10 10', () => {
+            const parsed = parsePath('M10 20L0 0 5 5 10 10')
+            const res = pathDataToRelative(parsed);
+
+            // M10 20l-10 -20 5 5 5 5
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [
+                            10,
+                            20
+                        ]
+                    },
+                    {
+                        "command": "l",
+                        "params": [
+                            -10,
+                            -20
+                        ]
+                    },
+                    {
+                        "command": "l",
+                        "params": [
+                            5,
+                            5
+                        ]
+                    },
+                    {
+                        "command": "l",
+                        "params": [
+                            5,
+                            5
+                        ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+    });
+
+    describe('ToString', () => {
+
+        test('Empty path', () => {
+            const parsed = parsePath('')
+            const res = pathDataToRelative(parsed);
+            expect(pathDataToString(res)).toStrictEqual('');
+        });
+
+        test('M10 10 L30 30', () => {
+            const parsed = parsePath('M10 10 L30 40')
+            const res = pathDataToRelative(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 10 10 l 20 30');
+        });
+
+        test('M10 10 l30 40', () => {
+            const parsed = parsePath('M10 10 l30 40')
+            const res = pathDataToRelative(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 10 10 l 30 40');
+        });
+
+        test('M10 10 l30 40Z', () => {
+            const parsed = parsePath('M10 10 l30 40Z')
+            const res = pathDataToRelative(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 10 10 l 30 40 z');
+        });
+
+        test('M10 10 H20 Z', () => {
+            const parsed = parsePath('M10 10 H20 Z')
+            const res = pathDataToRelative(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 10 10 h 10 z');
+        });
+
+        test('M10 10 h20 Z', () => {
+            const parsed = parsePath('M10 10 h20 Z')
+            const res = pathDataToRelative(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 10 10 h 20 z');
+        });
+
+        test('M10 10 V20 Z', () => {
+            const parsed = parsePath('M10 10 V20 Z')
+            const res = pathDataToRelative(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 10 10 v 10 z');
+        });
+
+        test('M10 10 v20 Z', () => {
+            const parsed = parsePath('M10 10 v20 Z')
+            const res = pathDataToRelative(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 10 10 v 20 z');
+        });
+
+        test('M10 10 C 20 40 40 40 50 10 60 -20 70 -20 90 10', () => {
+            const parsed = parsePath('M10 10 C 20 40 40 40 50 10 60 -20 70 -20 90 10');
+            // should be: M10 10 c 10 30 30 30 40 0 c 10 -30 20 -30 40 0
+            const res = pathDataToRelative(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 10 10 c 10 30 30 30 40 0 c 10 -30 20 -30 40 0');
+        });
+
+        test('M10 10H40h50', () => {
+            const parsed = parsePath('M10 10H40h50')
+            const res = pathDataToRelative(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 10 10 h 30 h 50');
+        });
+
+        test('M10 10V40v50', () => {
+            const parsed = parsePath('M10 10V40v50')
+            const res = pathDataToRelative(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 10 10 v 30 v 50');
+        });
+
+        test('M40 30A20 40 -45 0 1 60 80', () => {
+            const parsed = parsePath('M40 30A20 40 -45 0 1 60 80')
+            const res = pathDataToRelative(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 40 30 a 20 40 -45 0 1 20 50');
+        });
+
+        test('M10 10 L20 10 L20 20 Z L10 20 L20 20 z L9 9', () => {
+            const parsed = parsePath('M10 10 L20 10 L20 20 Z L10 20 L20 20 z L9 9')
+            const res = pathDataToRelative(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 10 10 l 10 0 l 0 10 z l 0 10 l 10 0 z l -1 -1');
+        });
+
+        test('M10 20L0 0 5 5 10 10', () => {
+            const parsed = parsePath('M10 20L0 0 5 5 10 10')
+            const res = pathDataToRelative(parsed);
+            expect(pathDataToString(res)).toStrictEqual('M 10 20 l -10 -20 l 5 5 l 5 5');
         });
     });
 

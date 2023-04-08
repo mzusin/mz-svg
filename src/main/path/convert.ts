@@ -9,11 +9,13 @@ export const pathDataToRelative = (pathData: IPathData): IPathData => {
     // current (x, y) pair
     let x = commands[0].params[0];
     let y = commands[0].params[1];
+
+    // the latest 'M' coordinates
     let mx = x;
     let my = y;
 
-    // Make first M to be relative
-    commands[0].command = EPathDataCommand.MoveToRel;
+    // Make first M to be absolute
+    commands[0].command = EPathDataCommand.MoveToAbs;
 
     for(let i = 1; i<commands.length; i++){
         const item = commands[i]
@@ -119,4 +121,22 @@ export const pathDataToRelative = (pathData: IPathData): IPathData => {
     }
 
     return pathData;
+};
+
+export const pathDataToString = (pathData: IPathData) : string => {
+    if(!pathData || pathData.commands.length <= 0) return '';
+
+    let d = '';
+
+    for(const item of pathData.commands){
+        d += item.command;
+        if(item.params.length > 0){
+            d += ` ${ item.params.join(' ')} `
+        }
+        else{
+            d += ' ';
+        }
+    }
+
+    return d.trim();
 };
