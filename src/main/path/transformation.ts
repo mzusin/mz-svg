@@ -1,6 +1,7 @@
 import { IPathData } from './interfaces';
 import { scan } from './scanner';
 import { parse } from './parser';
+import { pathDataToAbsolute, pathDataToRelative, pathDataToString } from './convert';
 
 export const isPathValid = (d?: string): boolean => {
     const parsed = parsePath(d);
@@ -18,18 +19,27 @@ export const parsePath = (d?: string): IPathData => {
 
 /**
  * Converts all path commands to relative.
-
+ */
 export const pathToRel = (d?: string): string|undefined => {
     if(!d) return d;
 
     const parsed = parsePath(d);
-    if(parsed.errors.length > 0){
-        console.error(`The provided path is not valid: ${ d }`);
-        return d;
-    }
+    if(parsed.errors.length > 0) return d;
 
-    return '';
-}; */
+    return pathDataToString(pathDataToRelative(parsed));
+};
+
+/**
+ * Converts all path commands to absolute.
+ */
+export const pathToAbs = (d?: string): string|undefined => {
+    if(!d) return d;
+
+    const parsed = parsePath(d);
+    if(parsed.errors.length > 0) return d;
+
+    return pathDataToString(pathDataToAbsolute(parsed));
+};
 
 /**
  * SVG paths transformations that works with 'path data' - https://www.w3.org/TR/SVG11/paths.html#PathData
