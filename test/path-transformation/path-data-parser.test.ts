@@ -2084,6 +2084,69 @@ describe('Path Data Parser', () => {
                 ]
             });
         });
+
+        test('M 10,30 A 20,20 10,0,1 50,30 A 20,20 10,0,1 90,30', () => {
+            const res = parseD('M 10,30 A 20,20 10,0,1 50,30 A 20,20 10,0,1 90,30');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 30 ]
+                    },
+                    {
+                        "command": "A",
+                        "params": [ 20,20, 10,0,1, 50,30 ]
+                    },
+                    {
+                        "command": "A",
+                        "params": [ 20,20, 10,0,1, 90,30 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+
+        test('M 10,30 A 20,20 10,0,1 50,30 20,20 10,0,1 90,30', () => {
+            const res = parseD('M 10,30 A 20,20 10,0,1 50,30 20,20 10,0,1 90,30');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 30 ]
+                    },
+                    {
+                        "command": "A",
+                        "params": [ 20,20, 10,0,1, 50,30 ]
+                    },
+                    {
+                        "command": "A",
+                        "params": [ 20,20, 10,0,1, 90,30 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
+
+        test('M 10,30 a 20,20 10,0,1 50,30 a 20,20 10,0,1 90,30', () => {
+            const res = parseD('M 10,30 a 20,20 10,0,1 50,30 a 20,20 10,0,1 90,30');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 10, 30 ]
+                    },
+                    {
+                        "command": "a",
+                        "params": [ 20,20, 10,0,1, 50,30 ]
+                    },
+                    {
+                        "command": "a",
+                        "params": [ 20,20, 10,0,1, 90,30 ]
+                    }
+                ],
+                "errors": []
+            });
+        });
     });
 });
 
