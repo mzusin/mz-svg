@@ -89,7 +89,7 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
     /**
      * M, m, L, l.
      */
-    const parseBinaryCommand = (isRelative: boolean) => {
+    const parseBinaryCommand = (_isRelative: boolean) => {
 
         // The next pair of coordinates should be (x,y) parameters.
         if(!tokens[current + 1] || !tokens[current + 2]){
@@ -127,7 +127,7 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
             //  If a relative moveto (m) appears as the first element of the path, then it is treated as a pair of absolute coordinates.
             //  In this case, subsequent pairs of coordinates are treated as relative even though the initial moveto is interpreted as an absolute moveto.
             pathData.commands.push({
-                command: isRelative ? EPathDataCommand.LineToRel : EPathDataCommand.LineToAbs,
+                command: _isRelative ? EPathDataCommand.LineToRel : EPathDataCommand.LineToAbs,
                 params: [
                     Number(lineToTokens[i].value),
                     Number(lineToTokens[i + 1].value),
@@ -168,6 +168,66 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
                 ],
             });
             current++;
+        }
+    };
+
+    /**
+     * C, c.
+     */
+    const parseSenaryCommand = (_isRelative: boolean) => {
+
+        const tokenType = tokens[current].tokenType;
+
+        // The next 6 coordinates should be (x1 y1 x2 y2 x y) parameters.
+        for(let i= 1; i <= 6; i++){
+            if(!tokens[current + i]){
+                error(tokens[current], `Expected number(s) after command ${ tokenType }.`);
+                current += 6;
+                return;
+            }
+        }
+
+        pathData.commands.push({
+            command: tokens[current].tokenType as EPathDataCommand,
+            params: [
+                Number(tokens[current + 1].value),
+                Number(tokens[current + 2].value),
+                Number(tokens[current + 3].value),
+                Number(tokens[current + 4].value),
+                Number(tokens[current + 5].value),
+                Number(tokens[current + 6].value),
+            ],
+        });
+
+        current += 7;
+
+        // If the command is followed by multiple sets of coordinates, the subsequent pairs are treated as implicit C/c commands.
+        const nextTokens: IPathDataToken[] = [];
+
+        while(tokens[current]?.tokenType === 'num'){
+            nextTokens.push(tokens[current]);
+            current++;
+        }
+
+        if(nextTokens.length % 6 !== 0){
+            error(nextTokens[nextTokens.length - 1], `Expected a number.`);
+            return;
+        }
+
+        for(let i= 0; i < nextTokens.length; i += 6){
+
+            //  Multiple sets of coordinates may be specified to draw a poly-bézier. At the end of the command, the new current point becomes the final (x,y) coordinate pair used in the poly-bézier.
+            pathData.commands.push({
+                command: tokenType as EPathDataCommand,
+                params: [
+                    Number(nextTokens[i].value),
+                    Number(nextTokens[i + 1].value),
+                    Number(nextTokens[i + 2].value),
+                    Number(nextTokens[i + 3].value),
+                    Number(nextTokens[i + 4].value),
+                    Number(nextTokens[i + 5].value),
+                ],
+            });
         }
     };
 
@@ -217,7 +277,7 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
 
             case EPathDataCommand.CubicCurveToAbs:
             case EPathDataCommand.CubicCurveToRel:{
-                // parseBinaryCommand(isRelative);
+                parseSenaryCommand(isRelative);
                 break;
             }
 
