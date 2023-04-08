@@ -179,18 +179,16 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
             }
 
             case EPathDataCommand.CubicCurveToSmoothAbs:
-            case EPathDataCommand.CubicCurveToSmoothRel:{
-                parseCommand(4, token.tokenType, isRelative);
-                break;
-            }
-
+            case EPathDataCommand.CubicCurveToSmoothRel:
             case EPathDataCommand.QuadraticCurveToAbs:
             case EPathDataCommand.QuadraticCurveToRel:{
+                parseCommand(4, token.tokenType, isRelative);
                 break;
             }
 
             case EPathDataCommand.QuadraticCurveToSmoothAbs:
             case EPathDataCommand.QuadraticCurveToSmoothRel:{
+                parseCommand(2, token.tokenType, isRelative);
                 break;
             }
 
