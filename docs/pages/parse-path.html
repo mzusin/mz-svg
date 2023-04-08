@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>mzSVG Documentation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
+    <link id="favicon-48" rel="icon" type="image/png" sizes="48x48" href="/img/favicon/favicon-48.png" />
+    <link id="favicon-32" rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32.png" />
+    <link id="favicon-16" rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16.png" />
+
+    <link rel="stylesheet" href="/highlight.js/styles/tokyo-night-dark.css" />
+    <link rel="stylesheet" href="/css/styles.1680960756962.css" />
+    <!--<link rel="stylesheet" href="/js/index.1680960756962.css" />-->
+
+  </head>
+  <body class="h-screen flex flex-col font-roboto">
+
+    <header class="py-2 px-4 border-b shadow-sm bg-slate-100" style="padding: 0.7rem 1rem;">
+      <div class="container mx-auto flex items-center justify-between">
+        <div class="flex items-center">
+          <!-- mobile menu button -->
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            class="mr-4 pointer md:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewBox="0 0 24 24">
+              <path stroke="none" d="M0 0h24v24H0z"/>
+              <path d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+
+          <a href="/" title="" class="flex items-center">
+            <span class="text-slate-600 ml-6"><b>mzSVG</b> Documentation</span>
+          </a>
+        </div>
+
+        <div class="flex items-center">
+          <a href="https://github.com/mzusin/mz-svg" class="mx-3 block text-slate-400 hover:text-slate-500"><span class="sr-only">mzSVG on GitHub</span><svg viewBox="0 0 16 16" class="w-5 h-5" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg></a>
+
+        </div>
+      </div>
+    </header>
+
+    <div class="container mx-auto flex-1 overflow-hidden">
+      <div class="flex h-full">
+
+        <div class="side-menu border-r shadow-md overflow-y-auto h-full max-w-full md:w-350 absolute md:static md:left-auto bg-white z-50" id="side-menu">
+          <div class="px-6 pb-4 flex flex-col relative">
+
+            <!-- mobile menu close -->
+            <button type="button" class="pointer absolute right-4 top-2 md:hidden" id="mobile-menu-close-btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                viewBox="0 0 24 24">
+                <path stroke="none" d="M0 0h24v24H0z"/>
+                <path d="M18 6 6 18M6 6l12 12"/>
+              </svg>
+            </button>
+
+            <div class="text-xl my-4">Main</div><a href="/pages/typescript-usage.html" title="" class="mb-2 text-slate-500">TypesScript Usage</a><a href="/pages/browser-usage.html" title="" class="mb-2 text-slate-500">Browser Usage</a><a href="/pages/nodejs-usage.html" title="" class="mb-2 text-slate-500">Node.js Usage</a><div class="text-xl my-4">Create SVG</div><a href="/pages/create-svg-element.html" title="" class="mb-2 text-slate-500">Create Svg Element</a><a href="/pages/create-svg-from-string.html" title="" class="mb-2 text-slate-500">Create Svg From String</a><a href="/pages/get-svg-as-string.html" title="" class="mb-2 text-slate-500">Get Svg As String</a><div class="text-xl my-4">Create Shapes</div><a href="/pages/create-path.html" title="" class="mb-2 text-slate-500">Create Path</a><a href="/pages/create-rect.html" title="" class="mb-2 text-slate-500">Create Rect</a><a href="/pages/create-rect-path.html" title="" class="mb-2 text-slate-500">Create Rect Path</a><a href="/pages/create-circle.html" title="" class="mb-2 text-slate-500">Create Circle</a><a href="/pages/create-ellipse.html" title="" class="mb-2 text-slate-500">Create Ellipse</a><a href="/pages/create-line.html" title="" class="mb-2 text-slate-500">Create Line</a><a href="/pages/create-polygon.html" title="" class="mb-2 text-slate-500">Create Polygon</a><a href="/pages/create-polyline.html" title="" class="mb-2 text-slate-500">Create Polyline</a><a href="/pages/create-star.html" title="" class="mb-2 text-slate-500">Create Star</a><div class="text-xl my-4">Containers</div><a href="/pages/create-group.html" title="" class="mb-2 text-slate-500">Create Group</a><a href="/pages/create-defs.html" title="" class="mb-2 text-slate-500">Create Defs</a><a href="/pages/create-use.html" title="" class="mb-2 text-slate-500">Create Use</a><a href="/pages/create-pattern.html" title="" class="mb-2 text-slate-500">Create Pattern</a><a href="/pages/create-clip-path.html" title="" class="mb-2 text-slate-500">Create Clip Path</a><a href="/pages/create-mask.html" title="" class="mb-2 text-slate-500">Create Mask</a><a href="/pages/create-symbol.html" title="" class="mb-2 text-slate-500">Create Symbol</a><div class="text-xl my-4">Path Data</div><a href="/pages/parse-path.html" title="" class="mb-2 text-blue-500 bg-slate-100 px-4 py-2 rounded-md">Parse Path</a><a href="/pages/validate-path.html" title="" class="mb-2 text-slate-500">Validate Path</a><div class="text-xl my-4">Io</div><a href="/pages/save-svg.html" title="" class="mb-2 text-slate-500">Save Svg</a><a href="/pages/download-svg.html" title="" class="mb-2 text-slate-500">Download Svg</a><div class="text-xl my-4">Helpers</div><a href="/pages/append-once.html" title="" class="mb-2 text-slate-500">Append Once</a><a href="/pages/prepend-once.html" title="" class="mb-2 text-slate-500">Prepend Once</a><div class="text-xl my-4">Other</div><a href="/pages/constants.html" title="" class="mb-2 text-slate-500">Constants</a><a href="/pages/unit-tests.html" title="" class="mb-2 text-slate-500">Unit Tests</a>
+          </div>
+        </div>
+
+        <div class="p-4 overflow-y-auto h-full md:w-100-350">
+          <div class="w-800 max-w-full mx-auto my-10 leading-7 text-lg text-slate-800"><h2 class="text-3xl mb-8">Parse Path Data</h2>
+<p class="mb-4">It’s possible to parse the <strong class="font-bold">‘d’</strong> property of a given path element using the <strong class="font-bold">parsePath()</strong> function.</p>
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { parsePath } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
+
+<span class="hljs-keyword">const</span> parseResult = <span class="hljs-title function_">parsePath</span>(<span class="hljs-string">`M 10,30
+           A 20,20 0,0,1 50,30
+           A 20,20 0,0,1 90,30
+           Q 90,60 50,90
+           Q 10,60 10,30 z`</span>); 
+
+<span class="hljs-comment">// The result --------------------</span>
+
+<span class="hljs-comment">/*
+{
+	&quot;commands&quot;: [
+        {
+            &quot;command&quot;: &quot;M&quot;,
+            &quot;params&quot;: [10, 30]
+        }, 
+        {
+            &quot;command&quot;: &quot;A&quot;,
+            &quot;params&quot;: [20, 20, 0, 0, 1, 50, 30]
+        }, 
+        {
+            &quot;command&quot;: &quot;A&quot;,
+            &quot;params&quot;: [20, 20, 0, 0, 1, 90, 30]
+        }, 
+        {
+            &quot;command&quot;: &quot;Q&quot;,
+            &quot;params&quot;: [90, 60, 50, 90]
+        }, 
+        {
+            &quot;command&quot;: &quot;Q&quot;,
+            &quot;params&quot;: [10, 60, 10, 30]
+        }, 
+        {
+            &quot;command&quot;: &quot;z&quot;,
+            &quot;params&quot;: []
+        }
+	],
+	&quot;errors&quot;: []
+}
+ */</span></code></pre>
+<p class="mb-4">Path data interface:</p>
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">interface</span> <span class="hljs-title class_">IPathData</span> {
+    <span class="hljs-attr">commands</span>: <span class="hljs-title class_">IPathDataCommand</span>[];
+    <span class="hljs-attr">errors</span>: <span class="hljs-title class_">IPathDataError</span>[];
+}
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">IPathDataCommand</span> {
+    <span class="hljs-attr">command</span>: <span class="hljs-title class_">EPathDataCommand</span>;
+    <span class="hljs-attr">params</span>: <span class="hljs-built_in">number</span>[];
+}
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">IPathDataError</span> {
+    <span class="hljs-attr">line</span>: <span class="hljs-built_in">number</span>;
+    <span class="hljs-attr">col</span>: <span class="hljs-built_in">number</span>;
+    <span class="hljs-attr">msg</span>: <span class="hljs-built_in">string</span>;
+}</code></pre>
+<p class="mb-4">Path data commands enum:</p>
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">export</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">EPathDataCommand</span> {
+
+    <span class="hljs-comment">// The &quot;moveto&quot; commands (M or m) establish a new current point.</span>
+    <span class="hljs-comment">// The effect is as if the &quot;pen&quot; were lifted and moved to a new location.</span>
+    <span class="hljs-title class_">MoveToAbs</span> = <span class="hljs-string">&#x27;M&#x27;</span>,
+    <span class="hljs-title class_">MoveToRel</span> = <span class="hljs-string">&#x27;m&#x27;</span>,
+
+    <span class="hljs-comment">// The &quot;closepath&quot; (Z or z) ends the current sub-path and causes an automatic straight line</span>
+    <span class="hljs-comment">// to be drawn from the current point to the initial point of the current sub-path.</span>
+    <span class="hljs-title class_">ClosePathAbs</span> = <span class="hljs-string">&#x27;Z&#x27;</span>,
+    <span class="hljs-title class_">ClosePathRel</span> = <span class="hljs-string">&#x27;z&#x27;</span>,
+
+    <span class="hljs-comment">// The various &quot;lineto&quot; commands draw straight lines from the current point to a new point.</span>
+    <span class="hljs-title class_">LineToAbs</span> = <span class="hljs-string">&#x27;L&#x27;</span>,
+    <span class="hljs-title class_">LineToRel</span> = <span class="hljs-string">&#x27;l&#x27;</span>,
+    <span class="hljs-title class_">LineToHorizontalAbs</span> = <span class="hljs-string">&#x27;H&#x27;</span>,
+    <span class="hljs-title class_">LineToHorizontalRel</span> = <span class="hljs-string">&#x27;h&#x27;</span>,
+    <span class="hljs-title class_">LineToVerticalAbs</span> = <span class="hljs-string">&#x27;V&#x27;</span>,
+    <span class="hljs-title class_">LineToVerticalRel</span> = <span class="hljs-string">&#x27;v&#x27;</span>,
+
+    <span class="hljs-comment">// Cubic Bézier commands</span>
+    <span class="hljs-title class_">CubicCurveToAbs</span> = <span class="hljs-string">&#x27;C&#x27;</span>,
+    <span class="hljs-title class_">CubicCurveToRel</span> = <span class="hljs-string">&#x27;c&#x27;</span>,
+    <span class="hljs-title class_">CubicCurveToSmoothAbs</span> = <span class="hljs-string">&#x27;S&#x27;</span>,
+    <span class="hljs-title class_">CubicCurveToSmoothRel</span> = <span class="hljs-string">&#x27;s&#x27;</span>,
+
+    <span class="hljs-comment">// Quadratic Bézier commands</span>
+    <span class="hljs-title class_">QuadraticCurveToAbs</span> = <span class="hljs-string">&#x27;Q&#x27;</span>,
+    <span class="hljs-title class_">QuadraticCurveToRel</span> = <span class="hljs-string">&#x27;q&#x27;</span>,
+    <span class="hljs-title class_">QuadraticCurveToSmoothAbs</span> = <span class="hljs-string">&#x27;T&#x27;</span>,
+    <span class="hljs-title class_">QuadraticCurveToSmoothRel</span> = <span class="hljs-string">&#x27;t&#x27;</span>,
+
+    <span class="hljs-comment">// Elliptical arc commands</span>
+    <span class="hljs-title class_">ArcAbs</span> = <span class="hljs-string">&#x27;A&#x27;</span>,
+    <span class="hljs-title class_">ArcRel</span> = <span class="hljs-string">&#x27;a&#x27;</span>,
+}</code></pre>
+</div>
+
+          <div class="w-800 max-w-full mx-auto grid lg:grid-cols-2 gap-8 items-center text-slate-500">
+<div class="flex justify-between items-start border border-slate-200 rounded p-4">
+  <a href="/pages/create-symbol.html" title="" class="mr-4 hover:text-blue-500">
+    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">
+    <path stroke="none" d="M0 0h24v24H0z"/>
+    <path d="M5 12h14M5 12l6 6m-6-6 6-6"/>
+  </svg>
+  </a>
+  <div class="flex flex-col items-end justify-center">
+    <div class="mb-2 text-sm text-slate-300">Previous</div>
+    <a href="/pages/create-symbol.html" title="" class="hover:text-blue-500">Create Symbol</a>
+  </div>
+</div>      
+    
+<div class="flex justify-between items-start border border-slate-200 rounded p-4">
+  
+  <div class="flex flex-col justify-center">
+    <div class="mb-2 text-sm text-slate-300">Next</div>
+    <a href="/pages/validate-path.html" title="" class="hover:text-blue-500">Validate Path</a>
+  </div>
+  
+  <a href="/pages/validate-path.html" title="" class="mr-4 hover:text-blue-500">
+    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">
+     <path stroke="none" d="M0 0h24v24H0z"/>
+     <path d="M5 12h14m-6 6 6-6m-6-6 6 6"/>
+  </svg>
+  </a>
+</div>  
+    </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!--<footer class="py-2 px-4 border-t">
+      <div class="container mx-auto">
+        Footer
+      </div>
+    </footer>-->
+
+    <script src="/js/index.1680960756962.js"></script>
+  </body>
+</html>

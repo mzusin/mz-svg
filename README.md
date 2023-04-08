@@ -11,11 +11,18 @@ TypeScript-based library for managing SVG in the browser and Node.js. The modula
 
 ## Features 🚀
 - Works in browser and Node.js
-- Based on TypeScript
-- Allows you to create SVG documents and primitive SVG shapes like path, rectangle, circle, ellipse, polygon, polyline, etc..
-- Create a rectangle path element.
-- Create star SVG shape.
-- SVG patterns, clipPath.
-- Container objects like &lt;g>, &lt;defs>, &lt;use>, &lt;clipPath>, &lt;mask>, etc.
+- Based on TypeScript.
 - Save the SVG to the file system in Node.js, or download it as SVG, PNG, JPG, etc. in a browser environment.
-- Extensive Unit Testing
+- Extensive Unit Testing.
+
+## Working with path data ('d' property)
+- Path data validation.
+- Path data parser.
+
+## Create SVG elements in browser & Node.js
+- Primitive shapes like path, rectangle, circle, ellipse, polygon, polyline, etc.
+- Container objects like &lt;g>, &lt;defs>, &lt;use>, etc.
+- SVG &lt;pattern>, &lt;clipPath>, &lt;mask>, etc.
+- Rectangle path element.
+- SVG star shape.
+
