@@ -1,26 +1,6 @@
-import { EPathDataCommand } from './parser';
+import { EPathDataCommand, IPathDataScanResult } from './interfaces';
 
-export interface IPathDataError {
-    line: number;
-    col: number;
-    msg: string;
-}
-
-export interface IPathDataToken{
-    tokenType: string;
-    value?: string|number;
-    line: number;
-    col: number;
-}
-
-export interface IPathDataScanResult {
-    tokens: IPathDataToken[];
-    errors: IPathDataError[];
-}
-
-// ----------------------------------------------------------------
-
-const NUMBER_REGEX = /^[+\-]?(?=\.\d|\d)(?:0|[1-9]\d*)?(?:\.\d+)?(?:(?<=\d)(?:[eE][+\-]?\d+))?/;
+const NUMBER_REGEX = /^[+-]?(?=\.\d|\d)(?:0|[1-9]\d*)?(?:\.\d+)?(?:(?<=\d)(?:[eE][+-]?\d+))?/;
 
 /**
  * Path Data Scanner.

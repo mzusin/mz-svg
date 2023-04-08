@@ -4,6 +4,12 @@ import * as stars from './main/shapes/star-shapes';
 import * as shapePaths from './main/shapes/shape-paths';
 import * as containers from './main/containers';
 declare const api: {
+    isPathValid: (d?: string | undefined) => boolean;
+    parsePath: (d?: string | undefined) => import("./main/path/interfaces").IPathData;
+    transformPath: (props?: {
+        d?: string | undefined;
+        $path?: SVGPathElement | undefined;
+    } | undefined) => string | SVGPathElement | null;
     appendOnce: ($parent: SVGElement | SVGSVGElement, $el: SVGElement) => void;
     prependOnce: ($parent: SVGElement | SVGSVGElement, $el: SVGElement) => void;
     createGroup: (props?: import("./interfaces").IPrimitiveShapeProps | undefined) => SVGGElement;
@@ -91,3 +97,4 @@ export * from './main/shapes/star-shapes';
 export * from './main/shapes/shape-paths';
 export * from './main/containers';
 export * from './main/helpers';
+export * from './main/path/transformation';

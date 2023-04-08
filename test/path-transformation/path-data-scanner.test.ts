@@ -1,4 +1,4 @@
-import { scan } from '../../src/main/path/parse/scanner';
+import { scan } from '../../src/main/path/scanner';
 
 describe('Path Data Scanner', () => {
 

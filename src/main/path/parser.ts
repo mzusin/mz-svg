@@ -1,57 +1,10 @@
-import { IPathDataError, IPathDataScanResult, IPathDataToken } from './scanner';
+import { EPathDataCommand, IPathData, IPathDataScanResult, IPathDataToken } from './interfaces';
 
 /**
  * All path data instructions are expressed as one character (e.g., a moveto is expressed as an M).
  * Relative versions of all commands are available (uppercase means absolute coordinates, lowercase means relative coordinates).
  * https://www.w3.org/TR/SVG11/paths.html#PathData
  */
-export enum EPathDataCommand {
-
-    // The "moveto" commands (M or m) establish a new current point.
-    // The effect is as if the "pen" were lifted and moved to a new location.
-    MoveToAbs = 'M',
-    MoveToRel = 'm',
-
-    // The "closepath" (Z or z) ends the current sub-path and causes an automatic straight line
-    // to be drawn from the current point to the initial point of the current sub-path.
-    ClosePathAbs = 'Z',
-    ClosePathRel = 'z',
-
-    // The various "lineto" commands draw straight lines from the current point to a new point.
-    LineToAbs = 'L',
-    LineToRel = 'l',
-    LineToHorizontalAbs = 'H',
-    LineToHorizontalRel = 'h',
-    LineToVerticalAbs = 'V',
-    LineToVerticalRel = 'v',
-
-    // Cubic Bézier commands
-    CubicCurveToAbs = 'C',
-    CubicCurveToRel = 'c',
-    CubicCurveToSmoothAbs = 'S',
-    CubicCurveToSmoothRel = 's',
-
-    // Quadratic Bézier commands
-    QuadraticCurveToAbs = 'Q',
-    QuadraticCurveToRel = 'q',
-    QuadraticCurveToSmoothAbs = 'T',
-    QuadraticCurveToSmoothRel = 't',
-
-    // Elliptical arc commands
-    ArcAbs = 'A',
-    ArcRel = 'a',
-}
-
-export interface IPathDataCommand {
-    command: EPathDataCommand;
-    params: number[];
-}
-
-export interface IPathData {
-    commands: IPathDataCommand[];
-    errors: IPathDataError[];
-}
-
 export const parse = (scanResult: IPathDataScanResult) : IPathData => {
 
     const pathData: IPathData = {

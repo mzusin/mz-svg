@@ -1,21 +1,21 @@
-import { parseD } from '../../src/index-esm';
+import { parsePath } from '../../src/index-esm';
 
 describe('Path Data Parser', () => {
 
     describe('Empty strings and whitespaces', () => {
 
-        test('parseD with d = empty string', () => {
-            const res = parseD('');
+        test('parsePath with d = empty string', () => {
+            const res = parsePath('');
             expect(res).toStrictEqual({ commands: [], errors: [] });
         });
 
-        test('parseD with d = string with whitespaces', () => {
-            const res = parseD('    ');
+        test('parsePath with d = string with whitespaces', () => {
+            const res = parsePath('    ');
             expect(res).toStrictEqual({ commands: [], errors: [] });
         });
 
-        test('parseD with d = string with tabs and newlines', () => {
-            const res = parseD(`    \t
+        test('parsePath with d = string with tabs and newlines', () => {
+            const res = parsePath(`    \t
         `);
             expect(res).toStrictEqual({ commands: [], errors: [] });
         })
@@ -24,7 +24,7 @@ describe('Path Data Parser', () => {
     describe('It should start with M or m', () => {
 
         test('Non empty path doesn\'t begin with M or m ---> error', () => {
-            const res = parseD('L 10,30');
+            const res = parsePath('L 10,30');
             expect(res).toStrictEqual({
                 "commands": [],
                 "errors": [
@@ -38,7 +38,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M without first number', () => {
-            const res = parseD('M');
+            const res = parsePath('M');
             expect(res).toStrictEqual({
                 "commands": [],
                 "errors": [
@@ -52,7 +52,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M without second number', () => {
-            const res = parseD('M 0');
+            const res = parsePath('M 0');
             expect(res).toStrictEqual({
                 "commands": [],
                 "errors": [
@@ -66,7 +66,7 @@ describe('Path Data Parser', () => {
         });
 
         test('m without first number', () => {
-            const res = parseD('m');
+            const res = parsePath('m');
             expect(res).toStrictEqual({
                 "commands": [],
                 "errors": [
@@ -80,7 +80,7 @@ describe('Path Data Parser', () => {
         });
 
         test('m without second number', () => {
-            const res = parseD('m 0');
+            const res = parsePath('m 0');
             expect(res).toStrictEqual({
                 "commands": [],
                 "errors": [
@@ -97,7 +97,7 @@ describe('Path Data Parser', () => {
     describe('M/m commands', () => {
 
         test('M 10 20', () => {
-            const res = parseD('M 10 20');
+            const res = parsePath('M 10 20');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -110,7 +110,7 @@ describe('Path Data Parser', () => {
         });
 
         test('m 10 20', () => {
-            const res = parseD('m 10 20');
+            const res = parsePath('m 10 20');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -123,7 +123,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 10 ---> error, nums of args should be even', () => {
-            const res = parseD('M 10 20 10');
+            const res = parsePath('M 10 20 10');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -142,7 +142,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 M ---> error', () => {
-            const res = parseD('M 10 20 M');
+            const res = parsePath('M 10 20 M');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -164,7 +164,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 M 10 ---> error', () => {
-            const res = parseD('M 10 20 M 10');
+            const res = parsePath('M 10 20 M 10');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -186,7 +186,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 100 200', () => {
-            const res = parseD('M 10 20 100 200');
+            const res = parsePath('M 10 20 100 200');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -203,7 +203,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 100 200 300 400', () => {
-            const res = parseD('M 10 20 100 200 300 400');
+            const res = parsePath('M 10 20 100 200 300 400');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -224,7 +224,7 @@ describe('Path Data Parser', () => {
         });
 
         test('m 10 20 100 200', () => {
-            const res = parseD('m 10 20 100 200');
+            const res = parsePath('m 10 20 100 200');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -241,7 +241,7 @@ describe('Path Data Parser', () => {
         });
 
         test('m 10 20 100 200 300 400', () => {
-            const res = parseD('m 10 20 100 200 300 400');
+            const res = parsePath('m 10 20 100 200 300 400');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -262,7 +262,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 M 10 20', () => {
-            const res = parseD('M 10 20 M 10 20');
+            const res = parsePath('M 10 20 M 10 20');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -279,7 +279,7 @@ describe('Path Data Parser', () => {
         });
 
         test('m 10 20 m 10 20', () => {
-            const res = parseD('m 10 20 m 10 20');
+            const res = parsePath('m 10 20 m 10 20');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -296,7 +296,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 100 200 M 10 20 100 200', () => {
-            const res = parseD('M 10 20 100 200 M 10 20 100 200');
+            const res = parsePath('M 10 20 100 200 M 10 20 100 200');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -321,7 +321,7 @@ describe('Path Data Parser', () => {
         });
 
         test('m 10 20 100 200 m 10 20 100 200 m 50 60 70 80', () => {
-            const res = parseD('m 10 20 100 200 m 10 20 100 200 m 50 60 70 80');
+            const res = parsePath('m 10 20 100 200 m 10 20 100 200 m 50 60 70 80');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -357,7 +357,7 @@ describe('Path Data Parser', () => {
     describe('Non existing command', () => {
 
         test('R ---> error', () => {
-            const res = parseD('R');
+            const res = parsePath('R');
             expect(res).toStrictEqual({
                 "commands": [],
                 "errors": [
@@ -371,7 +371,7 @@ describe('Path Data Parser', () => {
         });
 
         test('R 10 20 ---> error', () => {
-            const res = parseD('R 10 20');
+            const res = parsePath('R 10 20');
             expect(res).toStrictEqual({
                 "commands": [],
                 "errors": [
@@ -385,7 +385,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 R 10 20 ---> error', () => {
-            const res = parseD('M 10 20 R 10 20');
+            const res = parsePath('M 10 20 R 10 20');
             expect(res).toStrictEqual({
                 "commands": [],
                 "errors": [
@@ -402,7 +402,7 @@ describe('Path Data Parser', () => {
     describe('Z command', () => {
 
         test('M 10 20 z', () => {
-            const res = parseD('M 10 20 z');
+            const res = parsePath('M 10 20 z');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -422,7 +422,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 Z', () => {
-            const res = parseD('M 10 20 Z');
+            const res = parsePath('M 10 20 Z');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -442,7 +442,7 @@ describe('Path Data Parser', () => {
         });
 
         test('m 10 20 m 10 20 z', () => {
-            const res = parseD('m 10 20 m 10 20 z');
+            const res = parsePath('m 10 20 m 10 20 z');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -463,7 +463,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 Z M 10 20 Z', () => {
-            const res = parseD('M 10 20 Z M 10 20 Z');
+            const res = parsePath('M 10 20 Z M 10 20 Z');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -497,7 +497,7 @@ describe('Path Data Parser', () => {
     describe('L/l commands', () => {
 
         test('M 10 20 L 100 200', () => {
-            const res = parseD('M 10 20 L 100 200');
+            const res = parsePath('M 10 20 L 100 200');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -514,7 +514,7 @@ describe('Path Data Parser', () => {
         });
 
         test('m 10 20 l 100 200', () => {
-            const res = parseD('m 10 20 l 100 200');
+            const res = parsePath('m 10 20 l 100 200');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -531,7 +531,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 L 10 ---> error, nums of args should be even', () => {
-            const res = parseD('M 10 20 L 10');
+            const res = parsePath('M 10 20 L 10');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -553,7 +553,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 L ---> error', () => {
-            const res = parseD('M 10 20 L');
+            const res = parsePath('M 10 20 L');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -575,7 +575,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 M 30 40 L ---> error', () => {
-            const res = parseD('M 10 20 M 30 40 L');
+            const res = parsePath('M 10 20 M 30 40 L');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -604,7 +604,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 0 0 L 10 20 100 200', () => {
-            const res = parseD('M 0 0 L 10 20 100 200');
+            const res = parsePath('M 0 0 L 10 20 100 200');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -625,7 +625,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 0 0 L 10 20 100 200 300 400', () => {
-            const res = parseD('M 0 0 L 10 20 100 200 300 400');
+            const res = parsePath('M 0 0 L 10 20 100 200 300 400');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -650,7 +650,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 0 0 l 10 20 100 200', () => {
-            const res = parseD('M 0 0 l 10 20 100 200');
+            const res = parsePath('M 0 0 l 10 20 100 200');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -671,7 +671,7 @@ describe('Path Data Parser', () => {
         });
 
         test('m 5 5 l 10 20 100 200 300 400', () => {
-            const res = parseD('m 5 5 l 10 20 100 200 300 400');
+            const res = parsePath('m 5 5 l 10 20 100 200 300 400');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -696,7 +696,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 0 0 L 10 20 L 10 20', () => {
-            const res = parseD('M 0 0 L 10 20 L 10 20');
+            const res = parsePath('M 0 0 L 10 20 L 10 20');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -717,7 +717,7 @@ describe('Path Data Parser', () => {
         });
 
         test('m 0 0 l 10 20 L 10 20', () => {
-            const res = parseD('m 0 0 l 10 20 L 10 20');
+            const res = parsePath('m 0 0 l 10 20 L 10 20');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -738,7 +738,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 90 80 L 10 20 100 200 L 10 20 100 200', () => {
-            const res = parseD('M 90 80 L 10 20 100 200 L 10 20 100 200');
+            const res = parsePath('M 90 80 L 10 20 100 200 L 10 20 100 200');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -771,7 +771,7 @@ describe('Path Data Parser', () => {
     describe('H/h commands', () => {
 
         test('M 10 20 H 100', () => {
-            const res = parseD('M 10 20 H 100');
+            const res = parsePath('M 10 20 H 100');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -788,7 +788,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 h 100', () => {
-            const res = parseD('M 10 20 h 100');
+            const res = parsePath('M 10 20 h 100');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -805,7 +805,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 H 100 200 300', () => {
-            const res = parseD('M 10 20 H 100 200 300');
+            const res = parsePath('M 10 20 H 100 200 300');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -830,7 +830,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 h 100 200 300', () => {
-            const res = parseD('M 10 20 h 100 200 300');
+            const res = parsePath('M 10 20 h 100 200 300');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -855,7 +855,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 H  ---> error', () => {
-            const res = parseD('M 10 20 H ');
+            const res = parsePath('M 10 20 H ');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -877,7 +877,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 H 30 H ---> error', () => {
-            const res = parseD('M 10 20 H 30 H');
+            const res = parsePath('M 10 20 H 30 H');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -905,7 +905,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 H 100 200 h 300', () => {
-            const res = parseD('M 10 20 H 100 200 h 300');
+            const res = parsePath('M 10 20 H 100 200 h 300');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -933,7 +933,7 @@ describe('Path Data Parser', () => {
     describe('V/v commands', () => {
 
         test('M 10 20 V 100', () => {
-            const res = parseD('M 10 20 V 100');
+            const res = parsePath('M 10 20 V 100');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -950,7 +950,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 v 100', () => {
-            const res = parseD('M 10 20 v 100');
+            const res = parsePath('M 10 20 v 100');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -967,7 +967,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 V 100 200 300', () => {
-            const res = parseD('M 10 20 V 100 200 300');
+            const res = parsePath('M 10 20 V 100 200 300');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -992,7 +992,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 h 100 200 300', () => {
-            const res = parseD('M 10 20 h 100 200 300');
+            const res = parsePath('M 10 20 h 100 200 300');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1017,7 +1017,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 V  ---> error', () => {
-            const res = parseD('M 10 20 V ');
+            const res = parsePath('M 10 20 V ');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1039,7 +1039,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 V 30 V ---> error', () => {
-            const res = parseD('M 10 20 V 30 V');
+            const res = parsePath('M 10 20 V 30 V');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1067,7 +1067,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 V 100 200 v 300', () => {
-            const res = parseD('M 10 20 V 100 200 v 300');
+            const res = parsePath('M 10 20 V 100 200 v 300');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1094,7 +1094,7 @@ describe('Path Data Parser', () => {
 
     describe('V/v/H/h', () => {
         test('M 10 20 V 100 200 H 300 400 v 500 600 h 700 800', () => {
-            const res = parseD('M 10 20 V 100 200 H 300 400 v 500 600 h 700 800');
+            const res = parsePath('M 10 20 V 100 200 H 300 400 v 500 600 h 700 800');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1142,7 +1142,7 @@ describe('Path Data Parser', () => {
     describe('C/c commands', () => {
 
         test('M 10 20 C 1 1 2 2 3 3', () => {
-            const res = parseD('M 10 20 C 1 1 2 2 3 3');
+            const res = parsePath('M 10 20 C 1 1 2 2 3 3');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1159,7 +1159,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 c 1 1 2 2 3 3', () => {
-            const res = parseD('M 10 20 c 1 1 2 2 3 3');
+            const res = parsePath('M 10 20 c 1 1 2 2 3 3');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1176,7 +1176,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 C 1 1 2 2 3 3 4 4 5 5 6 6', () => {
-            const res = parseD('M 10 20 C 1 1 2 2 3 3 4 4 5 5 6 6');
+            const res = parsePath('M 10 20 C 1 1 2 2 3 3 4 4 5 5 6 6');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1197,7 +1197,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 c 1 1 2 2 3 3 4 4 5 5 6 6', () => {
-            const res = parseD('M 10 20 c 1 1 2 2 3 3 4 4 5 5 6 6');
+            const res = parsePath('M 10 20 c 1 1 2 2 3 3 4 4 5 5 6 6');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1218,7 +1218,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 c 1 1 2 2 3 3 4 4 5 5 6 6 C 7 7 8 8 9 9', () => {
-            const res = parseD('M 10 20 c 1 1 2 2 3 3 4 4 5 5 6 6 C 7 7 8 8 9 9');
+            const res = parsePath('M 10 20 c 1 1 2 2 3 3 4 4 5 5 6 6 C 7 7 8 8 9 9');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1243,7 +1243,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 C 1  ---> error', () => {
-            const res = parseD('M 10 20 C 1');
+            const res = parsePath('M 10 20 C 1');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1265,7 +1265,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 C 1 2  ---> error', () => {
-            const res = parseD('M 10 20 C 1 2');
+            const res = parsePath('M 10 20 C 1 2');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1287,7 +1287,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 C 1 2 3  ---> error', () => {
-            const res = parseD('M 10 20 C 1 2 3');
+            const res = parsePath('M 10 20 C 1 2 3');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1309,7 +1309,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 C 1 2 3 4  ---> error', () => {
-            const res = parseD('M 10 20 C 1 2 3 4');
+            const res = parsePath('M 10 20 C 1 2 3 4');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1331,7 +1331,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 C 1 2 3 4 5  ---> error', () => {
-            const res = parseD('M 10 20 C 1 2 3 4 5');
+            const res = parsePath('M 10 20 C 1 2 3 4 5');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1353,7 +1353,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 C 1 2 3 4 5 6 c ---> error', () => {
-            const res = parseD('M 10 20 C 1 2 3 4 5 6 c');
+            const res = parsePath('M 10 20 C 1 2 3 4 5 6 c');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1383,7 +1383,7 @@ describe('Path Data Parser', () => {
     describe('S/s commands', () => {
 
         test('M 10 20 S 1 1 2 2', () => {
-            const res = parseD('M 10 20 S 1 1 2 2');
+            const res = parsePath('M 10 20 S 1 1 2 2');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1400,7 +1400,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 s 1 1 2 2', () => {
-            const res = parseD('M 10 20 s 1 1 2 2');
+            const res = parsePath('M 10 20 s 1 1 2 2');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1417,7 +1417,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 S 1 1 2 2 3 3 4 4', () => {
-            const res = parseD('M 10 20 S 1 1 2 2 3 3 4 4');
+            const res = parsePath('M 10 20 S 1 1 2 2 3 3 4 4');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1438,7 +1438,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 s 1 1 2 2 3 3 4 4', () => {
-            const res = parseD('M 10 20 s 1 1 2 2 3 3 4 4');
+            const res = parsePath('M 10 20 s 1 1 2 2 3 3 4 4');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1459,7 +1459,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 s 1 1 2 2 3 3 4 4 5 5 6 6 S 7 7 8 8', () => {
-            const res = parseD('M 10 20 s 1 1 2 2 3 3 4 4 5 5 6 6 S 7 7 8 8');
+            const res = parsePath('M 10 20 s 1 1 2 2 3 3 4 4 5 5 6 6 S 7 7 8 8');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1488,7 +1488,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 S 1  ---> error', () => {
-            const res = parseD('M 10 20 S 1');
+            const res = parsePath('M 10 20 S 1');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1510,7 +1510,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 S 1 2  ---> error', () => {
-            const res = parseD('M 10 20 S 1 2');
+            const res = parsePath('M 10 20 S 1 2');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1532,7 +1532,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 S 1 2 3  ---> error', () => {
-            const res = parseD('M 10 20 S 1 2 3');
+            const res = parsePath('M 10 20 S 1 2 3');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1558,7 +1558,7 @@ describe('Path Data Parser', () => {
     describe('Q/q commands', () => {
 
         test('M 10 20 Q 1 1 2 2', () => {
-            const res = parseD('M 10 20 Q 1 1 2 2');
+            const res = parsePath('M 10 20 Q 1 1 2 2');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1575,7 +1575,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 q 1 1 2 2', () => {
-            const res = parseD('M 10 20 q 1 1 2 2');
+            const res = parsePath('M 10 20 q 1 1 2 2');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1592,7 +1592,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 Q 1 1 2 2 3 3 4 4', () => {
-            const res = parseD('M 10 20 Q 1 1 2 2 3 3 4 4');
+            const res = parsePath('M 10 20 Q 1 1 2 2 3 3 4 4');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1613,7 +1613,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 q 1 1 2 2 3 3 4 4', () => {
-            const res = parseD('M 10 20 q 1 1 2 2 3 3 4 4');
+            const res = parsePath('M 10 20 q 1 1 2 2 3 3 4 4');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1634,7 +1634,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 q 1 1 2 2 3 3 4 4 5 5 6 6 S 7 7 8 8', () => {
-            const res = parseD('M 10 20 q 1 1 2 2 3 3 4 4 5 5 6 6 Q 7 7 8 8');
+            const res = parsePath('M 10 20 q 1 1 2 2 3 3 4 4 5 5 6 6 Q 7 7 8 8');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1663,7 +1663,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 Q 1  ---> error', () => {
-            const res = parseD('M 10 20 Q 1');
+            const res = parsePath('M 10 20 Q 1');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1685,7 +1685,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 Q 1 2  ---> error', () => {
-            const res = parseD('M 10 20 Q 1 2');
+            const res = parsePath('M 10 20 Q 1 2');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1707,7 +1707,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 Q 1 2 3  ---> error', () => {
-            const res = parseD('M 10 20 Q 1 2 3');
+            const res = parsePath('M 10 20 Q 1 2 3');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1733,7 +1733,7 @@ describe('Path Data Parser', () => {
     describe('T/t commands', () => {
 
         test('M 10 20 T 100 200', () => {
-            const res = parseD('M 10 20 T 100 200');
+            const res = parsePath('M 10 20 T 100 200');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1750,7 +1750,7 @@ describe('Path Data Parser', () => {
         });
 
         test('m 10 20 t 100 200', () => {
-            const res = parseD('m 10 20 t 100 200');
+            const res = parsePath('m 10 20 t 100 200');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1767,7 +1767,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 T 10 ---> error, nums of args should be even', () => {
-            const res = parseD('M 10 20 T 10');
+            const res = parsePath('M 10 20 T 10');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1789,7 +1789,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 T ---> error', () => {
-            const res = parseD('M 10 20 T');
+            const res = parsePath('M 10 20 T');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1811,7 +1811,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10 20 M 30 40 T ---> error', () => {
-            const res = parseD('M 10 20 M 30 40 T');
+            const res = parsePath('M 10 20 M 30 40 T');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1840,7 +1840,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 0 0 T 10 20 100 200', () => {
-            const res = parseD('M 0 0 T 10 20 100 200');
+            const res = parsePath('M 0 0 T 10 20 100 200');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1861,7 +1861,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 0 0 T 10 20 100 200 300 400', () => {
-            const res = parseD('M 0 0 T 10 20 100 200 300 400');
+            const res = parsePath('M 0 0 T 10 20 100 200 300 400');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1886,7 +1886,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 0 0 t 10 20 100 200', () => {
-            const res = parseD('M 0 0 t 10 20 100 200');
+            const res = parsePath('M 0 0 t 10 20 100 200');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1907,7 +1907,7 @@ describe('Path Data Parser', () => {
         });
 
         test('m 5 5 t 10 20 100 200 300 400', () => {
-            const res = parseD('m 5 5 t 10 20 100 200 300 400');
+            const res = parsePath('m 5 5 t 10 20 100 200 300 400');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1932,7 +1932,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 0 0 T 10 20 T 10 20', () => {
-            const res = parseD('M 0 0 T 10 20 T 10 20');
+            const res = parsePath('M 0 0 T 10 20 T 10 20');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1953,7 +1953,7 @@ describe('Path Data Parser', () => {
         });
 
         test('m 0 0 t 10 20 T 10 20', () => {
-            const res = parseD('m 0 0 t 10 20 T 10 20');
+            const res = parsePath('m 0 0 t 10 20 T 10 20');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -1974,7 +1974,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 90 80 T 10 20 100 200 T 10 20 100 200', () => {
-            const res = parseD('M 90 80 T 10 20 100 200 T 10 20 100 200');
+            const res = parsePath('M 90 80 T 10 20 100 200 T 10 20 100 200');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -2007,7 +2007,7 @@ describe('Path Data Parser', () => {
     describe('A/a commands', () => {
 
         test('M600,350 l 50,-25 a25,25 -30 0,1 50,-25', () => {
-            const res = parseD('M600,350 l 50,-25 a25,25 -30 0,1 50,-25');
+            const res = parsePath('M600,350 l 50,-25 a25,25 -30 0,1 50,-25');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -2028,7 +2028,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M600,350 l 50,-25 a25,25 -30 1000,1 50,-25 ---> error: 4th param (1000) of the arc can be 1 or 0 only', () => {
-            const res = parseD('M600,350 l 50,-25 a25,25 -30 1000,1 50,-25');
+            const res = parsePath('M600,350 l 50,-25 a25,25 -30 1000,1 50,-25');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -2057,7 +2057,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M600,350 l 50,-25 a25,25 -30 0,2000 50,-25 ---> error: 5th param (2000) of the arc can be 1 or 0 only', () => {
-            const res = parseD('M600,350 l 50,-25 a25,25 -30 0,2000 50,-25');
+            const res = parsePath('M600,350 l 50,-25 a25,25 -30 0,2000 50,-25');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -2086,7 +2086,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10,30 A 20,20 10,0,1 50,30 A 20,20 10,0,1 90,30', () => {
-            const res = parseD('M 10,30 A 20,20 10,0,1 50,30 A 20,20 10,0,1 90,30');
+            const res = parsePath('M 10,30 A 20,20 10,0,1 50,30 A 20,20 10,0,1 90,30');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -2107,7 +2107,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10,30 A 20,20 10,0,1 50,30 20,20 10,0,1 90,30', () => {
-            const res = parseD('M 10,30 A 20,20 10,0,1 50,30 20,20 10,0,1 90,30');
+            const res = parsePath('M 10,30 A 20,20 10,0,1 50,30 20,20 10,0,1 90,30');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -2128,7 +2128,7 @@ describe('Path Data Parser', () => {
         });
 
         test('M 10,30 a 20,20 10,0,1 50,30 a 20,20 10,0,1 90,30', () => {
-            const res = parseD('M 10,30 a 20,20 10,0,1 50,30 a 20,20 10,0,1 90,30');
+            const res = parsePath('M 10,30 a 20,20 10,0,1 50,30 a 20,20 10,0,1 90,30');
             expect(res).toStrictEqual({
                 "commands": [
                     {
@@ -2156,7 +2156,7 @@ describe('Path Data Parser', () => {
            A 20,20 0,0,1 90,30
            Q 90,60 50,90
            Q 10,60 10,30 z`, () => {
-            const res = parseD(`M 10,30 
+            const res = parsePath(`M 10,30 
            A 20,20 0,0,1 50,30
            A 20,20 0,0,1 90,30
            Q 90,60 50,90
