@@ -226,6 +226,25 @@ M 0.0 0.0`)).toStrictEqual({
 
     describe('Basic Commands', () => {
 
+        test('M g ---> error', () => {
+            expect(scan('M g')).toStrictEqual({
+                "errors": [
+                    {
+                        "col": 2,
+                        "line": 0,
+                        "msg": "Unexpected character g"
+                    }
+                ],
+                "tokens": [
+                    {
+                        "col": 0,
+                        "line": 0,
+                        "tokenType": "M"
+                    }
+                ]
+            });
+        });
+
         test('M 0 0', () => {
             expect(scan('M 0 0')).toStrictEqual({
                 "errors": [],

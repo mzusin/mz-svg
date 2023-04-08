@@ -63,7 +63,7 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
 
             // Validate the parameters count, and add them to the params list.
             for(let i= 1; i <= paramsCount; i++){
-                if(!tokens[current + i]){
+                if(!tokens[current + i] || tokens[current + i].tokenType !== 'num'){
                     error(tokens[current], `Expected number(s) after command ${ tokenType }.`);
                     current += paramsCount;
                     return;

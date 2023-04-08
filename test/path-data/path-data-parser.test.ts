@@ -92,6 +92,34 @@ describe('Path Data Parser', () => {
                 ]
             });
         });
+
+        test('0', () => {
+            const res = parsePath('0');
+            expect(res).toStrictEqual({
+                "commands": [],
+                "errors": [
+                    {
+                        "col": 0,
+                        "line": 0,
+                        "msg": "A path data segment must begin with a 'moveto' command 'M' or 'm'."
+                    }
+                ]
+            });
+        });
+
+        test('U', () => {
+            const res = parsePath('0');
+            expect(res).toStrictEqual({
+                "commands": [],
+                "errors": [
+                    {
+                        "col": 0,
+                        "line": 0,
+                        "msg": "A path data segment must begin with a 'moveto' command 'M' or 'm'."
+                    }
+                ]
+            });
+        });
     });
 
     describe('M/m commands', () => {
@@ -2147,6 +2175,23 @@ describe('Path Data Parser', () => {
                 "errors": []
             });
         });
+
+        /*test('M 0 0 a.625.625 0 01.84-.925', () => {
+            const res = parsePath('M 0 0 a.625.625 0 01.84-.925');
+            expect(res).toStrictEqual({
+                "commands": [
+                    {
+                        "command": "M",
+                        "params": [ 0, 0 ]
+                    },
+                    {
+                        "command": "a",
+                        "params": [ 0.625, 0.625, 0, 0, 1, 0.84, -0.925 ]
+                    },
+                ],
+                "errors": []
+            });
+        });*/
     });
 
     describe('Combined', () => {
