@@ -31,11 +31,6 @@ export const pathDataToRelative = (pathData: IPathData): IPathData => {
                 break;
             }
 
-            case EPathDataCommand.MoveToRel:{
-                // ?
-                break;
-            }
-
             case EPathDataCommand.ClosePathAbs:
             case EPathDataCommand.ClosePathRel:{
                 x = mx;
@@ -56,6 +51,7 @@ export const pathDataToRelative = (pathData: IPathData): IPathData => {
                 break;
             }
 
+            case EPathDataCommand.MoveToRel:
             case EPathDataCommand.LineToRel:{
                 x += commands[i].params[0];
                 y += commands[i].params[1];
