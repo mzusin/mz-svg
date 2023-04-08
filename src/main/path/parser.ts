@@ -39,16 +39,30 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
         return current >= tokens.length;
     };
 
-    const areArcFlagsValid = (tokenType: string): boolean => {
+    const areArcFlagsValid = (tokenType: string, params: number[]): boolean => {
 
         // we are checking only 'A/a' type
         if(!tokenType || tokenType.toLowerCase() !== 'a') return true;
 
         // 4th and 5th param should be 0 or 1
-        const val4 = (tokens[current + 4]?.value || '').toString();
-        const val5 = (tokens[current + 5]?.value || '').toString();
+        const val4 = params[3].toString();
+        const val5 = params[4].toString();
 
         return (val4 === '0' || val4 === '1') && (val5 === '0' || val5 === '1');
+    };
+
+    const getNumberVariants = (num: number) => {
+
+        if(Number.isInteger(num)) return [ num ];
+
+        const parts = num.toString().split('.');
+        const intPart = Number(parts[0]);
+        if(intPart === 0) return [ num ];
+
+        return [
+            intPart,
+            Number(`0.${ parts[1] }`),
+        ];
     };
 
     /**
@@ -61,20 +75,41 @@ export const parse = (scanResult: IPathDataScanResult) : IPathData => {
 
         if(paramsCount > 0){
 
-            // Validate the parameters count, and add them to the params list.
-            for(let i= 1; i <= paramsCount; i++){
-                if(!tokens[current + i] || tokens[current + i].tokenType !== 'num'){
-                    error(tokens[current], `Expected number(s) after command ${ tokenType }.`);
-                    current += paramsCount;
-                    return;
-                }
+            // Get param numbers including their variants.
+            const paramVariants: number[][] = [];
+            let includedNumbersCount = 0;
 
-                params.push(Number(tokens[current + i].value));
+            for(let i= 1; i <= paramsCount; i++){
+                if(!!tokens[current + i] && tokens[current + i].tokenType === 'num'){
+                    const variants = getNumberVariants(Number(tokens[current + i].value));
+                    paramVariants.push(variants);
+                    includedNumbersCount += variants.length;
+                }
+                else break;
+            }
+
+            // Validate the parameters count, and add them to the params list.
+            if(includedNumbersCount < paramsCount){
+                error(tokens[current], `Expected number(s) after command ${ tokenType }.`);
+                current += paramsCount;
+                return;
+            }
+
+            // Add all relevant parameters.
+            let diff = Math.abs(paramVariants.length - paramsCount);
+            for(const variants of paramVariants){
+                params.push(variants[0]);
+                if(diff <= 0) continue;
+
+                for(let i= 1; i<variants.length && diff > 0; i++){
+                    params.push(variants[i]);
+                    diff--;
+                }
             }
         }
 
         // validate arc flags ------
-        if(!areArcFlagsValid(tokenType)){
+        if(!areArcFlagsValid(tokenType, params)){
             error(tokens[current], `Arc flags must be 0 or 1.`);
             current += paramsCount + 1;
             return;
