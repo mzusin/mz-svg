@@ -17,8 +17,23 @@ export const parsePath = (d?: string): IPathData => {
 };
 
 /**
+ * Converts all path commands to relative.
+
+export const pathToRel = (d?: string): string|undefined => {
+    if(!d) return d;
+
+    const parsed = parsePath(d);
+    if(parsed.errors.length > 0){
+        console.error(`The provided path is not valid: ${ d }`);
+        return d;
+    }
+
+    return '';
+}; */
+
+/**
  * SVG paths transformations that works with 'path data' - https://www.w3.org/TR/SVG11/paths.html#PathData
- */
+
 export const transformPath = (props?: {
     d?: string;
     $path?: SVGPathElement;
@@ -35,4 +50,4 @@ export const transformPath = (props?: {
 
     if(props.$path) return props.$path;
     return d;
-};
+}; */
