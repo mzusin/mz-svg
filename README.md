@@ -18,6 +18,7 @@ TypeScript-based library for managing SVG in the browser and Node.js. The modula
 ## Working with path data ('d' property)
 - Convert path to relative or absolute commands.
 - Minify path data.
+- Beautify path data.
 - Path data validation.
 - Path data parser.
 

@@ -1,5 +1,5 @@
 import { pathDataToAbsolute, pathDataToRelative, pathDataToString } from '../../src/main/path/convert';
-import { parsePath } from '../../src/index-esm';
+import { parsePath, pathToAbs, pathToRel } from '../../src/index-esm';
 
 describe('Path Data Convert', () => {
 
@@ -414,6 +414,29 @@ describe('Path Data Convert', () => {
                 "errors": []
             });
         });
+
+        test('pathToRel', () => {
+            const d = pathToRel(`M 10,30
+           A 20,20 0,0,1 50,30
+           A 20,20 0,0,1 90,30
+           Q 90,60 50,90
+           Q 10,60 10,30 z`);
+            expect(d).toStrictEqual('M10 30a20 20 0 0 1 40 0 20 20 0 0 1 40 0q0 30 -40 60 -40 -30 -40 -60z');
+        });
+
+        test('pathToRel with beautify = true', () => {
+            const d = pathToRel(`M 10,30
+           A 20,20 0,0,1 50,30
+           A 20,20 0,0,1 90,30
+           Q 90,60 50,90
+           Q 10,60 10,30 z`, true);
+            expect(d).toStrictEqual('M 10 30 a 20 20 0 0 1 40 0 a 20 20 0 0 1 40 0 q 0 30 -40 60 q -40 -30 -40 -60 z');
+        });
+
+        test('pathToRel with decimal places = 1', () => {
+            const d = pathToRel(`M -0.100 -0.252625 L -1.180000 -12.999999`, false, 1);
+            expect(d).toStrictEqual('M-.1 -.3l-1.1 -12.7');
+        });
     });
 
     describe('ToAbsolute', () => {
@@ -477,6 +500,21 @@ describe('Path Data Convert', () => {
 
             const res = pathDataToAbsolute(parsed);
             expect(pathDataToString(res)).toStrictEqual(`M 233.51 56.8 C 232.94 57.04 232.18 57.32 231.23 57.66 C 230.28 57.99 229.3 58.16 228.31 58.16 S 226.47 57.89 225.78 57.34 C 225.09 56.79 224.75 55.85 224.75 54.52 V 36.25 H 232.6 V 28.9 H 224.75 V 16.77 H 215.19 V 28.9 H 197.35 V 16.77 H 187.79 V 28.9 H 182.87 V 36.25 H 187.79 V 57.73 C 187.79 59.4 188.05 60.81 188.58 61.98 C 189.1 63.15 189.8 64.1 190.68 64.83 C 191.56 65.57 192.58 66.1 193.75 66.44 C 194.91 66.77 196.16 66.94 197.5 66.94 C 199.55 66.94 201.5 66.66 203.35 66.08 C 205.21 65.51 206.77 64.94 208.06 64.37 L 206.13 56.81 C 205.56 57.05 204.8 57.33 203.85 57.67 C 202.9 58 201.92 58.17 200.93 58.17 C 199.93 58.17 199.09 57.9 198.4 57.35 C 197.71 56.8 197.37 55.86 197.37 54.53 V 36.25 H 215.21 V 57.73 C 215.21 59.4 215.47 60.81 216 61.98 C 216.52 63.15 217.22 64.1 218.1 64.83 C 218.98 65.57 220 66.1 221.17 66.44 C 222.33 66.77 223.58 66.94 224.92 66.94 C 226.97 66.94 228.92 66.66 230.77 66.08 C 232.63 65.51 234.19 64.94 235.48 64.37 L 233.51 56.8 Z`);
+        });
+
+        test('pathToAbs', () => {
+            const d = pathToAbs(`M 10 30 a 20 20 0 0 1 40 0 a 20 20 0 0 1 40 0 q 0 30 -40 60 q -40 -30 -40 -60 z`);
+            expect(d).toStrictEqual('M10 30A20 20 0 0 1 50 30 20 20 0 0 1 90 30Q90 60 50 90 10 60 10 30Z');
+        });
+
+        test('pathToAbs with beautify = true', () => {
+            const d = pathToAbs(`M 10 30 a 20 20 0 0 1 40 0 a 20 20 0 0 1 40 0 q 0 30 -40 60 q -40 -30 -40 -60 z`, true);
+            expect(d).toStrictEqual('M 10 30 A 20 20 0 0 1 50 30 A 20 20 0 0 1 90 30 Q 90 60 50 90 Q 10 60 10 30 Z');
+        });
+
+        test('pathToAbs with decimal places = 1', () => {
+            const d = pathToAbs(`M -0.100 -0.252625 l -1.180000 -12.999999`, false, 1);
+            expect(d).toStrictEqual('M-.1 -.3 -1.3 -13.3');
         });
     });
 

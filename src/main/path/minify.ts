@@ -2,6 +2,7 @@ import { EPathDataCommand, IPathData } from './interfaces';
 import { setDecimalPlaces } from 'mz-math';
 
 const numberToString = (num: number, decimalPlaces = 2) : string => {
+
     if(Number.isInteger(num)) return num.toString();
 
     const _num = setDecimalPlaces(num, decimalPlaces).toString();

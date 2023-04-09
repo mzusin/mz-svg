@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>mzSVG Documentation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
+    <link id="favicon-48" rel="icon" type="image/png" sizes="48x48" href="/img/favicon/favicon-48.png" />
+    <link id="favicon-32" rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32.png" />
+    <link id="favicon-16" rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16.png" />
+
+    <link rel="stylesheet" href="/highlight.js/styles/tokyo-night-dark.css" />
+    <link rel="stylesheet" href="/css/styles.1681062799279.css" />
+    <!--<link rel="stylesheet" href="/js/index.1681062799279.css" />-->
+
+  </head>
+  <body class="h-screen flex flex-col font-roboto">
+
+    <header class="py-2 px-4 border-b shadow-sm bg-slate-100" style="padding: 0.7rem 1rem;">
+      <div class="container mx-auto flex items-center justify-between">
+        <div class="flex items-center">
+          <!-- mobile menu button -->
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            class="mr-4 pointer md:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewBox="0 0 24 24">
+              <path stroke="none" d="M0 0h24v24H0z"/>
+              <path d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+
+          <a href="/" title="" class="flex items-center">
+            <span class="text-slate-600 ml-6"><b>mzSVG</b> Documentation</span>
+          </a>
+        </div>
+
+        <div class="flex items-center">
+          <a href="https://github.com/mzusin/mz-svg" class="mx-3 block text-slate-400 hover:text-slate-500"><span class="sr-only">mzSVG on GitHub</span><svg viewBox="0 0 16 16" class="w-5 h-5" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg></a>
+
+        </div>
+      </div>
+    </header>
+
+    <div class="container mx-auto flex-1 overflow-hidden">
+      <div class="flex h-full">
+
+        <div class="side-menu border-r shadow-md overflow-y-auto h-full max-w-full md:w-350 absolute md:static md:left-auto bg-white z-50" id="side-menu">
+          <div class="px-6 pb-4 flex flex-col relative">
+
+            <!-- mobile menu close -->
+            <button type="button" class="pointer absolute right-4 top-2 md:hidden" id="mobile-menu-close-btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                viewBox="0 0 24 24">
+                <path stroke="none" d="M0 0h24v24H0z"/>
+                <path d="M18 6 6 18M6 6l12 12"/>
+              </svg>
+            </button>
+
+            <div class="text-xl my-4">Main</div><a href="/pages/typescript-usage.html" title="" class="mb-2 text-slate-500">TypesScript Usage</a><a href="/pages/browser-usage.html" title="" class="mb-2 text-slate-500">Browser Usage</a><a href="/pages/nodejs-usage.html" title="" class="mb-2 text-slate-500">Node.js Usage</a><div class="text-xl my-4">Create SVG</div><a href="/pages/create-svg-element.html" title="" class="mb-2 text-slate-500">Create Svg Element</a><a href="/pages/create-svg-from-string.html" title="" class="mb-2 text-slate-500">Create Svg From String</a><a href="/pages/get-svg-as-string.html" title="" class="mb-2 text-slate-500">Get Svg As String</a><div class="text-xl my-4">Create Shapes</div><a href="/pages/create-path.html" title="" class="mb-2 text-slate-500">Create Path</a><a href="/pages/create-rect.html" title="" class="mb-2 text-slate-500">Create Rect</a><a href="/pages/create-rect-path.html" title="" class="mb-2 text-slate-500">Create Rect Path</a><a href="/pages/create-circle.html" title="" class="mb-2 text-slate-500">Create Circle</a><a href="/pages/create-ellipse.html" title="" class="mb-2 text-slate-500">Create Ellipse</a><a href="/pages/create-line.html" title="" class="mb-2 text-slate-500">Create Line</a><a href="/pages/create-polygon.html" title="" class="mb-2 text-slate-500">Create Polygon</a><a href="/pages/create-polyline.html" title="" class="mb-2 text-slate-500">Create Polyline</a><a href="/pages/create-star.html" title="" class="mb-2 text-slate-500">Create Star</a><div class="text-xl my-4">Containers</div><a href="/pages/create-group.html" title="" class="mb-2 text-slate-500">Create Group</a><a href="/pages/create-defs.html" title="" class="mb-2 text-slate-500">Create Defs</a><a href="/pages/create-use.html" title="" class="mb-2 text-slate-500">Create Use</a><a href="/pages/create-pattern.html" title="" class="mb-2 text-slate-500">Create Pattern</a><a href="/pages/create-clip-path.html" title="" class="mb-2 text-slate-500">Create Clip Path</a><a href="/pages/create-mask.html" title="" class="mb-2 text-slate-500">Create Mask</a><a href="/pages/create-symbol.html" title="" class="mb-2 text-slate-500">Create Symbol</a><div class="text-xl my-4">Path Data</div><a href="/pages/path-to-relative.html" title="" class="mb-2 text-slate-500">Path To Relative</a><a href="/pages/path-to-absolute.html" title="" class="mb-2 text-slate-500">Path To Absolute</a><a href="/pages/minify-path.html" title="" class="mb-2 text-slate-500">Minify Path</a><a href="/pages/beautify-path.html" title="" class="mb-2 text-blue-500 bg-slate-100 px-4 py-2 rounded-md">Beautify Path</a><a href="/pages/parse-path.html" title="" class="mb-2 text-slate-500">Parse Path</a><a href="/pages/validate-path.html" title="" class="mb-2 text-slate-500">Validate Path</a><div class="text-xl my-4">Io</div><a href="/pages/save-svg.html" title="" class="mb-2 text-slate-500">Save Svg</a><a href="/pages/download-svg.html" title="" class="mb-2 text-slate-500">Download Svg</a><div class="text-xl my-4">Helpers</div><a href="/pages/append-once.html" title="" class="mb-2 text-slate-500">Append Once</a><a href="/pages/prepend-once.html" title="" class="mb-2 text-slate-500">Prepend Once</a><div class="text-xl my-4">Other</div><a href="/pages/constants.html" title="" class="mb-2 text-slate-500">Constants</a><a href="/pages/unit-tests.html" title="" class="mb-2 text-slate-500">Unit Tests</a>
+          </div>
+        </div>
+
+        <div class="p-4 overflow-y-auto h-full md:w-100-350">
+          <div class="w-800 max-w-full mx-auto my-10 leading-7 text-lg text-slate-800"><h2 class="text-3xl mb-8">Beautify Path</h2>
+<p class="mb-4">You can beautify the <strong class="font-bold">“d”</strong> property of a given path element using the <strong class="font-bold">beautifyPath()</strong> function. It receives an optional <strong class="font-bold">decimalPlaces</strong> parameter with the default value equals to 2 decimal places after the dot.</p>
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { beautifyPath } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
+
+<span class="hljs-keyword">const</span> d = <span class="hljs-title function_">beautifyPath</span>(<span class="hljs-string">`M233.51,56.8c-0.57,0.24-1.33,0.52-2.28,0.86c-0.95,0.33-1.93,0.5-2.92,0.5s-1.84-0.27-2.53-0.82
+	c-0.69-0.55-1.03-1.49-1.03-2.82V36.25h7.85V28.9h-7.85V16.77h-9.56V28.9h-17.84V16.77h-9.56V28.9h-4.92v7.35h4.92v21.48
+	c0,1.67,0.26,3.08,0.79,4.25c0.52,1.17,1.22,2.12,2.1,2.85c0.88,0.74,1.9,1.27,3.07,1.61c1.16,0.33,2.41,0.5,3.75,0.5
+	c2.05,0,4-0.28,5.85-0.86c1.86-0.57,3.42-1.14,4.71-1.71l-1.93-7.56c-0.57,0.24-1.33,0.52-2.28,0.86c-0.95,0.33-1.93,0.5-2.92,0.5
+	c-1,0-1.84-0.27-2.53-0.82c-0.69-0.55-1.03-1.49-1.03-2.82V36.25h17.84v21.48c0,1.67,0.26,3.08,0.79,4.25
+	c0.52,1.17,1.22,2.12,2.1,2.85c0.88,0.74,1.9,1.27,3.07,1.61c1.16,0.33,2.41,0.5,3.75,0.5c2.05,0,4-0.28,5.85-0.86
+	c1.86-0.57,3.42-1.14,4.71-1.71L233.51,56.8z`</span>); 
+
+
+<span class="hljs-comment">// The result is: -------------------</span>
+<span class="hljs-comment">/*
+M 233.51 56.8 c -0.57 0.24 -1.33 0.52 -2.28 0.86 c -0.95 0.33 -1.93 0.5 -2.92 0.5 s -1.84 -0.27 -2.53 -0.82 c -0.69 -0.55 -1.03 -1.49 -1.03 -2.82 V 36.25 h 7.85 V 28.9 h -7.85 V 16.77 h -9.56 V 28.9 h -17.84 V 16.77 h -9.56 V 28.9 h -4.92 v 7.35 h 4.92 v 21.48 c 0 1.67 0.26 3.08 0.79 4.25 c 0.52 1.17 1.22 2.12 2.1 2.85 c 0.88 0.74 1.9 1.27 3.07 1.61 c 1.16 0.33 2.41 0.5 3.75 0.5 c 2.05 0 4 -0.28 5.85 -0.86 c 1.86 -0.57 3.42 -1.14 4.71 -1.71 l -1.93 -7.56 c -0.57 0.24 -1.33 0.52 -2.28 0.86 c -0.95 0.33 -1.93 0.5 -2.92 0.5 c -1 0 -1.84 -0.27 -2.53 -0.82 c -0.69 -0.55 -1.03 -1.49 -1.03 -2.82 V 36.25 h 17.84 v 21.48 c 0 1.67 0.26 3.08 0.79 4.25 c 0.52 1.17 1.22 2.12 2.1 2.85 c 0.88 0.74 1.9 1.27 3.07 1.61 c 1.16 0.33 2.41 0.5 3.75 0.5 c 2.05 0 4 -0.28 5.85 -0.86 c 1.86 -0.57 3.42 -1.14 4.71 -1.71 L 233.51 56.8 z
+ */</span></code></pre>
+<blockquote class="bg-gray-100 pt-4 px-4 flex my-10 border-l-4 border-blue-300 rounded">
+<p class="mb-4">To allow any number of decimal places, pass Infinity as a parameter.</p>
+</blockquote>
+</div>
+
+          <div class="w-800 max-w-full mx-auto grid lg:grid-cols-2 gap-8 items-center text-slate-500">
+<div class="flex justify-between items-start border border-slate-200 rounded p-4">
+  <a href="/pages/minify-path.html" title="" class="mr-4 hover:text-blue-500">
+    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">
+    <path stroke="none" d="M0 0h24v24H0z"/>
+    <path d="M5 12h14M5 12l6 6m-6-6 6-6"/>
+  </svg>
+  </a>
+  <div class="flex flex-col items-end justify-center">
+    <div class="mb-2 text-sm text-slate-300">Previous</div>
+    <a href="/pages/minify-path.html" title="" class="hover:text-blue-500">Minify Path</a>
+  </div>
+</div>      
+    
+<div class="flex justify-between items-start border border-slate-200 rounded p-4">
+  
+  <div class="flex flex-col justify-center">
+    <div class="mb-2 text-sm text-slate-300">Next</div>
+    <a href="/pages/parse-path.html" title="" class="hover:text-blue-500">Parse Path</a>
+  </div>
+  
+  <a href="/pages/parse-path.html" title="" class="mr-4 hover:text-blue-500">
+    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">
+     <path stroke="none" d="M0 0h24v24H0z"/>
+     <path d="M5 12h14m-6 6 6-6m-6-6 6 6"/>
+  </svg>
+  </a>
+</div>  
+    </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!--<footer class="py-2 px-4 border-t">
+      <div class="container mx-auto">
+        Footer
+      </div>
+    </footer>-->
+
+    <script src="/js/index.1681062799279.js"></script>
+  </body>
+</html>
