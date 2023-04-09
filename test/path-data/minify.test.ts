@@ -38,4 +38,9 @@ describe('Path Data Minify', () => {
         expect(pathDataMinify(parsed)).toStrictEqual('M.1 .25 1.18 13');
     });
 
+    test('M -0.100 -0.252625 L -1.180000 -12.999999', () => {
+        const parsed = parsePath('M -0.100 -0.252625 L -1.180000 -12.999999')
+        expect(pathDataMinify(parsed)).toStrictEqual('M-.1 -.25 -1.18 -13');
+    });
+
 });

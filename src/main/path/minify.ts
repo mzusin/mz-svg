@@ -9,7 +9,10 @@ const numberToString = (num: number) : string => {
     const intPart = parts[0];
     const decimalPart = parts[1];
 
-    return intPart === '0' ? `.${ decimalPart }` : _num;
+    if(intPart === '0') return `.${ decimalPart }`;
+    if(intPart === '-0') return `-.${ decimalPart }`;
+
+    return _num;
 };
 
 export const pathDataMinify = (pathData: IPathData) : string => {
