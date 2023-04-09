@@ -40,7 +40,9 @@
     "svg mask",
     "path parser",
     "path parsing",
-    "path validation"
+    "path validation",
+    "svg path minify",
+    "svg path minification"
   ],
   "author": "Miriam Zusin <miriam.zusin@gmail.com>",
   "license": "SEE LICENSE IN LICENSE.md",
