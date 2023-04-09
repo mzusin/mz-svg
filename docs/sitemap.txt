@@ -23,6 +23,7 @@ https://range-slider.toolcool.org/pages/create-mask.html
 https://range-slider.toolcool.org/pages/create-symbol.html
 https://range-slider.toolcool.org/pages/path-to-relative.html
 https://range-slider.toolcool.org/pages/path-to-absolute.html
+https://range-slider.toolcool.org/pages/minify-path.html
 https://range-slider.toolcool.org/pages/parse-path.html
 https://range-slider.toolcool.org/pages/validate-path.html
 https://range-slider.toolcool.org/pages/save-svg.html
