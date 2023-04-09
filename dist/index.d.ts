@@ -261,7 +261,7 @@ declare module 'mz-svg' {
 
     export const pathToRel: (d?: string) => string | undefined;
     export const pathToAbs: (d?: string) => string | undefined;
-
     export const isPathValid: (d?: string) => boolean;
     export const parsePath: (d?: string) => IPathData;
+    export const minifyPath: (d?: string, decimalPlaces?: number) => string | undefined;
 }

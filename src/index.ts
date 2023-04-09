@@ -5,7 +5,7 @@ import * as shapePaths from './main/shapes/shape-paths';
 import * as containers from './main/containers';
 import * as ioBrowser from './main/io-browser';
 import * as helpers from './main/helpers';
-import * as pathTransforms from './main/path/transformation';
+import * as pathTransforms from './main/path';
 
 const api = {
     ...core,
@@ -33,4 +33,4 @@ export * from './main/shapes/star-shapes';
 export * from './main/shapes/shape-paths';
 export * from './main/containers';
 export * from './main/helpers';
-export * from './main/path/transformation';
+export * from './main/path';

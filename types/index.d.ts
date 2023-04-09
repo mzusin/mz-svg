@@ -8,6 +8,7 @@ declare const api: {
     parsePath: (d?: string | undefined) => import("./main/path/interfaces").IPathData;
     pathToRel: (d?: string | undefined) => string | undefined;
     pathToAbs: (d?: string | undefined) => string | undefined;
+    minifyPath: (d?: string | undefined, decimalPlaces?: number) => string | undefined;
     appendOnce: ($parent: SVGElement | SVGSVGElement, $el: SVGElement) => void;
     prependOnce: ($parent: SVGElement | SVGSVGElement, $el: SVGElement) => void;
     createGroup: (props?: import("./interfaces").IPrimitiveShapeProps | undefined) => SVGGElement;
@@ -95,4 +96,4 @@ export * from './main/shapes/star-shapes';
 export * from './main/shapes/shape-paths';
 export * from './main/containers';
 export * from './main/helpers';
-export * from './main/path/transformation';
+export * from './main/path';

@@ -2,6 +2,7 @@ import { IPathData } from './interfaces';
 import { scan } from './scanner';
 import { parse } from './parser';
 import { pathDataToAbsolute, pathDataToRelative, pathDataToString } from './convert';
+import { pathDataMinify } from './minify';
 
 export const isPathValid = (d?: string): boolean => {
     const parsed = parsePath(d);
@@ -39,6 +40,15 @@ export const pathToAbs = (d?: string): string|undefined => {
     if(parsed.errors.length > 0) return d;
 
     return pathDataToString(pathDataToAbsolute(parsed));
+};
+
+export const minifyPath = (d?: string, decimalPlaces = 2): string|undefined => {
+    if(!d) return d;
+
+    const parsed = parsePath(d);
+    if(parsed.errors.length > 0) return d;
+
+    return pathDataMinify(parsed, decimalPlaces);
 };
 
 /**

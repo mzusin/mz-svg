@@ -13,6 +13,7 @@ export declare const pathToRel: (d?: string) => string | undefined;
  * Converts all path commands to absolute.
  */
 export declare const pathToAbs: (d?: string) => string | undefined;
+export declare const minifyPath: (d?: string, decimalPlaces?: number) => string | undefined;
 /**
  * SVG paths transformations that works with 'path data' - https://www.w3.org/TR/SVG11/paths.html#PathData
 
