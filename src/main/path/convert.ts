@@ -332,7 +332,7 @@ export const pathDataToString = (pathData: IPathData, minify?: boolean, decimalP
     for(const item of pathData.commands){
         d += item.command;
         if(item.params.length > 0){
-            d += ` ${ item.params.map(param => Number.isInteger(param) ? param : setDecimalPlaces(param, 2)).join(' ')} `
+            d += ` ${ item.params.map(param => Number.isInteger(param) ? param : setDecimalPlaces(param, decimalPlaces)).join(' ')} `
         }
         else{
             d += ' ';

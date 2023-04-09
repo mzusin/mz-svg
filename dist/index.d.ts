@@ -259,9 +259,10 @@ declare module 'mz-svg' {
         ArcRel = "a"
     }
 
-    export const pathToRel: (d?: string) => string | undefined;
-    export const pathToAbs: (d?: string) => string | undefined;
     export const isPathValid: (d?: string) => boolean;
     export const parsePath: (d?: string) => IPathData;
+    export const pathToRel: (d?: string, beautify?: boolean, decimalPlaces?: number) => string | undefined;
+    export const pathToAbs: (d?: string, beautify?: boolean, decimalPlaces?: number) => string | undefined;
     export const minifyPath: (d?: string, decimalPlaces?: number) => string | undefined;
+    export const beautifyPath: (d?: string, decimalPlaces?: number) => string | undefined;
 }

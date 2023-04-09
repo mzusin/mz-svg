@@ -21,25 +21,25 @@ export const parsePath = (d?: string): IPathData => {
 /**
  * Converts all path commands to relative.
  */
-export const pathToRel = (d?: string): string|undefined => {
+export const pathToRel = (d?: string, beautify = false, decimalPlaces = 2): string|undefined => {
     if(!d) return d;
 
     const parsed = parsePath(d);
     if(parsed.errors.length > 0) return d;
 
-    return pathDataToString(pathDataToRelative(parsed));
+    return pathDataToString(pathDataToRelative(parsed), !beautify, decimalPlaces);
 };
 
 /**
  * Converts all path commands to absolute.
  */
-export const pathToAbs = (d?: string): string|undefined => {
+export const pathToAbs = (d?: string, beautify = false, decimalPlaces = 2): string|undefined => {
     if(!d) return d;
 
     const parsed = parsePath(d);
     if(parsed.errors.length > 0) return d;
 
-    return pathDataToString(pathDataToAbsolute(parsed));
+    return pathDataToString(pathDataToAbsolute(parsed), !beautify, decimalPlaces);
 };
 
 export const minifyPath = (d?: string, decimalPlaces = 2): string|undefined => {
@@ -51,23 +51,11 @@ export const minifyPath = (d?: string, decimalPlaces = 2): string|undefined => {
     return pathDataMinify(parsed, decimalPlaces);
 };
 
-/**
- * SVG paths transformations that works with 'path data' - https://www.w3.org/TR/SVG11/paths.html#PathData
+export const beautifyPath = (d?: string, decimalPlaces = 2): string|undefined => {
+    if(!d) return d;
 
-export const transformPath = (props?: {
-    d?: string;
-    $path?: SVGPathElement;
-}) : null|string|SVGPathElement => {
+    const parsed = parsePath(d);
+    if(parsed.errors.length > 0) return d;
 
-    // if no path props is provided ---> null
-    if(!props || (!props.d && !props.$path)) return null;
-
-    // if both $path and d are provided ---> $path has more priority
-    const d = props.$path?.getAttribute('d') ?? props.d;
-    if(!d) return null;
-
-    parsePath(d);
-
-    if(props.$path) return props.$path;
-    return d;
-}; */
+    return pathDataToString(parsed, false, decimalPlaces);
+};

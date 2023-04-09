@@ -6,9 +6,10 @@ import * as containers from './main/containers';
 declare const api: {
     isPathValid: (d?: string | undefined) => boolean;
     parsePath: (d?: string | undefined) => import("./main/path/interfaces").IPathData;
-    pathToRel: (d?: string | undefined) => string | undefined;
-    pathToAbs: (d?: string | undefined) => string | undefined;
+    pathToRel: (d?: string | undefined, beautify?: boolean, decimalPlaces?: number) => string | undefined;
+    pathToAbs: (d?: string | undefined, beautify?: boolean, decimalPlaces?: number) => string | undefined;
     minifyPath: (d?: string | undefined, decimalPlaces?: number) => string | undefined;
+    beautifyPath: (d?: string | undefined, decimalPlaces?: number) => string | undefined;
     appendOnce: ($parent: SVGElement | SVGSVGElement, $el: SVGElement) => void;
     prependOnce: ($parent: SVGElement | SVGSVGElement, $el: SVGElement) => void;
     createGroup: (props?: import("./interfaces").IPrimitiveShapeProps | undefined) => SVGGElement;
