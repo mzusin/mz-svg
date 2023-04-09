@@ -14,10 +14,10 @@ The library can also be used directly in browsers without TypeScript. First, dow
 </script>
 ```
 
-The library is also available on the [jsDelivr CND](https://www.jsdelivr.com/package/npm/mz-svg):
+The library is also available on the [jsDelivr CND](https://cdn.jsdelivr.net/npm/mz-svg/dist/mz-svg.min.js):
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/mzusin/dist/mz-svg.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mz-svg/dist/mz-svg.min.js"></script>
 <script>
     const $svg = mzSVG.createSVG({
         width: 100,
