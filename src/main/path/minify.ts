@@ -1,6 +1,17 @@
 import { EPathDataCommand, IPathData } from './interfaces';
 import { setDecimalPlaces } from 'mz-math';
 
+const numberToString = (num: number) : string => {
+    if(Number.isInteger(num)) return num.toString();
+
+    const _num = setDecimalPlaces(num, 2).toString();
+    const parts = _num.split('.');
+    const intPart = parts[0];
+    const decimalPart = parts[1];
+
+    return intPart === '0' ? `.${ decimalPart }` : _num;
+};
+
 export const pathDataMinify = (pathData: IPathData) : string => {
 
     let d = '';
@@ -13,22 +24,11 @@ export const pathDataMinify = (pathData: IPathData) : string => {
             (lastCommand === EPathDataCommand.MoveToAbs && item.command === EPathDataCommand.LineToAbs) ||
             (lastCommand === EPathDataCommand.MoveToRel && item.command === EPathDataCommand.LineToRel);
 
-        if(!canSkipCommand){
-            d += item.command;
-        }
-        else{
-            d += ' ';
-        }
-
-        if(item.params.length > 0){
-            d += item.params.map(param => Number.isInteger(param) ? param : setDecimalPlaces(param, 2)).join(' ');
-        }
-        else{
-            d += ' ';
-        }
+        d += canSkipCommand ? ' ' : item.command;
+        d += item.params.length <= 0 ? ' ' : item.params.map(param => numberToString(param)).join(' ');
 
         lastCommand = item.command;
     }
 
-    return d;
+    return d.trim();
 };

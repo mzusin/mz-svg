@@ -23,4 +23,19 @@ describe('Path Data Minify', () => {
         expect(pathDataMinify(parsed)).toStrictEqual('M10 10 50 50m0 0 -20 10 10 10');
     });
 
+    test('M 10 10 L 50 50 V 10 V 10 V 10 z', () => {
+        const parsed = parsePath('M 10 10 L 50 50 V 10 V 10 V 10 z')
+        expect(pathDataMinify(parsed)).toStrictEqual('M10 10 50 50V10 10 10z');
+    });
+
+    test('M 10 10 L 50 50 v 10 v 10 v 10 z', () => {
+        const parsed = parsePath('M 10 10 L 50 50 v 10 v 10 v 10 z')
+        expect(pathDataMinify(parsed)).toStrictEqual('M10 10 50 50v10 10 10z');
+    });
+
+    test('M 0.100 0.252625 L 1.180000 12.999999', () => {
+        const parsed = parsePath('M 0.100 0.252625 L 1.180000 12.999999')
+        expect(pathDataMinify(parsed)).toStrictEqual('M.1 .25 1.18 13');
+    });
+
 });
