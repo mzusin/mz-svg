@@ -320,13 +320,13 @@ export const pathDataToAbsolute = (pathData: IPathData): IPathData => {
     return pathData;
 };
 
-export const pathDataToString = (pathData: IPathData, minify?: boolean) : string => {
+export const pathDataToString = (pathData: IPathData, minify?: boolean, decimalPlaces = 2) : string => {
     if(!pathData || pathData.commands.length <= 0) return '';
 
     let d = '';
 
     if(minify){
-        return pathDataMinify(pathData);
+        return pathDataMinify(pathData, decimalPlaces);
     }
 
     for(const item of pathData.commands){
