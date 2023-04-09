@@ -1,5 +1,6 @@
 import { EPathDataCommand, IPathData } from './interfaces';
 import { setDecimalPlaces } from 'mz-math';
+import { pathDataMinify } from './minify';
 
 export const pathDataToRelative = (pathData: IPathData): IPathData => {
 
@@ -319,10 +320,14 @@ export const pathDataToAbsolute = (pathData: IPathData): IPathData => {
     return pathData;
 };
 
-export const pathDataToString = (pathData: IPathData) : string => {
+export const pathDataToString = (pathData: IPathData, minify?: boolean) : string => {
     if(!pathData || pathData.commands.length <= 0) return '';
 
     let d = '';
+
+    if(minify){
+        return pathDataMinify(pathData);
+    }
 
     for(const item of pathData.commands){
         d += item.command;
