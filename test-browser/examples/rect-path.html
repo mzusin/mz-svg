@@ -5,6 +5,8 @@
     <title>mzSVG</title>
 </head>
 <body>
+    <!--<svg xmlns="http://www.w3.org/2000/svg" width="200" height="450"><path d="M100 0H90s100 0 100 0 100 10L100 90C100 90 100 100 90 100L10 100C10 100 0 100 0 90V10C0 10 0 0 10 0Z" fill="#000000"></path></svg>-->
+
     <script src="../../dist/mz-svg.min.js"></script>
     <script>
 
@@ -38,14 +40,12 @@
 
         console.log($rect1.getAttribute('d'))
         console.log(mzSVG.minifyPath($rect1.getAttribute('d')));
-        console.log(mzSVG.pathToRel($rect1.getAttribute('d')))
-        // l80 0 ---> h80
+        console.log('pathToRel', mzSVG.pathToRel($rect1.getAttribute('d')))
+        console.log('pathToAbs', mzSVG.pathToAbs($rect1.getAttribute('d')))
+
         // c0 0 10 0 10 10 ---> s10 0 10 10
-        // l0 80 ---> v80
         // c0 0 0 10 -10 10 ---> s0 10-10 10
-        // l-80 0 ---> H20
         // c0 0 -10 0 -10 -10 l0 ----> s-10 0-10-10
-        // l 0 -80 ----> v-80
         // c0 0 0 -10 10 -10 ---> s0-10 10-10
 
         /*
@@ -55,6 +55,8 @@
   <rect width="100" height="100" fill="red" rx="10" ry="10"/>
   <path fill="#00f" d="M20 105h80s10 0 10 10v80s0 10-10 10H20s-10 0-10-10v-80s0-10 10-10Z"/>
 </svg>
+
+
          */
 
         document.body.append($svg);

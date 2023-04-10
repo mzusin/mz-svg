@@ -95,6 +95,26 @@ describe('Path Data Minify/Beautify', () => {
             const parsed = parsePath('M 10 10 l 0 100')
             expect(pathDataMinify(parsed)).toStrictEqual('M10 10v100');
         });
+
+        test('M 0 0 c0 0 10 0 10 10', () => {
+            const parsed = parsePath('M 0 0 c0 0 10 0 10 10')
+            expect(pathDataMinify(parsed)).toStrictEqual('M0 0s10 0 10 10');
+        });
+
+        test('M 0 0 c0 0 0 10 -10 10', () => {
+            const parsed = parsePath('M 0 0 c0 0 0 10 -10 10')
+            expect(pathDataMinify(parsed)).toStrictEqual('M0 0s0 10 -10 10');
+        });
+
+        test('M 0 0 c0 0 -10 0 -10 -10', () => {
+            const parsed = parsePath('M 0 0 c0 0 -10 0 -10 -10')
+            expect(pathDataMinify(parsed)).toStrictEqual('M0 0s-10 0 -10 -10');
+        });
+
+        test('M 0 0 c0 0 0 -10 10 -10', () => {
+            const parsed = parsePath('M 0 0 c0 0 0 -10 10 -10')
+            expect(pathDataMinify(parsed)).toStrictEqual('M0 0s0 -10 10 -10');
+        });
     });
 
     describe('Beautify', () => {
