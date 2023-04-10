@@ -6,7 +6,6 @@
 - Union, intersection, etc.
 - Shape transformations
 - Convert simple shape to path
-- Path relative to absolute and vise versa
 - Primitives as paths - possibility to get relative / abs coordinates
 - SVG in canvas
 

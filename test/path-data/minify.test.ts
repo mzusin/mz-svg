@@ -75,6 +75,26 @@ describe('Path Data Minify/Beautify', () => {
 \tc1.86-0.57,3.42-1.14,4.71-1.71L233.51,56.8z`)
             expect(pathDataMinify(parsed)).toStrictEqual(`M233.51 56.8c-.57 .24 -1.33 .52 -2.28 .86 -.95 .33 -1.93 .5 -2.92 .5s-1.84 -.27 -2.53 -.82c-.69 -.55 -1.03 -1.49 -1.03 -2.82V36.25h7.85V28.9h-7.85V16.77h-9.56V28.9h-17.84V16.77h-9.56V28.9h-4.92v7.35h4.92v21.48c0 1.67 .26 3.08 .79 4.25 .52 1.17 1.22 2.12 2.1 2.85 .88 .74 1.9 1.27 3.07 1.61 1.16 .33 2.41 .5 3.75 .5 2.05 0 4 -.28 5.85 -.86 1.86 -.57 3.42 -1.14 4.71 -1.71l-1.93 -7.56c-.57 .24 -1.33 .52 -2.28 .86 -.95 .33 -1.93 .5 -2.92 .5 -1 0 -1.84 -.27 -2.53 -.82 -.69 -.55 -1.03 -1.49 -1.03 -2.82V36.25h17.84v21.48c0 1.67 .26 3.08 .79 4.25 .52 1.17 1.22 2.12 2.1 2.85 .88 .74 1.9 1.27 3.07 1.61 1.16 .33 2.41 .5 3.75 .5 2.05 0 4 -.28 5.85 -.86 1.86 -.57 3.42 -1.14 4.71 -1.71L233.51 56.8z`);
         });
+
+        test('M 10 10 L 100 0', () => {
+            const parsed = parsePath('M 10 10 L 100 0')
+            expect(pathDataMinify(parsed)).toStrictEqual('M10 10H100');
+        });
+
+        test('M 10 10 l 100 0', () => {
+            const parsed = parsePath('M 10 10 l 100 0')
+            expect(pathDataMinify(parsed)).toStrictEqual('M10 10h100');
+        });
+
+        test('M 10 10 L 0 100', () => {
+            const parsed = parsePath('M 10 10 L 0 100')
+            expect(pathDataMinify(parsed)).toStrictEqual('M10 10V100');
+        });
+
+        test('M 10 10 l 0 100', () => {
+            const parsed = parsePath('M 10 10 l 0 100')
+            expect(pathDataMinify(parsed)).toStrictEqual('M10 10v100');
+        });
     });
 
     describe('Beautify', () => {
