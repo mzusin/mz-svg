@@ -8,22 +8,62 @@
     <script src="../../dist/mz-svg.min.js"></script>
     <script>
 
-        const $svg = mzSVG.createSVG({
-            width: 200,
-            height: 200
-        });
+        const createStarSVG = (raysNumber) => {
+            const $svg = mzSVG.createSVG({
+                width: 200,
+                height: 200
+            });
 
-        const $star = mzSVG.createStar({
-            raysNumber: 5,
-            centerX: 100,
-            centerY: 100,
-            outerRadius: 100,
-            innerRadius: 50,
-        });
+            $svg.append(mzSVG.createStar({
+                raysNumber,
+                centerX: 100,
+                centerY: 100,
+                outerRadius: 100,
+                innerRadius: 50,
+            }));
 
-        $svg.append($star);
+            document.body.append($svg);
+        };
 
-        document.body.append($svg);
+        const createStarSVG2 = (raysNumber) => {
+            const $svg = mzSVG.createSVG({
+                width: 200,
+                height: 200
+            });
+
+            $svg.append(mzSVG.createStar2({
+                raysNumber,
+                centerX: 100,
+                centerY: 100,
+                outerRadius: 80,
+                innerRadius: 30,
+            }));
+
+            document.body.append($svg);
+        };
+
+        const createStarSVG3 = (raysNumber) => {
+            const $svg = mzSVG.createSVG({
+                width: 200,
+                height: 200
+            });
+
+            $svg.append(mzSVG.createStar3({
+                raysNumber,
+                centerX: 100,
+                centerY: 100,
+                outerRadius: 80,
+                innerRadius: 30,
+            }));
+
+            document.body.append($svg);
+        };
+
+        for(let i=4; i<=15; i++){
+            createStarSVG(i);
+            createStarSVG2(i);
+            createStarSVG3(i);
+        }
     </script>
 </body>
 </html>

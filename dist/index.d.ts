@@ -140,6 +140,18 @@ declare module 'mz-svg' {
         points?: string;
         pathLength?: string | number;
     }
+
+    export interface ICreateFlowerProps extends IPrimitiveShapeProps {
+        petalsNumber: number;
+        centerX: number;
+        centerY: number;
+        outerRadius: number;
+        innerRadius: number;
+        decimalPlaces?: number;
+        pathLength?: string | number;
+    }
+    export const createFlower: (props: ICreateFlowerProps) => SVGPathElement;
+
     export const createPolyline: (props: ICreatePolygonProps) => SVGPolylineElement;
 
     export const createStar: (props: ICreateStarProps) => SVGPathElement;

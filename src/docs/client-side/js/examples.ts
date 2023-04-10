@@ -1,4 +1,4 @@
-import { createStar } from '../../../main/shapes/star-shapes';
+import { createStar } from '../../../main/shapes/stars';
 import { createSVG } from '../../../main/core';
 import { getRandomHSLColorWithinRanges, hslToHex, getRandomInt } from 'mz-math';
 

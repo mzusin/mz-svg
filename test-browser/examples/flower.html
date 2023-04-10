@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mzSVG</title>
+</head>
+<body>
+    <script src="../../dist/mz-svg.min.js"></script>
+    <script>
+
+        const createFlowerSVG = (petalsNumber) => {
+            const $svg = mzSVG.createSVG({
+                width: 300,
+                height: 300
+            });
+
+            const $star = mzSVG.createFlower({
+                petalsNumber,
+                centerX: 150,
+                centerY: 150,
+                outerRadius: 130,
+                innerRadius: 50,
+            });
+
+            $svg.append($star);
+
+            document.body.append($svg);
+        };
+
+        for(let i=4; i<=15; i++){
+            createFlowerSVG(i);
+        }
+    </script>
+</body>
+</html>
