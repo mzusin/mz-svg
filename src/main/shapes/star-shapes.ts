@@ -2,6 +2,7 @@ import { createPath } from './primitive-shapes';
 import { DEFAULT_DECIMAL_PLACES } from '../core';
 import { setDecimalPlaces } from 'mz-math';
 import { IPrimitiveShapeProps } from '../../interfaces';
+import { pathToRel } from '../path';
 
 export interface ICreateStarProps extends IPrimitiveShapeProps{
     raysNumber: number;
@@ -46,6 +47,7 @@ export const createStar = (props: ICreateStarProps) : SVGPathElement => {
     let d = `M ${dots[0][0]} ${dots[0][1]} `;
     d += dots.map(dot => `L ${dot[0]} ${dot[1]}`).join(' ');
     d += ' Z';
+    d = pathToRel(d) || d;
 
     const pathProps = {
         ...props,
