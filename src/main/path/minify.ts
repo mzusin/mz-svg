@@ -16,6 +16,25 @@ const numberToString = (num: number, decimalPlaces = 2) : string => {
     return _num;
 };
 
+const combineParams = (params: number[], decimalPlaces: number) => {
+    if(!params || params.length <= 0) return '';
+
+    let combined = numberToString(params[0], decimalPlaces);
+
+    for(let i= 1; i<params.length; i++){
+        const param = params[i];
+        const str = numberToString(param, decimalPlaces);
+        if(param < 0){
+            combined +=  str;
+        }
+        else{
+            combined += ` ${ str }`;
+        }
+    }
+
+    return combined;
+};
+
 export const pathDataMinify = (pathData: IPathData, decimalPlaces = 2) : string => {
 
     let d = '';
@@ -57,12 +76,12 @@ export const pathDataMinify = (pathData: IPathData, decimalPlaces = 2) : string 
         if(item.command === EPathDataCommand.CubicCurveToRel){
             if(item.params[0] === 0 && item.params[1] === 0){
 
-                const params = [
+                const params = combineParams([
                     item.params[2],
                     item.params[3],
                     item.params[4],
                     item.params[5],
-                ].map(param => numberToString(param, decimalPlaces)).join(' ');
+                ], decimalPlaces);
 
                 d += `s${ params }`;
                 lastCommand = EPathDataCommand.CubicCurveToRel;
@@ -75,9 +94,16 @@ export const pathDataMinify = (pathData: IPathData, decimalPlaces = 2) : string 
             (lastCommand === EPathDataCommand.MoveToAbs && item.command === EPathDataCommand.LineToAbs) ||
             (lastCommand === EPathDataCommand.MoveToRel && item.command === EPathDataCommand.LineToRel);
 
-        d += canSkipCommand ? ' ' : item.command;
+        if(canSkipCommand){
+            if(item.params.length > 0 && item.params[0] >= 0){
+                d += ' ';
+            }
+        }
+        else{
+            d += item.command;
+        }
 
-        d += item.params.length <= 0 ? ' ' : item.params.map(param => numberToString(param, decimalPlaces)).join(' ');
+        d += combineParams(item.params, decimalPlaces);
 
         lastCommand = item.command;
     }

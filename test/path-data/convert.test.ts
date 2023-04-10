@@ -421,7 +421,7 @@ describe('Path Data Convert', () => {
            A 20,20 0,0,1 90,30
            Q 90,60 50,90
            Q 10,60 10,30 z`);
-            expect(d).toStrictEqual('M10 30a20 20 0 0 1 40 0 20 20 0 0 1 40 0q0 30 -40 60 -40 -30 -40 -60z');
+            expect(d).toStrictEqual('M10 30a20 20 0 0 1 40 0 20 20 0 0 1 40 0q0 30-40 60-40-30-40-60z');
         });
 
         test('pathToRel with beautify = true', () => {
@@ -435,7 +435,7 @@ describe('Path Data Convert', () => {
 
         test('pathToRel with decimal places = 1', () => {
             const d = pathToRel(`M -0.100 -0.252625 L -1.180000 -12.999999`, false, 1);
-            expect(d).toStrictEqual('M-.1 -.3l-1.1 -12.7');
+            expect(d).toStrictEqual('M-.1-.3l-1.1-12.7');
         });
     });
 
@@ -514,7 +514,7 @@ describe('Path Data Convert', () => {
 
         test('pathToAbs with decimal places = 1', () => {
             const d = pathToAbs(`M -0.100 -0.252625 l -1.180000 -12.999999`, false, 1);
-            expect(d).toStrictEqual('M-.1 -.3 -1.3 -13.3');
+            expect(d).toStrictEqual('M-.1-.3-1.3-13.3');
         });
     });
 
