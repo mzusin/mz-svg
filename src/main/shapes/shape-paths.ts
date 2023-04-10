@@ -21,35 +21,13 @@ export const getRectPathD = (props: {
 
     if (rx || ry){
 
-        const top1 = `${ x } ${ y }`;
-        const top2 = `${ x + rx } ${ y }`;
-        const top3 = `${ x + width - rx } ${ y }`;
-        const top4 = `${ x + width } ${ y }`;
+        const w = width - 2 * rx;
+        const h = height - 2 * ry;
 
-        const right1 = `${ x + width } ${ y + ry }`;
-        const right2 = `${ x + width } ${ y + height - ry }`;
-
-        const bottom1 = `${ x + width } ${ y + height }`;
-        const bottom2 = `${ x + width - rx } ${ y + height }`;
-        const bottom3 = `${ x + rx } ${ y + height }`;
-        const bottom4 = `${ x } ${ y + height }`;
-
-        const left1 = `${ x } ${ y + height - ry }`;
-        const left2 = `${ x } ${ y + ry }`;
-
-        return `
-            M${ top2 } 
-            L${ top3 }
-            C${ top3 } ${ top4 } ${ right1 } 
-            L${ right2 } 
-            C${ right2 } ${ bottom1 } ${ bottom2 } 
-            L${ bottom3 } 
-            C${ bottom3 } ${ bottom4 } ${ left1 } 
-            L${ left2 } 
-            C${ left2 } ${ top1 } ${ top2 } Z`.replace(/\s\s+/g, ' ').trim();
+        return `M${ x + rx } ${ y }h${ w }s${ rx } 0 ${ rx } ${ ry }v${ h }s0 ${ ry } ${ -rx } ${ ry }h${ -w }s${ -rx } 0 ${ -rx } ${ -ry }v${ -h }s0 ${ -ry } ${ rx } ${ -ry }z`;
     }
 
-    return `M${ x + width } ${ y } L${ x + width } ${ height + y } L${ x } ${ height + y } L${ x } ${ y } L${ x + width } ${ y } Z`;
+    return `M${ x } ${ y }h${ width }v${ height }h${ -width }z`;
 };
 
 export interface ICreateRectPathProps extends IPrimitiveShapeProps{

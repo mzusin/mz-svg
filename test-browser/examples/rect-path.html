@@ -5,7 +5,17 @@
     <title>mzSVG</title>
 </head>
 <body>
-    <!--<svg xmlns="http://www.w3.org/2000/svg" width="200" height="450"><path d="M100 0H90s100 0 100 0 100 10L100 90C100 90 100 100 90 100L10 100C10 100 0 100 0 90V10C0 10 0 0 10 0Z" fill="#000000"></path></svg>-->
+   <!-- <svg xmlns="http://www.w3.org/2000/svg"
+         width="200"
+         height="450">
+        <path d="M 50 50 L 100 100 Q 0 0 160 2900 Q 0 0 60 60 Z" fill="#000000"></path>
+    </svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="200"
+         height="450">
+        <path d="M 50 50 S 60 60 40 90 Z" fill="#000000"></path>
+    </svg>-->
 
     <script src="../../dist/mz-svg.min.js"></script>
     <script>
@@ -18,45 +28,37 @@
         const $rect = mzSVG.createRect({
             x: 0,
             y: 0,
-            fill: 'red',
+            fill: 'green',
             width: 100,
             height: 100,
-            rx: 10,
+            rx: 25,
             ry: 10,
         });
 
         const $rect1 = mzSVG.createRectPath({
             x: 10,
-            y: 105,
+            y: 110,
             width: 100,
             height: 100,
-            rx: 10,
-            ry: 10,
-            fill: 'blue',
+            //rx: 25,
+            //ry: 10,
+            fill: 'silver',
         });
 
         $svg.append($rect);
         $svg.append($rect1);
 
         console.log($rect1.getAttribute('d'))
-        console.log(mzSVG.minifyPath($rect1.getAttribute('d')));
         console.log('pathToRel', mzSVG.pathToRel($rect1.getAttribute('d')))
-        console.log('pathToAbs', mzSVG.pathToAbs($rect1.getAttribute('d')))
 
-        // c0 0 10 0 10 10 ---> s10 0 10 10
-        // c0 0 0 10 -10 10 ---> s0 10-10 10
-        // c0 0 -10 0 -10 -10 l0 ----> s-10 0-10-10
-        // c0 0 0 -10 10 -10 ---> s0-10 10-10
+        // M35 110h50s25 0 25 10v80s0 10-25 10H35s-25 0-25-10v-80s0-10 25-10z
+        // M35 110h50s25 0 25 10v80s0 10-25 10h-50s-25 0-25-10v-80s0-10 25-10z
 
         /*
-        M20 105 l80 0 c0 0 10 0 10 10 l0 80 c0 0 0 10 -10 10 l-80 0 c0 0 -10 0 -10 -10 l 0 -80 c0 0 0 -10 10 -10z
-        M20 105 h80   s10 0 10 10      v80  s0 10-10 10      H20    s-10 0-10-10       v-80    s0-10 10-10Z
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 450">
-  <rect width="100" height="100" fill="red" rx="10" ry="10"/>
-  <path fill="#00f" d="M20 105h80s10 0 10 10v80s0 10-10 10H20s-10 0-10-10v-80s0-10 10-10Z"/>
-</svg>
-
-
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 450">
+          <rect width="100" height="100" fill="red" rx="10" ry="10"/>
+          <path fill="#00f" d="M20 105h80s10 0 10 10v80s0 10-10 10H20s-10 0-10-10v-80s0-10 10-10Z"/>
+        </svg>
          */
 
         document.body.append($svg);
