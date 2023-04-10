@@ -5,7 +5,7 @@ Unlike **createRect()**, the **createRectPath()** function returns an SVG path e
 ```js
 import { createRectPath } from 'mz-svg';
 
-const $rect = createRect({
+const $rectPath = createRect({
     x: 0,
     y: 0,
     width: 100,
@@ -18,7 +18,7 @@ To create a rounded rectangle path, use the **rx** and **ry** properties:
 ```js
 import { createRectPath } from 'mz-svg';
 
-const $rect = createRectPath({
+const $rectPath = createRectPath({
     x: 0,
     y: 0,
     width: 100,
@@ -33,7 +33,7 @@ In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) d
 ```js
 import { createRectPath } from 'mz-svg/dist/mz-svg.node.cjs';
 
-const $rect = createRectPath({
+const $rectPath = createRectPath({
     document: doc,
     x: 0,
     y: 0,
@@ -47,7 +47,7 @@ The function can accept the following parameters. Note that **all parameters are
 ```js
 import { createRectPath } from 'mz-svg';
 
-const $rect = createRectPath({
+const $rectPath = createRectPath({
     
     id: 'my-rect-path-id',
     classes: 'css-class1 css-class2',
