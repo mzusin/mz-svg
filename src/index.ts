@@ -6,7 +6,8 @@ import * as shapePaths from './main/shapes/shape-paths';
 import * as containers from './main/containers';
 import * as ioBrowser from './main/io-browser';
 import * as helpers from './main/helpers';
-import * as pathTransforms from './main/path';
+import * as pathUtilities from './main/path';
+import * as pathTransform from './main/path/transform';
 
 const api = {
     ...core,
@@ -17,7 +18,8 @@ const api = {
     ...shapePaths,
     ...containers,
     ...helpers,
-    ...pathTransforms,
+    ...pathUtilities,
+    ...pathTransform,
 };
 
 declare global {
@@ -37,3 +39,4 @@ export * from './main/shapes/shape-paths';
 export * from './main/containers';
 export * from './main/helpers';
 export * from './main/path';
+export * from './main/path/transform';

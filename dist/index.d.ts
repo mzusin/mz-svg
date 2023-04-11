@@ -159,7 +159,6 @@ declare module 'mz-svg' {
     export const createStar2: (props: ICreateStarProps) => SVGPathElement;
     export const createStar3: (props: ICreateStarProps) => SVGPathElement;
 
-
     export const createGroup: (props: IPrimitiveShapeProps) => SVGGElement;
 
     export interface ICreatePatternProps extends IPrimitiveShapeProps {
@@ -281,4 +280,6 @@ declare module 'mz-svg' {
     export const pathToAbs: (d?: string, beautify?: boolean, decimalPlaces?: number) => string | undefined;
     export const minifyPath: (d?: string, decimalPlaces?: number) => string | undefined;
     export const beautifyPath: (d?: string, decimalPlaces?: number) => string | undefined;
+    export const translatePath: (d: string, x: number, y: number, decimalPlaces?: number) => string;
+
 }

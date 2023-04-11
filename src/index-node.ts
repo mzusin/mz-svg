@@ -7,3 +7,4 @@ export * from './main/shapes/shape-paths';
 export * from './main/containers';
 export * from './main/helpers';
 export * from './main/path';
+export * from './main/path/transform';

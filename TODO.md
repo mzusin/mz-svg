@@ -1,16 +1,22 @@
 # TODO
 
 ## Other features
+- Move path making it relative and then changing the M. Add interactive example with moving a shape by mouse and showing the result path.
+- Rotation ---> use matrix transformation on each path command ---> make interactive example.
+- The same with scale and skew.
+- Points on path and path length.
+- Check if all path function exists as browser API and use it when possible.
 - If 2 shapes/paths intersect
 - If shape inside viewport
 - Union, intersection, etc.
 - Shape transformations
 - Convert simple shape to path
-- Primitives as paths - possibility to get relative / abs coordinates
 - SVG in canvas
+- Check if start and flower are minified correctly
 
 ## Docs
 - Add interactive examples to "create shapes" docs pages
+- Make left menu collapsible
 
 ## Container objects:
 - marker

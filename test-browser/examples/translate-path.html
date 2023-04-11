@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mzSVG</title>
+    <style>
+        body{
+            display: flex;
+        }
+
+        svg{
+            border: 1px solid #d2d2d2;
+            margin: 2rem auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <script src="../../dist/mz-svg.min.js"></script>
+    <script>
+
+        const $svg = mzSVG.createSVG({
+            width: 800,
+            height: 600
+        });
+
+        const $rect = mzSVG.createRectPath({
+            x: 110,
+            y: 110,
+            width: 100,
+            height: 100,
+            rx: 10,
+            ry: 10,
+            fill: '#4ca989',
+        });
+
+        $svg.append($rect);
+
+        document.body.append($svg);
+
+        const box = $svg.getBoundingClientRect();
+
+        document.addEventListener('mousemove', (evt) => {
+
+            let d = $rect.getAttribute('d');
+            d = mzSVG.translatePath(d, evt.clientX - box.x - 50, evt.clientY - box.y - 50);
+            $rect.setAttribute('d', d);
+        });
+    </script>
+</body>
+</html>

@@ -5,6 +5,7 @@ import * as flowers from './main/shapes/flowers';
 import * as shapePaths from './main/shapes/shape-paths';
 import * as containers from './main/containers';
 declare const api: {
+    translatePath: (d: string, x: number, y: number, decimalPlaces?: number) => string;
     isPathValid: (d?: string | undefined) => boolean;
     parsePath: (d?: string | undefined) => import("./main/path/interfaces").IPathData;
     pathToRel: (d?: string | undefined, beautify?: boolean, decimalPlaces?: number) => string | undefined;
@@ -104,3 +105,4 @@ export * from './main/shapes/shape-paths';
 export * from './main/containers';
 export * from './main/helpers';
 export * from './main/path';
+export * from './main/path/transform';
