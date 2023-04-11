@@ -73,7 +73,9 @@ export const pathDataMinify = (pathData: IPathData, decimalPlaces = 2) : string 
         }
 
         // handle cases like 'c0 0 10 0 10 10' ---> 's10 0 10 10'
-        if(item.command === EPathDataCommand.CubicCurveToRel){
+        if(item.command === EPathDataCommand.CubicCurveToRel &&
+            lastCommand?.toLowerCase() !== EPathDataCommand.CubicCurveToAbs.toLowerCase() &&
+            lastCommand?.toLowerCase() !== EPathDataCommand.CubicCurveToSmoothAbs.toLowerCase()){
             if(item.params[0] === 0 && item.params[1] === 0){
 
                 const params = combineParams([
@@ -84,7 +86,7 @@ export const pathDataMinify = (pathData: IPathData, decimalPlaces = 2) : string 
                 ], decimalPlaces);
 
                 d += `s${ params }`;
-                lastCommand = EPathDataCommand.CubicCurveToRel;
+                lastCommand = EPathDataCommand.CubicCurveToSmoothRel;
                 continue;
             }
         }

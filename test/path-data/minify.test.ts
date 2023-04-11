@@ -120,6 +120,11 @@ describe('Path Data Minify/Beautify', () => {
             const parsed = parsePath('M35 110h50s25 0 25 10v80s0 10 -25 10h-50s-25 0 -25 -10v-80s0 -10 25 -10z')
             expect(pathDataMinify(parsed)).toStrictEqual('M35 110h50s25 0 25 10v80s0 10-25 10h-50s-25 0-25-10v-80s0-10 25-10z');
         });
+
+        test('M 150 100 c 0 -50 29.39 90.45 95.11 19.1 c 0 0 -95.11 -69.1 -95.11 -19.1 c 58.78 130.9 95.11 19.1 47.55 34.55 z', () => {
+            const parsed = parsePath('M 150 100 c 0 -50 29.39 90.45 95.11 19.1 c 0 0 -95.11 -69.1 -95.11 -19.1 c 58.78 130.9 95.11 19.1 47.55 34.55 z')
+            expect(pathDataMinify(parsed)).toStrictEqual('M150 100c0-50 29.39 90.45 95.11 19.1 0 0-95.11-69.1-95.11-19.1 58.78 130.9 95.11 19.1 47.55 34.55z');
+        });
     });
 
     describe('Beautify', () => {
