@@ -1,4 +1,5 @@
 import {
+  flowerExamples,
   starExamples,
 } from './examples';
 
@@ -51,6 +52,7 @@ const init = () => {
 document.addEventListener('DOMContentLoaded', () => {
   init();
   starExamples();
+  flowerExamples();
 });
 
 export {};
