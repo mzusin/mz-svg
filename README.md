@@ -16,6 +16,7 @@ TypeScript-based library for managing SVG in the browser and Node.js. The modula
 - Extensive Unit Testing.
 
 ## Working with path data ('d' property)
+- Translate path.
 - Convert path to relative or absolute commands.
 - Minify path data.
 - Beautify path data.
@@ -27,5 +28,5 @@ TypeScript-based library for managing SVG in the browser and Node.js. The modula
 - Container objects like &lt;g>, &lt;defs>, &lt;use>, etc.
 - SVG &lt;pattern>, &lt;clipPath>, &lt;mask>, etc.
 - Rectangle path element.
-- SVG star shape.
+- Star shape, flower shape.
 

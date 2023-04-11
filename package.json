@@ -43,7 +43,8 @@
     "path validation",
     "svg path minify",
     "beautify svg path",
-    "svg path minification"
+    "svg path minification",
+    "translate svg path"
   ],
   "author": "Miriam Zusin <miriam.zusin@gmail.com>",
   "license": "SEE LICENSE IN LICENSE.md",
