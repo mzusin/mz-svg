@@ -1,7 +1,6 @@
 # TODO
 
 ## Other features
-- Move path making it relative and then changing the M. Add interactive example with moving a shape by mouse and showing the result path.
 - Rotation ---> use matrix transformation on each path command ---> make interactive example.
 - The same with scale and skew.
 - Points on path and path length.
