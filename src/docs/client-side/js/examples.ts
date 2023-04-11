@@ -27,15 +27,17 @@ export const starExamples = () => {
       );
       const hex = hslToHex(hslColor); // #1c1817
 
-      const raysNumber = getRandomInt(4, 12); // 63
+      const raysNumber = getRandomInt(4, 12);
+      const type = getRandomInt(1, 3);
 
       const $star = createStar({
         raysNumber,
         centerX: 100,
         centerY: 100,
-        outerRadius: 100,
+        outerRadius: type === 2 ? 80 : 100,
         innerRadius: 50,
         fill: hex,
+        type: type,
       });
 
       $svg.append($star);

@@ -13,6 +13,7 @@ const $star = createStar({
     centerY: 100,
     outerRadius: 100,
     innerRadius: 50,
+    type: 1, // optional; can be 1, 2, or 3
 });
 ```
 
@@ -84,6 +85,9 @@ const $star = createStar({
 
     // the star inner radius
     innerRadius: 50,
+    
+    // star design type
+    type: 1, // 1, 2, or 3
     
     // -------------------------------------
     

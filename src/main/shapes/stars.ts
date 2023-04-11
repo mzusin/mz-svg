@@ -12,9 +12,24 @@ export interface ICreateStarProps extends IPrimitiveShapeProps{
     innerRadius: number;
     decimalPlaces?: number;
     pathLength?: string|number;
+    type?: number;
 }
 
 export const createStar = (props: ICreateStarProps) : SVGPathElement => {
+
+    switch (props.type){
+        case 2: {
+            return createStar2(props);
+        }
+        case 3: {
+            return createStar3(props);
+        }
+    }
+
+    return createStar1(props);
+};
+
+export const createStar1 = (props: ICreateStarProps) : SVGPathElement => {
 
     const {
         centerX, centerY,

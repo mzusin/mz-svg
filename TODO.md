@@ -84,7 +84,6 @@
 ## More shapes
 - Primitives as paths (triangle, rect, etc.)
 - Heart shapes
-- Flower shape
 - Flag shape
 - Simple helper for polygons like triangle, rhombus, hexagon
 - Rect around dot

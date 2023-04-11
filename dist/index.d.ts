@@ -126,16 +126,6 @@ declare module 'mz-svg' {
     }
     export const createPolygon: (props: ICreatePolygonProps) => SVGPolygonElement;
 
-    export interface ICreateStarProps extends IPrimitiveShapeProps {
-        raysNumber: number;
-        centerX: number;
-        centerY: number;
-        outerRadius: number;
-        innerRadius: number;
-        decimalPlaces?: number;
-        pathLength?: string | number;
-    }
-
     export interface ICreatePolylineProps extends IPrimitiveShapeProps {
         points?: string;
         pathLength?: string | number;
@@ -154,7 +144,21 @@ declare module 'mz-svg' {
 
     export const createPolyline: (props: ICreatePolygonProps) => SVGPolylineElement;
 
+    export interface ICreateStarProps extends IPrimitiveShapeProps {
+        raysNumber: number;
+        centerX: number;
+        centerY: number;
+        outerRadius: number;
+        innerRadius: number;
+        decimalPlaces?: number;
+        pathLength?: string | number;
+        type?: number;
+    }
     export const createStar: (props: ICreateStarProps) => SVGPathElement;
+    export const createStar1: (props: ICreateStarProps) => SVGPathElement;
+    export const createStar2: (props: ICreateStarProps) => SVGPathElement;
+    export const createStar3: (props: ICreateStarProps) => SVGPathElement;
+
 
     export const createGroup: (props: IPrimitiveShapeProps) => SVGGElement;
 

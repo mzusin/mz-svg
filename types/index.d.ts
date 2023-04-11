@@ -35,6 +35,9 @@ declare const api: {
     createRectPath: (props: shapePaths.ICreateRectPathProps) => SVGPathElement;
     createFlower: (props: flowers.ICreateFlowerProps) => SVGPathElement;
     createStar: (props: stars.ICreateStarProps) => SVGPathElement;
+    createStar1: (props: stars.ICreateStarProps) => SVGPathElement;
+    createStar2: (props: stars.ICreateStarProps) => SVGPathElement;
+    createStar3: (props: stars.ICreateStarProps) => SVGPathElement;
     download: (props: {
         $svg?: SVGSVGElement | undefined;
         svgString?: string | undefined;
