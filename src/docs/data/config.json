@@ -1,6 +1,7 @@
 {
   "website": {
-    "name": "mzSVG"
+    "name": "mzSVG",
+    "url": "https://svg.mzsoft.org"
   },
   "social": {
     "github": "https://github.com/mzusin/mz-svg",
