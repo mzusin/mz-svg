@@ -44,9 +44,28 @@ const initMenuScroll = () => {
   });
 };
 
+const initMenuCollapsible = () => {
+    const $titles =  document.querySelectorAll('.side-menu [data-collapsible-title]');
+
+    for(const $title of $titles){
+      $title.addEventListener('click', () => {
+        const isOpened = $title.getAttribute('data-opened') === 'true';
+
+        $title.setAttribute('data-opened', (!isOpened).toString());
+
+        const $arrow = $title.querySelector('[data-arrow]');
+        if(!$arrow) return;
+
+        $arrow.classList.toggle('rotate-90', !isOpened);
+        $title.nextElementSibling?.classList.toggle('hidden', isOpened);
+      });
+    }
+};
+
 const init = () => {
   initMobileMenu();
   initMenuScroll();
+  initMenuCollapsible();
 };
 
 document.addEventListener('DOMContentLoaded', () => {
