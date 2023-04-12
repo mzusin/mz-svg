@@ -44,7 +44,9 @@
     "svg path minify",
     "beautify svg path",
     "svg path minification",
-    "translate svg path"
+    "translate svg path",
+    "bbox",
+    "path bbox"
   ],
   "author": "Miriam Zusin <miriam.zusin@gmail.com>",
   "license": "SEE LICENSE IN LICENSE.md",
