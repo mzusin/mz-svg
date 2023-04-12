@@ -62,21 +62,39 @@ const initMenuCollapsible = () => {
     }
 };
 
+
 const handleDarkLightModes = () => {
+
+  const mode = window.localStorage.getItem('mode') || 'light';
+  document.documentElement.classList.toggle('dark', mode === 'dark');
+
   const $moveToDarkBtn = document.getElementById('move-to-dark-mode-btn') as HTMLButtonElement;
   const $moveToLightBtn = document.getElementById('move-to-light-mode-btn') as HTMLButtonElement;
 
-  $moveToDarkBtn?.addEventListener('click', () => {
+
+  const moveToDark = () => {
     document.documentElement.classList.add('dark');
     $moveToDarkBtn.classList.add('hidden');
     $moveToLightBtn.classList.remove('hidden');
-  });
+    window.localStorage.setItem('mode', 'dark');
+  };
 
-  $moveToLightBtn?.addEventListener('click', () => {
+  const moveToLight = () => {
     document.documentElement.classList.remove('dark');
     $moveToLightBtn.classList.add('hidden');
     $moveToDarkBtn.classList.remove('hidden');
-  });
+    window.localStorage.setItem('mode', 'light');
+  };
+
+  if(mode === 'dark'){
+    moveToDark();
+  }
+  else{
+    moveToLight();
+  }
+
+  $moveToDarkBtn?.addEventListener('click', moveToDark);
+  $moveToLightBtn?.addEventListener('click', moveToLight);
 };
 
 const init = () => {
