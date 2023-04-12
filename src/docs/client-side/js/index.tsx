@@ -45,7 +45,7 @@ const initMenuScroll = () => {
 };
 
 const initMenuCollapsible = () => {
-    const $titles =  document.querySelectorAll('.side-menu [data-collapsible-title]');
+    const $titles = document.querySelectorAll('.side-menu [data-collapsible-title]');
 
     for(const $title of $titles){
       $title.addEventListener('click', () => {
@@ -61,7 +61,6 @@ const initMenuCollapsible = () => {
       });
     }
 };
-
 
 const handleDarkLightModes = () => {
 

@@ -17,14 +17,15 @@
     <link id="favicon-16" rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16.png" />
 
     <link rel="stylesheet" href="/highlight.js/styles/tokyo-night-dark.css" />
-    <link rel="stylesheet" href="/css/styles.1681305869824.css" />
-    <!--<link rel="stylesheet" href="/js/index.1681305869824.css" />-->
+    <link rel="stylesheet" href="/css/styles.1681308066559.css" />
+    <!--<link rel="stylesheet" href="/js/index.1681308066559.css" />-->
 
   </head>
   <body class="h-screen flex flex-col font-roboto bg-white dark:bg-slate-900 dark:text-slate-100">
 
     <header class="py-4 px-4 border-b shadow-sm bg-slate-100 dark:bg-slate-900 dark:text-slate-400 dark:border-black">
       <div class="container mx-auto flex items-center justify-between">
+
         <div class="flex items-center">
           <!-- mobile menu button -->
           <button
@@ -159,19 +160,19 @@
 
         <div class="p-4 overflow-y-auto h-full md:w-100-350 dark:bg-slate-800">
           <div class="w-800 max-w-full mx-auto my-10 leading-7 text-lg text-slate-800 dark:text-slate-200"><h2 class="text-3xl mb-8">Node.js Usage</h2>
-<p class="mb-4">The library can also be used in Node.js together with <a href="https://github.com/jsdom/jsdom" class="text-blue-500">JSDom</a> library (or alike). In this case, you need to create a JSDom document first, and then pass it to the <strong class="font-bold">mzSVG</strong> APIs together with other params.</p>
+<p class="mb-4">The library can also be used in Node.js together with <a href="https://github.com/jsdom/jsdom" class="text-sky-500">JSDom</a> library (or alike). In this case, you need to create a JSDom document first, and then pass it to the <strong class="font-bold">mzSVG</strong> APIs together with other params.</p>
 <p class="mb-4">First, install the module using npm:</p>
 <pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code>npm install mz-svg</code></pre>
 <p class="mb-4">Or using Yarn:</p>
 <pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code>yarn add mz-svg</code></pre>
-<p class="mb-4">Then create a document using the <a href="https://github.com/jsdom/jsdom" class="text-blue-500">JSDom</a> library:</p>
+<p class="mb-4">Then create a document using the <a href="https://github.com/jsdom/jsdom" class="text-sky-500">JSDom</a> library:</p>
 <pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> jsdom <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;jsdom&#x27;</span>;
 <span class="hljs-keyword">const</span> { <span class="hljs-variable constant_">JSDOM</span> } = jsdom;
 
 <span class="hljs-comment">// create document using JSDOM</span>
 <span class="hljs-keyword">const</span> dom = <span class="hljs-keyword">new</span> <span class="hljs-title function_">JSDOM</span>(<span class="hljs-string">`&lt;!DOCTYPE html&gt;&lt;head&gt;&lt;title&gt;Doc&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;/body&gt;`</span>);
 <span class="hljs-keyword">const</span> doc = dom.<span class="hljs-property">window</span>.<span class="hljs-property">document</span>;</code></pre>
-<p class="mb-4">Call any <strong class="font-bold">mzSVG</strong>  API or function, and provide the <a href="https://github.com/jsdom/jsdom" class="text-blue-500">JSDom</a> document as parameter.</p>
+<p class="mb-4">Call any <strong class="font-bold">mzSVG</strong>  API or function, and provide the <a href="https://github.com/jsdom/jsdom" class="text-sky-500">JSDom</a> document as parameter.</p>
 <pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createSVG } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg/dist/mz-svg.node.cjs&#x27;</span>; 
 <span class="hljs-comment">// OR</span>
 <span class="hljs-comment">// const { createSVG } = require(&#x27;mz-svg/dist/mz-svg.node.cjs&#x27;);</span>
@@ -224,6 +225,6 @@
       </div>
     </footer>-->
 
-    <script src="/js/index.1681305869824.js"></script>
+    <script src="/js/index.1681308066559.js"></script>
   </body>
 </html>
