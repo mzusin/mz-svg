@@ -20,7 +20,7 @@ export const pathDataToRelative = (pathData: IPathData): IPathData => {
     commands[0].command = EPathDataCommand.MoveToAbs;
 
     for(let i = 1; i<commands.length; i++){
-        const item = commands[i]
+        const item = commands[i];
 
         switch (item.command) {
             case EPathDataCommand.MoveToAbs:{
@@ -340,4 +340,88 @@ export const pathDataToString = (pathData: IPathData, minify?: boolean, decimalP
     }
 
     return d.trim();
+};
+
+// --------------
+
+export const maximizeAbsolutePath = (pathData: IPathData): IPathData => {
+
+    const { commands } = pathData;
+
+    if(commands.length <= 0) return pathData;
+
+    // Make first M to be absolute
+    commands[0].command = EPathDataCommand.MoveToAbs;
+
+    for(let i = 1; i<commands.length; i++){
+        const item = commands[i];
+
+        switch (item.command) {
+
+            case EPathDataCommand.LineToHorizontalAbs:{
+                // prev should be line abs
+                const prev = commands[i - 1];
+                if(!prev) continue;
+
+                commands[i].command = EPathDataCommand.LineToAbs;
+
+                // update y to be the same as in previous command
+                commands[i].params[1] = prev.params[1];
+                break;
+            }
+
+            case EPathDataCommand.LineToVerticalAbs:{
+                // prev should be line abs
+                const prev = commands[i - 1];
+                if(!prev) continue;
+
+                commands[i].command = EPathDataCommand.LineToAbs;
+                let y = commands[i].params[0];
+
+                // update x to be the same as in previous command
+                commands[i].params[0] = prev.params[0];
+                commands[i].params.push(y);
+                break;
+            }
+
+            case EPathDataCommand.CubicCurveToSmoothAbs:{
+                // prev should be Cubic Bézier Curve Abs (C)
+                const prev = commands[i - 1];
+                if(!prev) continue;
+
+                // Structure for CubicCurveToAbs (C): x1,y1, x2,y2, x,y
+                commands[i].command = EPathDataCommand.CubicCurveToAbs;
+
+                // For S: (x2 y2 x y)
+                // The first control point is assumed to be the reflection
+                // of the second control point on the previous command
+                // relative to the current point.
+                // (If there is no previous command or if the previous command was not an C, c, S or s,
+                // assume the first control point is coincident with the current point.)
+                commands[i].params.unshift(prev.params[3]); // prev y2
+                commands[i].params.unshift(prev.params[2]); // prev x2
+                break;
+            }
+
+            case EPathDataCommand.QuadraticCurveToSmoothAbs:{
+                // prev should be Quadratic Bézier Curve Abs (Q)
+
+                const prev = commands[i - 1];
+                if(!prev) continue;
+
+                // Structure for CubicCurveToAbs (Q): x1 y1 x y
+                commands[i].command = EPathDataCommand.QuadraticCurveToAbs;
+
+                // For T: (x y)
+                // The control point is assumed to be the reflection of the control point on the previous command relative to the current point.
+                // (If there is no previous command or if the previous command was not a Q, q, T or t,
+                // assume the control point is coincident with the current point.)
+                commands[i].params.unshift(prev.params[1]); // prev y2
+                commands[i].params.unshift(prev.params[0]); // prev x2
+                break;
+            }
+        }
+    }
+
+    return pathData;
 };

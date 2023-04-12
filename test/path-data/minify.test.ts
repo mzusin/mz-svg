@@ -1,5 +1,6 @@
 import { beautifyPath, parsePath } from '../../src/index-esm';
 import { pathDataMinify } from '../../src/main/path/minify';
+import { maximizeAbsolutePath, pathDataToAbsolute, pathDataToString } from '../../src/main/path/convert';
 
 describe('Path Data Minify/Beautify', () => {
 
@@ -141,6 +142,51 @@ describe('Path Data Minify/Beautify', () => {
 \tc-1,0-1.84-0.27-2.53-0.82c-0.69-0.55-1.03-1.49-1.03-2.82V36.25h17.84v21.48c0,1.67,0.26,3.08,0.79,4.25
 \tc0.52,1.17,1.22,2.12,2.1,2.85c0.88,0.74,1.9,1.27,3.07,1.61c1.16,0.33,2.41,0.5,3.75,0.5c2.05,0,4-0.28,5.85-0.86
 \tc1.86-0.57,3.42-1.14,4.71-1.71L233.51,56.8z`)).toStrictEqual(`M 233.51 56.8 c -0.57 0.24 -1.33 0.52 -2.28 0.86 c -0.95 0.33 -1.93 0.5 -2.92 0.5 s -1.84 -0.27 -2.53 -0.82 c -0.69 -0.55 -1.03 -1.49 -1.03 -2.82 V 36.25 h 7.85 V 28.9 h -7.85 V 16.77 h -9.56 V 28.9 h -17.84 V 16.77 h -9.56 V 28.9 h -4.92 v 7.35 h 4.92 v 21.48 c 0 1.67 0.26 3.08 0.79 4.25 c 0.52 1.17 1.22 2.12 2.1 2.85 c 0.88 0.74 1.9 1.27 3.07 1.61 c 1.16 0.33 2.41 0.5 3.75 0.5 c 2.05 0 4 -0.28 5.85 -0.86 c 1.86 -0.57 3.42 -1.14 4.71 -1.71 l -1.93 -7.56 c -0.57 0.24 -1.33 0.52 -2.28 0.86 c -0.95 0.33 -1.93 0.5 -2.92 0.5 c -1 0 -1.84 -0.27 -2.53 -0.82 c -0.69 -0.55 -1.03 -1.49 -1.03 -2.82 V 36.25 h 17.84 v 21.48 c 0 1.67 0.26 3.08 0.79 4.25 c 0.52 1.17 1.22 2.12 2.1 2.85 c 0.88 0.74 1.9 1.27 3.07 1.61 c 1.16 0.33 2.41 0.5 3.75 0.5 c 2.05 0 4 -0.28 5.85 -0.86 c 1.86 -0.57 3.42 -1.14 4.71 -1.71 L 233.51 56.8 z`);
+        });
+    });
+
+    describe('Maximize Path', () => {
+
+        test('Empty path', () => {
+            const abs = pathDataToAbsolute(parsePath(''));
+            const parsed = maximizeAbsolutePath(abs);
+            expect(pathDataToString(parsed, false, 2)).toStrictEqual('');
+        });
+
+        test('M10 10 100 100', () => {
+            const abs = pathDataToAbsolute(parsePath('M10 10 100 100'));
+            const parsed = maximizeAbsolutePath(abs);
+            expect(pathDataToString(parsed, false, 2)).toStrictEqual('M 10 10 L 100 100');
+        });
+
+        test('M10 10 50 50 90 50', () => {
+            const abs = pathDataToAbsolute(parsePath('M10 10 50 50 90 50'));
+            const parsed = maximizeAbsolutePath(abs);
+            expect(pathDataToString(parsed, false, 2)).toStrictEqual('M 10 10 L 50 50 L 90 50');
+        });
+
+        test('M 11 12 H 20', () => {
+            const abs = pathDataToAbsolute(parsePath('M 11 12 H 20'));
+            const parsed = maximizeAbsolutePath(abs);
+            expect(pathDataToString(parsed, false, 2)).toStrictEqual('M 11 12 L 20 12');
+        });
+
+        test('M 11 12 V 20', () => {
+            const abs = pathDataToAbsolute(parsePath('M 11 12 V 20'));
+            const parsed = maximizeAbsolutePath(abs);
+            expect(pathDataToString(parsed, false, 2)).toStrictEqual('M 11 12 L 11 20');
+        });
+
+        test('M 11 12 C 10 20 30 40 50 60 S 70 80 90 100', () => {
+            const abs = pathDataToAbsolute(parsePath('M 11 12 C 10 20 30 40 50 60 S 70 80 90 100'));
+            const parsed = maximizeAbsolutePath(abs);
+            expect(pathDataToString(parsed, false, 2)).toStrictEqual('M 11 12 C 10 20 30 40 50 60 C 30 40 70 80 90 100');
+        });
+
+        test('M 11 12 Q 10 20 30 40 T 50 60', () => {
+            const abs = pathDataToAbsolute(parsePath('M 11 12 Q 10 20 30 40 T 50 60'));
+            const parsed = maximizeAbsolutePath(abs);
+            expect(pathDataToString(parsed, false, 2)).toStrictEqual('M 11 12 Q 10 20 30 40 Q 10 20 50 60');
         });
     });
 });
