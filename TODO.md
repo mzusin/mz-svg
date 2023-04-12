@@ -15,7 +15,6 @@
 
 ## Docs
 - Add interactive examples to "create shapes" docs pages
-- Make left menu collapsible
 
 ## Container objects:
 - marker

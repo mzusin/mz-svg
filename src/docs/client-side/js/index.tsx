@@ -62,10 +62,28 @@ const initMenuCollapsible = () => {
     }
 };
 
+const handleDarkLightModes = () => {
+  const $moveToDarkBtn = document.getElementById('move-to-dark-mode-btn') as HTMLButtonElement;
+  const $moveToLightBtn = document.getElementById('move-to-light-mode-btn') as HTMLButtonElement;
+
+  $moveToDarkBtn?.addEventListener('click', () => {
+    document.documentElement.classList.add('dark');
+    $moveToDarkBtn.classList.add('hidden');
+    $moveToLightBtn.classList.remove('hidden');
+  });
+
+  $moveToLightBtn?.addEventListener('click', () => {
+    document.documentElement.classList.remove('dark');
+    $moveToLightBtn.classList.add('hidden');
+    $moveToDarkBtn.classList.remove('hidden');
+  });
+};
+
 const init = () => {
   initMobileMenu();
   initMenuScroll();
   initMenuCollapsible();
+  handleDarkLightModes();
 };
 
 document.addEventListener('DOMContentLoaded', () => {

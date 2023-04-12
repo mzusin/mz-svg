@@ -7,6 +7,10 @@
     }
 }
 
+.dark {
+    color-scheme: dark;
+}
+
 @layer components {
     .w-350{
         width: 350px;
