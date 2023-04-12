@@ -342,8 +342,6 @@ export const pathDataToString = (pathData: IPathData, minify?: boolean, decimalP
     return d.trim();
 };
 
-// --------------
-
 export const maximizeAbsolutePath = (pathData: IPathData): IPathData => {
 
     const { commands } = pathData;
@@ -376,7 +374,7 @@ export const maximizeAbsolutePath = (pathData: IPathData): IPathData => {
                 if(!prev) continue;
 
                 commands[i].command = EPathDataCommand.LineToAbs;
-                let y = commands[i].params[0];
+                const y = commands[i].params[0];
 
                 // update x to be the same as in previous command
                 commands[i].params[0] = prev.params[0];

@@ -1,5 +1,5 @@
 import { parsePath } from './index';
-import { pathDataToAbsolute, pathDataToRelative, pathDataToString } from './convert';
+import { maximizeAbsolutePath, pathDataToAbsolute, pathDataToRelative, pathDataToString } from './convert';
 import { Vector3, m2RotateAroundPointH } from 'mz-math';
 import { EPathDataCommand } from './interfaces';
 
@@ -43,58 +43,23 @@ export const rotatePath = (d: string, cx: number, cy: number, angleRad: number, 
     const abs = pathDataToAbsolute(parsed);
     if(!abs || abs.commands.length <= 0) return d;
 
-    let lastX = abs.commands[0].params[0];
-    let lastY = abs.commands[0].params[1];
-
-    for(const item of abs.commands){
+    const max = maximizeAbsolutePath(abs);
+    for(const item of max.commands){
 
         switch(item.command){
 
             case EPathDataCommand.MoveToAbs:
-            case EPathDataCommand.MoveToRel:
-            case EPathDataCommand.LineToAbs:
-            case EPathDataCommand.LineToRel:
-            case EPathDataCommand.QuadraticCurveToSmoothAbs:
-            case EPathDataCommand.QuadraticCurveToSmoothRel:{
+            case EPathDataCommand.LineToAbs:{
                 // 2 params (x, y)
+
                 // get the new position after rotation
                 const pos: Vector3 = rotateDot(item.params[0], item.params[1], cx, cy, angleRad, decimalPlaces);
                 item.params[0] = pos[0];
                 item.params[1] = pos[1];
-
-                lastX = item.params[0];
-                lastY = item.params[1];
                 break;
             }
 
-            case EPathDataCommand.LineToHorizontalAbs:
-            case EPathDataCommand.LineToHorizontalRel: {
-                // (x, 0)
-                const pos: Vector3 = rotateDot(item.params[0], lastY, cx, cy, angleRad, decimalPlaces);
-                item.command = EPathDataCommand.LineToAbs;
-                item.params[0] = pos[0];
-                item.params[1] = pos[1];
-
-                lastX = item.params[0];
-                lastY = item.params[1];
-                break;
-            }
-
-            case EPathDataCommand.LineToVerticalAbs:
-            case EPathDataCommand.LineToVerticalRel:{
-                // (0, y)
-                const pos: Vector3 = rotateDot(lastX, item.params[0], cx, cy, angleRad, decimalPlaces);
-                item.command = EPathDataCommand.LineToAbs;
-                item.params[0] = pos[0];
-                item.params[1] = pos[1];
-
-                lastX = item.params[0];
-                lastY = item.params[1];
-                break;
-            }
-
-            case EPathDataCommand.CubicCurveToAbs:
-            case EPathDataCommand.CubicCurveToRel:{
+            case EPathDataCommand.CubicCurveToAbs:{
                 // 6 parameters
                 const pos1: Vector3 = rotateDot(item.params[0], item.params[1], cx, cy, angleRad, decimalPlaces);
                 item.params[0] = pos1[0];
@@ -107,16 +72,10 @@ export const rotatePath = (d: string, cx: number, cy: number, angleRad: number, 
                 const pos3: Vector3 = rotateDot(item.params[4], item.params[5], cx, cy, angleRad, decimalPlaces);
                 item.params[4] = pos3[0];
                 item.params[5] = pos3[1];
-
-                lastX = item.params[4];
-                lastY = item.params[5];
                 break;
             }
 
-            case EPathDataCommand.CubicCurveToSmoothAbs:
-            case EPathDataCommand.CubicCurveToSmoothRel:
-            case EPathDataCommand.QuadraticCurveToAbs:
-            case EPathDataCommand.QuadraticCurveToRel:{
+            case EPathDataCommand.QuadraticCurveToAbs:{
                 // 4 parameters
                 const pos1: Vector3 = rotateDot(item.params[0], item.params[1], cx, cy, angleRad, decimalPlaces);
                 item.params[0] = pos1[0];
@@ -125,14 +84,10 @@ export const rotatePath = (d: string, cx: number, cy: number, angleRad: number, 
                 const pos2: Vector3 = rotateDot(item.params[2], item.params[3], cx, cy, angleRad, decimalPlaces);
                 item.params[2] = pos2[0];
                 item.params[3] = pos2[1];
-
-                lastX = item.params[2];
-                lastY = item.params[3];
                 break;
             }
 
-            case EPathDataCommand.ArcAbs:
-            case EPathDataCommand.ArcRel:{
+            case EPathDataCommand.ArcAbs:{
                 // rx ry x-axis-rotation large-arc-flag sweep-flag x y
                 const pos1: Vector3 = rotateDot(item.params[0], item.params[1], cx, cy, angleRad, decimalPlaces);
                 item.params[0] = pos1[0];

@@ -281,5 +281,4 @@ declare module 'mz-svg' {
     export const minifyPath: (d?: string, decimalPlaces?: number) => string | undefined;
     export const beautifyPath: (d?: string, decimalPlaces?: number) => string | undefined;
     export const translatePath: (d: string, x: number, y: number, decimalPlaces?: number) => string;
-
 }
