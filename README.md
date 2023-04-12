@@ -30,8 +30,6 @@ TypeScript-based library for managing SVG in the browser and Node.js. The modula
 - Rectangle path element.
 - Star shape, flower shape.
 
-----------------------------
-
 ## Documentation 🔖
 ### Main 
 - [TypesScript Usage](https://svg.mzsoft.org/pages/typescript-usage.html)
