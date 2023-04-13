@@ -14,6 +14,8 @@
 - Check if start and flower are minified correctly
 
 ## Docs
+- Store collapsible selection in local storage
+- In node.js example, set the correct import path.
 - Add interactive examples to "create shapes" docs pages
 
 ## Container objects:
