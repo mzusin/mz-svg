@@ -8,6 +8,7 @@ import * as ioBrowser from './main/io-browser';
 import * as helpers from './main/helpers';
 import * as pathUtilities from './main/path';
 import * as pathTransform from './main/path/transform';
+import * as bbox from './main/path/bbox';
 
 const api = {
     ...core,
@@ -20,6 +21,7 @@ const api = {
     ...helpers,
     ...pathUtilities,
     ...pathTransform,
+    ...bbox,
 };
 
 declare global {
@@ -40,3 +42,4 @@ export * from './main/containers';
 export * from './main/helpers';
 export * from './main/path';
 export * from './main/path/transform';
+export * from './main/path/bbox';

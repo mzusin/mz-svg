@@ -21,9 +21,6 @@
 
         // console.log(mzSVG.pathToAbs('M400 300h50v50h-50z'))
 
-        const cx = 425;
-        const cy = 325;
-
         const $svg = mzSVG.createSVG({
             width: 800,
             height: 600
@@ -51,13 +48,6 @@
 
         $svg.append($rect);
         $svg.append($rect1);
-
-        $svg.append(mzSVG.createCircle({
-            cx,
-            cy,
-            r: 5,
-            fill: 'red'
-        }));
 
         document.body.append($svg);
 
