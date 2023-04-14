@@ -1,7 +1,8 @@
 import { parsePath } from './index';
 import { maximizeAbsolutePath, pathDataToAbsolute, pathDataToRelative, pathDataToString } from './convert';
-import { Vector3, m2RotateAroundPointH, radiansToDegrees } from 'mz-math';
+import { Vector3, m2RotateAroundPointH, degreesToRadians } from 'mz-math';
 import { EPathDataCommand } from './interfaces';
+import { getPathBBox } from './bbox';
 
 export const translatePath = (d: string, x: number, y: number, decimalPlaces = 2) => {
     if(!d) return d;
@@ -29,7 +30,7 @@ const rotateDot = (x: number, y: number, cx: number, cy: number, angleRad: numbe
     );
 };
 
-export const rotatePath = (d: string, cx: number, cy: number, angleDegrees: number, decimalPlaces = 2) => {
+export const rotatePathAroundDot = (d: string, cx: number, cy: number, angleDegrees: number, decimalPlaces = 2) => {
     if(!d) return d;
 
     const parsed = parsePath(d);
@@ -38,7 +39,7 @@ export const rotatePath = (d: string, cx: number, cy: number, angleDegrees: numb
     const abs = pathDataToAbsolute(parsed);
     if(!abs || abs.commands.length <= 0) return d;
 
-    const angleRad = radiansToDegrees(angleDegrees, decimalPlaces);
+    const angleRad = degreesToRadians(angleDegrees, decimalPlaces);
 
     const max = maximizeAbsolutePath(abs);
     for(const item of max.commands){
@@ -100,4 +101,19 @@ export const rotatePath = (d: string, cx: number, cy: number, angleDegrees: numb
 
     const rel = pathDataToRelative(abs);
     return pathDataToString(rel, true, decimalPlaces);
+};
+
+export const rotatePath = (d: string, angleDegrees: number, decimalPlaces = 2) => {
+
+    const bbox = getPathBBox(d);
+
+    const x = bbox?.x ?? 0;
+    const y = bbox?.y ?? 0;
+    const w = bbox?.w ?? 0;
+    const h = bbox?.h ?? 0;
+
+    const cx = x + w / 2;
+    const cy = y + h / 2;
+
+    return rotatePathAroundDot(d, cx, cy, angleDegrees, decimalPlaces);
 };

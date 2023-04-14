@@ -1,3 +1,5 @@
+import { IBBox } from '../types/main/path/bbox';
+
 declare module 'mz-svg' {
 
     export interface IPrimitiveShapeProps {
@@ -280,5 +282,8 @@ declare module 'mz-svg' {
     export const pathToAbs: (d?: string, beautify?: boolean, decimalPlaces?: number) => string | undefined;
     export const minifyPath: (d?: string, decimalPlaces?: number) => string | undefined;
     export const beautifyPath: (d?: string, decimalPlaces?: number) => string | undefined;
+    export const getPathBBox: (d?: string, decimalPlaces?: number) => IBBox | null;
     export const translatePath: (d: string, x: number, y: number, decimalPlaces?: number) => string;
+    export const rotatePathAroundDot: (d: string, cx: number, cy: number, angleDegrees: number, decimalPlaces?: number) => string;
+    export const rotatePath: (d: string, angleDegrees: number, decimalPlaces?: number) => string;
 }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mzSVG</title>
+    <style>
+        body{
+            display: flex;
+        }
+
+        svg{
+            border: 1px solid #d2d2d2;
+            margin: 2rem auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <script src="../../../dist/mz-svg.min.js"></script>
+    <script>
+
+        // console.log(mzSVG.pathToAbs('M400 300h50v50h-50z'))
+
+        const cx = 425;
+        const cy = 325;
+
+        const $svg = mzSVG.createSVG({
+            width: 800,
+            height: 600
+        });
+
+        const $rect = mzSVG.createPath({
+            d: 'M 100 200 Q 100 50 200 150',
+            stroke: '#4ca989',
+            fill: 'none',
+        });
+
+        const $rect1 = mzSVG.createPath({
+            d: 'M 100 200 Q 100 50 200 150',
+            stroke: '#000',
+            fill: 'none',
+        });
+
+        $svg.append($rect);
+        $svg.append($rect1);
+
+
+        /*$svg.append(mzSVG.createCircle({
+            cx,
+            cy,
+            r: 5,
+            fill: 'red'
+        }));*/
+
+        document.body.append($svg);
+
+        let d = $rect1.getAttribute('d');
+        d = mzSVG.rotatePath(d, 45);
+        $rect1.setAttribute('d', d);
+
+
+    </script>
+</body>
+</html>

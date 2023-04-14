@@ -6,7 +6,8 @@ import * as shapePaths from './main/shapes/shape-paths';
 import * as containers from './main/containers';
 declare const api: {
     translatePath: (d: string, x: number, y: number, decimalPlaces?: number) => string;
-    rotatePath: (d: string, cx: number, cy: number, angleRad: number, decimalPlaces?: number) => string;
+    rotatePathAroundDot: (d: string, cx: number, cy: number, angleDegrees: number, decimalPlaces?: number) => string;
+    rotatePath: (d: string, angleDegrees: number, decimalPlaces?: number) => string;
     isPathValid: (d?: string | undefined) => boolean;
     parsePath: (d?: string | undefined) => import("./main/path/interfaces").IPathData;
     pathToRel: (d?: string | undefined, beautify?: boolean, decimalPlaces?: number) => string | undefined;

@@ -93,6 +93,6 @@
     "ext": "js,json,html,css,md,ts,tsx,glsl"
   },
   "dependencies": {
-    "mz-math": "^3.0.2"
+    "mz-math": "^3.0.3"
   }
 }

@@ -49,15 +49,8 @@
             fill: '#000',
         });
 
-        /*const $rect = mzSVG.createPath({
-            d: 'M 50 50 L 200 200',
-            stroke: 'red'
-        });*/
-
-
         $svg.append($rect);
         $svg.append($rect1);
-
 
         $svg.append(mzSVG.createCircle({
             cx,
@@ -67,17 +60,9 @@
         }));
 
         document.body.append($svg);
-        /*
-        $svg.append(mzSVG.createPath({
-            d: 'M 50 50 L 200 200',
-            stroke: 'black'
-        }));*/
 
-        let handler = null;
-
-        let angle = Math.PI / 4;
         let d = $rect1.getAttribute('d');
-        d = mzSVG.rotatePath(d, cx, cy, angle);
+        d = mzSVG.rotatePath(d, 45);
         $rect1.setAttribute('d', d);
 
 
