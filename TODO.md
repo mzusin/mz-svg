@@ -29,13 +29,6 @@
 - stop
 - radialGradient
 
-## Animation
-+ animate
-+ animateMotion
-+ animateTransform
-- mpath
-- set
-
 ## HTML
 - a
 - foreignObject
@@ -82,6 +75,9 @@
 - textPath
 - tspan
 - switch
+
+## Animation
+- set
 
 ## Performance
 - discard SVG element - https://developer.mozilla.org/en-US/docs/Web/SVG/Element/discard
