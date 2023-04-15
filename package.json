@@ -1,6 +1,6 @@
 {
   "name": "mz-svg",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "The TypeScript-based library for manipulating SVG in browser and Node.js.",
   "type": "module",
   "main": "./dist/mz-svg.min.js",
@@ -9,10 +9,11 @@
   "exports": {
     "import": "./dist/mz-svg.esm.js",
     "require": "./dist/mz-svg.node.cjs",
-    "default": "./dist/mz-svg.esm.js"
+    "default": "./dist/mz-svg.esm.js",
+    "node": "./dist/mz-svg.esm-node.js"
   },
   "scripts": {
-    "build:all": "npm run build:es6 & npm run build:node & npm run build:esm",
+    "build:all": "npm run build:es6 & npm run build:node & npm run build:esm & npm run build:esm-node",
     "watch:all": "npm run watch:es6 & npm run watch:node & npm run watch:esm",
     "build:es6": "node run/es6.js",
     "watch:es6": "node run/es6.js -- watch",
@@ -20,6 +21,8 @@
     "watch:node": "node run/node.js -- watch",
     "build:esm": "node run/esm.js",
     "watch:esm": "node run/esm.js -- watch",
+    "build:esm-node": "node run/esm-node.js",
+    "watch:esm-node": "node run/esm-node.js -- watch",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:browser": "./node_modules/karma/bin/karma start ./karma.conf.cjs",
