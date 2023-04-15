@@ -9,6 +9,7 @@ import * as helpers from './main/helpers';
 import * as pathUtilities from './main/path';
 import * as pathTransform from './main/path/transform';
 import * as bbox from './main/path/bbox';
+import * as animation from './main/animation/animate';
 
 const api = {
     ...core,
@@ -22,6 +23,7 @@ const api = {
     ...pathUtilities,
     ...pathTransform,
     ...bbox,
+    ...animation,
 };
 
 declare global {
@@ -43,3 +45,4 @@ export * from './main/helpers';
 export * from './main/path';
 export * from './main/path/transform';
 export * from './main/path/bbox';
+export * from './main/animation/animate';

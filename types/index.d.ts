@@ -6,7 +6,9 @@ import * as flowers from './main/shapes/flowers';
 import * as shapePaths from './main/shapes/shape-paths';
 import * as containers from './main/containers';
 import * as bbox from './main/path/bbox';
+import * as animation from './main/animation/animate';
 declare const api: {
+    createAnimate: (props?: animation.ICreateAnimateProps | undefined) => SVGAnimateElement;
     getSVGArcCenter: (startX: number, startY: number, rx: number, ry: number, angleRad: number, largeArcFlag: number, sweepFlag: number, endX: number, endY: number) => import("mz-math").Vector2 | null;
     getPathBBox: (d?: string | undefined, decimalPlaces?: number) => bbox.IBBox | null;
     translatePath: (d: string, x: number, y: number, decimalPlaces?: number) => string;
@@ -115,3 +117,4 @@ export * from './main/helpers';
 export * from './main/path';
 export * from './main/path/transform';
 export * from './main/path/bbox';
+export * from './main/animation/animate';

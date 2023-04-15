@@ -9,3 +9,4 @@ export * from './main/helpers';
 export * from './main/path';
 export * from './main/path/transform';
 export * from './main/path/bbox';
+export * from './main/animation/animate';
