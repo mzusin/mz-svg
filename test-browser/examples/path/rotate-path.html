@@ -43,16 +43,35 @@
 
         document.body.append($svg);
 
-        let d1 = $path.getAttribute('d');
-        d1 = mzSVG.rotatePath(d1, 90);
+        // ---------------------------
+        /*const bbox1 = mzSVG.getPathBBox(d);
+        $svg.append(mzSVG.createRect({
+            x: bbox1.x,
+            y: bbox1.y,
+            width: bbox1.w,
+            height: bbox1.h,
+            fill: 'none',
+            stroke: '#000'
+        }));
+
+        const bbox = mzSVG.getPathBBox(d);
+        $svg.append(mzSVG.createCircle({
+            cx: bbox.x + bbox.w/2,
+            cy: bbox.y + bbox.h/2,
+            r: 5,
+            fill: 'red'
+        }))*/
+
+        // ----------- rotate ------------
+        const d1 = mzSVG.rotatePath(d, 45);
         $path.setAttribute('d', d1);
 
-        const bbox = mzSVG.getPathBBox(d1);
+        const bbox2 = mzSVG.getPathBBox(d1);
         $svg.append(mzSVG.createRect({
-            x: bbox.x,
-            y: bbox.y,
-            width: bbox.w,
-            height: bbox.h,
+            x: bbox2.x,
+            y: bbox2.y,
+            width: bbox2.w,
+            height: bbox2.h,
             fill: 'none',
             stroke: 'blue'
         }));

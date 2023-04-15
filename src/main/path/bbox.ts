@@ -90,56 +90,6 @@ export const getSVGArcCenter = (
     ];
 
     return v2Sum(centerVector2, posVector4);
-
-
-    /*if (rx < 0) {
-        rx *= -1;
-    }
-
-    if (ry < 0) {
-        ry *= -1;
-    }
-
-    if (rx === 0 || ry === 0) {
-        xmin = x1 < x2 ? x1 : x2;
-        xmax = x1 > x2 ? x1 : x2;
-        ymin = y1 < y2 ? y1 : y2;
-        ymax = y1 > y2 ? y1 : y2;
-
-        return formatBBox(xmin, xmax, ymin, ymax);
-    }
-
-    const x1prime: number = Math.cos(phi) * (x1 - x2) / 2 + Math.sin(phi) * (y1 - y2) / 2;
-    const y1prime: number = -Math.sin(phi) * (x1 - x2) / 2 + Math.cos(phi) * (y1 - y2) / 2;
-
-    let radicant: number = (rx * rx * ry * ry - rx * rx * y1prime * y1prime - ry * ry * x1prime * x1prime);
-    radicant /= (rx * rx * y1prime * y1prime + ry * ry * x1prime * x1prime);
-
-    let cxPrime = 0;
-    let cyPrime = 0;
-
-    if (radicant < 0) {
-        const ratio: number = rx / ry;
-        radicant = y1prime * y1prime + x1prime * x1prime / (ratio * ratio);
-        if (radicant < 0) {
-            xmin = (x1 < x2 ? x1 : x2);
-            xmax = (x1 > x2 ? x1 : x2);
-            ymin = (y1 < y2 ? y1 : y2);
-            ymax = (y1 > y2 ? y1 : y2);
-
-            return formatBBox(xmin, xmax, ymin, ymax);
-        }
-        ry = Math.sqrt(radicant);
-        rx = ratio * ry;
-    }
-    else {
-        const factor = (largeArc == sweep ? -1 : 1) * Math.sqrt(radicant);
-        cxPrime = factor * rx * y1prime / ry;
-        cyPrime = -factor * ry * x1prime / rx;
-    }
-
-    const cx = cxPrime * Math.cos(phi) - cyPrime * Math.sin(phi) + (x1 + x2) / 2;
-    const cy = cxPrime * Math.sin(phi) + cyPrime * Math.cos(phi) + (y1 + y2) / 2;*/
 };
 
 const getAngle = (bx: number, by: number): number => {
@@ -169,7 +119,7 @@ const getArcBoundingBox = (
 
     let xmin, xmax, ymin, ymax;
 
-    const center = getSVGArcCenter(
+    /*const center = getSVGArcCenter(
         x1,
         y1,
         rx,
@@ -184,6 +134,58 @@ sweep ? 1 : 0,
 
     const cx = center[0];
     const cy = center[1];
+    */
+
+    if (rx < 0) {
+        rx *= -1;
+    }
+
+    if (ry < 0) {
+        ry *= -1;
+    }
+
+    if (rx === 0 || ry === 0) {
+        xmin = x1 < x2 ? x1 : x2;
+        xmax = x1 > x2 ? x1 : x2;
+        ymin = y1 < y2 ? y1 : y2;
+        ymax = y1 > y2 ? y1 : y2;
+
+        return formatBBox(xmin, xmax, ymin, ymax);
+    }
+
+    const x1prime: number = Math.cos(angleRad) * (x1 - x2) / 2 + Math.sin(angleRad) * (y1 - y2) / 2;
+    const y1prime: number = -Math.sin(angleRad) * (x1 - x2) / 2 + Math.cos(angleRad) * (y1 - y2) / 2;
+
+    let radicant: number = (rx * rx * ry * ry - rx * rx * y1prime * y1prime - ry * ry * x1prime * x1prime);
+    radicant /= (rx * rx * y1prime * y1prime + ry * ry * x1prime * x1prime);
+
+    let cxPrime = 0;
+    let cyPrime = 0;
+
+    if (radicant < 0) {
+        const ratio: number = rx / ry;
+        radicant = y1prime * y1prime + x1prime * x1prime / (ratio * ratio);
+        if (radicant < 0) {
+            xmin = (x1 < x2 ? x1 : x2);
+            xmax = (x1 > x2 ? x1 : x2);
+            ymin = (y1 < y2 ? y1 : y2);
+            ymax = (y1 > y2 ? y1 : y2);
+
+            return formatBBox(xmin, xmax, ymin, ymax);
+        }
+        ry = Math.sqrt(radicant);
+        rx = ratio * ry;
+    }
+    else {
+        const factor = (largeArc == sweep ? -1 : 1) * Math.sqrt(radicant);
+        cxPrime = factor * rx * y1prime / ry;
+        cyPrime = -factor * ry * x1prime / rx;
+    }
+
+    const cx = cxPrime * Math.cos(angleRad) - cyPrime * Math.sin(angleRad) + (x1 + x2) / 2;
+    const cy = cxPrime * Math.sin(angleRad) + cyPrime * Math.cos(angleRad) + (y1 + y2) / 2;
+
+
 
     let txMin: number, txMax: number, tyMin: number, tyMax: number;
 
@@ -343,11 +345,11 @@ export const getPathBBox = (d?: string, decimalPlaces = 2) : IBBox|null => {
                 const endControlPoint: Vector2 = [item.params[4], item.params[5]];
                 const bbox = v2CubicBezierBBox(startControlPoint, centerControlPoint1, centerControlPoint2, endControlPoint);
 
-                minX = bbox.x;
-                minY = bbox.y;
+                minX = Math.min(minX, bbox.x);
+                minY = Math.min(minY, bbox.y);
 
-                maxX = bbox.x2;
-                maxY = bbox.y2;
+                maxX = Math.max(maxX, bbox.x2);
+                maxY = Math.max(maxY, bbox.y2);
 
                 x = item.params[4];
                 y = item.params[5];
@@ -361,11 +363,11 @@ export const getPathBBox = (d?: string, decimalPlaces = 2) : IBBox|null => {
 
                 const bbox = v2QuadraticBezierBBox(startControlPoint, centerControlPoint, endControlPoint);
 
-                minX = bbox.x;
-                minY = bbox.y;
+                minX = Math.min(minX, bbox.x);
+                minY = Math.min(minY, bbox.y);
 
-                maxX = bbox.x2;
-                maxY = bbox.y2;
+                maxX = Math.max(maxX, bbox.x2);
+                maxY = Math.max(maxY, bbox.y2);
 
                 x = item.params[2];
                 y = item.params[3];
@@ -388,11 +390,11 @@ export const getPathBBox = (d?: string, decimalPlaces = 2) : IBBox|null => {
 
                 const bbox = getArcBoundingBox(x, y, rx, ry, degreesToRadians(angleDeg), largeArcFlag === 1, sweepFlag === 1, endX, endY);
 
-                minX = bbox?.x ?? 0;
-                minY = bbox?.y ?? 0;
+                minX = Math.min(minX, bbox?.x ?? 0);
+                minY = Math.min(minY, bbox?.y ?? 0);
 
-                maxX = bbox?.x2 ?? 0;
-                maxY = bbox?.y2 ?? 0;
+                maxX = Math.max(maxX, bbox?.x2 ?? 0);
+                maxY = Math.max(maxY, bbox?.y2 ?? 0);
 
                 x = item.params[5];
                 y = item.params[6];

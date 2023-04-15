@@ -87,9 +87,9 @@ export const rotatePathAroundDot = (d: string, cx: number, cy: number, angleDegr
 
             case EPathDataCommand.ArcAbs:{
                 // rx ry x-axis-rotation large-arc-flag sweep-flag x y
-                const pos1: Vector3 = rotateDot(item.params[0], item.params[1], cx, cy, angleRad, decimalPlaces);
+                /*const pos1: Vector3 = rotateDot(item.params[0], item.params[1], cx, cy, angleRad, decimalPlaces);
                 item.params[0] = pos1[0];
-                item.params[1] = pos1[1];
+                item.params[1] = pos1[1];*/
 
                 const pos2: Vector3 = rotateDot(item.params[5], item.params[6], cx, cy, angleRad, decimalPlaces);
                 item.params[5] = pos2[0];
