@@ -105,7 +105,7 @@
           <path d="m7 7 5 5-5 5m6-10 5 5-5 5"/>
         </svg>
 
-    </div><div class="flex flex-col" data-links><a href="/pages/typescript-usage.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">TypesScript Usage</a><a href="/pages/browser-usage.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Browser Usage</a><a href="/pages/nodejs-usage.html" title="" class="pl-3 border-l border-slate-150  text-sky-500">Node.js Usage</a></div><div class="text-xl my-4 flex items-center cursor-pointer" data-collapsible-title data-opened="true" data-id="20-create-svg">
+    </div><div class="flex flex-col" data-links><a href="/pages/typescript-usage.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">TypesScript Usage</a><a href="/pages/browser-usage.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Browser Usage</a><a href="/pages/nodejs-usage.html" title="" class="pl-3 border-l border-slate-150  text-slate-500">Node.js Usage</a></div><div class="text-xl my-4 flex items-center cursor-pointer" data-collapsible-title data-opened="true" data-id="20-create-svg">
         Create SVG 
         <svg data-arrow xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#626e7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="ml-2 rotate-90" viewBox="0 0 24 24">
           <path stroke="none" d="M0 0h24v24H0z"/>
@@ -147,7 +147,7 @@
           <path d="m7 7 5 5-5 5m6-10 5 5-5 5"/>
         </svg>
 
-    </div><div class="flex flex-col" data-links><a href="/pages/create-animate.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Create Animate</a><a href="/pages/create-animate-motion.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Create Animate Motion</a><a href="/pages/animate-motion-mpath.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Animate Motion Mpath</a><a href="/pages/create-animate-transform.html" title="" class="pl-3 border-l border-slate-150  text-slate-500">Create Animate Transform</a></div><div class="text-xl my-4 flex items-center cursor-pointer" data-collapsible-title data-opened="true" data-id="70-helpers">
+    </div><div class="flex flex-col" data-links><a href="/pages/create-animate.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Create Animate</a><a href="/pages/create-animate-motion.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Create Animate Motion</a><a href="/pages/animate-motion-mpath.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-sky-500">Animate Motion Mpath</a><a href="/pages/create-animate-transform.html" title="" class="pl-3 border-l border-slate-150  text-slate-500">Create Animate Transform</a></div><div class="text-xl my-4 flex items-center cursor-pointer" data-collapsible-title data-opened="true" data-id="70-helpers">
         Helpers 
         <svg data-arrow xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#626e7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="ml-2 rotate-90" viewBox="0 0 24 24">
           <path stroke="none" d="M0 0h24v24H0z"/>
@@ -166,35 +166,35 @@
         </div>
 
         <div class="p-4 overflow-y-auto h-full md:w-100-350 dark:bg-slate-800">
-          <div class="w-800 max-w-full mx-auto my-10 leading-7 text-lg text-slate-800 dark:text-slate-200"><h2 class="text-3xl mb-8">Node.js Usage</h2>
-<p class="mb-4">The library can also be used in Node.js together with <a href="https://github.com/jsdom/jsdom" class="text-sky-500">JSDom</a> library (or alike). In this case, you need to create a JSDom document first, and then pass it to the <strong class="font-bold">mzSVG</strong> APIs together with other params.</p>
-<p class="mb-4">First, install the module using npm:</p>
-<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code>npm install mz-svg</code></pre>
-<p class="mb-4">Or using Yarn:</p>
-<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code>yarn add mz-svg</code></pre>
-<p class="mb-4">Then create a document using the <a href="https://github.com/jsdom/jsdom" class="text-sky-500">JSDom</a> library:</p>
-<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> jsdom <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;jsdom&#x27;</span>;
-<span class="hljs-keyword">const</span> { <span class="hljs-variable constant_">JSDOM</span> } = jsdom;
+          <div class="w-800 max-w-full mx-auto my-10 leading-7 text-lg text-slate-800 dark:text-slate-200"><h2 class="text-3xl mb-8">How to create &lt;mpath&gt; element</h2>
+<p class="mb-4">The <strong class="font-bold">createMPath()</strong> function is used to create an SVG &lt;mpath&gt; element.</p>
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createMPath } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
 
-<span class="hljs-comment">// create document using JSDOM</span>
-<span class="hljs-keyword">const</span> dom = <span class="hljs-keyword">new</span> <span class="hljs-title function_">JSDOM</span>(<span class="hljs-string">`&lt;!DOCTYPE html&gt;&lt;head&gt;&lt;title&gt;Doc&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;/body&gt;`</span>);
-<span class="hljs-keyword">const</span> doc = dom.<span class="hljs-property">window</span>.<span class="hljs-property">document</span>;</code></pre>
-<p class="mb-4">Call any <strong class="font-bold">mzSVG</strong>  API or function, and provide the <a href="https://github.com/jsdom/jsdom" class="text-sky-500">JSDom</a> document as parameter.</p>
-<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createSVG } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>; 
-<span class="hljs-comment">// OR</span>
-<span class="hljs-comment">// const { createSVG } = require(&#x27;mz-svg&#x27;);</span>
+<span class="hljs-keyword">const</span> $mpath = <span class="hljs-title function_">createMPath</span>({
+    <span class="hljs-attr">xlinkHref</span>: <span class="hljs-string">&#x27;#path1&#x27;</span>,
+});</code></pre>
+<p class="mb-4">In Node.js, you need to first create a <a href="https://github.com/jsdom/jsdom" class="text-sky-500">JSDom</a> document, as described <a href="/pages/nodejs-usage.html" class="text-sky-500">here</a>, and then pass this document as additional parameter:</p>
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createMPath } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
 
-<span class="hljs-keyword">const</span> $svg = <span class="hljs-title function_">createSVG</span>({
-    <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>,
-    <span class="hljs-attr">height</span>: <span class="hljs-number">200</span>,
-    <span class="hljs-attr">document</span>: doc
-});
-<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>($svg);</code></pre>
+<span class="hljs-keyword">const</span> $mpath = <span class="hljs-title function_">createMPath</span>({
+    <span class="hljs-attr">xlinkHref</span>: <span class="hljs-string">&#x27;#path1&#x27;</span>,
+});</code></pre>
+<p class="mb-4">The function can accept the following parameters. Note that <strong class="font-bold">all parameters are optional</strong>:</p>
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createMPath } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
+
+<span class="hljs-keyword">const</span> $mpath = <span class="hljs-title function_">createMPath</span>({
+    
+    <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;my-animate-id&#x27;</span>,
+    <span class="hljs-attr">classes</span>: <span class="hljs-string">&#x27;css-class1 css-class2&#x27;</span>,
+  
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/xlink:href</span>
+    <span class="hljs-attr">xlinkHref</span>: <span class="hljs-string">&#x27;#path1&#x27;</span>,
+});</code></pre>
 </div>
 
           <div class="w-800 max-w-full mx-auto grid lg:grid-cols-2 gap-8 items-center text-slate-500">
 <div class="flex justify-between items-start border border-slate-200 rounded p-4">
-  <a href="/pages/browser-usage.html" title="" class="mr-4 hover:text-blue-500">
+  <a href="/pages/create-animate-motion.html" title="" class="mr-4 hover:text-blue-500">
     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">
     <path stroke="none" d="M0 0h24v24H0z"/>
     <path d="M5 12h14M5 12l6 6m-6-6 6-6"/>
@@ -202,7 +202,7 @@
   </a>
   <div class="flex flex-col items-end justify-center">
     <div class="mb-2 text-sm text-slate-300">Previous</div>
-    <a href="/pages/browser-usage.html" title="" class="hover:text-blue-500">Browser Usage</a>
+    <a href="/pages/create-animate-motion.html" title="" class="hover:text-blue-500">Create Animate Motion</a>
   </div>
 </div>      
     
@@ -210,10 +210,10 @@
   
   <div class="flex flex-col justify-center">
     <div class="mb-2 text-sm text-slate-300">Next</div>
-    <a href="/pages/create-svg-element.html" title="" class="hover:text-blue-500">Create Svg Element</a>
+    <a href="/pages/create-animate-transform.html" title="" class="hover:text-blue-500">Create Animate Transform</a>
   </div>
   
-  <a href="/pages/create-svg-element.html" title="" class="mr-4 hover:text-blue-500">
+  <a href="/pages/create-animate-transform.html" title="" class="mr-4 hover:text-blue-500">
     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">
      <path stroke="none" d="M0 0h24v24H0z"/>
      <path d="M5 12h14m-6 6 6-6m-6-6 6 6"/>

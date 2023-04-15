@@ -344,4 +344,13 @@ declare module 'mz-svg' {
     }
 
     export const createAnimateTransform: (props?: ICreateAnimateTransformProps) => SVGAnimateTransformElement;
+
+    export interface ICreateMPathProps {
+        document?: Document;
+        id?: string;
+        classes?: string;
+        xlinkHref?: string;
+    }
+
+    export const createMPath: (props?: ICreateMPathProps) => SVGMPathElement;
 }

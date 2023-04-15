@@ -132,3 +132,29 @@ export const createAnimateTransform = (props?: ICreateAnimateTransformProps) : S
 
     return $animateTransform;
 };
+
+export interface ICreateMPathProps{
+    document?: Document;
+
+    id?: string;
+    classes?: string;
+    xlinkHref?: string
+}
+
+/**
+ * Create <mpath> element.
+ */
+export const createMPath = (props?: ICreateMPathProps) : SVGMPathElement => {
+
+    const doc = props?.document || window.document;
+
+    const $mpath = doc.createElementNS(SVG_NAMESPACE, 'mpath');
+
+    setAttributes($mpath, [
+        ['id', props?.id],
+        ['class', props?.classes],
+        ['xlink:href', props?.xlinkHref],
+    ]);
+
+    return $mpath;
+};

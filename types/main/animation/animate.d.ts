@@ -45,3 +45,13 @@ export interface ICreateAnimateTransformProps extends IAnimationProps {
  * Create <animateTransform> element.
  */
 export declare const createAnimateTransform: (props?: ICreateAnimateTransformProps) => SVGAnimateTransformElement;
+export interface ICreateMPathProps {
+    document?: Document;
+    id?: string;
+    classes?: string;
+    xlinkHref?: string;
+}
+/**
+ * Create <mpath> element.
+ */
+export declare const createMPath: (props?: ICreateMPathProps) => SVGMPathElement;

@@ -32,7 +32,7 @@
 ## Animation
 + animate
 + animateMotion
-- animateTransform
++ animateTransform
 - mpath
 - set
 

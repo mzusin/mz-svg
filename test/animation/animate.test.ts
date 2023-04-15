@@ -1,7 +1,7 @@
 import {
     createAnimate,
     createAnimateMotion,
-    createAnimateTransform,
+    createAnimateTransform, createMPath,
 } from '../../src/index-esm';
 import { createNodeDoc } from '../core.test';
 
@@ -417,5 +417,32 @@ describe('Animation', () => {
         test('sets "accumulate" property', () => {
             expect($animateTransform.getAttribute('accumulate')).toStrictEqual(props.accumulate);
         });
+    });
+
+    describe('createMPath', () => {
+
+        const props = {
+            xlinkHref: '#path1',
+            id: 'animate-1',
+            classes: 'my-class-1 my-class-2',
+        };
+
+        const $animateTransform = createMPath({
+            document: createNodeDoc(),
+            ...props,
+        });
+
+        test('sets "xlink:href" property', () => {
+            expect($animateTransform.getAttribute('xlink:href')).toStrictEqual(props.xlinkHref);
+        });
+
+        test('sets "id" property', () => {
+            expect($animateTransform.getAttribute('id')).toStrictEqual(props.id);
+        });
+
+        test('sets "classes" property', () => {
+            expect($animateTransform.getAttribute('class')).toStrictEqual(props.classes);
+        });
+
     });
 });
