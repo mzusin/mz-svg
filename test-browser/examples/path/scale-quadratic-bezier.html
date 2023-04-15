@@ -18,41 +18,33 @@
 <body>
     <script src="../../../dist/mz-svg.min.js"></script>
     <script>
+
         const $svg = mzSVG.createSVG({
             width: 800,
             height: 600
         });
 
-        // ------------ 1 ------------------------
-        const d1 = 'M 100 200 A 100 200 45 0 0 150 250';
         const $rect = mzSVG.createPath({
-            d: d1,
+            d: 'M 100 200 Q 100 50 200 150',
             stroke: '#4ca989',
             fill: 'none',
         });
-        const bbox = mzSVG.getPathBBox(d1);
-        $svg.append($rect);
-        $svg.append(mzSVG.createRect({
-            x: bbox.x,
-            y: bbox.y,
-            width: bbox.w,
-            height: bbox.h,
-            fill: 'none',
-            stroke: 'blue'
-        }));
-
-        document.body.append($svg);
 
         const $rect1 = mzSVG.createPath({
-            d: d1,
+            d: 'M 100 200 Q 100 50 200 150',
             stroke: '#000',
             fill: 'none',
         });
+
+        $svg.append($rect);
         $svg.append($rect1);
 
+        document.body.append($svg);
+
         let d = $rect1.getAttribute('d');
-        d = mzSVG.rotatePath(d, 90);
+        d = mzSVG.scalePath(d, [2, 2]);
         $rect1.setAttribute('d', d);
+
 
     </script>
 </body>

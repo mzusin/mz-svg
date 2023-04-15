@@ -290,7 +290,16 @@ declare module 'mz-svg' {
     export const minifyPath: (d?: string, decimalPlaces?: number) => string | undefined;
     export const beautifyPath: (d?: string, decimalPlaces?: number) => string | undefined;
     export const getPathBBox: (d?: string, decimalPlaces?: number) => IBBox | null;
+
+    export type Vector2 = [number, number];
+    export type Vector3 = [number, number, number];
+    export type Vector4 = [number, number, number, number];
+    export type Vector = number[];
+
     export const translatePath: (d: string, x: number, y: number, decimalPlaces?: number) => string;
-    export const rotatePathAroundDot: (d: string, cx: number, cy: number, angleDegrees: number, decimalPlaces?: number) => string;
+    export const rotatePathAroundPoint: (d: string, transformOrigin: Vector2, angleDegrees: number, decimalPlaces?: number) => string;
     export const rotatePath: (d: string, angleDegrees: number, decimalPlaces?: number) => string;
+    export const scalePathAroundPoint: (d: string, scaleVector: Vector2, transformOrigin: Vector2, decimalPlaces?: number) => string;
+    export const scalePath: (d: string, scaleVector: Vector2, decimalPlaces?: number) => string;
+
 }

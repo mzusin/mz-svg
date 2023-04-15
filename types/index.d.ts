@@ -10,8 +10,10 @@ declare const api: {
     getSVGArcCenter: (startX: number, startY: number, rx: number, ry: number, angleRad: number, largeArcFlag: number, sweepFlag: number, endX: number, endY: number) => import("mz-math").Vector2 | null;
     getPathBBox: (d?: string | undefined, decimalPlaces?: number) => bbox.IBBox | null;
     translatePath: (d: string, x: number, y: number, decimalPlaces?: number) => string;
-    rotatePathAroundDot: (d: string, cx: number, cy: number, angleDegrees: number, decimalPlaces?: number) => string;
+    rotatePathAroundPoint: (d: string, transformOrigin: import("mz-math").Vector2, angleDegrees: number, decimalPlaces?: number) => string;
     rotatePath: (d: string, angleDegrees: number, decimalPlaces?: number) => string;
+    scalePathAroundPoint: (d: string, scaleVector: import("mz-math").Vector2, transformOrigin: import("mz-math").Vector2, decimalPlaces?: number) => string;
+    scalePath: (d: string, scaleVector: import("mz-math").Vector2, decimalPlaces?: number) => string;
     isPathValid: (d?: string | undefined) => boolean;
     parsePath: (d?: string | undefined) => import("./main/path/interfaces").IPathData;
     pathToRel: (d?: string | undefined, beautify?: boolean, decimalPlaces?: number) => string | undefined;
