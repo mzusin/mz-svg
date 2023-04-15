@@ -1,33 +1,52 @@
-## How to create &lt;g> element
+## How to create SVG Circle
 
-The **createGroup()** function is used to create an SVG group element.
+The **createCircle()** function is used to create an SVG circle element.
 
 ```js
-import { createGroup } from 'mz-svg';
+import { createCircle } from 'mz-svg';
 
-const $group = createGroup();
+const $circle = createCircle({
+    cx: 100,
+    cy: 100,
+    r: 50,
+});
 ```
 
 In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
 
 ```js
-import { createGroup } from 'mz-svg/dist/mz-svg.node.cjs';
+import { createCircle } from 'mz-svg';
 
-const $group = createGroup({
+const $circle = createCircle({
     document: doc,
+    cx: 100,
+    cy: 100,
+    r: 50,
 });
 ```
 
 The function can accept the following parameters. Note that **all parameters are optional**:
 
 ```js
-import { createGroup } from 'mz-svg';
+import { createCircle } from 'mz-svg';
 
-const $group = createGroup({
+const $circle = createCircle({
     
-    id: 'my-group-id',
+    id: 'my-circle-id',
     classes: 'css-class1 css-class2',
     style: 'stroke: blue',
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/cx
+    cx: 0,
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/cy
+    cy: 0,
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/r
+    r: 0,
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
+    pathLength: '10',
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke
     stroke: '#00ffff',

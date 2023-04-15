@@ -29,9 +29,9 @@ const doc = dom.window.document;
 Call any **mzSVG**  API or function, and provide the [JSDom](https://github.com/jsdom/jsdom) document as parameter.
 
 ```js
-import { createSVG } from 'mz-svg/dist/mz-svg.node.cjs'; 
+import { createSVG } from 'mz-svg'; 
 // OR
-// const { createSVG } = require('mz-svg/dist/mz-svg.node.cjs');
+// const { createSVG } = require('mz-svg');
 
 const $svg = createSVG({
     width: 100,

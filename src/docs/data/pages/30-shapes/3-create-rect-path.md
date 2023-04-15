@@ -1,49 +1,75 @@
-## How to create SVG Circle
+## How to create SVG Rectangle Path
 
-The **createCircle()** function is used to create an SVG circle element.
+Unlike **createRect()**, the **createRectPath()** function returns an SVG path element.
 
 ```js
-import { createCircle } from 'mz-svg';
+import { createRectPath } from 'mz-svg';
 
-const $circle = createCircle({
-    cx: 100,
-    cy: 100,
-    r: 50,
+const $rectPath = createRect({
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 200,
+});
+```
+
+To create a rounded rectangle path, use the **rx** and **ry** properties:
+
+```js
+import { createRectPath } from 'mz-svg';
+
+const $rectPath = createRectPath({
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 200,
+    rx: 10,
+    ry: 10,
 });
 ```
 
 In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
 
 ```js
-import { createCircle } from 'mz-svg/dist/mz-svg.node.cjs';
+import { createRectPath } from 'mz-svg';
 
-const $circle = createCircle({
+const $rectPath = createRectPath({
     document: doc,
-    cx: 100,
-    cy: 100,
-    r: 50,
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 200,
 });
 ```
 
 The function can accept the following parameters. Note that **all parameters are optional**:
 
 ```js
-import { createCircle } from 'mz-svg';
+import { createRectPath } from 'mz-svg';
 
-const $circle = createCircle({
+const $rectPath = createRectPath({
     
-    id: 'my-circle-id',
+    id: 'my-rect-path-id',
     classes: 'css-class1 css-class2',
     style: 'stroke: blue',
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/cx
-    cx: 0,
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x
+    x: 0,
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/cy
-    cy: 0,
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y
+    y: 0,
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/r
-    r: 0,
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/rx
+    rx: 0,
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/ry
+    ry: 0,
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/width
+    width: 0,
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/height
+    height: 0,
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
     pathLength: '10',

@@ -11,7 +11,7 @@ const $use = createUse();
 In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
 
 ```js
-import { createUse } from 'mz-svg/dist/mz-svg.node.cjs';
+import { createUse } from 'mz-svg';
 
 const $use = createUse({
     document: doc

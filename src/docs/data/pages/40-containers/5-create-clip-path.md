@@ -1,42 +1,92 @@
-## How to create SVG Path
+## How to create &lt;clipPath>
 
-The **createPath()** function is used to create an SVG path element.
+The **createClipPath()** function is used to create &lt;clipPath> element.
 
 ```js
-import { createPath } from 'mz-svg';
+import { createClipPath } from 'mz-svg';
 
-const $path = createPath({
-    d: 'M150 0 L75 200 L225 200 Z'
+const $clipPath = createClipPath();
+```
+
+Below is a complete example that uses a clip path:
+
+<div class="flex justify-center my-4">
+    <svg viewBox="0 0 100 100" width="100" height="100">
+      <clipPath id="myClip">
+        <circle cx="40" cy="35" r="35" />
+      </clipPath>
+      <path id="heart" d="M10,30 A20,20,0,0,1,50,30 A20,20,0,0,1,90,30 Q90,60,50,90 Q10,60,10,30 Z" />
+      <use clip-path="url(#myClip)" href="#heart" fill="red" />
+    </svg>
+</div>
+
+```js
+const $svg = mzSVG.createSVG({
+    width: 100,
+    height: 100
 });
+
+// Create clip path element with a circle;
+// Everything outside the circle will be
+// clipped and therefore invisible.
+const $clipPath = mzSVG.createClipPath({
+    id: 'my-clip'
+});
+const $circle = mzSVG.createCircle({
+    cx: 40,
+    cy: 35,
+    r: 35,
+});
+$clipPath.append($circle);
+$svg.append($clipPath);
+
+// The original black heart, for reference
+const $heart = mzSVG.createPath({
+    d: 'M10,30 A20,20,0,0,1,50,30 A20,20,0,0,1,90,30 Q90,60,50,90 Q10,60,10,30 Z',
+    id: 'heart',
+});
+$svg.append($heart);
+
+// Only the portion of the red heart
+// inside the clip circle is visible.
+// <use clip-path="url(#my-clip)" href="#heart" fill="red" />
+const $use = mzSVG.createUse({
+    // The URL to an element/fragment that needs to be duplicated.
+    href: '#heart',
+
+    // The same id is used in the <clipPath> element
+    clipPath: 'url(#my-clip)',
+
+    fill: 'red',
+});
+$svg.append($use);
+
+document.body.append($svg);
 ```
 
 In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
 
 ```js
-import { createPath } from 'mz-svg/dist/mz-svg.node.cjs';
+import { createClipPath } from 'mz-svg';
 
-const $path = createPath({
-    d: 'M150 0 L75 200 L225 200 Z',
-    document: doc,
+const $clipPath = createClipPath({
+    document: doc
 });
 ```
 
 The function can accept the following parameters. Note that **all parameters are optional**:
 
 ```js
-import { createPath } from 'mz-svg';
+import { createClipPath } from 'mz-svg';
 
-const $path = createPath({
+const $clipPath = createClipPath({
     
-    id: 'my-path-id',
+    id: 'my-clip-path-id',
     classes: 'css-class1 css-class2',
     style: 'stroke: blue',
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
-    d: 'M150 0 L75 200 L225 200 Z',
-
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
-    pathLength: '10',
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clipPathUnits
+    clipPathUnits: 'userSpaceOnUse',
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke
     stroke: '#00ffff',
@@ -79,7 +129,7 @@ const $path = createPath({
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform
     transform: 'scale(1 0.5)',
-    
+
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/vector-effect
     vectorEffect: 'non-scaling-stroke',
 

@@ -6,7 +6,7 @@ It is possible to save an SVG file to the file system in a Node.js environment. 
 **An example with SVG string:**
 
 ```js
-import { saveSVG } from 'mz-svg/dist/mz-svg.node.cjs';
+import { saveSVG } from 'mz-svg';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -25,7 +25,7 @@ saveSVG({
 **An example with SVG document:**
 
 ```js
-import { saveSVG } from 'mz-svg/dist/mz-svg.node.cjs';
+import { saveSVG } from 'mz-svg';
 import path from 'path';
 import { fileURLToPath } from 'url';
 

@@ -1,78 +1,145 @@
-## How to create SVG Rectangle Path
+## How to create SVG Pattern
 
-Unlike **createRect()**, the **createRectPath()** function returns an SVG path element.
+The **createPattern()** function is used to create an SVG pattern element.
 
 ```js
-import { createRectPath } from 'mz-svg';
+import { createPattern } from 'mz-svg';
 
-const $rectPath = createRect({
+const $pattern = createPattern({
+    id: 'my-pattern',
     x: 0,
     y: 0,
     width: 100,
-    height: 200,
+    height: 20,
+    viewBox: '0, 0, 100, 20',
+    patternUnits: 'userSpaceOnUse',
 });
 ```
 
-To create a rounded rectangle path, use the **rx** and **ry** properties:
+Below is a more complete example that describes how to add a striped pattern to a rectangle.
+
+<div class="flex flex-col justify-center items-center my-6">
+    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><pattern x="0" y="0" width="100" height="20" patternUnits="userSpaceOnUse" viewBox="0, 0, 100, 20" id="my-pattern"><rect x="0" y="0" width="100" height="10" fill="#4a9da8"></rect><rect x="0" y="10" width="100" height="10" fill="#0d4249"></rect></pattern><rect x="0" y="0" width="200" height="200" fill="url(#my-pattern)"></rect></svg>
+</div>
 
 ```js
-import { createRectPath } from 'mz-svg';
+// create SVG element
+const $svg = mzSVG.createSVG({
+    width: 200,
+    height: 200
+});
 
-const $rectPath = createRectPath({
+// create pattern element with id 'my-pattern'
+const $pattern = mzSVG.createPattern({
+    id: 'my-pattern',
     x: 0,
     y: 0,
     width: 100,
-    height: 200,
-    rx: 10,
-    ry: 10,
+    height: 20,
+    viewBox: '0, 0, 100, 20',
+    patternUnits: 'userSpaceOnUse',
 });
+
+// add first line to the pattern
+$pattern.append(mzSVG.createRect({
+    x: 0,
+    y: 0,
+    fill: '#4a9da8',
+    width: 100,
+    height: 10,
+}));
+
+// add second line to the pattern
+$pattern.append(mzSVG.createRect({
+    x: 0,
+    y: 10,
+    fill: '#0d4249',
+    width: 100,
+    height: 10,
+}));
+
+// create defs section
+const $defs = mzSVG.createDefs();
+
+// add pattern to the defs section
+$defs.append($pattern);
+
+// add defs to SVG
+mzSVG.prependOnce($svg, $defs);
+
+// -----------------------------------
+
+// create placeholder for the pattern, use pattern id in the 'fill' attribute
+const $box = mzSVG.createRect({
+    x: 0,
+    y: 0,
+    width: 200,
+    height: 200,
+    fill: 'url(#my-pattern)',
+});
+$svg.append($box);
+
+// add the result svg to the document
+document.body.append($svg);
 ```
 
 In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
 
 ```js
-import { createRectPath } from 'mz-svg/dist/mz-svg.node.cjs';
+import { createPattern } from 'mz-svg';
 
-const $rectPath = createRectPath({
+const $pattern = createPattern({
     document: doc,
+    id: 'my-pattern',
     x: 0,
     y: 0,
     width: 100,
-    height: 200,
+    height: 20,
+    viewBox: '0, 0, 100, 20',
+    patternUnits: 'userSpaceOnUse',
 });
 ```
 
 The function can accept the following parameters. Note that **all parameters are optional**:
 
 ```js
-import { createRectPath } from 'mz-svg';
+import { createPattern } from 'mz-svg';
 
-const $rectPath = createRectPath({
+const $pattern = createPattern({
     
-    id: 'my-rect-path-id',
+    id: 'my-pattern-id',
     classes: 'css-class1 css-class2',
     style: 'stroke: blue',
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x
     x: 0,
-
+    
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y
     y: 0,
-
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/rx
-    rx: 0,
-
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/ry
-    ry: 0,
-
+    
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/width
-    width: 0,
-
+    width: 100,
+    
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/height
-    height: 0,
+    height: 100,
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
-    pathLength: '10',
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/href
+    href: 'some-id',
+    
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternContentUnits
+    patternContentUnits: 'userSpaceOnUse',
+    
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternTransform
+    patternTransform: 'rotate(20)',
+    
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternUnits
+    patternUnits: 'userSpaceOnUse',
+    
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
+    preserveAspectRatio: 'xMidYMid meet',
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
+    viewBox: '0, 0, 10, 10',
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke
     stroke: '#00ffff',

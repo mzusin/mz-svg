@@ -1,75 +1,54 @@
-## How to create SVG Rectangle
+## How to create SVG Ellipse
 
-The **createRect()** function is used to create an SVG rectangle element.
-
-```js
-import { createRect } from 'mz-svg';
-
-const $rect = createRect({
-    x: 0,
-    y: 0,
-    width: 100,
-    height: 200,
-});
-```
-
-To create a rounded rectangle, use the **rx** and **ry** properties:
+The **createEllipse()** function is used to create an SVG ellipse element.
 
 ```js
-import { createRect } from 'mz-svg';
+import { createEllipse } from 'mz-svg';
 
-const $rect = createRect({
-    x: 0,
-    y: 0,
-    width: 100,
-    height: 200,
-    rx: 10,
-    ry: 10,
+const $ellipse = createEllipse({
+    cx: 100,
+    cy: 100,
+    rx: 50,
+    ry: 50,
 });
 ```
 
 In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
 
 ```js
-import { createRect } from 'mz-svg/dist/mz-svg.node.cjs';
+import { createEllipse } from 'mz-svg';
 
-const $rect = createRect({
+const $ellipse = createEllipse({
     document: doc,
-    x: 0,
-    y: 0,
-    width: 100,
-    height: 200,
+    cx: 100,
+    cy: 100,
+    rx: 50,
+    ry: 50,
 });
 ```
 
 The function can accept the following parameters. Note that **all parameters are optional**:
 
 ```js
-import { createRect } from 'mz-svg';
+import { createEllipse } from 'mz-svg';
 
-const $rect = createRect({
+const $ellipse = createEllipse({
     
-    id: 'my-rect-id',
+    id: 'my-ellipse-id',
     classes: 'css-class1 css-class2',
     style: 'stroke: blue',
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x
-    x: 0,
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/cx
+    cx: 100,
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y
-    y: 0,
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/cy
+    cy: 100,
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/rx
-    rx: 0,
+    rx: 50,
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/ry
-    ry: 0,
-
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/width
-    width: 0,
-
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/height
-    height: 0,
+    ry: 50,
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
     pathLength: '10',

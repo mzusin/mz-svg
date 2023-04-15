@@ -5,10 +5,10 @@
   "3-nodejs-usage.md": {
     "title": "Node.js Usage"
   },
-  "2-create-svg": {
+  "20-create-svg": {
     "title": "Create SVG"
   },
-  "6-IO": {
+  "60-IO": {
     "title": "IO"
   }
 }

@@ -25,7 +25,7 @@ const $svg = createSVGFromString({
 In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
 
 ```js
-import { createSVGFromString } from 'mz-svg/dist/mz-svg.node.cjs';
+import { createSVGFromString } from 'mz-svg';
 
 const $svg = createSVGFromString({
     svg,

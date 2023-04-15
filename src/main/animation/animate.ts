@@ -14,7 +14,7 @@ export interface ICreateAnimateProps{
     min?: string;
     max?: string;
     restart?: string;
-    repeatCount?: string;
+    repeatCount?: number|string;
     repeatDur?: string;
     fill?: string;
 
@@ -23,9 +23,9 @@ export interface ICreateAnimateProps{
     values?: string;
     keyTimes?: string;
     keySplines?: string;
-    from?: string;
-    to?: string;
-    by?: string;
+    from?: number|string;
+    to?: number|string;
+    by?: number|string;
 
     // Other Animation attributes
     attributeName?: string;

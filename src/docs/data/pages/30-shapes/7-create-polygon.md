@@ -1,54 +1,39 @@
-## How to create SVG Ellipse
+## How to create SVG Polygon
 
-The **createEllipse()** function is used to create an SVG ellipse element.
+The **createPolygon()** function is used to create an SVG polygon element.
 
 ```js
-import { createEllipse } from 'mz-svg';
+import { createPolygon } from 'mz-svg';
 
-const $ellipse = createEllipse({
-    cx: 100,
-    cy: 100,
-    rx: 50,
-    ry: 50,
+const $polygon = createPolygon({
+    points: '0,100 50,25 50,75 100,0'
 });
 ```
 
 In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
 
 ```js
-import { createEllipse } from 'mz-svg/dist/mz-svg.node.cjs';
+import { createPolygon } from 'mz-svg';
 
-const $ellipse = createEllipse({
+const $polygon = createPolygon({
+    points: '0,100 50,25 50,75 100,0',
     document: doc,
-    cx: 100,
-    cy: 100,
-    rx: 50,
-    ry: 50,
 });
 ```
 
 The function can accept the following parameters. Note that **all parameters are optional**:
 
 ```js
-import { createEllipse } from 'mz-svg';
+import { createPolygon } from 'mz-svg';
 
-const $ellipse = createEllipse({
+const $polygon = createPolygon({
     
-    id: 'my-ellipse-id',
+    id: 'my-polygon-id',
     classes: 'css-class1 css-class2',
     style: 'stroke: blue',
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/cx
-    cx: 100,
-
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/cy
-    cy: 100,
-
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/rx
-    rx: 50,
-
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/ry
-    ry: 50,
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/points
+    points: '0,100 50,25 50,75 100,0',
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
     pathLength: '10',

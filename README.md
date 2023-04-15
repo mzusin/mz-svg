@@ -73,6 +73,8 @@ TypeScript-based library for managing SVG in the browser and Node.js. The modula
 ### IO 
 - [Save Svg](https://svg.mzsoft.org/pages/save-svg.html)
 - [Download Svg](https://svg.mzsoft.org/pages/download-svg.html)
+### Animation 
+- [Create Animate](https://svg.mzsoft.org/pages/create-animate.html)
 ### Helpers 
 - [Append Once](https://svg.mzsoft.org/pages/append-once.html)
 - [Prepend Once](https://svg.mzsoft.org/pages/prepend-once.html)
@@ -80,6 +82,76 @@ TypeScript-based library for managing SVG in the browser and Node.js. The modula
 - [Constants](https://svg.mzsoft.org/pages/constants.html)
 - [Unit Tests](https://svg.mzsoft.org/pages/unit-tests.html)
 ------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

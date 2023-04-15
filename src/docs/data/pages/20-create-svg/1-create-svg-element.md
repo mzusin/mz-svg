@@ -1,57 +1,93 @@
-## How to create SVG Line
+## How to create SVG Element
 
-The **createLine()** function is used to create an SVG line element.
+To create an SVG element, use the **createSVG()** function as follows:
 
 ```js
-import { createLine } from 'mz-svg';
+import { createSVG } from 'mz-svg';
 
-const $line = createLine({
-    x1: 0,
-    y1: 0,
-    x2: 100,
-    y2: 200,
-});
+const $svg = createSVG({
+    width: 100,
+    height: 200
+}); // creates SVG element 100x200
 ```
 
 In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
 
 ```js
-import { createLine } from 'mz-svg/dist/mz-svg.node.cjs';
+import { createSVG } from 'mz-svg';
 
-const $line = createLine({
-    document: doc,
-    x1: 0,
-    y1: 0,
-    x2: 100,
-    y2: 200,
+const $svg = createSVG({
+    width: 100,
+    height: 200,
+    document: doc
 });
+console.log($svg);
+```
+
+In the browser, you can use the global **mzSVG** namespace:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/mzusin/dist/mz-svg.min.js"></script>
+<script>
+    const $svg = mzSVG.createSVG({
+        width: 100,
+        height: 200
+    });
+</script>
+```
+
+To create an SVG with a viewBox property:
+
+```js
+import { createSVG } from 'mz-svg';
+
+const $svg = createSVG({
+    width: 100,
+    height: 200,
+    viewBox: '0 0 100 200'
+}); 
+```
+
+It is also possible to automatically generate a viewBox property:
+
+```js
+import { createSVG } from 'mz-svg';
+
+const $svg = createSVG({
+    width: 100,
+    height: 200,
+    autoViewBox: true,
+}); 
 ```
 
 The function can accept the following parameters. Note that **all parameters are optional**:
 
 ```js
-import { createLine } from 'mz-svg';
+import { createPath } from 'mz-svg';
 
-const $line = createLine({
+const $path = createPath({
     
-    id: 'my-line-id',
+    id: 'my-path-id',
     classes: 'css-class1 css-class2',
     style: 'stroke: blue',
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1
-    x1: 0,
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x
+    x: 0,
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y1
-    y1: 0,
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y
+    y: 0,
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x2
-    x2: 0,
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/width
+    width: 0,
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y2
-    y2: 0,
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/height
+    height: 0,
 
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
-    pathLength: '10',
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
+    preserveAspectRatio: 'xMidYMid meet',
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
+    viewBox: '0, 0, 100, 100',
 
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke
     stroke: '#00ffff',

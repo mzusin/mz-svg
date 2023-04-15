@@ -11,7 +11,7 @@ const $defs = createDefs();
 In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
 
 ```js
-import { createDefs } from 'mz-svg/dist/mz-svg.node.cjs';
+import { createDefs } from 'mz-svg';
 
 const $defs = createDefs({
     document: doc
