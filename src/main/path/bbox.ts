@@ -358,6 +358,7 @@ export const getPathBBox = (d?: string, decimalPlaces = 2) : IBBox|null => {
                 const startControlPoint: Vector2 = [x, y];
                 const centerControlPoint: Vector2 = [item.params[0], item.params[1]];
                 const endControlPoint: Vector2 = [item.params[2], item.params[3]];
+
                 const bbox = v2QuadraticBezierBBox(startControlPoint, centerControlPoint, endControlPoint);
 
                 minX = bbox.x;
@@ -368,6 +369,7 @@ export const getPathBBox = (d?: string, decimalPlaces = 2) : IBBox|null => {
 
                 x = item.params[2];
                 y = item.params[3];
+
                 break;
             }
 
