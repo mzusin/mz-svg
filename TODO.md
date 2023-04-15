@@ -31,7 +31,7 @@
 
 ## Animation
 + animate
-- animateMotion
++ animateMotion
 - animateTransform
 - mpath
 - set

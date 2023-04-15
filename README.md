@@ -31,6 +31,9 @@ TypeScript-based library for managing SVG in the browser and Node.js. The modula
 - Rectangle path element.
 - Star shape, flower shape.
 
+## Animation
+- Create animation elements like &lt;animate>, &lt;animateMotion>, etc.
+
 ## Documentation 🔖
 ### Main 
 - [TypesScript Usage](https://svg.mzsoft.org/pages/typescript-usage.html)
