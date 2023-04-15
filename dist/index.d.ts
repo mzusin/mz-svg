@@ -337,4 +337,11 @@ declare module 'mz-svg' {
     }
 
     export const createAnimateMotion: (props?: ICreateAnimateMotionProps) => SVGAnimateMotionElement;
+
+    export interface ICreateAnimateTransformProps extends IAnimationProps {
+        type?: string;
+        attributeType?: string;
+    }
+
+    export const createAnimateTransform: (props?: ICreateAnimateTransformProps) => SVGAnimateTransformElement;
 }

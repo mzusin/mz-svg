@@ -11,6 +11,7 @@ declare const api: {
     getCommonAnimationAttributes: (props?: animation.IAnimationProps | undefined) => [string, string | number | undefined][];
     createAnimate: (props?: animation.IAnimationProps | undefined) => SVGAnimateElement;
     createAnimateMotion: (props?: animation.ICreateAnimateMotionProps | undefined) => SVGAnimateMotionElement;
+    createAnimateTransform: (props?: animation.ICreateAnimateTransformProps | undefined) => SVGAnimateTransformElement;
     getSVGArcCenter: (startX: number, startY: number, rx: number, ry: number, angleRad: number, largeArcFlag: number, sweepFlag: number, endX: number, endY: number) => import("mz-math").Vector2 | null;
     getPathBBox: (d?: string | undefined, decimalPlaces?: number) => bbox.IBBox | null;
     translatePath: (d: string, x: number, y: number, decimalPlaces?: number) => string;

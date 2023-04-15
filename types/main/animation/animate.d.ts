@@ -34,6 +34,14 @@ export interface ICreateAnimateMotionProps extends IAnimationProps {
     rotate?: string | number;
 }
 /**
- * Create <animate> element.
+ * Create <animateMotion> element.
  */
 export declare const createAnimateMotion: (props?: ICreateAnimateMotionProps) => SVGAnimateMotionElement;
+export interface ICreateAnimateTransformProps extends IAnimationProps {
+    type?: string;
+    attributeType?: string;
+}
+/**
+ * Create <animateTransform> element.
+ */
+export declare const createAnimateTransform: (props?: ICreateAnimateTransformProps) => SVGAnimateTransformElement;

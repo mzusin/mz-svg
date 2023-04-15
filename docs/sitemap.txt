@@ -36,6 +36,7 @@ https://svg.mzsoft.org/pages/save-svg.html
 https://svg.mzsoft.org/pages/download-svg.html
 https://svg.mzsoft.org/pages/create-animate.html
 https://svg.mzsoft.org/pages/create-animate-motion.html
+https://svg.mzsoft.org/pages/create-animate-transform.html
 https://svg.mzsoft.org/pages/append-once.html
 https://svg.mzsoft.org/pages/prepend-once.html
 https://svg.mzsoft.org/pages/constants.html

@@ -1,6 +1,7 @@
 import {
     createAnimate,
     createAnimateMotion,
+    createAnimateTransform,
 } from '../../src/index-esm';
 import { createNodeDoc } from '../core.test';
 
@@ -273,6 +274,148 @@ describe('Animation', () => {
 
         test('sets "accumulate" property', () => {
             expect($animateMotion.getAttribute('accumulate')).toStrictEqual(props.accumulate);
+        });
+    });
+
+    describe('createAnimateTransform', () => {
+
+        const props = {
+            attributeName: 'transform',
+            attributeType: 'XML',
+            type: 'rotate',
+
+            id: 'animate-1',
+            classes: 'my-class-1 my-class-2',
+            style: 'fill: red; stroke: blue;',
+
+            // Animation timing attributes
+            begin: '0s',
+            dur: '1s',
+            end: '5s',
+            min: '0s',
+            max: '10s',
+            restart: 'always',
+            repeatCount: '2',
+            repeatDur: '3s',
+            fill: 'freeze',
+
+            // Animation value attributes
+            calcMode: 'spline',
+            values: '0; 100; 50',
+            keyTimes: '0; 0.5; 1',
+            keySplines: '0.42 0 0.58 1; 0.42 0 0.58 1',
+            from: '0',
+            to: '100',
+            by: '10',
+
+            // Other Animation attributes
+            additive: 'replace',
+            accumulate: 'sum',
+        };
+
+        const $animateTransform = createAnimateTransform({
+            document: createNodeDoc(),
+            ...props,
+        });
+
+        test('sets "attributeName" property', () => {
+            expect($animateTransform.getAttribute('attributeName')).toStrictEqual(props.attributeName);
+        });
+
+        test('sets "attributeType" property', () => {
+            expect($animateTransform.getAttribute('attributeType')).toStrictEqual(props.attributeType);
+        });
+
+        test('sets "type" property', () => {
+            expect($animateTransform.getAttribute('type')).toStrictEqual(props.type.toString());
+        });
+
+        test('sets "id" property', () => {
+            expect($animateTransform.getAttribute('id')).toStrictEqual(props.id);
+        });
+
+        test('sets "classes" property', () => {
+            expect($animateTransform.getAttribute('class')).toStrictEqual(props.classes);
+        });
+
+        test('sets "style" property', () => {
+            expect($animateTransform.getAttribute('style')).toStrictEqual(props.style);
+        });
+
+        test('sets "begin" property', () => {
+            expect($animateTransform.getAttribute('begin')).toStrictEqual(props.begin);
+        });
+
+        test('sets "dur" property', () => {
+            expect($animateTransform.getAttribute('dur')).toStrictEqual(props.dur);
+        });
+
+        test('sets "end" property', () => {
+            expect($animateTransform.getAttribute('end')).toStrictEqual(props.end);
+        });
+
+        test('sets "min" property', () => {
+            expect($animateTransform.getAttribute('min')).toStrictEqual(props.min);
+        });
+
+        test('sets "max" property', () => {
+            expect($animateTransform.getAttribute('max')).toStrictEqual(props.max);
+        });
+
+        test('sets "restart" property', () => {
+            expect($animateTransform.getAttribute('restart')).toStrictEqual(props.restart);
+        });
+
+        test('sets "repeatCount" property', () => {
+            expect($animateTransform.getAttribute('repeatCount')).toStrictEqual(props.repeatCount);
+        });
+
+        test('sets "repeatDur" property', () => {
+            expect($animateTransform.getAttribute('repeatDur')).toStrictEqual(props.repeatDur);
+        });
+
+        test('sets "fill" property', () => {
+            expect($animateTransform.getAttribute('fill')).toStrictEqual(props.fill);
+        });
+
+        test('sets "calcMode" property', () => {
+            expect($animateTransform.getAttribute('calcMode')).toStrictEqual(props.calcMode);
+        });
+
+        test('sets "values" property', () => {
+            expect($animateTransform.getAttribute('values')).toStrictEqual(props.values);
+        });
+
+        test('sets "keyTimes" property', () => {
+            expect($animateTransform.getAttribute('keyTimes')).toStrictEqual(props.keyTimes);
+        });
+
+        test('sets "keySplines" property', () => {
+            expect($animateTransform.getAttribute('keySplines')).toStrictEqual(props.keySplines);
+        });
+
+        test('sets "from" property', () => {
+            expect($animateTransform.getAttribute('from')).toStrictEqual(props.from);
+        });
+
+        test('sets "to" property', () => {
+            expect($animateTransform.getAttribute('to')).toStrictEqual(props.to);
+        });
+
+        test('sets "by" property', () => {
+            expect($animateTransform.getAttribute('by')).toStrictEqual(props.by);
+        });
+
+        test('sets "attributeName" property', () => {
+            expect($animateTransform.getAttribute('attributeName')).toStrictEqual(props.attributeName);
+        });
+
+        test('sets "additive" property', () => {
+            expect($animateTransform.getAttribute('additive')).toStrictEqual(props.additive);
+        });
+
+        test('sets "accumulate" property', () => {
+            expect($animateTransform.getAttribute('accumulate')).toStrictEqual(props.accumulate);
         });
     });
 });

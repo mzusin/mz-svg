@@ -1,11 +1,11 @@
 ## How to create &lt;animateMotion> element
 
-The **createAnimateMotion()** function is used to create an SVG path element.
+The **createAnimateMotion()** function is used to create an SVG &lt;animateMotion> element.
 
 ```js
 import { createAnimateMotion } from 'mz-svg';
 
-const $createAnimateMotion = createAnimateMotion({
+const $animateMotion = createAnimateMotion({
     path: 'M20,50 C20,-50 180,150 180,50 C180-50 20,150 20,50 z',
     dur: '10s',
     repeatCount: 'indefinite'
@@ -17,7 +17,7 @@ In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) d
 ```js
 import { createAnimateMotion } from 'mz-svg';
 
-const $createAnimateMotion = createAnimateMotion({
+const $animateMotion = createAnimateMotion({
     path: 'M20,50 C20,-50 180,150 180,50 C180-50 20,150 20,50 z',
     dur: '10s',
     repeatCount: 'indefinite'
@@ -29,7 +29,7 @@ The function can accept the following parameters. Note that **all parameters are
 ```js
 import { createAnimateMotion } from 'mz-svg';
 
-const $createAnimateMotion = createAnimateMotion({
+const $animateMotion = createAnimateMotion({
     
     id: 'my-animate-id',
     classes: 'css-class1 css-class2',

@@ -109,3 +109,26 @@ export const createAnimateMotion = (props?: ICreateAnimateMotionProps) : SVGAnim
 
     return $animateMotion;
 };
+
+export interface ICreateAnimateTransformProps extends IAnimationProps{
+    type?: string;
+    attributeType?: string;
+}
+
+/**
+ * Create <animateTransform> element.
+ */
+export const createAnimateTransform = (props?: ICreateAnimateTransformProps) : SVGAnimateTransformElement => {
+
+    const doc = props?.document || window.document;
+
+    const $animateTransform = doc.createElementNS(SVG_NAMESPACE, 'animateTransform');
+
+    setAttributes($animateTransform, [
+        ['type', props?.type],
+        ['attributeType', props?.attributeType],
+        ...getCommonAnimationAttributes(props),
+    ]);
+
+    return $animateTransform;
+};

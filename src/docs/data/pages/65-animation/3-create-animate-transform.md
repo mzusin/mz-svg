@@ -1,13 +1,16 @@
-## How to create &lt;animate> element
+## How to create &lt;animateTransform> element
 
-The **createAnimate()** function is used to create an SVG &lt;animate> element.
+The **createAnimateTransform()** function is used to create an SVG &lt;animateTransform> element.
 
 ```js
-import { createAnimate } from 'mz-svg';
+import { createAnimateTransform } from 'mz-svg';
 
-const $animate = createAnimate({
-    attributeName: 'rx',
-    values: '0;5;0',
+const $animateTransform = createAnimateTransform({
+    attributeName: 'transform',
+    attributeType: 'XML',
+    type: 'rotate',
+    from: '0 60 70',
+    to: '360 60 70',
     dur: '10s',
     repeatCount: 'indefinite'
 });
@@ -16,11 +19,14 @@ const $animate = createAnimate({
 In Node.js, you need to first create a [JSDom](https://github.com/jsdom/jsdom) document, as described [here](/pages/nodejs-usage.html), and then pass this document as additional parameter:
 
 ```js
-import { createAnimate } from 'mz-svg';
+import { createAnimateTransform } from 'mz-svg';
 
-const $animate = createAnimate({
-    attributeName: 'rx',
-    values: '0;5;0',
+const $animateTransform = createAnimateTransform({
+    attributeName: 'transform',
+    attributeType: 'XML',
+    type: 'rotate',
+    from: '0 60 70',
+    to: '360 60 70',
     dur: '10s',
     repeatCount: 'indefinite'
 });
@@ -29,13 +35,22 @@ const $animate = createAnimate({
 The function can accept the following parameters. Note that **all parameters are optional**:
 
 ```js
-import { createAnimate } from 'mz-svg';
+import { createAnimateTransform } from 'mz-svg';
 
-const $animate = createAnimate({
+const $animateTransform = createAnimateTransform({
     
     id: 'my-animate-id',
     classes: 'css-class1 css-class2',
     style: 'stroke: blue',
+
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type
+    type: 'rotate',
+    
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/attributeName
+    attributeName: 'transform',
+    
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/attributeType
+    attributeType: 'XML',
 
     // Animation timing attributes ------------------------------
     
@@ -90,9 +105,6 @@ const $animate = createAnimate({
     by: 10,
 
     // Other Animation attributes ------------------------------
-    
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/attributeName
-    attributeName: 'opacity',
     
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/additive
     additive: 'replace',

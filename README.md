@@ -32,7 +32,7 @@ TypeScript-based library for managing SVG in the browser and Node.js. The modula
 - Star shape, flower shape.
 
 ## Animation
-- Create animation elements like &lt;animate>, &lt;animateMotion>, etc.
+- Create animation elements like &lt;animate>, &lt;animateMotion>, &lt;animateTransform>, etc.
 
 ## Documentation 🔖
 ### Main 
@@ -79,6 +79,7 @@ TypeScript-based library for managing SVG in the browser and Node.js. The modula
 ### Animation 
 - [Create Animate](https://svg.mzsoft.org/pages/create-animate.html)
 - [Create Animate Motion](https://svg.mzsoft.org/pages/create-animate-motion.html)
+- [Create Animate Transform](https://svg.mzsoft.org/pages/create-animate-transform.html)
 ### Helpers 
 - [Append Once](https://svg.mzsoft.org/pages/append-once.html)
 - [Prepend Once](https://svg.mzsoft.org/pages/prepend-once.html)
@@ -86,6 +87,7 @@ TypeScript-based library for managing SVG in the browser and Node.js. The modula
 - [Constants](https://svg.mzsoft.org/pages/constants.html)
 - [Unit Tests](https://svg.mzsoft.org/pages/unit-tests.html)
 ------------------------------
+
 
 
 
