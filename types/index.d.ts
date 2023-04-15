@@ -28,7 +28,7 @@ declare const api: {
     beautifyPath: (d?: string | undefined, decimalPlaces?: number) => string | undefined;
     appendOnce: ($parent: SVGElement | SVGSVGElement, $el: SVGElement) => void;
     prependOnce: ($parent: SVGElement | SVGSVGElement, $el: SVGElement) => void;
-    createGroup: (props?: import("./interfaces").IPrimitiveShapeProps | undefined) => SVGGElement;
+    createGroup: (props?: containers.ICreateGroupProps | undefined) => SVGGElement;
     createDefs: (props?: {
         document?: Document | undefined;
         id?: string | undefined;

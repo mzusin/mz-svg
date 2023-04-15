@@ -1,6 +1,6 @@
 {
   "name": "mz-svg",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "The TypeScript-based library for manipulating SVG in browser and Node.js.",
   "type": "module",
   "main": "./dist/mz-svg.min.js",

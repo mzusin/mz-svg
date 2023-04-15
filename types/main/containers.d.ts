@@ -1,5 +1,11 @@
 import { IPrimitiveShapeProps } from '../interfaces';
-export declare const createGroup: (props?: IPrimitiveShapeProps) => SVGGElement;
+export interface ICreateGroupProps extends IPrimitiveShapeProps {
+    x?: number | string;
+    y?: number | string;
+    width?: number | string;
+    height?: number | string;
+}
+export declare const createGroup: (props?: ICreateGroupProps) => SVGGElement;
 export declare const createDefs: (props?: {
     document?: Document;
     id?: string;
