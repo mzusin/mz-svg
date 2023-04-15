@@ -41,50 +41,19 @@
             stroke: 'blue'
         }));
 
-        /*$svg.append(mzSVG.createCircle({
-            cx: 195.53367989832927,
-            cy: 154.46632010167042,
-            r: 5,
-            fill: 'red'
-        }));*/
-
-        /*$svg.append(mzSVG.createCircle({
-            cx: 100,
-            cy: 200,
-            r: 5,
-            fill: 'red'
-        }));
-
-        $svg.append(mzSVG.createCircle({
-            cx: 150,
-            cy: 250,
-            r: 5,
-            fill: 'red'
-        }));*/
-
-        /*$svg.append(mzSVG.createRect({
-            x: 36.48317152695631,
-            y: -2.710937543794273,
-            width: 316.227766016837,
-            height: 316.227766016837,
-            stroke: 'red',
-            fill: 'none'
-            // 115.54011303116579 76.34600396041522 158.11388300841895 158.11388300841898
-        }));*/
-
         document.body.append($svg);
 
 
-        /* const $rect1 = mzSVG.createPath({
-            d: 'M 100 200 C 100 50 200 150 300 250',
+         const $rect1 = mzSVG.createPath({
+            d: d1,
             stroke: '#000',
             fill: 'none',
-        });*/
-        //$svg.append($rect1);
+        });
+        $svg.append($rect1);
 
-       /* let d = $rect1.getAttribute('d');
-        d = mzSVG.rotatePath(d, 45);
-        $rect1.setAttribute('d', d);*/
+        let d = $rect1.getAttribute('d');
+        d = mzSVG.rotatePath(d, 90);
+        $rect1.setAttribute('d', d);
 
     </script>
 </body>

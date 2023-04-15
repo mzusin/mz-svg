@@ -60,6 +60,8 @@ TypeScript-based library for managing SVG in the browser and Node.js. The modula
 - [Create Symbol](https://svg.mzsoft.org/pages/create-symbol.html)
 ### Path Data 
 - [Translate Path](https://svg.mzsoft.org/pages/translate-path.html)
+- [Rotate Path](https://svg.mzsoft.org/pages/rotate-path.html)
+- [Bounding Box](https://svg.mzsoft.org/pages/bounding-box.html)
 - [Path To Relative](https://svg.mzsoft.org/pages/path-to-relative.html)
 - [Path To Absolute](https://svg.mzsoft.org/pages/path-to-absolute.html)
 - [Minify Path](https://svg.mzsoft.org/pages/minify-path.html)
@@ -76,6 +78,42 @@ TypeScript-based library for managing SVG in the browser and Node.js. The modula
 - [Constants](https://svg.mzsoft.org/pages/constants.html)
 - [Unit Tests](https://svg.mzsoft.org/pages/unit-tests.html)
 ------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,5 +1,3 @@
-import { IBBox } from '../types/main/path/bbox';
-
 declare module 'mz-svg' {
 
     export interface IPrimitiveShapeProps {
@@ -274,6 +272,15 @@ declare module 'mz-svg' {
         QuadraticCurveToSmoothRel = "t",
         ArcAbs = "A",
         ArcRel = "a"
+    }
+
+    export interface IBBox {
+        x: number;
+        y: number;
+        w: number;
+        h: number;
+        x2: number;
+        y2: number;
     }
 
     export const isPathValid: (d?: string) => boolean;

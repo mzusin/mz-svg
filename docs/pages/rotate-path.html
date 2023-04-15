@@ -105,7 +105,7 @@
           <path d="m7 7 5 5-5 5m6-10 5 5-5 5"/>
         </svg>
 
-    </div><div class="flex flex-col" data-links><a href="/pages/typescript-usage.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">TypesScript Usage</a><a href="/pages/browser-usage.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-sky-500">Browser Usage</a><a href="/pages/nodejs-usage.html" title="" class="pl-3 border-l border-slate-150  text-slate-500">Node.js Usage</a></div><div class="text-xl my-4 flex items-center cursor-pointer" data-collapsible-title data-opened="true" data-id="2-create-svg">
+    </div><div class="flex flex-col" data-links><a href="/pages/typescript-usage.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">TypesScript Usage</a><a href="/pages/browser-usage.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Browser Usage</a><a href="/pages/nodejs-usage.html" title="" class="pl-3 border-l border-slate-150  text-slate-500">Node.js Usage</a></div><div class="text-xl my-4 flex items-center cursor-pointer" data-collapsible-title data-opened="true" data-id="2-create-svg">
         Create SVG 
         <svg data-arrow xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#626e7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="ml-2 rotate-90" viewBox="0 0 24 24">
           <path stroke="none" d="M0 0h24v24H0z"/>
@@ -133,7 +133,7 @@
           <path d="m7 7 5 5-5 5m6-10 5 5-5 5"/>
         </svg>
 
-    </div><div class="flex flex-col" data-links><a href="/pages/translate-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Translate Path</a><a href="/pages/rotate-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Rotate Path</a><a href="/pages/bounding-box.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Bounding Box</a><a href="/pages/path-to-relative.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Path To Relative</a><a href="/pages/path-to-absolute.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Path To Absolute</a><a href="/pages/minify-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Minify Path</a><a href="/pages/beautify-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Beautify Path</a><a href="/pages/parse-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Parse Path</a><a href="/pages/validate-path.html" title="" class="pl-3 border-l border-slate-150  text-slate-500">Validate Path</a></div><div class="text-xl my-4 flex items-center cursor-pointer" data-collapsible-title data-opened="true" data-id="6-IO">
+    </div><div class="flex flex-col" data-links><a href="/pages/translate-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Translate Path</a><a href="/pages/rotate-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-sky-500">Rotate Path</a><a href="/pages/bounding-box.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Bounding Box</a><a href="/pages/path-to-relative.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Path To Relative</a><a href="/pages/path-to-absolute.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Path To Absolute</a><a href="/pages/minify-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Minify Path</a><a href="/pages/beautify-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Beautify Path</a><a href="/pages/parse-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Parse Path</a><a href="/pages/validate-path.html" title="" class="pl-3 border-l border-slate-150  text-slate-500">Validate Path</a></div><div class="text-xl my-4 flex items-center cursor-pointer" data-collapsible-title data-opened="true" data-id="6-IO">
         IO 
         <svg data-arrow xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#626e7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="ml-2 rotate-90" viewBox="0 0 24 24">
           <path stroke="none" d="M0 0h24v24H0z"/>
@@ -159,30 +159,38 @@
         </div>
 
         <div class="p-4 overflow-y-auto h-full md:w-100-350 dark:bg-slate-800">
-          <div class="w-800 max-w-full mx-auto my-10 leading-7 text-lg text-slate-800 dark:text-slate-200"><h2 class="text-3xl mb-8">Browser Usage</h2>
-<p class="mb-4">The library can also be used directly in browsers without TypeScript. First, download the <a href="https://github.com/mzusin/mz-svg/blob/main/dist/mz-svg.min.js" class="text-sky-500">mz-svg.min.js</a> file from the GitHub repository. Then use the <strong class="font-bold">mzSVG</strong> global namespace to call any API or function.</p>
-<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;mz-svg.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-    <span class="hljs-keyword">const</span> $svg = mzSVG.<span class="hljs-title function_">createSVG</span>({
-        <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>,
-        <span class="hljs-attr">height</span>: <span class="hljs-number">200</span>
-    });
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>($svg); <span class="hljs-comment">// SVG element 100x200</span>
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
-<p class="mb-4">The library is also available on the <a href="https://cdn.jsdelivr.net/npm/mz-svg/dist/mz-svg.min.js" class="text-sky-500">jsDelivr CND</a>:</p>
-<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/mz-svg/dist/mz-svg.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-    <span class="hljs-keyword">const</span> $svg = mzSVG.<span class="hljs-title function_">createSVG</span>({
-        <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>,
-        <span class="hljs-attr">height</span>: <span class="hljs-number">200</span>
-    });
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>($svg);
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+          <div class="w-800 max-w-full mx-auto my-10 leading-7 text-lg text-slate-800 dark:text-slate-200"><h2 class="text-3xl mb-8">Rotate Path</h2>
+<p class="mb-4">It’s possible to rotate path around its center using the <strong class="font-bold">rotatePath()</strong> function. The function works with path data (the <strong class="font-bold">d</strong> property of the path).</p>
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { rotatePath } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
+
+<span class="hljs-keyword">const</span> angle = <span class="hljs-number">45</span>; <span class="hljs-comment">// angle in degrees</span>
+<span class="hljs-keyword">const</span> decimalPlaces = <span class="hljs-number">2</span>; <span class="hljs-comment">// optional</span>
+
+<span class="hljs-comment">// rotate the path around its center by 45 degrees</span>
+<span class="hljs-keyword">const</span> d = <span class="hljs-title function_">rotatePath</span>(<span class="hljs-string">`M 10,30
+           A 20,20 0,0,1 50,30
+           A 20,20 0,0,1 90,30
+           Q 90,60 50,90
+           Q 10,60 10,30 z`</span>, angle, decimalPlaces);</code></pre>
+<p class="mb-4">It’s also possible to rotate path around any point (cx, cy) using the <strong class="font-bold">rotatePathAroundDot()</strong> function.</p>
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { rotatePathAroundDot } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
+
+<span class="hljs-keyword">const</span> cx = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">const</span> cy = <span class="hljs-number">20</span>;
+<span class="hljs-keyword">const</span> angle = <span class="hljs-number">45</span>; <span class="hljs-comment">// angle in degrees</span>
+<span class="hljs-keyword">const</span> decimalPlaces = <span class="hljs-number">2</span>; <span class="hljs-comment">// optional</span>
+
+<span class="hljs-comment">// rotate the path around (cx, cy) by 45 degrees</span>
+<span class="hljs-keyword">const</span> d = <span class="hljs-title function_">rotatePathAroundDot</span>(<span class="hljs-string">`M 10,30
+           A 20,20 0,0,1 50,30
+           A 20,20 0,0,1 90,30
+           Q 90,60 50,90
+           Q 10,60 10,30 z`</span>, cx, cy, angle, decimalPlaces);</code></pre>
 </div>
 
           <div class="w-800 max-w-full mx-auto grid lg:grid-cols-2 gap-8 items-center text-slate-500">
 <div class="flex justify-between items-start border border-slate-200 rounded p-4">
-  <a href="/pages/typescript-usage.html" title="" class="mr-4 hover:text-blue-500">
+  <a href="/pages/translate-path.html" title="" class="mr-4 hover:text-blue-500">
     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">
     <path stroke="none" d="M0 0h24v24H0z"/>
     <path d="M5 12h14M5 12l6 6m-6-6 6-6"/>
@@ -190,7 +198,7 @@
   </a>
   <div class="flex flex-col items-end justify-center">
     <div class="mb-2 text-sm text-slate-300">Previous</div>
-    <a href="/pages/typescript-usage.html" title="" class="hover:text-blue-500">TypesScript Usage</a>
+    <a href="/pages/translate-path.html" title="" class="hover:text-blue-500">Translate Path</a>
   </div>
 </div>      
     
@@ -198,10 +206,10 @@
   
   <div class="flex flex-col justify-center">
     <div class="mb-2 text-sm text-slate-300">Next</div>
-    <a href="/pages/nodejs-usage.html" title="" class="hover:text-blue-500">Node.js Usage</a>
+    <a href="/pages/bounding-box.html" title="" class="hover:text-blue-500">Bounding Box</a>
   </div>
   
-  <a href="/pages/nodejs-usage.html" title="" class="mr-4 hover:text-blue-500">
+  <a href="/pages/bounding-box.html" title="" class="mr-4 hover:text-blue-500">
     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">
      <path stroke="none" d="M0 0h24v24H0z"/>
      <path d="M5 12h14m-6 6 6-6m-6-6 6 6"/>

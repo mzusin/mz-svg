@@ -23,6 +23,8 @@ https://svg.mzsoft.org/pages/create-clip-path.html
 https://svg.mzsoft.org/pages/create-mask.html
 https://svg.mzsoft.org/pages/create-symbol.html
 https://svg.mzsoft.org/pages/translate-path.html
+https://svg.mzsoft.org/pages/rotate-path.html
+https://svg.mzsoft.org/pages/bounding-box.html
 https://svg.mzsoft.org/pages/path-to-relative.html
 https://svg.mzsoft.org/pages/path-to-absolute.html
 https://svg.mzsoft.org/pages/minify-path.html

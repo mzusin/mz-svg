@@ -8,3 +8,4 @@ export * from './main/containers';
 export * from './main/helpers';
 export * from './main/path';
 export * from './main/path/transform';
+export * from './main/path/bbox';
