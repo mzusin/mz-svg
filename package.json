@@ -46,7 +46,13 @@
     "svg path minification",
     "translate svg path",
     "bbox",
-    "path bbox"
+    "path bbox",
+    "paths transformations",
+    "path transformations",
+    "svg transform",
+    "transform paths",
+    "transform",
+    "transform path"
   ],
   "author": "Miriam Zusin <miriam.zusin@gmail.com>",
   "license": "SEE LICENSE IN LICENSE.md",

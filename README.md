@@ -1,4 +1,4 @@
-# mzSVG ⭐
+# ミ☆ mzSVG ☆彡
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/mzusin/mz-svg)
 [![NPM](https://img.shields.io/badge/npm-svg-brightgreen)](https://www.npmjs.com/package/mz-svg)
@@ -16,8 +16,9 @@ TypeScript-based library for managing SVG in the browser and Node.js. The modula
 - Extensive Unit Testing.
 
 ## Working with path data ('d' property)
-- Translate path.
+- Translate, rotate, and scale path.
 - Convert path to relative or absolute commands.
+- Find path bounding box.
 - Minify path data.
 - Beautify path data.
 - Path data validation.
