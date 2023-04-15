@@ -86,37 +86,7 @@ export const setAttributes = ($svgElement: SVGElement, attr: [string, string|num
     }
 };
 
-export const getCommonAttributes = (props?: {
-    id?: string;
-    classes?: string;
-    style?: string;
-
-    stroke?: string;
-    strokeWidth?: number|string;
-    strokeOpacity?: number|string;
-    strokeLinecap?: string; // 'round'
-    strokeLinejoin?: string;
-    strokeDasharray?: string;
-    strokeDashoffset?: number|string;
-    strokeMiterlimit?: number|string;
-
-    fill?: string;
-    fillOpacity?: number|string;
-    fillRule?: string;
-
-    filter?: string;
-    mask?: string;
-    transform?: string;
-
-    vectorEffect?: string; // 'non-scaling-stroke' - used to disable line scale
-    shapeRendering?: string;
-
-    clipPath?: string;
-    clipRule?: string;
-
-    opacity?: string|number;
-    visibility?: string;
-}) : [string, string|number|undefined][] => {
+export const getCommonAttributes = (props?: IPrimitiveShapeProps) : [string, string|number|undefined][] => {
 
     if(!props) return [];
 

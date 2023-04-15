@@ -302,7 +302,7 @@ declare module 'mz-svg' {
     export const scalePathAroundPoint: (d: string, scaleVector: Vector2, transformOrigin: Vector2, decimalPlaces?: number) => string;
     export const scalePath: (d: string, scaleVector: Vector2, decimalPlaces?: number) => string;
 
-    export interface ICreateAnimateProps {
+    export interface IAnimationProps {
         document?: Document;
         id?: string;
         classes?: string;
@@ -313,20 +313,28 @@ declare module 'mz-svg' {
         min?: string;
         max?: string;
         restart?: string;
-        repeatCount?: string;
+        repeatCount?: number | string;
         repeatDur?: string;
         fill?: string;
         calcMode?: string;
         values?: string;
         keyTimes?: string;
         keySplines?: string;
-        from?: string;
-        to?: string;
-        by?: string;
+        from?: number | string;
+        to?: number | string;
+        by?: number | string;
         attributeName?: string;
         additive?: string;
         accumulate?: string;
     }
+    export const getCommonAnimationAttributes: (props?: IAnimationProps) => [string, string | number | undefined][];
 
-    export const createAnimate: (props?: ICreateAnimateProps) => SVGAnimateElement;
+    export const createAnimate: (props?: IAnimationProps) => SVGAnimateElement;
+    export interface ICreateAnimateMotionProps extends IAnimationProps {
+        keyPoints?: string;
+        path?: string | number;
+        rotate?: string | number;
+    }
+
+    export const createAnimateMotion: (props?: ICreateAnimateMotionProps) => SVGAnimateMotionElement;
 }

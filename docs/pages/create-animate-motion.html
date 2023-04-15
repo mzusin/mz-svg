@@ -133,7 +133,7 @@
           <path d="m7 7 5 5-5 5m6-10 5 5-5 5"/>
         </svg>
 
-    </div><div class="flex flex-col" data-links><a href="/pages/translate-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Translate Path</a><a href="/pages/rotate-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Rotate Path</a><a href="/pages/scale-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Scale Path</a><a href="/pages/bounding-box.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Bounding Box</a><a href="/pages/path-to-relative.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Path To Relative</a><a href="/pages/path-to-absolute.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Path To Absolute</a><a href="/pages/minify-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Minify Path</a><a href="/pages/beautify-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Beautify Path</a><a href="/pages/parse-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-sky-500">Parse Path</a><a href="/pages/validate-path.html" title="" class="pl-3 border-l border-slate-150  text-slate-500">Validate Path</a></div><div class="text-xl my-4 flex items-center cursor-pointer" data-collapsible-title data-opened="true" data-id="60-IO">
+    </div><div class="flex flex-col" data-links><a href="/pages/translate-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Translate Path</a><a href="/pages/rotate-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Rotate Path</a><a href="/pages/scale-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Scale Path</a><a href="/pages/bounding-box.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Bounding Box</a><a href="/pages/path-to-relative.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Path To Relative</a><a href="/pages/path-to-absolute.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Path To Absolute</a><a href="/pages/minify-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Minify Path</a><a href="/pages/beautify-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Beautify Path</a><a href="/pages/parse-path.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Parse Path</a><a href="/pages/validate-path.html" title="" class="pl-3 border-l border-slate-150  text-slate-500">Validate Path</a></div><div class="text-xl my-4 flex items-center cursor-pointer" data-collapsible-title data-opened="true" data-id="60-IO">
         IO 
         <svg data-arrow xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#626e7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="ml-2 rotate-90" viewBox="0 0 24 24">
           <path stroke="none" d="M0 0h24v24H0z"/>
@@ -147,7 +147,7 @@
           <path d="m7 7 5 5-5 5m6-10 5 5-5 5"/>
         </svg>
 
-    </div><div class="flex flex-col" data-links><a href="/pages/create-animate.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Create Animate</a><a href="/pages/create-animate-motion.html" title="" class="pl-3 border-l border-slate-150  text-slate-500">Create Animate Motion</a></div><div class="text-xl my-4 flex items-center cursor-pointer" data-collapsible-title data-opened="true" data-id="70-helpers">
+    </div><div class="flex flex-col" data-links><a href="/pages/create-animate.html" title="" class="pl-3 border-l border-slate-150 pb-2 text-slate-500">Create Animate</a><a href="/pages/create-animate-motion.html" title="" class="pl-3 border-l border-slate-150  text-sky-500">Create Animate Motion</a></div><div class="text-xl my-4 flex items-center cursor-pointer" data-collapsible-title data-opened="true" data-id="70-helpers">
         Helpers 
         <svg data-arrow xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#626e7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="ml-2 rotate-90" viewBox="0 0 24 24">
           <path stroke="none" d="M0 0h24v24H0z"/>
@@ -166,107 +166,109 @@
         </div>
 
         <div class="p-4 overflow-y-auto h-full md:w-100-350 dark:bg-slate-800">
-          <div class="w-800 max-w-full mx-auto my-10 leading-7 text-lg text-slate-800 dark:text-slate-200"><h2 class="text-3xl mb-8">Parse Path Data</h2>
-<p class="mb-4">It’s possible to parse the <strong class="font-bold">‘d’</strong> property of a given path element using the <strong class="font-bold">parsePath()</strong> function.</p>
-<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { parsePath } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
+          <div class="w-800 max-w-full mx-auto my-10 leading-7 text-lg text-slate-800 dark:text-slate-200"><h2 class="text-3xl mb-8">How to create &lt;animateMotion&gt; element</h2>
+<p class="mb-4">The <strong class="font-bold">createAnimateMotion()</strong> function is used to create an SVG path element.</p>
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createAnimateMotion } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
 
-<span class="hljs-keyword">const</span> parseResult = <span class="hljs-title function_">parsePath</span>(<span class="hljs-string">`M 10,30
-           A 20,20 0,0,1 50,30
-           A 20,20 0,0,1 90,30
-           Q 90,60 50,90
-           Q 10,60 10,30 z`</span>); 
+<span class="hljs-keyword">const</span> $createAnimateMotion = <span class="hljs-title function_">createAnimateMotion</span>({
+    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;M20,50 C20,-50 180,150 180,50 C180-50 20,150 20,50 z&#x27;</span>,
+    <span class="hljs-attr">dur</span>: <span class="hljs-string">&#x27;10s&#x27;</span>,
+    <span class="hljs-attr">repeatCount</span>: <span class="hljs-string">&#x27;indefinite&#x27;</span>
+});</code></pre>
+<p class="mb-4">In Node.js, you need to first create a <a href="https://github.com/jsdom/jsdom" class="text-sky-500">JSDom</a> document, as described <a href="/pages/nodejs-usage.html" class="text-sky-500">here</a>, and then pass this document as additional parameter:</p>
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createAnimateMotion } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
 
-<span class="hljs-comment">// The result --------------------</span>
+<span class="hljs-keyword">const</span> $createAnimateMotion = <span class="hljs-title function_">createAnimateMotion</span>({
+    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;M20,50 C20,-50 180,150 180,50 C180-50 20,150 20,50 z&#x27;</span>,
+    <span class="hljs-attr">dur</span>: <span class="hljs-string">&#x27;10s&#x27;</span>,
+    <span class="hljs-attr">repeatCount</span>: <span class="hljs-string">&#x27;indefinite&#x27;</span>
+});</code></pre>
+<p class="mb-4">The function can accept the following parameters. Note that <strong class="font-bold">all parameters are optional</strong>:</p>
+<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">import</span> { createAnimateMotion } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mz-svg&#x27;</span>;
 
-<span class="hljs-comment">/*
-{
-	&quot;commands&quot;: [
-        {
-            &quot;command&quot;: &quot;M&quot;,
-            &quot;params&quot;: [10, 30]
-        }, 
-        {
-            &quot;command&quot;: &quot;A&quot;,
-            &quot;params&quot;: [20, 20, 0, 0, 1, 50, 30]
-        }, 
-        {
-            &quot;command&quot;: &quot;A&quot;,
-            &quot;params&quot;: [20, 20, 0, 0, 1, 90, 30]
-        }, 
-        {
-            &quot;command&quot;: &quot;Q&quot;,
-            &quot;params&quot;: [90, 60, 50, 90]
-        }, 
-        {
-            &quot;command&quot;: &quot;Q&quot;,
-            &quot;params&quot;: [10, 60, 10, 30]
-        }, 
-        {
-            &quot;command&quot;: &quot;z&quot;,
-            &quot;params&quot;: []
-        }
-	],
-	&quot;errors&quot;: []
-}
- */</span></code></pre>
-<p class="mb-4">Path data interface:</p>
-<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">interface</span> <span class="hljs-title class_">IPathData</span> {
-    <span class="hljs-attr">commands</span>: <span class="hljs-title class_">IPathDataCommand</span>[];
-    <span class="hljs-attr">errors</span>: <span class="hljs-title class_">IPathDataError</span>[];
-}
+<span class="hljs-keyword">const</span> $createAnimateMotion = <span class="hljs-title function_">createAnimateMotion</span>({
+    
+    <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;my-animate-id&#x27;</span>,
+    <span class="hljs-attr">classes</span>: <span class="hljs-string">&#x27;css-class1 css-class2&#x27;</span>,
+    <span class="hljs-attr">style</span>: <span class="hljs-string">&#x27;stroke: blue&#x27;</span>,
 
-<span class="hljs-keyword">interface</span> <span class="hljs-title class_">IPathDataCommand</span> {
-    <span class="hljs-attr">command</span>: <span class="hljs-title class_">EPathDataCommand</span>;
-    <span class="hljs-attr">params</span>: <span class="hljs-built_in">number</span>[];
-}
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/keyPoints</span>
+    <span class="hljs-attr">keyPoints</span>: <span class="hljs-string">&#x27;0;0.5;1&#x27;</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/path</span>
+    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;M20,50 C20,-50 180,150 180,50 C180-50 20,150 20,50 z&#x27;</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/rotate</span>
+    <span class="hljs-attr">rotate</span>: <span class="hljs-number">0</span>,
 
-<span class="hljs-keyword">interface</span> <span class="hljs-title class_">IPathDataError</span> {
-    <span class="hljs-attr">line</span>: <span class="hljs-built_in">number</span>;
-    <span class="hljs-attr">col</span>: <span class="hljs-built_in">number</span>;
-    <span class="hljs-attr">msg</span>: <span class="hljs-built_in">string</span>;
-}</code></pre>
-<p class="mb-4">Path data commands enum:</p>
-<pre class="hljs p-4 mb-4 rounded-md shadow-xl overflow-auto whitespace-pre-wrap text-base"><code><span class="hljs-keyword">export</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">EPathDataCommand</span> {
+    <span class="hljs-comment">// Animation timing attributes ------------------------------</span>
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/begin</span>
+    <span class="hljs-attr">begin</span>: <span class="hljs-string">&#x27;0s&#x27;</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dur</span>
+    <span class="hljs-attr">dur</span>: <span class="hljs-string">&#x27;1s&#x27;</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/end</span>
+    <span class="hljs-attr">end</span>: <span class="hljs-string">&#x27;5s&#x27;</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/min</span>
+    <span class="hljs-attr">min</span>: <span class="hljs-string">&#x27;0s&#x27;</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/max</span>
+    <span class="hljs-attr">max</span>: <span class="hljs-string">&#x27;10s&#x27;</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/restart</span>
+    <span class="hljs-attr">restart</span>: <span class="hljs-string">&#x27;always&#x27;</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/repeatCount</span>
+    <span class="hljs-attr">repeatCount</span>: <span class="hljs-number">2</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/repeatDur</span>
+    <span class="hljs-attr">repeatDur</span>: <span class="hljs-string">&#x27;3s&#x27;</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill</span>
+    <span class="hljs-attr">fill</span>: <span class="hljs-string">&#x27;freeze&#x27;</span>,
 
-    <span class="hljs-comment">// The &quot;moveto&quot; commands (M or m) establish a new current point.</span>
-    <span class="hljs-comment">// The effect is as if the &quot;pen&quot; were lifted and moved to a new location.</span>
-    <span class="hljs-title class_">MoveToAbs</span> = <span class="hljs-string">&#x27;M&#x27;</span>,
-    <span class="hljs-title class_">MoveToRel</span> = <span class="hljs-string">&#x27;m&#x27;</span>,
+    <span class="hljs-comment">// Animation value attributes ------------------------------</span>
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/calcMode</span>
+    <span class="hljs-attr">calcMode</span>: <span class="hljs-string">&#x27;spline&#x27;</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values</span>
+    <span class="hljs-attr">values</span>: <span class="hljs-string">&#x27;0; 100; 50&#x27;</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/keyTimes</span>
+    <span class="hljs-attr">keyTimes</span>: <span class="hljs-string">&#x27;0; 0.5; 1&#x27;</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/keySplines</span>
+    <span class="hljs-attr">keySplines</span>: <span class="hljs-string">&#x27;0.42 0 0.58 1; 0.42 0 0.58 1&#x27;</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/From</span>
+    <span class="hljs-attr">from</span>: <span class="hljs-number">0</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/To</span>
+    <span class="hljs-attr">to</span>: <span class="hljs-number">100</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/by</span>
+    <span class="hljs-attr">by</span>: <span class="hljs-number">10</span>,
 
-    <span class="hljs-comment">// The &quot;closepath&quot; (Z or z) ends the current sub-path and causes an automatic straight line</span>
-    <span class="hljs-comment">// to be drawn from the current point to the initial point of the current sub-path.</span>
-    <span class="hljs-title class_">ClosePathAbs</span> = <span class="hljs-string">&#x27;Z&#x27;</span>,
-    <span class="hljs-title class_">ClosePathRel</span> = <span class="hljs-string">&#x27;z&#x27;</span>,
-
-    <span class="hljs-comment">// The various &quot;lineto&quot; commands draw straight lines from the current point to a new point.</span>
-    <span class="hljs-title class_">LineToAbs</span> = <span class="hljs-string">&#x27;L&#x27;</span>,
-    <span class="hljs-title class_">LineToRel</span> = <span class="hljs-string">&#x27;l&#x27;</span>,
-    <span class="hljs-title class_">LineToHorizontalAbs</span> = <span class="hljs-string">&#x27;H&#x27;</span>,
-    <span class="hljs-title class_">LineToHorizontalRel</span> = <span class="hljs-string">&#x27;h&#x27;</span>,
-    <span class="hljs-title class_">LineToVerticalAbs</span> = <span class="hljs-string">&#x27;V&#x27;</span>,
-    <span class="hljs-title class_">LineToVerticalRel</span> = <span class="hljs-string">&#x27;v&#x27;</span>,
-
-    <span class="hljs-comment">// Cubic Bézier commands</span>
-    <span class="hljs-title class_">CubicCurveToAbs</span> = <span class="hljs-string">&#x27;C&#x27;</span>,
-    <span class="hljs-title class_">CubicCurveToRel</span> = <span class="hljs-string">&#x27;c&#x27;</span>,
-    <span class="hljs-title class_">CubicCurveToSmoothAbs</span> = <span class="hljs-string">&#x27;S&#x27;</span>,
-    <span class="hljs-title class_">CubicCurveToSmoothRel</span> = <span class="hljs-string">&#x27;s&#x27;</span>,
-
-    <span class="hljs-comment">// Quadratic Bézier commands</span>
-    <span class="hljs-title class_">QuadraticCurveToAbs</span> = <span class="hljs-string">&#x27;Q&#x27;</span>,
-    <span class="hljs-title class_">QuadraticCurveToRel</span> = <span class="hljs-string">&#x27;q&#x27;</span>,
-    <span class="hljs-title class_">QuadraticCurveToSmoothAbs</span> = <span class="hljs-string">&#x27;T&#x27;</span>,
-    <span class="hljs-title class_">QuadraticCurveToSmoothRel</span> = <span class="hljs-string">&#x27;t&#x27;</span>,
-
-    <span class="hljs-comment">// Elliptical arc commands</span>
-    <span class="hljs-title class_">ArcAbs</span> = <span class="hljs-string">&#x27;A&#x27;</span>,
-    <span class="hljs-title class_">ArcRel</span> = <span class="hljs-string">&#x27;a&#x27;</span>,
-}</code></pre>
+    <span class="hljs-comment">// Other Animation attributes ------------------------------</span>
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/attributeName</span>
+    <span class="hljs-attr">attributeName</span>: <span class="hljs-string">&#x27;opacity&#x27;</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/additive</span>
+    <span class="hljs-attr">additive</span>: <span class="hljs-string">&#x27;replace&#x27;</span>,
+    
+    <span class="hljs-comment">// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/accumulate</span>
+    <span class="hljs-attr">accumulate</span>: <span class="hljs-string">&#x27;sum&#x27;</span>,
+});</code></pre>
 </div>
 
           <div class="w-800 max-w-full mx-auto grid lg:grid-cols-2 gap-8 items-center text-slate-500">
 <div class="flex justify-between items-start border border-slate-200 rounded p-4">
-  <a href="/pages/beautify-path.html" title="" class="mr-4 hover:text-blue-500">
+  <a href="/pages/create-animate.html" title="" class="mr-4 hover:text-blue-500">
     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">
     <path stroke="none" d="M0 0h24v24H0z"/>
     <path d="M5 12h14M5 12l6 6m-6-6 6-6"/>
@@ -274,7 +276,7 @@
   </a>
   <div class="flex flex-col items-end justify-center">
     <div class="mb-2 text-sm text-slate-300">Previous</div>
-    <a href="/pages/beautify-path.html" title="" class="hover:text-blue-500">Beautify Path</a>
+    <a href="/pages/create-animate.html" title="" class="hover:text-blue-500">Create Animate</a>
   </div>
 </div>      
     
@@ -282,10 +284,10 @@
   
   <div class="flex flex-col justify-center">
     <div class="mb-2 text-sm text-slate-300">Next</div>
-    <a href="/pages/validate-path.html" title="" class="hover:text-blue-500">Validate Path</a>
+    <a href="/pages/append-once.html" title="" class="hover:text-blue-500">Append Once</a>
   </div>
   
-  <a href="/pages/validate-path.html" title="" class="mr-4 hover:text-blue-500">
+  <a href="/pages/append-once.html" title="" class="mr-4 hover:text-blue-500">
     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">
      <path stroke="none" d="M0 0h24v24H0z"/>
      <path d="M5 12h14m-6 6 6-6m-6-6 6 6"/>

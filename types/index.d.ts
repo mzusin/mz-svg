@@ -8,7 +8,9 @@ import * as containers from './main/containers';
 import * as bbox from './main/path/bbox';
 import * as animation from './main/animation/animate';
 declare const api: {
-    createAnimate: (props?: animation.ICreateAnimateProps | undefined) => SVGAnimateElement;
+    getCommonAnimationAttributes: (props?: animation.IAnimationProps | undefined) => [string, string | number | undefined][];
+    createAnimate: (props?: animation.IAnimationProps | undefined) => SVGAnimateElement;
+    createAnimateMotion: (props?: animation.ICreateAnimateMotionProps | undefined) => SVGAnimateMotionElement;
     getSVGArcCenter: (startX: number, startY: number, rx: number, ry: number, angleRad: number, largeArcFlag: number, sweepFlag: number, endX: number, endY: number) => import("mz-math").Vector2 | null;
     getPathBBox: (d?: string | undefined, decimalPlaces?: number) => bbox.IBBox | null;
     translatePath: (d: string, x: number, y: number, decimalPlaces?: number) => string;
@@ -75,31 +77,7 @@ declare const api: {
     }) => SVGSVGElement;
     getSVGAsString: ($svg: SVGSVGElement) => string;
     setAttributes: ($svgElement: SVGElement, attr: [string, string | number | undefined][]) => void;
-    getCommonAttributes: (props?: {
-        id?: string | undefined;
-        classes?: string | undefined;
-        style?: string | undefined;
-        stroke?: string | undefined;
-        strokeWidth?: string | number | undefined;
-        strokeOpacity?: string | number | undefined;
-        strokeLinecap?: string | undefined;
-        strokeLinejoin?: string | undefined;
-        strokeDasharray?: string | undefined;
-        strokeDashoffset?: string | number | undefined;
-        strokeMiterlimit?: string | number | undefined;
-        fill?: string | undefined;
-        fillOpacity?: string | number | undefined;
-        fillRule?: string | undefined;
-        filter?: string | undefined;
-        mask?: string | undefined;
-        transform?: string | undefined;
-        vectorEffect?: string | undefined;
-        shapeRendering?: string | undefined;
-        clipPath?: string | undefined;
-        clipRule?: string | undefined;
-        opacity?: string | number | undefined;
-        visibility?: string | undefined;
-    } | undefined) => [string, string | number | undefined][];
+    getCommonAttributes: (props?: import("./interfaces").IPrimitiveShapeProps | undefined) => [string, string | number | undefined][];
 };
 declare global {
     interface Window {

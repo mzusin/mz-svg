@@ -1,6 +1,6 @@
 import { setAttributes, SVG_NAMESPACE } from '../core';
 
-export interface ICreateAnimateProps{
+export interface IAnimationProps{
     document?: Document;
 
     id?: string;
@@ -33,16 +33,11 @@ export interface ICreateAnimateProps{
     accumulate?: string;
 }
 
-/**
- * Create <animate> element.
- */
-export const createAnimate = (props?: ICreateAnimateProps) : SVGAnimateElement => {
+export const getCommonAnimationAttributes = (props?: IAnimationProps) : [string, string|number|undefined][] => {
 
-    const doc = props?.document || window.document;
+    if(!props) return [];
 
-    const $animate = doc.createElementNS(SVG_NAMESPACE, 'animate');
-
-    setAttributes($animate, [
+    return [
         ['id', props?.id],
         ['class', props?.classes],
         ['style', props?.style],
@@ -71,7 +66,46 @@ export const createAnimate = (props?: ICreateAnimateProps) : SVGAnimateElement =
         ['attributeName', props?.attributeName],
         ['additive', props?.additive],
         ['accumulate', props?.accumulate],
+    ];
+};
+
+/**
+ * Create <animate> element.
+ */
+export const createAnimate = (props?: IAnimationProps) : SVGAnimateElement => {
+
+    const doc = props?.document || window.document;
+
+    const $animate = doc.createElementNS(SVG_NAMESPACE, 'animate');
+
+    setAttributes($animate, [
+        ...getCommonAnimationAttributes(props),
     ]);
 
     return $animate;
+};
+
+export interface ICreateAnimateMotionProps extends IAnimationProps{
+    keyPoints?: string;
+    path?: string|number;
+    rotate?: string|number;
+}
+
+/**
+ * Create <animateMotion> element.
+ */
+export const createAnimateMotion = (props?: ICreateAnimateMotionProps) : SVGAnimateMotionElement => {
+
+    const doc = props?.document || window.document;
+
+    const $animateMotion = doc.createElementNS(SVG_NAMESPACE, 'animateMotion');
+
+    setAttributes($animateMotion, [
+        ['keyPoints', props?.keyPoints],
+        ['path', props?.path],
+        ['rotate', props?.rotate],
+        ...getCommonAnimationAttributes(props),
+    ]);
+
+    return $animateMotion;
 };

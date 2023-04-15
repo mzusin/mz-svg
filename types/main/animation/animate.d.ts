@@ -1,4 +1,4 @@
-export interface ICreateAnimateProps {
+export interface IAnimationProps {
     document?: Document;
     id?: string;
     classes?: string;
@@ -9,21 +9,31 @@ export interface ICreateAnimateProps {
     min?: string;
     max?: string;
     restart?: string;
-    repeatCount?: string;
+    repeatCount?: number | string;
     repeatDur?: string;
     fill?: string;
     calcMode?: string;
     values?: string;
     keyTimes?: string;
     keySplines?: string;
-    from?: string;
-    to?: string;
-    by?: string;
+    from?: number | string;
+    to?: number | string;
+    by?: number | string;
     attributeName?: string;
     additive?: string;
     accumulate?: string;
 }
+export declare const getCommonAnimationAttributes: (props?: IAnimationProps) => [string, string | number | undefined][];
 /**
  * Create <animate> element.
  */
-export declare const createAnimate: (props?: ICreateAnimateProps) => SVGAnimateElement;
+export declare const createAnimate: (props?: IAnimationProps) => SVGAnimateElement;
+export interface ICreateAnimateMotionProps extends IAnimationProps {
+    keyPoints?: string;
+    path?: string | number;
+    rotate?: string | number;
+}
+/**
+ * Create <animate> element.
+ */
+export declare const createAnimateMotion: (props?: ICreateAnimateMotionProps) => SVGAnimateMotionElement;

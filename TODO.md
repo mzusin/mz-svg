@@ -30,7 +30,7 @@
 - radialGradient
 
 ## Animation
-- animate
++ animate
 - animateMotion
 - animateTransform
 - mpath
