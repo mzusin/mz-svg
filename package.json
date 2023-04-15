@@ -1,16 +1,17 @@
 {
   "name": "mz-svg",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "The TypeScript-based library for manipulating SVG in browser and Node.js.",
   "type": "module",
   "main": "./dist/mz-svg.min.js",
   "module": "./dist/mz-svg.esm.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    "import": "./dist/mz-svg.esm.js",
-    "require": "./dist/mz-svg.node.cjs",
-    "default": "./dist/mz-svg.esm.js",
-    "node": "./dist/mz-svg.esm-node.js"
+    "node": {
+      "import": "./dist/mz-svg.esm-node.js",
+      "require": "./dist/mz-svg.node.cjs"
+    },
+    "default": "./dist/mz-svg.esm.js"
   },
   "scripts": {
     "build:all": "npm run build:es6 & npm run build:node & npm run build:esm & npm run build:esm-node",

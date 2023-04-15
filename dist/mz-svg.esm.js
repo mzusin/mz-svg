@@ -1,6 +1,6 @@
 /* 
 mzSVG - the TypeScript-based library for manipulating and animating SVG.
-Version: 1.0.7
+Version: 1.0.8
 Author: Miriam Zusin     
 Contact: miriam.zusin@gmail.com
 Documentation: https://github.com/mzusin/mz-svg
