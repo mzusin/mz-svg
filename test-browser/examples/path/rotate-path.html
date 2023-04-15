@@ -24,22 +24,38 @@
             height: 600
         });
 
-        const $path = mzSVG.createPath({
-            d: `M 10,30
+        const d = `M 10,30
            A 20,20 0,0,1 50,30
            A 20,20 0,0,1 90,30
            Q 90,60 50,90
-           Q 10,60 10,30 z`,
+           Q 10,60 10,30 z`;
+
+        $svg.append(mzSVG.createPath({
+            d,
+            fill: 'red',
+        }));
+
+        const $path = mzSVG.createPath({
+            d,
             fill: '#4ca989',
         });
-
         $svg.append($path);
 
         document.body.append($svg);
 
-        let d = $path.getAttribute('d');
-        d = mzSVG.rotatePath(d, 45);
-        $path.setAttribute('d', d);
+        let d1 = $path.getAttribute('d');
+        d1 = mzSVG.rotatePath(d1, 90);
+        $path.setAttribute('d', d1);
+
+        const bbox = mzSVG.getPathBBox(d1);
+        $svg.append(mzSVG.createRect({
+            x: bbox.x,
+            y: bbox.y,
+            width: bbox.w,
+            height: bbox.h,
+            fill: 'none',
+            stroke: 'blue'
+        }));
     </script>
 </body>
 </html>
