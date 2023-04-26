@@ -87,7 +87,7 @@
     "karma-qunit": "^4.1.2",
     "karma-spec-reporter": "^0.0.36",
     "markdown-documentation-maker": "^1.0.10",
-    "mz-particles": "^1.0.5",
+    "mz-particles": "^1.0.6",
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1"
   },
