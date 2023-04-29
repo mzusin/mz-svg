@@ -18,12 +18,11 @@ export const settings = {
     outfile: './dist/mz-svg.min.js',
     banner: {
         js: `/* 
-mzSVG - the TypeScript-based library for manipulating and animating SVG.
-Version: ${version}
-Author: Miriam Zusin     
-Contact: miriam.zusin@gmail.com
-Documentation: https://github.com/mzusin/mz-svg
-Licensed GPLv3 for open source use, or Commercial License for commercial use - https://github.com/mzusin/index/blob/main/LICENSE.md                 
+mzSVG v${ version } 
+TypeScript-based library for manipulating and animating SVG.  
+https://github.com/mzusin/mz-svg
+Licensed GPLv3 for open source use, or Commercial License for commercial use - https://github.com/mzusin/index/blob/main/LICENSE.md    
+Copyright (c) 2023-present, Miriam Zusin         
 */`,
     },
 };
